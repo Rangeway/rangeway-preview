@@ -1,0 +1,293 @@
+---
+import PathMark from "./PathMark.astro";
+---
+
+<div class="nav-wrap" data-nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a class="nav-brand" href="/" aria-label="Rangeway home">
+        <PathMark size={26} color="#ffffff" accent="#F4A855" />
+        <span class="nav-brand-text">Rangeway</span>
+      </a>
+
+      <ul class="nav-links" aria-label="Primary">
+        <li><a href="/network">The Network</a></li>
+        <li><a href="/our-story">Our Story</a></li>
+        <li><a href="/team">Team</a></li>
+        <li><a href="/partners">Partners</a></li>
+        <li><a href="/investors">Investors</a></li>
+        <li><a href="https://newsroom.rangeway.energy" target="_blank" rel="noopener">Newsroom</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li class="nav-social" aria-label="Social">
+          <a href="https://instagram.com/RangewayEV" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/company/rangewayenergy" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.4c0-1.3-.03-2.98-1.82-2.98-1.82 0-2.1 1.42-2.1 2.88V21h-4V9z" />
+            </svg>
+          </a>
+          <a href="https://x.com/RangewayEV" aria-label="X" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2H21l-6.52 7.45L22 22h-6.77l-5.3-6.93L3.75 22H1l7-8L1.55 2h6.93l4.8 6.34L18.24 2zm-2.37 18h1.86L7.21 4h-2L15.87 20z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" data-toggle>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="7" x2="21" y2="7" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="17" x2="21" y2="17" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="nav-mobile" id="mobile-menu" hidden data-mobile>
+      <a href="/network">The Network</a>
+      <a href="/our-story">Our Story</a>
+      <a href="/team">Team</a>
+      <a href="/partners">Partners</a>
+      <a href="/investors">Investors</a>
+      <a href="https://newsroom.rangeway.energy" target="_blank" rel="noopener">Newsroom</a>
+      <a href="/contact">Contact</a>
+      <div class="nav-mobile__social">
+        <a href="https://instagram.com/RangewayEV" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/company/rangewayenergy" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/RangewayEV" target="_blank" rel="noopener">X</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .nav-wrap {
+    position: fixed;
+    top: 18px;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    pointer-events: none;
+    transition: top var(--dur-med) var(--ease-standard);
+  }
+
+  .nav-inner {
+    pointer-events: auto;
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    padding: 10px 14px 10px 20px;
+    border-radius: var(--radius-pill);
+    background: rgba(32, 28, 26, 0.36);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    color: var(--color-white);
+    transition: background var(--dur-med) var(--ease-standard),
+      box-shadow var(--dur-med) var(--ease-standard),
+      border-color var(--dur-med) var(--ease-standard);
+  }
+
+  .nav-wrap.is-scrolled .nav-inner {
+    background: rgba(23, 21, 20, 0.88);
+    box-shadow: var(--shadow-nav);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-weight: 700;
+  }
+
+  .nav-brand-text {
+    font-size: 1.28rem;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-links a {
+    display: inline-flex;
+    padding: 10px 14px;
+    border-radius: var(--radius-pill);
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color var(--dur-fast) var(--ease-standard),
+      background var(--dur-fast) var(--ease-standard);
+  }
+
+  .nav-links a:hover {
+    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-social {
+    display: inline-flex;
+    gap: 6px;
+    padding-left: 10px;
+    margin-left: 6px;
+    border-left: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .nav-social a {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .nav-social a:hover {
+    color: var(--color-warm);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .nav-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--color-white);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-mobile {
+    pointer-events: auto;
+    margin-top: 8px;
+    padding: 16px;
+    border-radius: var(--radius-lg);
+    background: rgba(23, 21, 20, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .nav-mobile[hidden] {
+    display: none;
+  }
+
+  .nav-mobile > a {
+    display: block;
+    padding: 14px 16px;
+    color: rgba(255, 255, 255, 0.86);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.05rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-mobile > a:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--color-white);
+  }
+
+  .nav-mobile__social {
+    display: flex;
+    gap: var(--space-5);
+    padding: var(--space-4) 16px 4px;
+    margin-top: var(--space-2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-mobile__social a {
+    padding: 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 600;
+  }
+
+  .nav-mobile__social a:hover {
+    color: var(--color-warm);
+    background: transparent;
+  }
+
+  @media (max-width: 1180px) {
+    .nav-links {
+      display: none;
+    }
+
+    .nav-toggle {
+      display: inline-flex;
+    }
+  }
+</style>
+
+<script>
+  const wrap = document.querySelector<HTMLElement>(".nav-wrap");
+  const toggle = document.querySelector<HTMLButtonElement>("[data-toggle]");
+  const mobile = document.querySelector<HTMLElement>("[data-mobile]");
+
+  if (wrap) {
+    const onScroll = () => {
+      if (window.scrollY > 40) {
+        wrap.classList.add("is-scrolled");
+      } else {
+        wrap.classList.remove("is-scrolled");
+      }
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  if (toggle && mobile) {
+    const setOpen = (open: boolean) => {
+      mobile.hidden = !open;
+      toggle.setAttribute("aria-expanded", String(open));
+      document.body.style.overflow = open ? "hidden" : "";
+    };
+
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setOpen(mobile.hidden);
+    });
+
+    // Close on tap outside
+    document.addEventListener("click", (e) => {
+      if (mobile.hidden) return;
+      const target = e.target as Node;
+      if (!mobile.contains(target) && !toggle.contains(target)) {
+        setOpen(false);
+      }
+    });
+
+    // Close when a menu link is tapped
+    mobile.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setOpen(false));
+    });
+
+    // Close on Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !mobile.hidden) setOpen(false);
+    });
+  }
+</script>

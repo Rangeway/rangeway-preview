@@ -1,0 +1,201 @@
+---
+const leaders = [
+  {
+    name: "Zak Winnick",
+    role: "Founder and CEO",
+    bio: "15+ years operating luxury hotels and resorts. Longtime EV driver and community leader.",
+    photo: "/images/team/zak-winnick.jpg",
+    linkedin: "https://www.linkedin.com/in/zakwinnick"
+  },
+  {
+    name: "Theo Reichgelt",
+    role: "Brand and Growth",
+    bio: "Founder of Nexxt Industry and host of The eMobility Marketing Podcast.",
+    photo: "/images/team/theo-reichgelt.jpg",
+    linkedin: "https://www.linkedin.com/in/theoreichgelt/"
+  },
+  {
+    name: "James Regan",
+    role: "Finance and Strategy",
+    bio: "30+ years in corporate development and infrastructure project financing; Managing Partner at CapitalWorks.",
+    photo: "/images/team/james-regan.jpg",
+    linkedin: "https://www.linkedin.com/in/james-regan-913915a/"
+  },
+  {
+    name: "Stephanie McGreevy",
+    role: "Policy and Public Capital",
+    bio: "15+ years in ZEV infrastructure; founder of Open Energy Alliance.",
+    photo: "/images/team/stephanie-mcgreevy.jpg",
+    linkedin: "https://www.linkedin.com/in/smcgreevy/"
+  }
+];
+---
+
+<section class="leadership section">
+  <div class="container">
+    <div class="leadership__heading reveal">
+      <p class="eyebrow">Leadership</p>
+      <h2>The people building Rangeway.</h2>
+      <p class="leadership__lede">
+        Hospitality operators, energy veterans, and EV community organizers.
+      </p>
+    </div>
+
+    <ul class="leadership__grid">
+      {leaders.map((l) => (
+        <li class="leader reveal">
+          <div class="leader__photo">
+            <img src={l.photo} alt={`Portrait of ${l.name}`} loading="lazy" />
+          </div>
+          <div class="leader__body">
+            <h3 class="leader__name">{l.name}</h3>
+            <p class="leader__role">{l.role}</p>
+            <p class="leader__bio">{l.bio}</p>
+            <a
+              class="leader__linkedin"
+              href={l.linkedin}
+              target="_blank"
+              rel="noopener"
+              aria-label={`${l.name} on LinkedIn`}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.4c0-1.3-.03-2.98-1.82-2.98-1.82 0-2.1 1.42-2.1 2.88V21h-4V9z" />
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <div class="leadership__cta reveal">
+      <a class="btn-link" href="/team">
+        Meet the full team
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="13 6 19 12 13 18" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .leadership__heading {
+    max-width: 620px;
+    margin-bottom: var(--space-7);
+  }
+
+  .leadership__lede {
+    margin-top: var(--space-4);
+    color: var(--color-text-muted);
+    font-size: 1.08rem;
+  }
+
+  .leadership__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-5);
+  }
+
+  .leader {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background: var(--surface-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: transform var(--dur-fast) var(--ease-standard),
+      border-color var(--dur-fast) var(--ease-standard),
+      box-shadow var(--dur-fast) var(--ease-standard);
+  }
+
+  .leader:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-warm);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .leader__photo {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--surface-alt);
+    box-shadow: 0 4px 16px rgba(24, 18, 14, 0.08);
+  }
+
+  .leader__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .leader__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    flex: 1;
+  }
+
+  .leader__name {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .leader__role {
+    font-family: var(--font-heading);
+    font-size: 0.76rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-warm-deep);
+    font-weight: 600;
+    margin: 0 0 var(--space-2);
+  }
+
+  .leader__bio {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin: 0 0 var(--space-3);
+    flex: 1;
+  }
+
+  .leader__linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    align-self: flex-start;
+  }
+
+  .leader__linkedin:hover {
+    color: var(--color-warm-deep);
+  }
+
+  .leadership__cta {
+    margin-top: var(--space-7);
+  }
+
+  @media (max-width: 1100px) {
+    .leadership__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .leadership__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

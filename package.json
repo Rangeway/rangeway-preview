@@ -1,0 +1,25 @@
+{
+  "name": "rangeway-redesign",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^6.1.6",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "typescript": "^5.6.3"
+  },
+  "overrides": {
+    "yaml": "^2.8.3"
+  }
+}

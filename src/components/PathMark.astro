@@ -1,0 +1,29 @@
+---
+interface Props {
+  size?: number;
+  color?: string;
+  accent?: string;
+  className?: string;
+}
+const { size = 28, color = "currentColor", accent = "#F4A855", className = "" } = Astro.props;
+const height = Math.round((size * 112) / 96);
+---
+
+<svg
+  width={size}
+  height={height}
+  viewBox="0 0 96 112"
+  class={className}
+  aria-hidden="true"
+  role="presentation"
+>
+  <path
+    d="M20 100 L20 16 C20 10 24 6 30 6 L56 6 C72 6 80 16 80 32 C80 46 72 54 58 56 L82 100"
+    stroke={color}
+    stroke-width="10"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="58" cy="32" r="10" fill={accent} />
+</svg>

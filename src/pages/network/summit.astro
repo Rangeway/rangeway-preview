@@ -1,0 +1,257 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import FormatNav from "../../components/FormatNav.astro";
+
+const experiences = [
+  {
+    num: "01",
+    title: "Arrive at a destination, not a stop.",
+    body: "Summit is sited at places worth staying. Dark skies, quiet ground, and horizons you remember. You pull in to recharge and find yourself unwilling to leave."
+  },
+  {
+    num: "02",
+    title: "Rest in a modular Lookout.",
+    body: "Each Lookout is a small, considered room of its own. Warm materials, generous glass, a bed made with hospitality instincts. Designed to be moved, sited to stay."
+  },
+  {
+    num: "03",
+    title: "Gather at the clubhouse.",
+    body: "The central hub of every Summit. A fire, a long table, a kitchen with real food. Conversation tends to happen on its own."
+  },
+  {
+    num: "04",
+    title: "Charge off the grid.",
+    body: "Every Summit is 100% off-grid solar. Power is native to the land. Charging is quiet, clean, and unobtrusive by design."
+  }
+];
+---
+
+<BaseLayout
+  title="Summit · Rangeway"
+  description="Where the road meets rest. Modular Lookouts, a central clubhouse, and 100% off-grid solar charging."
+  image="/images/summit-1.jpg"
+>
+  <PageHero
+    eyebrow="Summit"
+    title="Where the road meets rest."
+    lede="A hospitality-first destination where the stop itself becomes part of the journey. Modular Lookouts. A central clubhouse. 100% off-grid solar."
+    image="/images/summit-1.jpg"
+    imageAlt="A Summit Lookout at dusk"
+  />
+
+  <FormatNav current="summit" />
+
+  <section class="section">
+    <div class="container summit-intro">
+      <div class="reveal">
+        <p class="eyebrow">What Summit is</p>
+        <h2>The stop that becomes the trip.</h2>
+      </div>
+      <div class="summit-intro__body reveal">
+        <p class="prose-lg">
+          Summit is Rangeway's hospitality north star. It is the format we build when charging is no
+          longer the point, because the stop itself is the reason you came. A weekend, a way to
+          break up a long drive, a night under real darkness.
+        </p>
+        <p class="prose-lg muted">
+          Everything we know about how hotels feel at their best lives here. The lighting is
+          careful. The materials are honest. The service is present when you want it and invisible
+          when you don't.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="summit-experiences section section-cream">
+    <div class="container">
+      <div class="reveal" style="margin-bottom: var(--space-8); max-width: 620px;">
+        <p class="eyebrow">The experience</p>
+        <h2>Four ideas that shape every Summit.</h2>
+      </div>
+
+      <div class="experiences">
+        {experiences.map((e) => (
+          <article class="experience reveal">
+            <span class="experience__num">{e.num}</span>
+            <h3>{e.title}</h3>
+            <p>{e.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="format-gallery section">
+    <div class="container">
+      <div class="gallery-grid">
+        <div class="gallery-grid__item gallery-grid__item--lg reveal">
+          <img src="/images/summit-solar-aerial.jpg" alt="Aerial view of a Summit with clubhouse, Lookouts, and off-grid solar array in the desert" loading="lazy" />
+        </div>
+        <div class="gallery-grid__item reveal">
+          <img src="/images/summit-clubhouse-mountains.jpg" alt="A Summit clubhouse with charging canopy and desert mountains behind" loading="lazy" />
+        </div>
+        <div class="gallery-grid__item reveal">
+          <img src="/images/summit-2.jpg" alt="Summit Lookout interior" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container summit-pillars">
+      <div class="reveal" style="max-width: 620px;">
+        <p class="eyebrow" style="color: var(--color-warm);">The Summit standard</p>
+        <h2>Built on three convictions.</h2>
+      </div>
+
+      <div class="pillars">
+        <article class="pillar reveal">
+          <h3>Hospitality over infrastructure</h3>
+          <p>Summit is a hotel-quality experience that happens to include a charger. The balance never shifts.</p>
+        </article>
+        <article class="pillar reveal">
+          <h3>Site-specific architecture</h3>
+          <p>Every Summit is designed for its setting. Materials, orientation, and palette are drawn from the land.</p>
+        </article>
+        <article class="pillar reveal">
+          <h3>Genuinely off-grid</h3>
+          <p>100% solar. Our commitment is not performative. The network does not need to plug in to plug in.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream">
+    <div class="container-narrow text-center reveal">
+      <p class="eyebrow">Stay connected</p>
+      <h2>First access to Summit openings.</h2>
+      <p class="prose-lg muted" style="margin-top: var(--space-4);">
+        Summit locations are small and intentional. Field Notes subscribers hear first when a new
+        property opens for stays.
+      </p>
+      <div style="margin-top: var(--space-6);">
+        <a class="btn btn-primary" href="https://fieldnotes.rangewayev.com" target="_blank" rel="noopener">
+          Subscribe to Field Notes
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="13 6 19 12 13 18" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .summit-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  .summit-intro__body p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+  }
+
+  .experiences {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-7);
+  }
+
+  .experience {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .experience__num {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    letter-spacing: 0.22em;
+    color: var(--color-warm-deep);
+    font-weight: 600;
+  }
+
+  .experience h3 {
+    font-size: 1.4rem;
+  }
+
+  .experience p {
+    color: var(--color-text-muted);
+    font-size: 1.02rem;
+    margin: 0;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(2, 280px);
+    gap: var(--space-4);
+  }
+
+  .gallery-grid__item {
+    overflow: hidden;
+    border-radius: var(--radius-md);
+  }
+
+  .gallery-grid__item--lg {
+    grid-row: span 2;
+  }
+
+  .gallery-grid__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .summit-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  .pillars {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .pillar {
+    padding-top: var(--space-5);
+    border-top: 1px solid rgba(245, 241, 235, 0.15);
+  }
+
+  .pillar h3 {
+    color: var(--color-cream);
+    font-size: 1.25rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .pillar p {
+    color: var(--color-cream);
+    opacity: 0.78;
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .summit-intro,
+    .summit-pillars,
+    .experiences {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, 240px);
+    }
+
+    .gallery-grid__item--lg {
+      grid-row: auto;
+    }
+  }
+</style>

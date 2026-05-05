@@ -1,0 +1,136 @@
+---
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+---
+
+<form
+  class={compact ? "contact-form contact-form--compact" : "contact-form"}
+  action="https://formsubmit.co/hello@rangewayev.com"
+  method="POST"
+>
+  <input type="hidden" name="_subject" value="New Rangeway Website Inquiry" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="text" name="_honey" class="contact-form__honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <div class="contact-form__row">
+    <label>
+      <span>Name</span>
+      <input type="text" name="name" required autocomplete="name" />
+    </label>
+    <label>
+      <span>Email</span>
+      <input type="email" name="email" required autocomplete="email" />
+    </label>
+  </div>
+
+  <label>
+    <span>Interest</span>
+    <select name="interest" required>
+      <option value="">Select one</option>
+      <option>EV Driver</option>
+      <option>Potential Partner</option>
+      <option>Investor</option>
+      <option>Careers</option>
+      <option>Media</option>
+      <option>Other</option>
+    </select>
+  </label>
+
+  <label>
+    <span>Message</span>
+    <textarea name="message" rows={5} required></textarea>
+  </label>
+
+  <button type="submit" class="btn btn-warm">Send message</button>
+</form>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .contact-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .contact-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: inherit;
+    opacity: 0.9;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    background: var(--surface-alt);
+    color: var(--color-text);
+    width: 100%;
+    transition: border-color 0.2s var(--ease-out),
+      background 0.2s var(--ease-out),
+      box-shadow 0.2s var(--ease-out);
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color-warm);
+    background: var(--color-white);
+    box-shadow: 0 0 0 4px rgba(244, 168, 85, 0.14);
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .contact-form button {
+    align-self: flex-start;
+    margin-top: var(--space-3);
+  }
+
+  .contact-form__honey {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @media (max-width: 560px) {
+    .contact-form__row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

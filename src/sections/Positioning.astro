@@ -1,0 +1,84 @@
+---
+---
+
+<section id="positioning" class="positioning">
+  <div class="positioning__wash"></div>
+  <div class="container positioning__inner">
+    <div class="positioning__grid">
+      <div class="reveal">
+        <p class="eyebrow">Our thesis</p>
+        <blockquote class="positioning__quote">
+          We think like <em>hotel operators</em>, not utility companies. The stop should be worth
+          the time.
+        </blockquote>
+      </div>
+      <aside class="positioning__aside reveal">
+        <p>
+          Every Rangeway location is designed the way a hospitality operator designs a property.
+          Lighting, materials, service, sequence. The charging happens inside a space built for
+          the people waiting, not outside in a lot built for the car.
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .positioning {
+    background: var(--surface-alt);
+    padding: calc(72px + 20px) 0 clamp(88px, 10vw, 160px);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .positioning__wash {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 85% 20%, rgba(244, 168, 85, 0.1), transparent 45%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .positioning__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-9);
+    align-items: center;
+  }
+
+  .positioning__quote {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.9rem, 3.8vw, 3.1rem);
+    line-height: 1.18;
+    letter-spacing: -0.035em;
+    color: var(--color-text);
+    max-width: 22ch;
+    text-wrap: balance;
+  }
+
+  .positioning__quote em {
+    color: var(--color-warm-deep);
+    font-style: normal;
+  }
+
+  .positioning__aside {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    max-width: 440px;
+  }
+
+  .positioning__aside p {
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .positioning__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+  }
+</style>

@@ -1,0 +1,130 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  lede?: string;
+  image: string;
+  imageAlt: string;
+  align?: "left" | "center";
+  scrim?: "default" | "strong";
+}
+
+const { eyebrow, title, lede, image, imageAlt, align = "left", scrim = "default" } = Astro.props;
+---
+
+<section class={`page-hero page-hero--${align} page-hero--scrim-${scrim}`}>
+  <div class="page-hero__media">
+    <img src={image} alt={imageAlt} fetchpriority="high" />
+    <div class="page-hero__scrim"></div>
+  </div>
+  <div class="container page-hero__inner">
+    <p class="page-hero__eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    {lede && <p class="page-hero__lede">{lede}</p>}
+    <slot />
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    position: relative;
+    color: var(--color-cream);
+    min-height: 72vh;
+    display: flex;
+    align-items: flex-end;
+    padding-top: calc(var(--nav-height) + 60px);
+    padding-bottom: clamp(64px, 8vw, 120px);
+    margin-top: calc(-1 * (var(--nav-height) + 24px));
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .page-hero--center {
+    align-items: center;
+    text-align: center;
+    min-height: 68vh;
+  }
+
+  .page-hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .page-hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .page-hero__scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(23, 21, 20, 0.55) 0%, rgba(23, 21, 20, 0.28) 40%, rgba(23, 21, 20, 0.82) 100%),
+      radial-gradient(circle at 20% 85%, rgba(244, 168, 85, 0.2), transparent 40%);
+  }
+
+  .page-hero--scrim-strong .page-hero__scrim {
+    background:
+      linear-gradient(180deg, rgba(23, 21, 20, 0.75) 0%, rgba(23, 21, 20, 0.5) 45%, rgba(23, 21, 20, 0.9) 100%),
+      radial-gradient(circle at 20% 85%, rgba(244, 168, 85, 0.22), transparent 40%);
+  }
+
+  .page-hero--center .page-hero__inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .page-hero__inner {
+    max-width: 780px;
+  }
+
+  .page-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-body);
+    font-size: var(--fs-eyebrow);
+    font-weight: 700;
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-warm);
+    margin: 0 0 var(--space-4);
+  }
+
+  .page-hero__eyebrow::before {
+    content: "";
+    width: 38px;
+    height: 1px;
+    background: currentColor;
+    opacity: 1;
+  }
+
+  .page-hero--center .page-hero__eyebrow {
+    justify-content: center;
+  }
+
+  .page-hero h1 {
+    color: var(--color-cream);
+    font-family: var(--font-heading);
+    font-size: clamp(2.75rem, 6vw, 5.25rem);
+    font-weight: 700;
+    line-height: var(--lh-heading);
+    letter-spacing: var(--ls-heading);
+    text-wrap: balance;
+  }
+
+  .page-hero__lede {
+    margin-top: var(--space-5);
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+    line-height: 1.55;
+    max-width: 58ch;
+    opacity: 0.9;
+  }
+
+  .page-hero--center .page-hero__lede {
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>

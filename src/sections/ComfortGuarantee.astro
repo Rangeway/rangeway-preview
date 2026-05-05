@@ -1,0 +1,85 @@
+---
+---
+
+<section id="comfort" class="comfort section-dark">
+  <div class="comfort__media">
+    <img src="/images/basecamp-interior.jpg" alt="Interior of a Rangeway driver's lounge with warm lighting and premium seating" loading="lazy" />
+    <div class="comfort__scrim"></div>
+  </div>
+  <div class="container comfort__inner">
+    <div class="comfort__text reveal">
+      <p class="eyebrow eyebrow-muted">An Industry First</p>
+      <h2>The Indoor Comfort Guarantee.</h2>
+      <p class="comfort__body">
+        Every Rangeway Waystation and Basecamp guarantees climate-controlled indoor comfort with
+        premium restrooms, comfortable seating, and high-speed Wi-Fi. No other charging network in
+        America makes this promise.
+      </p>
+      <p class="comfort__body">
+        At Trailheads, drivers are already welcomed by covered canopies, clean restrooms nearby,
+        and reliable Wi-Fi. At Summits, the hospitality extends to overnight stays in modular
+        Lookouts.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .comfort {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: clamp(120px, 14vw, 180px) 0;
+  }
+
+  .comfort__media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .comfort__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 65%;
+  }
+
+  .comfort__scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(23, 21, 20, 0.88) 0%, rgba(23, 21, 20, 0.7) 55%, rgba(23, 21, 20, 0.3) 100%),
+      radial-gradient(circle at 90% 10%, rgba(244, 168, 85, 0.18), transparent 50%);
+  }
+
+  .comfort__text {
+    max-width: 620px;
+    color: var(--color-cream);
+  }
+
+  .comfort__body {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    opacity: 0.9;
+    margin-top: var(--space-5);
+  }
+
+  .comfort__body + .comfort__body {
+    margin-top: var(--space-4);
+  }
+
+  .comfort__text .eyebrow {
+    color: var(--color-warm);
+  }
+
+  @media (max-width: 720px) {
+    .comfort__scrim {
+      background: linear-gradient(
+        180deg,
+        rgba(23, 21, 20, 0.6) 0%,
+        rgba(23, 21, 20, 0.88) 60%
+      );
+    }
+  }
+</style>

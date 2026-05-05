@@ -1,0 +1,254 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+
+const thesis = [
+  {
+    title: "The charging market is under-served at the top.",
+    body: "Public charging is dominated by utility-first operators. No national network is designed for premium drivers or competes on experience. The premium category is wide open, and nobody is approaching it."
+  },
+  {
+    title: "Hospitality unlocks new economics.",
+    body: "Dwell time is a liability for a utility company and an asset for a hospitality operator. Our model turns the mandatory 20 to 30 minutes of a fast-charge stop into revenue, loyalty, and brand."
+  },
+  {
+    title: "The site-level experience is the moat.",
+    body: "Hardware commoditizes. Electricity commoditizes. Experience does not. Running a network that feels like a hotel is operationally hard, and that difficulty is the durable advantage."
+  },
+  {
+    title: "Four formats, one brand, one standard.",
+    body: "Rangeway scales hospitality across corridor types without compromising on what the network stands for. Trailhead, Waystation, Basecamp, and Summit each earn their place on the map."
+  }
+];
+---
+
+<BaseLayout
+  title="Investors · Rangeway"
+  description="The investment case for the first hospitality-driven premium EV charging network in America."
+  image="/images/waystation-gualala.png"
+>
+  <PageHero
+    eyebrow="Investors"
+    title="A hospitality category the charging industry never built."
+    lede="Rangeway is a premium hospitality brand for EV drivers. Charging is our beachhead. Experience is the business."
+    image="/images/waystation-gualala.png"
+    imageAlt="A Waystation in the evening light"
+  >
+    <div class="hero-ctas">
+      <a class="btn btn-warm" href="https://investors.rangewayev.com" target="_blank" rel="noopener">
+        Visit the Investor Hub
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7" />
+          <polyline points="7 7 17 7 17 17" />
+        </svg>
+      </a>
+      <a class="btn btn-outline" href="mailto:investors@rangewayev.com?subject=Investor%20Briefing%20Request">
+        investors@rangewayev.com
+      </a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container investors-intro">
+      <div class="reveal">
+        <p class="eyebrow">The opportunity</p>
+        <h2>Charging is a hospitality problem the industry has misread.</h2>
+      </div>
+      <div class="investors-intro__body reveal">
+        <p class="prose-lg">
+          Premium EV drivers spend 20 to 30 minutes at a charger on every long drive. Today, that
+          time happens in a parking lot. Rangeway is building the first national network designed
+          for the people inside the vehicle, not just the vehicle itself, with hospitality
+          operators at the helm.
+        </p>
+        <p class="prose-lg muted">
+          The investment case is simple. Hospitality is a learnable craft, the chargers are a
+          solved problem, and the category is wide open. We are building the brand that will
+          define it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section recognition">
+    <div class="container">
+      <div class="reveal" style="max-width: 640px;">
+        <p class="eyebrow">Recognition</p>
+        <p class="prose-lg" style="margin-top: var(--space-4);">
+          Rangeway was named among the next generation of charge point operators in Ohm
+          Analytics' Q3 2025 US EV Charging Market Report.
+        </p>
+        <div style="margin-top: var(--space-4);">
+          <a
+            class="btn-link"
+            href="https://hs-21752392.f.hubspotstarter.net/hubfs/21752392/OhmAnalytics_EVCharging_2025Q3Report_20251211_Sample.pdf"
+            target="_blank"
+            rel="noopener"
+          >
+            Read the report
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 17L17 7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream">
+    <div class="container">
+      <div class="reveal" style="max-width: 640px; margin-bottom: var(--space-8);">
+        <p class="eyebrow">The thesis</p>
+        <h2>Four convictions the plan rests on.</h2>
+      </div>
+
+      <div class="thesis">
+        {thesis.map((t, i) => (
+          <article class="thesis-item reveal">
+            <span class="thesis-item__num">/{String(i + 1).padStart(2, "0")}</span>
+            <h3>{t.title}</h3>
+            <p>{t.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="reveal" style="max-width: 640px; margin-bottom: var(--space-6);">
+        <p class="eyebrow">The plan in context</p>
+        <h2>Built for scale. Built to last.</h2>
+      </div>
+      <div class="reveal investors-prose">
+        <p class="prose-lg">
+          The public EV charging market is on a long-term growth curve, and the largest single-year
+          expansion in DC fast charging on record just happened. Reliability remains the industry's
+          open wound, with roughly one in three public charging attempts still failing today.
+        </p>
+        <p class="prose-lg">
+          Rangeway is being built into that gap. The network plan covers multiple formats across a
+          multi-state footprint, funded through a combination of equity, site-level debt,
+          non-dilutive programs, and partner-funded energy infrastructure. The unit economics,
+          corridor strategy, and capital plan live in the full investor briefing.
+        </p>
+        <p class="prose-lg muted">
+          Request the briefing for the detailed model, site-level projections, and source
+          attribution.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream">
+    <div class="container">
+      <div class="reveal" style="max-width: 640px; margin-bottom: var(--space-6);">
+        <p class="eyebrow">The roadmap</p>
+        <h2>A phased build.</h2>
+      </div>
+      <div class="reveal investors-prose">
+        <p class="prose-lg">
+          Rangeway is moving through site control and early development now, with first revenue
+          coming online in the phase that follows. Network expansion, the first Summit, and
+          multi-state operations are built into the longer arc. The detailed milestone schedule,
+          including target quarters and capital deployment sequencing, is in the investor briefing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container investor-cta">
+      <div class="reveal">
+        <p class="eyebrow" style="color: var(--color-warm);">Get in touch</p>
+        <h2>Request the investor briefing.</h2>
+        <p class="prose-lg" style="margin-top: var(--space-5); opacity: 0.88; max-width: 52ch;">
+          Our investor materials include the market thesis, corridor strategy, format economics,
+          partner roster, and capital plan. We share them with serious partners on request.
+        </p>
+        <div style="margin-top: var(--space-6); display: flex; gap: var(--space-4); flex-wrap: wrap;">
+          <a class="btn btn-warm" href="mailto:investors@rangewayev.com?subject=Investor%20Briefing%20Request">
+            Email investors@rangewayev.com
+          </a>
+          <a class="btn btn-outline" href="https://investors.rangewayev.com" target="_blank" rel="noopener">Visit the Investor Hub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-ctas {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-top: var(--space-6);
+  }
+
+  .investors-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  .investors-intro__body p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+  }
+
+  .thesis {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-7);
+  }
+
+  .thesis-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .thesis-item__num {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    letter-spacing: 0.22em;
+    color: var(--color-warm-deep);
+    font-weight: 600;
+  }
+
+  .thesis-item h3 {
+    font-size: 1.3rem;
+    line-height: 1.3;
+  }
+
+  .thesis-item p {
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .investor-cta {
+    max-width: 640px;
+  }
+
+  .investors-prose {
+    max-width: 64ch;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .investors-prose p {
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .investors-intro,
+    .thesis {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

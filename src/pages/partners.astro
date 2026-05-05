@@ -1,0 +1,242 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+
+const partnerGroups = [
+  {
+    title: "Structural and Building",
+    partners: [
+      {
+        name: "ReNuTeq",
+        role: "Structural and building partner",
+        description:
+          "Every canopy, lounge, and supporting building across the network is built from ReNuTeq's Structural Engineered Bamboo, a carbon-negative material stronger than steel and rapidly renewable. BMW and Rivian use the same system.",
+        href: "https://renuteq.com",
+        logo: "/images/partners/renuteq.jpg"
+      }
+    ]
+  },
+  {
+    title: "Energy and Infrastructure",
+    partners: [
+      {
+        name: "Carbon DC",
+        role: "Energy infrastructure",
+        description:
+          "Carbon DC delivers the power architecture behind the network, from interconnect and battery storage to solar integration. Each site scales without waiting on the utility. At every Rangeway Summit, Carbon DC serves as the full infrastructure partner, powering every Lookout, charger, and clubhouse off-grid.",
+        href: "https://carbondc.io",
+        logo: "/images/partners/carbondc.png"
+      },
+      {
+        name: "Ekoenergetyka",
+        role: "Ultra-fast charging hardware",
+        description:
+          "Ekoenergetyka brings European engineering to the chargers at the heart of the driver experience. The hardware delivers performance, service life, and a design language worthy of a hospitality-forward site.",
+        href: "https://ekoenergetyka.com/america/",
+        logo: "/images/partners/ekoenergetyka.png",
+        logoDark: "/images/partners/ekoenergetyka-white.png"
+      },
+      {
+        name: "HyWatts",
+        role: "Modular off-grid power systems",
+        description:
+          "HyWatts builds Power Plant-in-a-Box systems that integrate solar, battery storage, and hydrogen-ready generation. Rangeway brings HyWatts in on a project-by-project basis when the grid is slow, expensive, or unavailable.",
+        href: "https://hywatts.com",
+        logo: "/images/partners/hywatts.webp"
+      }
+    ]
+  },
+  {
+    title: "Software and Driver Experience",
+    partners: [
+      {
+        name: "ChargeMate",
+        role: "24/7 AI driver support",
+        description:
+          "ChargeMate is the always-on concierge behind every Rangeway charger. AI-led troubleshooting handles most issues immediately and escalates to the Rangeway team when needed, so no driver is ever stuck.",
+        href: "https://chargemate.ai",
+        logo: "/images/partners/chargemate.jpg"
+      },
+      {
+        name: "Juice",
+        role: "Plug-and-charge technology",
+        description:
+          "Juice powers seamless authentication and session handling at every charger. Drivers arrive, plug in, and go, without apps or friction.",
+        href: "https://js.eco",
+        logo: "/images/partners/juice.png"
+      },
+      {
+        name: "Monta",
+        role: "Charge point management",
+        description:
+          "Monta is the operational backbone of the network. The platform handles payments, roaming, uptime monitoring, and the infrastructure that keeps every charger connected and every transaction clean.",
+        href: "https://monta.com",
+        logo: "/images/partners/monta.png"
+      },
+      {
+        name: "WattsUp",
+        role: "Predictive maintenance",
+        description:
+          "WattsUp handles the quiet work that keeps every charger reliable. The platform reads charger telemetry to catch failures before drivers ever feel them, keeping uptime at the level hospitality demands.",
+        href: "https://wattsupev.io/",
+        logo: "/images/partners/wattsup.png"
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Partners · Rangeway"
+  description="The partners building Rangeway. Energy infrastructure, hardware, structures, software, and support."
+  image="/images/waystation-exterior.png"
+>
+  <PageHero
+    eyebrow="Partners"
+    title="Built with the best."
+    lede="Rangeway is a brand and an operating company. The partners listed here build the systems behind the experience."
+    image="/images/waystation-exterior.png"
+    imageAlt="A Waystation in warm evening light"
+  />
+
+  <section class="section">
+    <div class="container">
+      {partnerGroups.map((group) => (
+        <div class="partner-group">
+          <p class="eyebrow eyebrow--plain partner-group__title reveal">{group.title}</p>
+          <ul class="partners-list">
+            {group.partners.map((p) => (
+              <li class="partner-row reveal">
+                <div class="partner-row__label">
+                  <div class="partner-row__mark">
+                    {p.logo && (
+                      <picture>
+                        {p.logoDark && <source srcset={p.logoDark} media="(prefers-color-scheme: dark)" />}
+                        <img src={p.logo} alt={`${p.name} logo`} loading="lazy" />
+                      </picture>
+                    )}
+                  </div>
+                  <div>
+                    <h3>{p.name}</h3>
+                    <p class="partner-row__role">{p.role}</p>
+                  </div>
+                </div>
+                <div class="partner-row__body">
+                  <p>{p.description}</p>
+                  <a class="btn-link" href={p.href} target="_blank" rel="noopener">
+                    Visit {p.name}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M7 17L17 7" />
+                      <polyline points="7 7 17 7 17 17" />
+                    </svg>
+                  </a>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section-cream">
+    <div class="container-narrow text-center reveal">
+      <p class="eyebrow">Partner with Rangeway</p>
+      <h2>Want to work with us?</h2>
+      <p class="prose-lg muted" style="margin-top: var(--space-4);">
+        We are always looking for hospitality operators, real estate partners, technology providers,
+        and energy companies who share the conviction that charging should be better.
+      </p>
+      <div style="margin-top: var(--space-6);">
+        <a class="btn btn-primary" href="mailto:partners@rangewayev.com?subject=Partnership%20Inquiry">
+          Email partners@rangewayev.com
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .partners-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .partner-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-8);
+    padding: var(--space-7) 0;
+    border-bottom: 1px solid var(--color-border);
+    align-items: start;
+  }
+
+  .partner-row:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .partner-row__label {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+  }
+
+  .partner-row__mark {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: var(--surface-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .partner-row__mark img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .partner-group + .partner-group {
+    margin-top: var(--space-9);
+  }
+
+  .partner-group__title {
+    margin: 0 0 var(--space-4);
+    color: var(--color-warm-deep);
+  }
+
+  .partner-row h3 {
+    font-size: clamp(1.6rem, 2.4vw, 2rem);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .partner-row__role {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin: var(--space-2) 0 0;
+  }
+
+  .partner-row__body p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    margin: 0 0 var(--space-4);
+  }
+
+  @media (max-width: 780px) {
+    .partner-row {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+</style>

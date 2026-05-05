@@ -1,0 +1,106 @@
+---
+---
+
+<section class="recognition-strip">
+  <div class="container">
+    <div class="recognition-strip__inner reveal">
+      <p class="eyebrow">Recognition</p>
+      <div class="recognition-strip__items">
+        <article>
+          <span class="recognition-strip__label">Top emerging charge point operators</span>
+          <span class="recognition-strip__source">
+            <a href="https://ohmanalytics.com" target="_blank" rel="noopener">Ohm Analytics</a>
+            ·
+            <a
+              href="https://hs-21752392.f.hubspotstarter.net/hubfs/21752392/OhmAnalytics_EVCharging_2025Q3Report_20251211_Sample.pdf"
+              target="_blank"
+              rel="noopener"
+            >Q3 2025 US EV Charging Market Report</a>
+          </span>
+        </article>
+        <article>
+          <span class="recognition-strip__label">
+            <a
+              href="https://bschool.pepperdine.edu/events/most-fundable-companies/"
+              target="_blank"
+              rel="noopener"
+            >Pepperdine Most Fundable Companies</a>
+          </span>
+          <span class="recognition-strip__source">Quarter-finalist 2026</span>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .recognition-strip {
+    padding: var(--space-7) 0;
+    background: var(--surface-alt-strong);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .recognition-strip__inner {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: var(--space-7);
+    align-items: center;
+  }
+
+  .recognition-strip .eyebrow {
+    margin: 0;
+  }
+
+  .recognition-strip__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-7);
+  }
+
+  .recognition-strip article {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .recognition-strip__label {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-text);
+    line-height: 1.3;
+  }
+
+  .recognition-strip__source {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+
+  .recognition-strip__source a,
+  .recognition-strip__label a {
+    color: inherit;
+    border-bottom: 1px solid var(--color-border-strong);
+    padding-bottom: 1px;
+    transition: color var(--dur-fast) var(--ease-standard),
+      border-color var(--dur-fast) var(--ease-standard);
+  }
+
+  .recognition-strip__source a:hover,
+  .recognition-strip__label a:hover {
+    color: var(--color-warm-deep);
+    border-bottom-color: var(--color-warm-deep);
+  }
+
+  @media (max-width: 900px) {
+    .recognition-strip__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+    .recognition-strip__items {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+  }
+</style>

@@ -1,0 +1,76 @@
+---
+interface Props {
+  current: "trailhead" | "waystation" | "basecamp" | "summit";
+}
+const { current } = Astro.props;
+
+const formats = [
+  { slug: "trailhead", name: "Trailhead", href: "/network/trailhead" },
+  { slug: "waystation", name: "Waystation", href: "/network/waystation" },
+  { slug: "basecamp", name: "Basecamp", href: "/network/basecamp" },
+  { slug: "summit", name: "Summit", href: "/network/summit" }
+];
+---
+
+<nav class="format-nav" aria-label="Network formats">
+  <div class="container format-nav__inner">
+    <span class="format-nav__label">Explore</span>
+    <ul>
+      {formats.map((f) => (
+        <li>
+          <a href={f.href} class={current === f.slug ? "is-current" : ""}>
+            {f.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .format-nav {
+    background: var(--surface-alt);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-4) 0;
+  }
+
+  .format-nav__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .format-nav__label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+
+  .format-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+  }
+
+  .format-nav a {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+  }
+
+  .format-nav a:hover,
+  .format-nav a.is-current {
+    color: var(--color-text);
+    border-bottom-color: var(--color-warm);
+  }
+</style>

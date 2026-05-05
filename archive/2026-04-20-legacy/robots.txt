@@ -1,0 +1,11 @@
+# Robots.txt for Rangeway
+# https://rangewayev.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://rangewayev.com/sitemap.xml
+
+# Disallow internal paths
+Disallow: /.git/

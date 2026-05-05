@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investors | Rangeway</title>
+    <meta name="description" content="Investment opportunities with Rangeway. Partner with us in building America's first hospitality-driven premium EV charging network.">
+    <meta name="keywords" content="Rangeway investment, EV charging investment, clean energy investment, sustainable infrastructure">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Investors | Rangeway">
+    <meta property="og:description" content="Partner with us in building America's first hospitality-driven premium EV charging network.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rangewayev.com/investors">
+    <meta property="og:image" content="https://rangewayev.com/images/waystation-exterior2-jt.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 112'%3E%3Cpath d='M20 100 L20 16 C20 10 24 6 30 6 L56 6 C72 6 80 16 80 32 C80 46 72 54 58 56 L82 100' stroke='%232d2d2d' stroke-width='14' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='58' cy='32' r='12' fill='%23f4a855'/%3E%3C/svg%3E">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Analytics -->
+    <script src="https://tinylytics.app/embed/9_N5xEnQSTdibXFSDoqf.js" defer></script>
+
+    <style>
+        /* Investors page-specific styles */
+        .investor-hero {
+            position: relative;
+            min-height: 82svh;
+            padding: 130px 0 70px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .investor-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: var(--charcoal);
+        }
+
+        .investor-hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 50%;
+            opacity: 0.34;
+        }
+
+        .investor-hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to bottom, rgba(15, 15, 15, 0.5) 0%, rgba(15, 15, 15, 0.4) 45%, rgba(15, 15, 15, 0.8) 100%),
+                radial-gradient(circle at 15% 40%, rgba(244, 168, 85, 0.18), transparent 48%);
+            z-index: 1;
+        }
+
+        .investor-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .investor-hero .section-eyebrow {
+            color: var(--warm);
+            margin-bottom: 16px;
+        }
+
+        .investor-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(48px, 8vw, 92px);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 0.98;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            max-width: 10ch;
+            margin-left: auto;
+            margin-right: auto;
+            text-wrap: balance;
+        }
+
+        .investor-hero p {
+            font-size: clamp(17px, 1.9vw, 23px);
+            color: rgba(255, 255, 255, 0.72);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .investor-opportunity {
+            background: var(--cream);
+        }
+
+        .investor-opportunity-intro {
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .investor-opportunity-intro .section-title {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .investor-opportunity-text {
+            font-size: 18px;
+            color: var(--gray-600);
+            line-height: 1.85;
+        }
+
+        /* Hub card */
+        .hub-card {
+            max-width: 640px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 14px;
+            padding: 56px 42px;
+            text-align: center;
+            border: 1px solid rgba(45, 45, 45, 0.12);
+            box-shadow: 0 24px 64px rgba(45, 45, 45, 0.12);
+        }
+
+        .hub-card-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border-radius: 12px;
+            background: rgba(244, 168, 85, 0.12);
+            color: var(--warm);
+        }
+
+        .hub-card h3 {
+            font-family: var(--font-heading);
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        .hub-card p {
+            font-size: 16px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .hub-card .note {
+            font-size: 13px;
+            color: var(--gray-400);
+            margin-top: 16px;
+            margin-bottom: 0;
+        }
+
+        .hub-card .note a {
+            color: var(--warm-dark);
+            font-weight: 600;
+        }
+
+        .hub-card .note a:hover {
+            text-decoration: underline;
+        }
+
+        /* Thesis grid */
+        .thesis-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 26px;
+        }
+
+        .thesis-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            padding: 38px 30px;
+            transition: all 0.3s ease;
+        }
+
+        .thesis-card:hover {
+            border-color: rgba(244, 168, 85, 0.2);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .thesis-number {
+            font-family: var(--font-heading);
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--warm);
+            opacity: 0.5;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .thesis-card h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .thesis-card p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.62);
+            line-height: 1.7;
+        }
+
+        /* Expansion */
+        .expansion-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.05fr;
+            gap: 72px;
+            align-items: center;
+        }
+
+        .expansion-image {
+            border-radius: 14px;
+            border: 1px solid rgba(45, 45, 45, 0.1);
+            overflow: hidden;
+            box-shadow: 0 24px 64px rgba(45, 45, 45, 0.12);
+        }
+
+        .expansion-image img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+        }
+
+        .expansion-intro {
+            font-size: 16px;
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .phase-card {
+            padding: 22px 26px;
+            background: linear-gradient(160deg, var(--gray-100), #fdfcf9);
+            border-radius: 8px;
+            border: 1px solid rgba(244, 168, 85, 0.3);
+            margin-bottom: 14px;
+        }
+
+        .phase-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .phase-card h4 {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .phase-card p {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* CTA banner */
+        .investor-cta {
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .investor-cta-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--warm) 0%, var(--warm-dark) 100%);
+        }
+
+        .investor-cta .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .investor-cta h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(34px, 5vw, 52px);
+            font-weight: 800;
+            color: var(--charcoal);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .investor-cta p {
+            font-size: 18px;
+            color: rgba(45, 45, 45, 0.7);
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+
+        .investor-cta .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn--dark {
+            background: var(--charcoal);
+            color: var(--white);
+        }
+
+        .btn--dark:hover {
+            background: #1a1a1a;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(45, 45, 45, 0.3);
+        }
+
+        .btn--outline-dark {
+            background: transparent;
+            color: var(--charcoal);
+            border: 1.5px solid rgba(45, 45, 45, 0.4);
+        }
+
+        .btn--outline-dark:hover {
+            border-color: var(--charcoal);
+            background: rgba(45, 45, 45, 0.06);
+        }
+
+        /* Investor contact */
+        .investor-contact-card {
+            max-width: 480px;
+            margin: 0 auto;
+            background: var(--charcoal);
+            border-radius: 14px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 24px 64px rgba(45, 45, 45, 0.18);
+        }
+
+        .investor-contact-card h3 {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .investor-contact-card p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 20px;
+        }
+
+        .investor-contact-card a {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--warm);
+            transition: color 0.2s;
+        }
+
+        .investor-contact-card a:hover {
+            color: var(--warm-dark);
+        }
+
+        .investor-thesis {
+            background: var(--charcoal);
+        }
+
+        .investor-contact-section {
+            background: var(--cream);
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+            transition: color 0.2s;
+            margin-bottom: 24px;
+        }
+
+        .back-link:hover {
+            color: var(--white);
+        }
+
+        @media (max-width: 1024px) {
+            .thesis-grid {
+                grid-template-columns: 1fr;
+            }
+            .expansion-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .investor-hero {
+                min-height: auto;
+                padding: 118px 0 64px;
+            }
+            .hub-card {
+                padding: 32px 24px;
+            }
+            .expansion-image img {
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" aria-label="Rangeway Home">
+                <svg class="nav-logo-mark" width="28" height="32" viewBox="0 0 96 112" aria-hidden="true">
+                    <path d="M20 100 L20 16 C20 10 24 6 30 6 L56 6 C72 6 80 16 80 32 C80 46 72 54 58 56 L82 100"
+                          stroke="currentColor" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="58" cy="32" r="10" fill="#f4a855"/>
+                </svg>
+                <span class="nav-logo-wordmark">Rangeway</span>
+            </a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#network" class="nav-link">The Network</a></li>
+                <li><a href="index.html#experience" class="nav-link">The Experience</a></li>
+                <li><a href="index.html#pathfinder" class="nav-link">Pathfinder Rewards</a></li>
+                <li><a href="index.html#locations" class="nav-link">Locations</a></li>
+                <li><a href="investors.html" class="nav-link">Investors</a></li>
+                <li><a href="https://newsroom.rangeway.energy" target="_blank" rel="noopener noreferrer" class="nav-link">Newsroom</a></li>
+                <li><a href="index.html#contact" class="nav-link nav-link--cta">Get in Touch</a></li>
+                <li class="nav-social">
+                    <a href="https://www.instagram.com/RangewayEV" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/rangewayenergy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://x.com/RangewayEV" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="investor-hero">
+        <div class="investor-hero-bg">
+            <img src="images/baker-exterior1.jpg" alt="Rangeway Basecamp location in the desert" loading="eager">
+        </div>
+        <div class="container">
+            <a href="index.html" class="back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Back to Rangeway
+            </a>
+            <p class="section-eyebrow">For Investors</p>
+            <h1>Partner in the Journey</h1>
+            <p>Join us in building America's first hospitality-driven premium EV charging network. A rare opportunity to invest in the future of sustainable travel.</p>
+        </div>
+    </header>
+
+    <!-- Redefining EV Infrastructure -->
+    <section class="section investor-opportunity">
+        <div class="container">
+            <div class="investor-opportunity-intro">
+                <p class="section-eyebrow">The Opportunity</p>
+                <h2 class="section-title">Redefining EV Infrastructure</h2>
+                <p class="investor-opportunity-text">Rangeway is pioneering premium destinations along America's most traveled corridors. We're not simply installing chargers. We're creating destination experiences where travelers recharge themselves as their vehicles charge.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investor Hub CTA -->
+    <section class="section">
+        <div class="container">
+            <div class="hub-card">
+                <div class="hub-card-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                </div>
+                <h3>Investor Hub</h3>
+                <p>Access detailed financial projections, expansion plans, and partnership opportunities.</p>
+                <a href="investors.html" class="btn btn--primary btn--large">Access Investor Hub</a>
+                <p class="note">Password protected. Contact <a href="mailto:investors@rangewayev.com">investors@rangewayev.com</a> for access.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Thesis -->
+    <section class="section investor-thesis">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow section-eyebrow--light">Investment Thesis</p>
+                <h2 class="section-title section-title--light">Why Rangeway</h2>
+            </div>
+            <div class="thesis-grid">
+                <div class="thesis-card">
+                    <div class="thesis-number">1</div>
+                    <h3>Untapped Market</h3>
+                    <p>America's highway corridors are vastly underserved by quality charging infrastructure. Rangeway is establishing first-mover advantage in a rapidly growing market.</p>
+                </div>
+                <div class="thesis-card">
+                    <div class="thesis-number">2</div>
+                    <h3>Premium Positioning</h3>
+                    <p>Our hospitality-first approach commands premium positioning while cultivating exceptional guest loyalty and repeat visits through the Pathfinder Rewards program.</p>
+                </div>
+                <div class="thesis-card">
+                    <div class="thesis-number">3</div>
+                    <h3>Flexible Format Strategy</h3>
+                    <p>Three distinct site formats allow capital-efficient deployment across varied markets. The right product for every location, without compromising brand standards.</p>
+                </div>
+                <div class="thesis-card">
+                    <div class="thesis-number">4</div>
+                    <h3>Mission-Aligned Team</h3>
+                    <p>Deep expertise in hospitality operations, energy infrastructure, and EV ecosystem. Founded by a hospitality operator, backed by industry-leading advisors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expansion Plan -->
+    <section class="section">
+        <div class="container">
+            <div class="expansion-layout">
+                <div class="expansion-image">
+                    <img src="images/waystation-exterior2-jt.jpg" alt="Rangeway Waystation in the desert" loading="lazy">
+                </div>
+                <div>
+                    <p class="section-eyebrow">Growth Roadmap</p>
+                    <h2 class="section-title">Our Expansion Plan</h2>
+                    <p class="expansion-intro">Launching our first locations in 2026, building a network across America's most traveled corridors.</p>
+                    <div class="phase-card">
+                        <h4>Phase 1: Inaugural Locations (2026)</h4>
+                        <p>Our first destinations, setting the standard for the Rangeway experience.</p>
+                    </div>
+                    <div class="phase-card">
+                        <h4>Phase 2: Western Expansion</h4>
+                        <p>Growth across the western United States, serving high-traffic corridors and destination markets.</p>
+                    </div>
+                    <div class="phase-card">
+                        <h4>Phase 3: National Network</h4>
+                        <p>Expansion to corridors across the United States, building a truly national premium charging network.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="section investor-cta">
+        <div class="investor-cta-bg"></div>
+        <div class="container">
+            <h2>Ready to Learn More?</h2>
+            <p>Connect with our investor relations team to explore partnership opportunities.</p>
+            <div class="btn-group">
+                <a href="investors.html" class="btn btn--dark btn--large">Access Investor Hub</a>
+                <a href="mailto:investors@rangewayev.com" class="btn btn--outline-dark btn--large">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Card -->
+    <section class="section investor-contact-section">
+        <div class="container">
+            <div class="investor-contact-card">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--warm); margin-bottom: 16px;">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <h3>Investor Relations</h3>
+                <p>For investment inquiries and partnership discussions.</p>
+                <a href="mailto:investors@rangewayev.com">investors@rangewayev.com</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo" aria-label="Rangeway Home">
+                        <svg width="24" height="28" viewBox="0 0 96 112" aria-hidden="true">
+                            <path d="M20 100 L20 16 C20 10 24 6 30 6 L56 6 C72 6 80 16 80 32 C80 46 72 54 58 56 L82 100"
+                                  stroke="#ffffff" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="58" cy="32" r="10" fill="#f4a855"/>
+                        </svg>
+                        <span class="footer-logo-wordmark">Rangeway</span>
+                    </a>
+                    <p class="footer-tagline">Travel farther, stop better.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/RangewayEV" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/rangewayenergy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://x.com/RangewayEV" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#network">The Network</a></li>
+                        <li><a href="index.html#pathfinder">Pathfinder Rewards</a></li>
+                        <li><a href="index.html#locations">Locations</a></li>
+                        <li><a href="investors.html">Investors</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:hello@rangewayev.com">Email Us</a></li>
+                        <li><a href="https://buttondown.com/rangeway" target="_blank" rel="noopener noreferrer">Field Notes Newsletter</a></li>
+                        <li><a href="https://newsroom.rangeway.energy" target="_blank" rel="noopener noreferrer">Newsroom</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Rangeway Energy, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

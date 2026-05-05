@@ -1,0 +1,130 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FormatCard from "../components/FormatCard.astro";
+import ComfortGuarantee from "../sections/ComfortGuarantee.astro";
+
+const formats = [
+  {
+    name: "Trailhead",
+    tagline: "Where every Rangeway journey starts.",
+    description:
+      "Ultra-fast charging with a covered canopy, clean restrooms nearby, and reliable Wi-Fi. Purpose-built for emerging corridors and the communities that support them.",
+    image: "/images/trailhead-hero.jpg",
+    imageAlt: "A Trailhead canopy with warm lighting",
+    href: "/network/trailhead"
+  },
+  {
+    name: "Waystation",
+    tagline: "Streamlined comfort.",
+    description:
+      "Six to eight ultra-fast charging ports paired with a 1,000 to 1,200 square foot climate-controlled driver's lounge. Premium restrooms, comfortable seating, and high-speed Wi-Fi.",
+    image: "/images/waystation-joshua-tree.jpg",
+    imageAlt: "A Waystation nestled into the Joshua Tree landscape",
+    href: "/network/waystation"
+  },
+  {
+    name: "Basecamp",
+    tagline: "The full-service destination.",
+    description:
+      "Ten to twelve ultra-fast charging ports, a 2,500 square foot staffed driver's lounge, and a staffed cafe. Our flagship experience on high-traffic corridors.",
+    image: "/images/basecamp-hero-desert.jpg",
+    imageAlt: "A Basecamp at dusk with a lit lounge, charging canopy, and desert mountains behind",
+    href: "/network/basecamp"
+  },
+  {
+    name: "Summit",
+    tagline: "Where the road meets rest.",
+    description:
+      "Modular Lookouts, a central clubhouse, and 100% off-grid solar charging. A hospitality-first destination where the stop itself becomes part of the journey.",
+    image: "/images/summit-1.jpg",
+    imageAlt: "A Summit Lookout framed by the desert",
+    href: "/network/summit"
+  }
+];
+---
+
+<BaseLayout
+  title="The Network · Rangeway"
+  description="Four formats for hospitality-driven EV charging. Trailhead, Waystation, Basecamp, and Summit."
+  image="/images/network-hero.jpg"
+>
+  <PageHero
+    eyebrow="The Network"
+    title="Four formats. One unwavering standard."
+    lede="Each Rangeway location is shaped by its corridor and community, and held to the same hospitality standard across the network."
+    image="/images/network-hero.jpg"
+    imageAlt="A Rangeway Basecamp at dawn with a solar-integrated wood canopy, ultra-fast chargers, and driver's lounge beyond"
+    scrim="strong"
+  />
+
+  <section class="section section-cream">
+    <div class="container-narrow text-center reveal">
+      <p class="eyebrow">Why four formats</p>
+      <h2>Hospitality scales with the road.</h2>
+      <p class="prose-lg muted" style="margin-top: var(--space-5);">
+        A quiet corridor deserves a Trailhead. A regional route deserves a Waystation. A high-traffic
+        run deserves a Basecamp. A weekend belongs at a Summit. The scale shifts. The standard
+        does not.
+      </p>
+    </div>
+  </section>
+
+  <ComfortGuarantee />
+
+  <section class="section">
+    <div class="container">
+      <div class="network-heading reveal">
+        <p class="eyebrow">The formats</p>
+        <h2>One standard, four expressions.</h2>
+        <p class="network-heading__lede">
+          Each format delivers the same hospitality promise at a scale that fits the corridor.
+        </p>
+      </div>
+      <div class="network-grid">
+        {formats.map((f) => <FormatCard {...f} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream">
+    <div class="container-narrow text-center reveal">
+      <p class="eyebrow">Keep going</p>
+      <h2>The network keeps building.</h2>
+      <p class="prose-lg muted" style="margin-top: var(--space-4);">
+        Follow along as new sites come online.
+      </p>
+      <div style="margin-top: var(--space-6); display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+        <a class="btn btn-primary" href="https://fieldnotes.rangewayev.com" target="_blank" rel="noopener">
+          Subscribe to Field Notes
+        </a>
+        <a class="btn btn-ghost" href="/our-story">Read our story</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .network-heading {
+    max-width: 620px;
+    margin-bottom: var(--space-7);
+  }
+
+  .network-heading__lede {
+    margin-top: var(--space-4);
+    color: var(--color-text-muted);
+    font-size: 1.08rem;
+  }
+
+  .network-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+
+  @media (max-width: 900px) {
+    .network-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

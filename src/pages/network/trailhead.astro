@@ -1,0 +1,179 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import FormatNav from "../../components/FormatNav.astro";
+
+const amenities = [
+  { title: "Two to six ultra-fast charging ports", body: "Right-sized to the route as demand grows." },
+  { title: "Covered canopy", body: "Shade, shelter, and a sense of place. A roof over the stop is a small gesture that changes the whole experience." },
+  { title: "Clean restrooms nearby", body: "Partnerships with adjacent hosts mean drivers are never more than a short walk from proper facilities." },
+  { title: "Reliable Wi-Fi", body: "Fast, open, dependable. Work a few emails or take a quick call without thinking about signal." }
+];
+---
+
+<BaseLayout
+  title="Trailhead · The Network"
+  description="Where every Rangeway journey starts. Ultra-fast charging with a covered canopy, clean restrooms nearby, and reliable Wi-Fi."
+  image="/images/trailhead-hero.jpg"
+>
+  <PageHero
+    eyebrow="Trailhead"
+    title="Where every Rangeway journey starts."
+    lede="Purpose-built for emerging corridors and the communities that support them. A welcome at the edge of the map."
+    image="/images/trailhead-hero.jpg"
+    imageAlt="A Trailhead canopy with warm lighting"
+  />
+
+  <FormatNav current="trailhead" />
+
+  <section class="section">
+    <div class="container format-intro">
+      <div class="reveal">
+        <p class="eyebrow">What a Trailhead is</p>
+        <h2>A confident first step.</h2>
+      </div>
+      <div class="format-intro__body reveal">
+        <p class="prose-lg">
+          Not every corridor is ready for a full Basecamp. Trailhead is our answer for the routes
+          that are still becoming themselves, the small towns, the quiet highways, the county roads
+          that only make sense if you know where you are going.
+        </p>
+        <p class="prose-lg muted">
+          Trailheads bring a real charging experience to places the industry tends to overlook.
+          Covered, comfortable, and dignified. Never compromised.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream">
+    <div class="container">
+      <div class="reveal" style="margin-bottom: var(--space-8); max-width: 620px;">
+        <p class="eyebrow">What you'll find</p>
+        <h2>The essentials, done right.</h2>
+      </div>
+      <div class="amenity-grid">
+        {amenities.map((a) => (
+          <article class="amenity reveal">
+            <h3>{a.title}</h3>
+            <p>{a.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="format-gallery section">
+    <div class="container">
+      <div class="gallery-grid gallery-grid--duo">
+        <div class="gallery-grid__item reveal">
+          <img src="/images/trailhead-hero.jpg" alt="A Trailhead canopy with warm lighting" loading="lazy" />
+        </div>
+        <div class="gallery-grid__item reveal">
+          <img src="/images/trailhead-canopy-dusk.jpg" alt="A Trailhead wooden canopy at dusk with two vehicles charging" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container-narrow text-center reveal">
+      <p class="eyebrow eyebrow-muted" style="color: var(--color-warm);">Next up</p>
+      <h2>When a corridor is ready for more, a Waystation follows.</h2>
+      <p class="prose-lg" style="margin-top: var(--space-5); opacity: 0.85;">
+        The Rangeway formats are a progression of hospitality, not a progression of upgrades. Every
+        Trailhead stays a Trailhead. New sites are sized to the road.
+      </p>
+      <div style="margin-top: var(--space-6);">
+        <a class="btn btn-warm" href="/network/waystation">
+          Explore the Waystation
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="13 6 19 12 13 18" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .format-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  .format-intro__body p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+  }
+
+  .amenity-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+
+  .amenity {
+    background: var(--surface-raised);
+    padding: var(--space-6);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+  }
+
+  .amenity h3 {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .amenity p {
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(2, 280px);
+    gap: var(--space-4);
+  }
+
+  .gallery-grid--duo {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 480px;
+  }
+
+  .gallery-grid__item {
+    overflow: hidden;
+    border-radius: var(--radius-md);
+  }
+
+  .gallery-grid__item--lg {
+    grid-row: span 2;
+  }
+
+  .gallery-grid__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 900px) {
+    .format-intro,
+    .amenity-grid {
+      grid-template-columns: 1fr;
+    }
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, 240px);
+    }
+    .gallery-grid--duo {
+      grid-template-rows: repeat(2, 240px);
+    }
+    .gallery-grid__item--lg {
+      grid-row: auto;
+    }
+  }
+</style>
