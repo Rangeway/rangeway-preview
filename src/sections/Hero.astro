@@ -100,6 +100,7 @@ const heroAlt = "A Rangeway Waystation at dusk with sunset-lit mountains behind,
     font-weight: 600;
     font-size: 0.86rem;
     letter-spacing: 0.01em;
+    white-space: nowrap;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: background var(--dur-fast) var(--ease-standard),
@@ -215,11 +216,12 @@ const heroAlt = "A Rangeway Waystation at dusk with sunset-lit mountains behind,
       object-position: center center;
     }
     .hero__pill {
-      font-size: 0.78rem;
-      padding: 6px 12px 6px 10px;
+      font-size: 0.72rem;
+      padding: 5px 11px 5px 9px;
+      gap: 8px;
     }
-    .hero__pill-text {
-      max-width: 22ch;
+    .hero__pill-arrow {
+      display: none;
     }
   }
 </style>
