@@ -80,6 +80,11 @@ const year = new Date().getFullYear();
         <a href="/terms">Terms of Service</a>
       </p>
     </div>
+    <div class="container site-footer__disclosure">
+      <p>
+        Rangeway Energy, Inc. is raising capital on <a href="https://climatize.earth" target="_blank" rel="noopener">Climatize</a>. This communication is for informational purposes only and is not an offer to sell, nor a solicitation of an offer to buy, any security. Offers may only be made through the Climatize platform. Visit <a href="https://climatize.earth" target="_blank" rel="noopener">climatize.earth</a> for the full offering details, including risk factors. Investing involves risk, including possible loss of principal.
+      </p>
+    </div>
   </div>
 </footer>
 
@@ -259,6 +264,33 @@ const year = new Date().getFullYear();
 
   .site-footer__legal-links span {
     opacity: 0.4;
+  }
+
+  .site-footer__disclosure {
+    margin-top: var(--space-5);
+    padding-top: var(--space-5);
+    border-top: 1px solid rgba(245, 241, 235, 0.06);
+  }
+
+  .site-footer__disclosure p {
+    margin: 0;
+    font-size: 0.74rem;
+    line-height: 1.65;
+    color: var(--color-cream);
+    opacity: 0.55;
+    max-width: 96ch;
+  }
+
+  .site-footer__disclosure a {
+    color: var(--color-cream);
+    opacity: 1;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+
+  .site-footer__disclosure a:hover {
+    color: var(--color-warm);
   }
 
   @media (max-width: 960px) {
