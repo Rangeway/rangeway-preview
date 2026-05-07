@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+---
+
+<BaseLayout
+  title="Off the map · Rangeway"
+  description="The page you're looking for isn't here. There are plenty of other roads worth taking."
+>
+  <PageHero
+    eyebrow="404"
+    title="That stop isn't on the map."
+    lede="The page you're looking for moved, retired, or never existed. There are plenty of other roads worth taking."
+    image="/images/basecamp-rosamond.jpg"
+    imageAlt="A Rangeway Basecamp at dusk in the desert"
+    scrim="strong"
+  >
+    <div class="not-found__ctas">
+      <a class="btn btn-warm" href="/">
+        Back to the start
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="13 6 19 12 13 18" />
+        </svg>
+      </a>
+      <a class="btn btn-ghost" href="/network">Explore the Network</a>
+    </div>
+  </PageHero>
+</BaseLayout>
+
+<style>
+  .not-found__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+</style>

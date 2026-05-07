@@ -23,7 +23,7 @@ const partnerGroups = [
         name: "Carbon DC",
         role: "Energy infrastructure",
         description:
-          "Carbon DC delivers the power architecture behind the network, from interconnect and battery storage to solar integration. Each site scales without waiting on the utility. At every Summit, Carbon DC serves as the full infrastructure partner, powering every Lookout, charger, and clubhouse off-grid.",
+          "Carbon DC is Rangeway's strategic partner on off-grid sites, where solar generation, battery storage, and DC fast charging integrate into a single architecture that operates independently of the utility. At every Summit, Carbon DC powers every Lookout, charger, and clubhouse off-grid.",
         href: "https://carbondc.io",
         logo: "/images/partners/carbondc.png"
       },
@@ -93,14 +93,39 @@ const partnerGroups = [
 >
   <PageHero
     eyebrow="Partners"
-    title="Built with the best."
-    lede="Rangeway is a brand and an operating company. The partners listed here build the systems behind the experience."
+    title="Built with the best, hosted by the best."
+    lede="Rangeway is a brand and an operating company. We work with hospitality operators who host us on their properties, and with technology partners who build the systems behind the experience."
     image="/images/waystation-exterior.png"
     imageAlt="A Waystation in warm evening light"
   />
 
+  <section class="section section-cream host-section">
+    <div class="container host-section__inner reveal">
+      <p class="eyebrow">For hospitality operators</p>
+      <h2>Host a Rangeway on your property.</h2>
+      <p class="prose-lg">
+        Rangeway sites are designed to belong on hospitality properties: flagship resorts, lodges,
+        boutique inns, and the corridors that connect them. If you operate a property that fits the
+        brand and want to host a Rangeway, we would like to hear about it.
+      </p>
+      <p class="prose-lg muted">
+        Tell us about the property: location, size, the kind of guests it serves, and what brought
+        Rangeway to mind. We read every inquiry.
+      </p>
+      <div class="host-section__ctas">
+        <a class="btn btn-primary" href="mailto:partners@rangewayev.com?subject=Host%20a%20Rangeway%20Inquiry">
+          Inquire about hosting
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
+      <div class="reveal" style="max-width: 640px; margin-bottom: var(--space-7);">
+        <p class="eyebrow">Technology and infrastructure partners</p>
+        <h2>The systems behind the experience.</h2>
+      </div>
       {partnerGroups.map((group) => (
         <div class="partner-group">
           <p class="eyebrow eyebrow--plain partner-group__title reveal">{group.title}</p>
@@ -238,5 +263,24 @@ const partnerGroups = [
       grid-template-columns: 1fr;
       gap: var(--space-4);
     }
+  }
+
+  .host-section__inner {
+    max-width: 720px;
+  }
+
+  .host-section__inner h2 {
+    margin-top: var(--space-4);
+  }
+
+  .host-section__inner p {
+    margin-top: var(--space-5);
+  }
+
+  .host-section__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
   }
 </style>
