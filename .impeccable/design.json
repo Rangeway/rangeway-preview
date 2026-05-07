@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-06T00:00:00Z",
+  "title": "Design System: Rangeway",
+  "extensions": {
+    "colorMeta": {
+      "hearth-amber": {
+        "role": "primary",
+        "displayName": "Hearth Amber",
+        "canonical": "#F4A855",
+        "tonalRamp": ["#3B2410", "#5C3917", "#7E4F1F", "#A66728", "#D08236", "#F4A855", "#F8C588", "#FCE4C7"]
+      },
+      "hearth-amber-deep": {
+        "role": "primary",
+        "displayName": "Deep Hearth Ember",
+        "canonical": "#E8923A",
+        "tonalRamp": ["#341E0C", "#542E12", "#76411A", "#9E5722", "#C66E2C", "#E8923A", "#F2B374", "#FAD8B0"]
+      },
+      "hearth-amber-lite": {
+        "role": "primary",
+        "displayName": "Lantern Glow",
+        "canonical": "#F7C27A",
+        "tonalRamp": ["#3F2C13", "#624317", "#855B1F", "#AB7528", "#D29A47", "#F7C27A", "#FAD7A6", "#FDEED2"]
+      },
+      "stovepipe-charcoal": {
+        "role": "neutral",
+        "displayName": "Stovepipe Charcoal",
+        "canonical": "#2D2D2D",
+        "tonalRamp": ["#0F0F0F", "#171717", "#1F1F1F", "#262626", "#2D2D2D", "#5A5A5A", "#9A9A9A", "#D8D8D8"]
+      },
+      "blackpine-ink": {
+        "role": "neutral",
+        "displayName": "Blackpine Ink",
+        "canonical": "#171514",
+        "tonalRamp": ["#0A0908", "#100E0D", "#171514", "#231F1D", "#352F2C", "#5A5049", "#998C82", "#D6CDC5"]
+      },
+      "adobe-cream": {
+        "role": "neutral",
+        "displayName": "Adobe Cream",
+        "canonical": "#F5F1EB",
+        "tonalRamp": ["#3A3631", "#5A554E", "#7E776D", "#A69E91", "#CAC1B2", "#E5DDCD", "#F5F1EB", "#FBF8F2"]
+      },
+      "adobe-cream-dim": {
+        "role": "neutral",
+        "displayName": "Adobe Cream Dim",
+        "canonical": "#ECE6DC",
+        "tonalRamp": ["#37322B", "#564F45", "#776E62", "#9D9385", "#C4B9A6", "#DED3BD", "#ECE6DC", "#F6F2EA"]
+      },
+      "drift-cream": {
+        "role": "neutral",
+        "displayName": "Drift Cream",
+        "canonical": "#FBF7F1",
+        "tonalRamp": ["#3D3933", "#5E5950", "#82796D", "#A99F8F", "#CDC1AE", "#E5DBC8", "#F2EDE3", "#FBF7F1"]
+      },
+      "pinon-sage": {
+        "role": "secondary",
+        "displayName": "Piñon Sage",
+        "canonical": "#4A5D52",
+        "tonalRamp": ["#1B221E", "#283129", "#384438", "#4A5D52", "#688577", "#8DA899", "#B7C8BD", "#DCE5DF"]
+      },
+      "paper-white": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": ["#161514", "#1F1D1B", "#2A2724", "#3D3934", "#5C564F", "#82796D", "#C8BFB1", "#FFFFFF"]
+      },
+      "ash-100": {
+        "role": "neutral",
+        "displayName": "Ash 100",
+        "canonical": "#F8F7F5",
+        "tonalRamp": ["#36352F", "#535148", "#737065", "#969285", "#BAB6A8", "#D6D2C5", "#E8E5DD", "#F8F7F5"]
+      },
+      "ash-200": {
+        "role": "neutral",
+        "displayName": "Ash 200",
+        "canonical": "#E5E5E5",
+        "tonalRamp": ["#1F1F1F", "#333333", "#4D4D4D", "#666666", "#808080", "#999999", "#CCCCCC", "#E5E5E5"]
+      },
+      "ash-400": {
+        "role": "neutral",
+        "displayName": "Ash 400",
+        "canonical": "#999999",
+        "tonalRamp": ["#1F1F1F", "#333333", "#4D4D4D", "#666666", "#808080", "#999999", "#CCCCCC", "#E5E5E5"]
+      },
+      "ash-600": {
+        "role": "neutral",
+        "displayName": "Ash 600",
+        "canonical": "#666666",
+        "tonalRamp": ["#1F1F1F", "#333333", "#4D4D4D", "#666666", "#808080", "#999999", "#CCCCCC", "#E5E5E5"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only. Two-line maximum, balanced wrap, never paired with body of similar weight." },
+      "headline": { "displayName": "Headline", "purpose": "Page-level H1 outside the hero (internal pages)." },
+      "title": { "displayName": "Title", "purpose": "Section opener (H2). Max ~22ch on pull quotes." },
+      "subtitle": { "displayName": "Subtitle", "purpose": "Subsection or card-level (H3)." },
+      "body": { "displayName": "Body", "purpose": "Default prose. Line length capped at 52–65ch." },
+      "body-lg": { "displayName": "Body Large", "purpose": "Leading paragraph or important first paragraph." },
+      "eyebrow": { "displayName": "Eyebrow", "purpose": "The signature section opener. Always paired with a leading 38px hairline rule." },
+      "caption": { "displayName": "Caption", "purpose": "Image captions, footer fine print, secondary metadata." }
+    },
+    "shadows": [
+      { "name": "shadow-soft", "value": "0 18px 50px rgba(24, 18, 14, 0.10)", "purpose": "Default card resting state on light surfaces." },
+      { "name": "shadow", "value": "0 24px 80px rgba(24, 18, 14, 0.14)", "purpose": "Media containers, large cards, the our-story image frame." },
+      { "name": "shadow-warm", "value": "0 16px 40px rgba(244, 168, 85, 0.24)", "purpose": "Under primary CTA buttons; lit-from-within feel." },
+      { "name": "shadow-dark", "value": "0 14px 34px rgba(23, 21, 20, 0.18)", "purpose": "Dark CTA on light section." },
+      { "name": "shadow-nav", "value": "0 20px 60px rgba(12, 10, 9, 0.28)", "purpose": "Scrolled-state nav pill. The deepest shadow in the system." },
+      { "name": "format-card-rest", "value": "0 28px 80px rgba(0, 0, 0, 0.10)", "purpose": "Resting shadow on format cards." },
+      { "name": "format-card-hover", "value": "0 36px 90px rgba(0, 0, 0, 0.16)", "purpose": "Hover-state shadow on format cards; pairs with -4px translate." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Default ease for state transitions and reveals." },
+      { "name": "ease-standard", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Generic ease for property transitions on chrome." },
+      { "name": "dur-fast", "value": "0.2s", "purpose": "Hover/focus state changes on links, buttons, inputs." },
+      { "name": "dur-med", "value": "0.3s", "purpose": "Card lift, nav dock, mid-weight transitions." },
+      { "name": "dur-slow", "value": "0.75s", "purpose": "Reveal-on-scroll fade-and-rise." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "560px" },
+      { "name": "md", "value": "900px" },
+      { "name": "lg", "value": "960px" },
+      { "name": "xl", "value": "1180px" },
+      { "name": "container-max", "value": "1240px" },
+      { "name": "container-narrow", "value": "880px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Warm-gradient pill CTA. The primary action across the site.",
+      "html": "<button class=\"ds-btn-primary\">Discover the Network<svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"13 6 19 12 13 18\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 14px 26px; border: 1px solid transparent; border-radius: 999px; font-family: 'Source Sans 3', system-ui, sans-serif; font-weight: 700; font-size: 1rem; color: #2D2D2D; background: linear-gradient(135deg, #F4A855 0%, #F7C27A 100%); box-shadow: 0 16px 40px rgba(244, 168, 85, 0.24); cursor: pointer; transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1); white-space: nowrap; } .ds-btn-primary:hover { background: linear-gradient(135deg, #F8C987 0%, #E8923A 100%); transform: translateY(-1px); } .ds-btn-primary:focus-visible { outline: 2px solid #F4A855; outline-offset: 3px; } .ds-btn-primary svg { transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-primary:hover svg { transform: translateX(3px); }"
+    },
+    {
+      "name": "Dark Button",
+      "kind": "button",
+      "refersTo": "button-dark",
+      "description": "Charcoal-to-ink gradient CTA, used as the secondary on light surfaces.",
+      "html": "<button class=\"ds-btn-dark\">Our Story</button>",
+      "css": ".ds-btn-dark { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 14px 26px; border: 1px solid transparent; border-radius: 999px; font-family: 'Source Sans 3', system-ui, sans-serif; font-weight: 700; font-size: 1rem; color: #FFFFFF; background: linear-gradient(135deg, #2D2D2D 0%, #171514 100%); box-shadow: 0 14px 34px rgba(23, 21, 20, 0.18); cursor: pointer; transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); white-space: nowrap; } .ds-btn-dark:hover { transform: translateY(-1px); } .ds-btn-dark:focus-visible { outline: 2px solid #F4A855; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Translucent-on-dark CTA, used over hero imagery and within dark sections.",
+      "html": "<div style=\"background:#171514;padding:32px;border-radius:24px;\"><button class=\"ds-btn-ghost\">Read More</button></div>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 14px 26px; border-radius: 999px; font-family: 'Source Sans 3', system-ui, sans-serif; font-weight: 700; font-size: 1rem; color: #FFFFFF; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.26); cursor: pointer; transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); white-space: nowrap; } .ds-btn-ghost:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-1px); } .ds-btn-ghost:focus-visible { outline: 2px solid #F4A855; outline-offset: 3px; }"
+    },
+    {
+      "name": "Eyebrow Unit",
+      "kind": "custom",
+      "refersTo": "eyebrow-tag",
+      "description": "The signature section-opener composition: 38px hairline rule plus tracked-uppercase Hearth Amber label. Most-reused unit in the system.",
+      "html": "<p class=\"ds-eyebrow\">Our Thesis</p>",
+      "css": ".ds-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #F4A855; margin: 0 0 16px; } .ds-eyebrow::before { content: ''; width: 38px; height: 1px; background: currentColor; opacity: 0.8; }"
+    },
+    {
+      "name": "Hero Pill",
+      "kind": "custom",
+      "refersTo": "hero-pill",
+      "description": "Time-sensitive announcement pill that sits above the hero headline. Translucent amber on dark imagery with a leading dot indicator.",
+      "html": "<div style=\"background:#171514;padding:32px;border-radius:24px;\"><a class=\"ds-hero-pill\" href=\"#\"><span class=\"ds-hero-pill__dot\" aria-hidden=\"true\"></span><span>Now raising on Climatize. Build Mojave with us.</span><svg class=\"ds-hero-pill__arrow\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"13 6 19 12 13 18\"/></svg></a></div>",
+      "css": ".ds-hero-pill { display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px 7px 12px; border-radius: 999px; background: rgba(244, 168, 85, 0.14); border: 1px solid rgba(244, 168, 85, 0.45); color: #F7C27A; font-family: 'Raleway', system-ui, sans-serif; font-weight: 600; font-size: 0.86rem; letter-spacing: 0.01em; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); text-decoration: none; transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-hero-pill:hover { background: rgba(244, 168, 85, 0.22); border-color: rgba(244, 168, 85, 0.7); color: #FFFFFF; transform: translateY(-1px); } .ds-hero-pill__dot { width: 8px; height: 8px; border-radius: 999px; background: #F4A855; box-shadow: 0 0 0 4px rgba(244, 168, 85, 0.18); flex: 0 0 auto; } .ds-hero-pill__arrow { flex: 0 0 auto; transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-hero-pill:hover .ds-hero-pill__arrow { transform: translateX(3px); }"
+    },
+    {
+      "name": "Format Card",
+      "kind": "card",
+      "refersTo": "format-card",
+      "description": "Image-led card used for the Trailhead/Waystation/Basecamp formats and similar hospitality-led content.",
+      "html": "<a class=\"ds-fmt-card\" href=\"#\"><div class=\"ds-fmt-card__media\"><img src=\"https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800\" alt=\"\" /><span class=\"ds-fmt-card__pill\">Coming 2026</span></div><div class=\"ds-fmt-card__body\"><p class=\"ds-fmt-card__eyebrow\">Format</p><h3>Waystation</h3><p class=\"ds-fmt-card__desc\">A 30-minute stop with a driver's lounge, espresso, and an overlook.</p><span class=\"ds-fmt-card__link\">Learn more <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"13 6 19 12 13 18\"/></svg></span></div></a>",
+      "css": ".ds-fmt-card { display: flex; flex-direction: column; border-radius: 32px; overflow: hidden; background: #FFFFFF; box-shadow: 0 28px 80px rgba(0, 0, 0, 0.10); border: 1px solid rgba(45, 45, 45, 0.08); color: #2D2D2D; text-decoration: none; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1); } .ds-fmt-card:hover { transform: translateY(-4px); box-shadow: 0 36px 90px rgba(0, 0, 0, 0.16); } .ds-fmt-card__media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #F5F1EB; } .ds-fmt-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); } .ds-fmt-card:hover .ds-fmt-card__media img { transform: scale(1.04); } .ds-fmt-card__pill { position: absolute; top: 18px; left: 18px; padding: 8px 14px; border-radius: 999px; background: rgba(24, 21, 20, 0.7); color: #FFFFFF; font-family: 'Raleway', system-ui, sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.02em; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.14); } .ds-fmt-card__body { padding: 26px 28px 28px; display: flex; flex-direction: column; gap: 12px; flex: 1; } .ds-fmt-card__eyebrow { font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #E8923A; margin: 0; } .ds-fmt-card h3 { font-family: 'Raleway', system-ui, sans-serif; font-weight: 700; font-size: 1.6rem; line-height: 1.2; letter-spacing: -0.02em; color: #2D2D2D; margin: 0; } .ds-fmt-card__desc { color: #666666; font-size: 1rem; line-height: 1.7; margin: 0; } .ds-fmt-card__link { margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(45, 45, 45, 0.08); display: inline-flex; align-items: center; gap: 8px; font-family: 'Raleway', system-ui, sans-serif; font-weight: 700; font-size: 0.95rem; color: #2D2D2D; transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-fmt-card:hover .ds-fmt-card__link { color: #E8923A; } .ds-fmt-card:hover .ds-fmt-card__link svg { transform: translateX(3px); }"
+    },
+    {
+      "name": "Floating Nav Pill",
+      "kind": "nav",
+      "refersTo": "nav-pill",
+      "description": "Free-floating translucent pill that docks on scroll. The site's primary nav.",
+      "html": "<div class=\"ds-nav-stage\"><div class=\"ds-nav\"><a class=\"ds-nav__brand\" href=\"#\"><svg width=\"22\" height=\"26\" viewBox=\"0 0 96 112\" aria-hidden=\"true\"><path d=\"M20 100 L20 16 C20 10 24 6 30 6 L56 6 C72 6 80 16 80 32 C80 46 72 54 58 56 L82 100\" stroke=\"#FFFFFF\" stroke-width=\"10\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"58\" cy=\"32\" r=\"10\" fill=\"#F4A855\"/></svg><span>Rangeway</span></a><ul class=\"ds-nav__links\"><li><a href=\"#\">The Network</a></li><li><a href=\"#\">Our Story</a></li><li><a href=\"#\">Partners</a></li><li><a href=\"#\">Investors</a></li><li><a href=\"#\">Contact</a></li></ul></div></div>",
+      "css": ".ds-nav-stage { background: linear-gradient(135deg, #2D2D2D 0%, #171514 100%); padding: 32px 24px; border-radius: 24px; } .ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 64px; padding: 10px 14px 10px 20px; border-radius: 999px; background: rgba(32, 28, 26, 0.36); border: 1px solid rgba(255, 255, 255, 0.12); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); color: #FFFFFF; } .ds-nav__brand { display: inline-flex; align-items: center; gap: 12px; font-family: 'Raleway', system-ui, sans-serif; font-weight: 700; font-size: 1.28rem; letter-spacing: -0.01em; color: #FFFFFF; text-decoration: none; } .ds-nav__links { display: flex; align-items: center; gap: 2px; list-style: none; padding: 0; margin: 0; } .ds-nav__links a { display: inline-flex; padding: 10px 14px; border-radius: 999px; color: rgba(255, 255, 255, 0.82); font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-nav__links a:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.08); }"
+    },
+    {
+      "name": "Contact Input",
+      "kind": "input",
+      "refersTo": "contact-input",
+      "description": "Form field with cream surface, tracked-uppercase label, and hearth-amber focus glow.",
+      "html": "<label class=\"ds-input\"><span>Email</span><input type=\"email\" placeholder=\"you@domain.com\" /></label>",
+      "css": ".ds-input { display: flex; flex-direction: column; gap: 6px; font-family: 'Raleway', system-ui, sans-serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: #2D2D2D; opacity: 0.9; max-width: 360px; } .ds-input input { font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 1rem; padding: 12px 14px; border-radius: 14px; border: 1px solid rgba(45, 45, 45, 0.08); background: #F5F1EB; color: #2D2D2D; width: 100%; text-transform: none; letter-spacing: 0; font-weight: 400; transition: border-color 0.2s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s cubic-bezier(0.22, 1, 0.36, 1); } .ds-input input::placeholder { color: #666666; opacity: 0.6; } .ds-input input:focus { outline: none; border-color: #F4A855; background: #FFFFFF; box-shadow: 0 0 0 4px rgba(244, 168, 85, 0.14); }"
+    },
+    {
+      "name": "Image Caption Pill",
+      "kind": "custom",
+      "refersTo": "format-card",
+      "description": "Specific-place caption pill that overlays photography (e.g. 'Driver's Lounge · Basecamp').",
+      "html": "<div style=\"position:relative;width:320px;height:200px;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#3a2c1f 0%,#171514 100%);\"><span class=\"ds-img-caption\">Driver's Lounge · Basecamp</span></div>",
+      "css": ".ds-img-caption { position: absolute; left: 18px; bottom: 18px; padding: 7px 11px; border-radius: 999px; background: rgba(24, 21, 20, 0.7); color: #FFFFFF; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); font-family: 'Raleway', system-ui, sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; font-weight: 600; text-transform: uppercase; border: 1px solid rgba(255, 255, 255, 0.14); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The High Desert Lodge",
+    "overview": "Rangeway's visual system is the lobby of a quiet hospitality property at dusk. Warm amber light pools across cream plaster walls, timber and stone do the structural work, and the hardware (charging, kilowatts, equipment) is present but recessed. The system speaks in the voice of a senior hotelier, not a startup founder: plainspoken, declarative, generous with space. Every page treats the stop as the product, the charger as a consequence.\n\nColor is restrained on the surface and committed at the accents. Hearth Amber (#F4A855) is the only saturated voice in the palette and earns its place by appearing rarely. Cream and Charcoal carry the rest. Both light and dark surfaces are first-class: dark sections feel like the lobby after sundown, lit by amber radial washes; light sections feel like the same room at mid-morning.\n\nType is the editorial spine. Raleway at display weight carries the architecture; Source Sans 3 at 1.75 line-height carries the prose. The eyebrow is a load-bearing element, not a decoration: a hairline rule, then tracked uppercase warm text, then the headline. It's the system's signature unit of pacing. This system explicitly rejects the four anti-references in PRODUCT.md: Tesla-Supercharger utility cold, generic SaaS-cream landing-page reflex, REI outdoor-gear green-and-brown, and ultra-luxe champagne-and-marble distance.",
+    "keyCharacteristics": [
+      "Single-accent palette. Hearth Amber on cream and charcoal. No secondary, no tertiary.",
+      "Editorial pacing. Eyebrow + headline + lede, repeated as the primary section opener.",
+      "Pill geometry on interaction, soft generous radii on containers. Buttons and tags are pills (999px); cards are 32px.",
+      "Both schemes first-class. Light is the day surface, dark is the evening surface. Neither is a fallback.",
+      "Long, soft, ambient shadows that read as light pooling, not as UI elevation.",
+      "Backdrop blur reserved for floating chrome (nav, captions, pills over imagery), never decorative on flat sections.",
+      "No statistics, no logo strips, no hero-metric template. Quiet confidence over hype."
+    ],
+    "rules": [
+      { "name": "The Single Voice Rule", "body": "Hearth Amber is the only saturated color on any given screen. It carries roughly 5–10% of surface area and never competes with itself across sections. If two sections in sequence both need amber emphasis, the second one yields.", "section": "colors" },
+      { "name": "The Tinted Neutral Rule", "body": "No #000 and no #FFF as text or surface. Both ends of the value scale are warm-tinted: Blackpine Ink (#171514) at the floor, Drift Cream (#FBF7F1) at the ceiling. The page itself uses a radial-gradient wash so even the background is never a flat neutral.", "section": "colors" },
+      { "name": "The Lit Surface Rule", "body": "Every dark surface in this system must carry a warm radial wash (e.g. radial-gradient(circle at top left, rgba(244, 168, 85, 0.18), transparent 34%)). Charcoal alone reads as utility cold; charcoal with amber light reads as a hospitality lobby after sundown.", "section": "colors" },
+      { "name": "The Eyebrow Rule", "body": "Section openers begin with the eyebrow unit: a 38px hairline rule, then the eyebrow text in tracked uppercase Hearth Amber, then the headline. This sequence is the most-repeated unit in the system. Skipping it makes a section feel orphaned. Doubling it makes the page feel cluttered.", "section": "typography" },
+      { "name": "The Display Tracking Rule", "body": "Headlines at H1/H2 size always use negative letter-spacing in the -0.04em to -0.05em range. Body and small text always use 0. Never apply heading tracking to body sizes; never let display sizes default to normal.", "section": "typography" },
+      { "name": "The Italic Pull Rule", "body": "Inside a Title-sized pull quote, an <em> is rendered Hearth Amber Deep with font-style: normal (not italic). The color emphasis replaces italics; mixing both reads as overdesigned.", "section": "typography" },
+      { "name": "The Pill Casing Rule", "body": "Tracked-uppercase labels (eyebrow, captions on cards, form field labels, scroll cue) live at 0.12em–0.22em letter-spacing, never below 0.08em. If a label is uppercased it must be tracked.", "section": "typography" },
+      { "name": "The Lantern Pool Rule", "body": "Shadows are wide, soft, and long (y-offset >= 14px, blur >= 34px, alpha <= 0.18 for resting states). A short, dark shadow with high alpha reads as Material Design or 2014-app drop-shadow. If a shadow looks crisp at 100% zoom, it is too small.", "section": "elevation" },
+      { "name": "The No-Lift-On-Atmosphere Rule", "body": "Sections with a radial-gradient atmospheric wash (hero, footer, .section-dark, .positioning__wash) do not contain shadowed cards. The atmosphere is doing the depth work; competing shadows muddy it.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do open every section with the Eyebrow Unit (38px hairline rule + tracked-uppercase Hearth Amber label) before the headline. This is the system's signature unit of pacing.",
+      "Do keep Hearth Amber to roughly 5–10% of any screen. Eyebrows, focus rings, primary CTA, hero pill, the rare <em> inside a pull quote.",
+      "Do use the warm gradient (#F4A855 → #F7C27A) only on primary CTAs, never as a section background. The gradient earns its weight by being rare.",
+      "Do light every dark surface with a top-left amber radial wash (rgba(244, 168, 85, 0.18) at 34% falloff). Cold charcoal alone reads as utility infrastructure.",
+      "Do use long, soft, low-alpha shadows (y-offset >= 14px, blur >= 34px, alpha <= 0.18). Shadows should read as ambient lantern light, not as UI lift.",
+      "Do keep body line length at 52ch–65ch. Wider runs collapse the editorial pacing.",
+      "Do treat both light and dark schemes as first-class surfaces. Test every component in both. Both should feel like the same lobby, at different hours.",
+      "Do caption photography with the pill caption (Driver's Lounge · Basecamp). Specific real-place names in the chrome reinforce the specific-over-generic principle.",
+      "Do use text-wrap: balance on every headline and pull quote. The display sizes break unforgivably without it."
+    ],
+    "donts": [
+      "Don't use raw #000 or #FFF for any surface or text. Use Blackpine Ink (#171514) and Drift Cream (#FBF7F1). Untinted neutrals are the SaaS-cream landing-page reflex.",
+      "Don't use border-left or border-right greater than 1px as a colored stripe on cards, callouts, or list items. Use full borders, background tints, or leading numbers instead.",
+      "Don't apply background-clip: text to gradients. Headlines are solid color (text or paper-white). Emphasis is weight, scale, or warm <em>.",
+      "Don't introduce a second saturated color. Piñon Sage exists in tokens but must never compete with Hearth Amber for the eye. No teal, no navy, no signal-red, no indigo.",
+      "Don't build a hero-metric section (100+ Locations / 350kW / 24/7). PRODUCT.md prohibits statistics. The hero earns belief through imagery and copy, not numbers.",
+      "Don't build trusted-by logo strips, three-icon feature grids with circular icon backgrounds, gradient-text marketing headlines, or purple-and-mint SaaS palettes.",
+      "Don't use earthy-green-and-warm-brown REI palettes. Rangeway lives outdoors but is hospitality, not gear.",
+      "Don't use champagne-on-marble luxury cues (gold serif Didone, taupe-on-ivory spacing, all-caps small-tracked labels framed in thin gold rules).",
+      "Don't use em dashes or -- in any rendered copy. Use commas, colons, semicolons, periods, or parentheses.",
+      "Don't start sentences with And. Don't use sentence fragments. Don't use hashtags. Don't use statistics. Don't use stations or units or rooms or cabins.",
+      "Don't add CSS layout-property animations (width, height, padding). Animate transform and opacity. Use the project's ease-out curve, never bounce or elastic.",
+      "Don't stack two sections with the same background. Vary the surface.",
+      "Don't put a shadow on a card inside an atmospheric (radial-wash) section. The atmosphere is the depth signal.",
+      "Don't rely on emoji for personality, lowercase-friend tone for warmth, or quirky microcopy for delight. Warmth lives in materials, light, and place. Confidence carries the voice."
+    ]
+  }
+}
