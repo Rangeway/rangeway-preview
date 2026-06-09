@@ -8,8 +8,16 @@ layer**. Self-hosted on the Hostinger VPS, served by Nginx at
 > change `astro.config.mjs` `site:` away from `preview.rangewayev.com` or touch `public/CNAME`.
 
 ## How to deploy
-**Push to `main`.** GitHub Actions builds Astro and rsyncs `dist/` to the VPS (~1–2 min).
-Same flow, retries, and "last good build stays up on failure" behavior as the other sites.
+**Push to `main`.** GitHub Actions builds Astro and force-pushes `dist/` to the
+**`deploy-dist` branch**; the VPS polls that branch every 2 minutes
+(`rangeway-deploy.timer` → `/usr/local/bin/rangeway-pull-deploy`, config in
+`/etc/rangeway-deploy.conf`) and rsyncs it into the web root. Expect the site live
+~2–4 min after push. Last good build stays up if anything fails.
+
+> Why pull-based: Hostinger's network edge intermittently drops inbound SSH from
+> GitHub's shared runner IP ranges (any port), so CI-push rsync deploys failed
+> randomly (2026-06-09). CI now never connects to the VPS. Deploy logs on the server:
+> `journalctl -t rangeway-deploy`.
 
 ## Local development
 Astro (static). Node 22.
