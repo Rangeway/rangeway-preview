@@ -1,5 +1,14 @@
+/* ============================================================
+   Rangeway — "Folio" design language
+   A printed hospitality brand book brought to the web.
+   Editorial backbone: hairline rules, numbered chapters,
+   asymmetric grids, captioned figures, oversized Raleway.
+   Cinematic beats: full-bleed Blackpine Ink sections.
+   Tokens (colors, fonts, spacing) are unchanged from DESIGN.md.
+   ============================================================ */
+
 :root {
-  /* Brand colors */
+  /* Brand colors — fixed palette, do not add hues */
   --color-charcoal: #2d2d2d;
   --color-ink: #171514;
   --color-warm: #f4a855;
@@ -8,7 +17,7 @@
   --color-sage: #4a5d52;
   --color-cream: #f5f1eb;
   --color-cream-dim: #ece6dc;
-  --color-white: #FBF7F1;
+  --color-white: #fbf7f1;
 
   --color-gray-100: #f8f7f5;
   --color-gray-200: #e5e5e5;
@@ -16,56 +25,52 @@
   --color-gray-600: #666666;
 
   --color-text: var(--color-charcoal);
-  --color-text-muted: var(--color-gray-600);
-  --color-border: rgba(45, 45, 45, 0.08);
-  --color-border-strong: rgba(45, 45, 45, 0.22);
+  --color-text-muted: #5d5a56;
+  --color-border: rgba(45, 45, 45, 0.14);
+  --color-border-strong: rgba(45, 45, 45, 0.32);
+
+  /* Accent for small text on light surfaces. Hearth Amber fails AA on
+     cream (2.2:1), so light surfaces accent with Pinon Sage (6.3:1) and
+     amber stays for dark surfaces, buttons, and non-text accents. */
+  --accent-on-light: var(--color-sage);
 
   /* Semantic surfaces — flip in dark mode */
+  --surface-page: var(--color-cream);
   --surface-raised: var(--color-white);
-  --surface-alt: var(--color-cream);
-  --surface-alt-strong: #ece6dc;
+  --surface-alt: var(--color-cream-dim);
 
-  --fg-on-dark-1: rgba(255, 255, 255, 1);
-  --fg-on-dark-2: rgba(255, 255, 255, 0.78);
-  --fg-on-dark-3: rgba(255, 255, 255, 0.58);
-
-  /* Signature gradients */
-  --bg-page-gradient:
-    radial-gradient(circle at top left, rgba(244, 168, 85, 0.13), transparent 30%),
-    linear-gradient(180deg, #fbf7f1 0%, #f5f1eb 34%, #fcfaf7 100%);
-  --bg-dark-gradient:
-    radial-gradient(circle at top left, rgba(244, 168, 85, 0.18), transparent 34%),
-    linear-gradient(180deg, #26211f 0%, #191716 100%);
-  --bg-warm-gradient: linear-gradient(135deg, #f4a855 0%, #f7c27a 100%);
-  --bg-warm-gradient-hover: linear-gradient(135deg, #f8c987 0%, #e8923a 100%);
+  --fg-on-dark-1: rgba(251, 247, 241, 1);
+  --fg-on-dark-2: rgba(251, 247, 241, 0.8);
+  --fg-on-dark-3: rgba(251, 247, 241, 0.6);
+  --border-on-dark: rgba(251, 247, 241, 0.16);
 
   /* Type */
   --font-heading: "Raleway", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
-  --fs-display: clamp(3.6rem, 8vw, 6.2rem);
-  --fs-h1: clamp(2.6rem, 5vw, 4rem);
-  --fs-h2: clamp(2.2rem, 4vw, 3.45rem);
-  --fs-h3: clamp(1.6rem, 3vw, 2.2rem);
-  --fs-h4: 1.45rem;
-  --fs-h5: 1.15rem;
-  --fs-body-lg: 1.28rem;
+  --fs-mega: clamp(3.4rem, 11vw, 9.5rem);
+  --fs-display: clamp(3rem, 7.5vw, 7rem);
+  --fs-h1: clamp(2.6rem, 5.6vw, 4.6rem);
+  --fs-h2: clamp(2.3rem, 4.6vw, 3.9rem);
+  --fs-h3: clamp(1.5rem, 2.6vw, 2rem);
+  --fs-h4: 1.35rem;
+  --fs-body-lg: 1.26rem;
   --fs-body: 1.08rem;
   --fs-body-sm: 0.98rem;
-  --fs-caption: 0.86rem;
-  --fs-eyebrow: 0.78rem;
+  --fs-caption: 0.84rem;
+  --fs-eyebrow: 0.76rem;
 
-  --ls-display: -0.05em;
-  --ls-heading: -0.04em;
+  --ls-display: -0.045em;
+  --ls-heading: -0.035em;
   --ls-tight: -0.02em;
   --ls-eyebrow: 0.22em;
-  --ls-allcaps: 0.18em;
+  --ls-allcaps: 0.16em;
 
-  --lh-display: 0.95;
-  --lh-heading: 1.02;
+  --lh-display: 0.92;
+  --lh-heading: 1;
   --lh-subhead: 1.25;
-  --lh-body: 1.75;
-  --lh-compact: 1.55;
+  --lh-body: 1.7;
+  --lh-compact: 1.5;
 
   /* Spacing */
   --space-1: 4px;
@@ -85,47 +90,53 @@
   --radius-lg: 24px;
   --radius-md: 18px;
   --radius-sm: 14px;
+  --radius-xs: 4px;
 
   /* Shadows */
   --shadow-soft: 0 18px 50px rgba(24, 18, 14, 0.1);
   --shadow: 0 24px 80px rgba(24, 18, 14, 0.14);
   --shadow-warm: 0 16px 40px rgba(244, 168, 85, 0.24);
   --shadow-dark: 0 14px 34px rgba(23, 21, 20, 0.18);
-  --shadow-nav: 0 20px 60px rgba(12, 10, 9, 0.28);
 
-  --max-width: 1240px;
+  --max-width: 1320px;
   --max-width-narrow: 880px;
-  --nav-height: 88px;
+  --gutter: clamp(20px, 4vw, 56px);
+  --nav-height: 76px;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
   --dur-fast: 0.2s;
   --dur-med: 0.3s;
-  --dur-slow: 0.75s;
+  --dur-slow: 0.85s;
 
   color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Flip semantic surfaces */
-    --bg-page-gradient: var(--bg-dark-gradient);
+    --surface-page: #1a1716;
     --surface-raised: #23201e;
-    --surface-alt: #1a1716;
-    --surface-alt-strong: #201d1b;
+    --surface-alt: #201d1b;
 
-    /* Flip text and borders */
-    --color-text: rgba(255, 255, 255, 0.92);
-    --color-text-muted: rgba(255, 255, 255, 0.64);
-    --color-border: rgba(255, 255, 255, 0.08);
-    --color-border-strong: rgba(255, 255, 255, 0.18);
+    --color-text: rgba(251, 247, 241, 0.92);
+    --color-text-muted: rgba(251, 247, 241, 0.66);
+    --color-border: rgba(251, 247, 241, 0.14);
+    --color-border-strong: rgba(251, 247, 241, 0.3);
 
     --color-gray-100: rgba(255, 255, 255, 0.04);
     --color-gray-200: rgba(255, 255, 255, 0.1);
     --color-gray-400: rgba(255, 255, 255, 0.5);
     --color-gray-600: rgba(255, 255, 255, 0.72);
+
+    /* On dark surfaces amber passes AA (9.2:1 on ink) */
+    --accent-on-light: var(--color-warm);
+
+    --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.4);
+    --shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
   }
 }
+
+/* ---------- Reset ---------- */
 
 *,
 *::before,
@@ -145,8 +156,7 @@ body {
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   color: var(--color-text);
-  background: var(--bg-page-gradient);
-  background-attachment: fixed;
+  background: var(--surface-page);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -162,7 +172,7 @@ video {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 800;
   color: var(--color-text);
   margin: 0;
   letter-spacing: var(--ls-heading);
@@ -170,24 +180,18 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
-h1 {
-  font-size: var(--fs-h1);
-  font-weight: 700;
-}
-
-h2 {
-  font-size: var(--fs-h2);
-}
-
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
 h3 {
   font-size: var(--fs-h3);
   line-height: var(--lh-subhead);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
+  font-weight: 700;
 }
-
 h4 {
   font-size: var(--fs-h4);
   line-height: var(--lh-subhead);
+  font-weight: 700;
 }
 
 p {
@@ -201,7 +205,7 @@ a {
 }
 
 a:hover {
-  color: var(--color-warm-deep);
+  color: var(--accent-on-light);
 }
 
 button {
@@ -221,42 +225,110 @@ main {
   display: block;
 }
 
+::selection {
+  background: var(--color-warm);
+  color: var(--color-ink);
+}
+
+/* ---------- Containers ---------- */
+
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--space-5);
+  padding: 0 var(--gutter);
 }
 
 .container-narrow {
   max-width: var(--max-width-narrow);
   margin: 0 auto;
-  padding: 0 var(--space-5);
+  padding: 0 var(--gutter);
 }
 
 section {
   position: relative;
 }
 
-/* Eyebrow with hairline */
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-body);
+/* ---------- Folio chapter grammar ----------
+   Every major section opens with a kicker: a full-width hairline
+   with the chapter index on the left and a tracked-out label on
+   the right, like a section divider in a printed brand book. */
+
+.kicker {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-strong);
+  margin: 0 0 clamp(32px, 5vw, 64px);
+  font-family: var(--font-heading);
   font-size: var(--fs-eyebrow);
   font-weight: 700;
   letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
-  color: var(--color-warm);
-  margin: 0 0 var(--space-4);
+  color: var(--color-text);
 }
 
-.eyebrow::before {
-  content: "";
-  width: 38px;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.8;
+.kicker__index {
+  color: var(--accent-on-light);
+  font-variant-numeric: tabular-nums;
+}
+
+.kicker__label {
+  text-align: right;
+}
+
+.on-dark .kicker,
+.band-dark .kicker {
+  border-top-color: var(--border-on-dark);
+  color: var(--fg-on-dark-2);
+}
+
+.on-dark .kicker__index,
+.band-dark .kicker__index {
+  color: var(--color-warm);
+}
+
+/* Asymmetric section head: oversized headline left, lede bottom-right */
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: var(--space-6) clamp(40px, 6vw, 96px);
+  align-items: end;
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+
+.section-head__lede {
+  font-size: var(--fs-body-lg);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 44ch;
+}
+
+.band-dark .section-head__lede {
+  color: var(--fg-on-dark-2);
+}
+
+@media (max-width: 900px) {
+  .section-head {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+/* Legacy eyebrow, restyled to match the folio voice (used inline) */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent-on-light);
+  margin: 0 0 var(--space-4);
 }
 
 .eyebrow--plain::before {
@@ -267,7 +339,149 @@ section {
   color: var(--color-text-muted);
 }
 
-/* Buttons */
+/* Ghost folio numeral — oversized index used as a graphic element */
+.folio-num {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(5rem, 14vw, 12rem);
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-border-strong);
+  user-select: none;
+  pointer-events: none;
+}
+
+.band-dark .folio-num {
+  -webkit-text-stroke: 1px var(--border-on-dark);
+}
+
+/* ---------- Sections & bands ---------- */
+
+.section {
+  padding: clamp(72px, 9vw, 136px) 0;
+}
+
+.band-dark {
+  background: var(--color-ink);
+  color: var(--color-cream);
+}
+
+.band-dark h1,
+.band-dark h2,
+.band-dark h3,
+.band-dark h4 {
+  color: var(--fg-on-dark-1);
+}
+
+.band-dark .eyebrow {
+  color: var(--color-warm);
+}
+
+.band-dark .muted {
+  color: var(--fg-on-dark-2);
+}
+
+/* Compatibility aliases for older class names */
+.section-dark {
+  background: var(--color-ink);
+  color: var(--color-cream);
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4 {
+  color: var(--fg-on-dark-1);
+}
+
+.section-dark .eyebrow {
+  color: var(--color-warm);
+}
+
+.section-cream {
+  background: var(--surface-alt);
+}
+
+/* ---------- Figures ----------
+   Photography is treated like plates in a printed folio:
+   each image carries a hairline-ruled caption with an index. */
+
+.fig {
+  margin: 0;
+}
+
+.fig__frame {
+  overflow: hidden;
+  border-radius: var(--radius-xs);
+  background: var(--surface-alt);
+}
+
+.fig__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fig__caption {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-allcaps);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.fig__caption strong {
+  color: var(--accent-on-light);
+  font-weight: 700;
+}
+
+.band-dark .fig__caption,
+.on-dark .fig__caption {
+  border-top-color: var(--border-on-dark);
+  color: var(--fg-on-dark-3);
+}
+
+.band-dark .fig__caption strong,
+.on-dark .fig__caption strong {
+  color: var(--color-warm);
+}
+
+/* ---------- Pull quote ---------- */
+
+.pullquote {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.9rem, 4vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: var(--ls-heading);
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+.pullquote em {
+  font-style: normal;
+  color: var(--accent-on-light);
+}
+
+.band-dark .pullquote {
+  color: var(--fg-on-dark-1);
+}
+
+.band-dark .pullquote em {
+  color: var(--color-warm);
+}
+
+/* ---------- Buttons (DESIGN.md component spec) ---------- */
+
 .btn {
   min-height: 52px;
   display: inline-flex;
@@ -293,21 +507,21 @@ section {
 
 .btn-primary,
 .btn-warm {
-  color: var(--color-charcoal);
-  background: var(--bg-warm-gradient);
+  color: var(--color-ink);
+  background: var(--color-warm);
   box-shadow: var(--shadow-warm);
 }
 
 .btn-primary:hover,
 .btn-warm:hover {
-  background: var(--bg-warm-gradient-hover);
-  color: var(--color-charcoal);
+  background: var(--color-warm-lite);
+  color: var(--color-ink);
   transform: translateY(-1px);
 }
 
 .btn-dark {
   color: var(--color-white);
-  background: linear-gradient(135deg, #2d2d2d, #171514);
+  background: var(--color-ink);
   box-shadow: var(--shadow-dark);
 }
 
@@ -318,12 +532,12 @@ section {
 
 .btn-ghost {
   color: var(--color-white);
-  border-color: rgba(255, 255, 255, 0.26);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(251, 247, 241, 0.32);
+  background: rgba(251, 247, 241, 0.06);
 }
 
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(251, 247, 241, 0.14);
   color: var(--color-white);
   transform: translateY(-1px);
 }
@@ -356,13 +570,11 @@ section {
   font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--color-text);
-  border-bottom: 0;
-  padding-bottom: 0;
 }
 
 .btn-link:hover,
 .arrow-link:hover {
-  color: var(--color-warm-deep);
+  color: var(--accent-on-light);
 }
 
 .btn-link svg,
@@ -375,12 +587,74 @@ section {
   transform: translateX(3px);
 }
 
-/* Reveal on scroll */
+.band-dark .btn-link,
+.band-dark .arrow-link {
+  color: var(--fg-on-dark-1);
+}
+
+.band-dark .btn-link:hover,
+.band-dark .arrow-link:hover {
+  color: var(--color-warm);
+}
+
+/* ---------- Index rows (editorial list entries) ----------
+   Hairline-separated rows with a tabular index number; the folio
+   replacement for card grids. */
+
+.index-row {
+  display: grid;
+  grid-template-columns: minmax(64px, 1fr) minmax(0, 5fr) minmax(0, 6fr);
+  gap: var(--space-5) clamp(24px, 4vw, 64px);
+  padding: clamp(28px, 4vw, 48px) 0;
+  border-top: 1px solid var(--color-border);
+  align-items: start;
+}
+
+.index-row__num {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.84rem;
+  letter-spacing: var(--ls-eyebrow);
+  color: var(--accent-on-light);
+  font-variant-numeric: tabular-nums;
+  padding-top: 6px;
+}
+
+.index-row h3 {
+  margin: 0;
+}
+
+.index-row p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.band-dark .index-row {
+  border-top-color: var(--border-on-dark);
+}
+
+.band-dark .index-row__num {
+  color: var(--color-warm);
+}
+
+.band-dark .index-row p {
+  color: var(--fg-on-dark-2);
+}
+
+@media (max-width: 760px) {
+  .index-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}
+
+/* ---------- Reveal on scroll ---------- */
+
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity var(--dur-slow) var(--ease-standard),
-    transform var(--dur-slow) var(--ease-standard);
+  transform: translateY(28px);
+  transition: opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
 }
 
 .reveal.is-visible {
@@ -389,6 +663,10 @@ section {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .reveal {
     opacity: 1;
     transform: none;
@@ -400,32 +678,11 @@ section {
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
 
-.section {
-  padding: clamp(72px, 10vw, 144px) 0;
-}
-
-.section-cream {
-  background: var(--surface-alt);
-}
-
-.section-dark {
-  background: var(--bg-dark-gradient);
-  color: var(--color-cream);
-}
-
-.section-dark h1,
-.section-dark h2,
-.section-dark h3,
-.section-dark h4 {
-  color: var(--fg-on-dark-1);
-}
-
-.section-dark .eyebrow {
-  color: var(--color-warm);
-}
+/* ---------- Utilities ---------- */
 
 .grid-2 {
   display: grid;
@@ -439,24 +696,9 @@ section {
   gap: var(--space-6);
 }
 
-.grid-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-5);
-}
-
 @media (max-width: 900px) {
   .grid-2,
   .grid-3 {
-    grid-template-columns: 1fr;
-  }
-  .grid-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 560px) {
-  .grid-4 {
     grid-template-columns: 1fr;
   }
 }

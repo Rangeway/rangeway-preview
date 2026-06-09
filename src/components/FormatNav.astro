@@ -5,20 +5,21 @@ interface Props {
 const { current } = Astro.props;
 
 const formats = [
-  { slug: "trailhead", name: "Trailhead", href: "/network/trailhead" },
-  { slug: "waystation", name: "Waystation", href: "/network/waystation" },
-  { slug: "basecamp", name: "Basecamp", href: "/network/basecamp" },
-  { slug: "summit", name: "Summit", href: "/network/summit" }
+  { slug: "trailhead", num: "01", name: "Trailhead", href: "/network/trailhead" },
+  { slug: "waystation", num: "02", name: "Waystation", href: "/network/waystation" },
+  { slug: "basecamp", num: "03", name: "Basecamp", href: "/network/basecamp" },
+  { slug: "summit", num: "04", name: "Summit", href: "/network/summit" }
 ];
 ---
 
 <nav class="format-nav" aria-label="Network formats">
   <div class="container format-nav__inner">
-    <span class="format-nav__label">Explore</span>
+    <span class="format-nav__label">The Formats</span>
     <ul>
       {formats.map((f) => (
         <li>
-          <a href={f.href} class={current === f.slug ? "is-current" : ""}>
+          <a href={f.href} class={current === f.slug ? "is-current" : ""} aria-current={current === f.slug ? "page" : undefined}>
+            <span class="format-nav__num">{f.num}</span>
             {f.name}
           </a>
         </li>
@@ -29,25 +30,27 @@ const formats = [
 
 <style>
   .format-nav {
-    background: var(--surface-alt);
-    border-bottom: 1px solid var(--color-border);
+    background: var(--color-ink);
+    border-bottom: 1px solid var(--border-on-dark);
     padding: var(--space-4) 0;
+    color: var(--color-cream);
   }
 
   .format-nav__inner {
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    justify-content: space-between;
     gap: var(--space-6);
     flex-wrap: wrap;
   }
 
   .format-nav__label {
     font-family: var(--font-heading);
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
+    font-size: 0.72rem;
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
-    color: var(--color-text-muted);
-    font-weight: 600;
+    color: var(--fg-on-dark-3);
+    font-weight: 700;
   }
 
   .format-nav ul {
@@ -55,22 +58,34 @@ const formats = [
     padding: 0;
     margin: 0;
     display: flex;
-    gap: var(--space-5);
+    gap: clamp(20px, 3vw, 48px);
     flex-wrap: wrap;
   }
 
   .format-nav a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-2);
     font-family: var(--font-heading);
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--color-text-muted);
-    padding-bottom: 2px;
-    border-bottom: 2px solid transparent;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--fg-on-dark-3);
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+  }
+
+  .format-nav__num {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--color-warm);
+    font-variant-numeric: tabular-nums;
   }
 
   .format-nav a:hover,
   .format-nav a.is-current {
-    color: var(--color-text);
+    color: var(--fg-on-dark-1);
     border-bottom-color: var(--color-warm);
   }
 </style>

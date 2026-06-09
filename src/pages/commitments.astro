@@ -5,7 +5,7 @@ import PageHero from "../components/PageHero.astro";
 const sections = [
   {
     id: "environment",
-    eyebrow: "01 — Environment",
+    num: "01",
     tocLabel: "Environment",
     title: "Environmental sustainability",
     lead:
@@ -35,7 +35,7 @@ const sections = [
   },
   {
     id: "social-impact",
-    eyebrow: "02 — Communities",
+    num: "02",
     tocLabel: "Communities",
     title: "Social impact",
     lead:
@@ -60,7 +60,7 @@ const sections = [
   },
   {
     id: "inclusion",
-    eyebrow: "03 — Inclusion",
+    num: "03",
     tocLabel: "Inclusion",
     title: "Diversity, equity, and inclusion",
     lead:
@@ -85,7 +85,7 @@ const sections = [
   },
   {
     id: "growth",
-    eyebrow: "04 — People",
+    num: "04",
     tocLabel: "People",
     title: "Career growth and learning",
     lead:
@@ -117,70 +117,75 @@ const sections = [
   image="/images/basecamp-cortex-dusk.jpg"
 >
   <PageHero
-    eyebrow="What we build for"
+    eyebrow="What We Build For"
+    index="Commitments"
     title="Our commitments."
     lede="A hospitality company that takes its work seriously should be able to say what it stands for, and show its work. These are the commitments we hold ourselves to as we build Rangeway, from how we design and power our locations to how we hire and who we serve."
     image="/images/basecamp-cortex-dusk.jpg"
     imageAlt="A Rangeway location at golden hour"
+    caption="Basecamp at golden hour"
   />
 
   <nav class="commit-toc" aria-label="On this page">
-    <div class="container">
+    <div class="container commit-toc__inner">
+      <span class="commit-toc__label">On This Page</span>
       <ul>
         {sections.map((s) => (
-          <li><a href={`#${s.id}`}>{s.tocLabel}</a></li>
+          <li><a href={`#${s.id}`}><span class="commit-toc__num">{s.num}</span>{s.tocLabel}</a></li>
         ))}
-        <li><a href="#reporting">Accountability</a></li>
+        <li><a href="#reporting"><span class="commit-toc__num">05</span>Accountability</a></li>
       </ul>
     </div>
   </nav>
 
-  {sections.map((s, i) => (
-    <section
-      id={s.id}
-      class={`section commit-section ${i % 2 === 1 ? "section-cream" : ""}`}
-    >
+  {sections.map((s) => (
+    <section id={s.id} class="section commit-section">
       <div class="container">
-        <header class="commit-section__head reveal">
-          <p class="eyebrow">{s.eyebrow}</p>
+        <div class="kicker reveal">
+          <span class="kicker__index">{s.num}</span>
+          <span class="kicker__label">{s.tocLabel}</span>
+        </div>
+        <div class="commit-head reveal">
           <h2>{s.title}</h2>
-          <p class="prose-lg">{s.lead}</p>
-        </header>
-
-        <ul class="commit-items">
+          <p class="commit-head__lead">{s.lead}</p>
+        </div>
+        <div class="commit-items">
           {s.items.map((item, idx) => (
-            <li class="commit-item reveal">
-              <div class="commit-item__index">
-                <span>{String(idx + 1).padStart(2, "0")}</span>
-              </div>
-              <div class="commit-item__body">
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </div>
-            </li>
+            <div class="index-row reveal">
+              <span class="index-row__num">{String(idx + 1).padStart(2, "0")}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   ))}
 
-  <section id="reporting" class="section section-dark commit-reporting">
-    <div class="container-narrow reveal">
-      <p class="eyebrow" style="color: var(--color-warm);">Accountability</p>
-      <h2>Showing our work.</h2>
-      <p class="prose-lg">
-        Commitments without evidence are just slogans. As the network grows, Rangeway will publish
-        what these commitments add up to: renewable generation and grid offset across the network,
-        embodied carbon comparisons across our build standards, team composition as we hire, and
-        the local economic footprint of each location we open. A hospitality company that takes the
-        environment, its communities, and its people seriously should be able to show its work, and
-        we will.
-      </p>
-      <div class="commit-reporting__cta">
-        <a class="btn btn-warm" href="/network">See where we're building</a>
-        <a class="btn btn-outline" href="mailto:careers@rangeway.co?subject=Joining%20the%20Rangeway%20team">
-          Join the team
-        </a>
+  <section id="reporting" class="section band-dark commit-reporting">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">05</span>
+        <span class="kicker__label">Accountability</span>
+      </div>
+      <div class="commit-reporting__grid reveal">
+        <h2>Showing our work.</h2>
+        <div class="commit-reporting__side">
+          <p>
+            Commitments without evidence are just slogans. As the network grows, Rangeway will
+            publish what these commitments add up to: renewable generation and grid offset
+            across the network, embodied carbon comparisons across our build standards, team
+            composition as we hire, and the local economic footprint of each location we open.
+            A hospitality company that takes the environment, its communities, and its people
+            seriously should be able to show its work, and we will.
+          </p>
+          <div class="commit-reporting__cta">
+            <a class="btn btn-warm" href="/network">See where we're building</a>
+            <a class="btn btn-ghost" href="mailto:careers@rangeway.co?subject=Joining%20the%20Rangeway%20team">
+              Join the team
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -188,119 +193,121 @@ const sections = [
 
 <style>
   .commit-toc {
-    border-bottom: 1px solid var(--color-border);
-    background: var(--surface-alt);
+    background: var(--color-ink);
+    color: var(--color-cream);
+    border-bottom: 1px solid var(--border-on-dark);
+    padding: var(--space-4) 0;
+  }
+
+  .commit-toc__inner {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .commit-toc__label {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--fg-on-dark-3);
+    font-weight: 700;
   }
 
   .commit-toc ul {
     list-style: none;
     margin: 0;
-    padding: var(--space-4) 0;
+    padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-3) var(--space-6);
-    align-items: center;
-    justify-content: center;
+    gap: clamp(20px, 3vw, 48px);
   }
 
   .commit-toc a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-2);
     font-family: var(--font-heading);
-    font-size: 0.78rem;
-    letter-spacing: 0.16em;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    font-weight: 600;
-    color: var(--color-text-muted);
-    transition: color var(--dur-fast) var(--ease-standard);
+    color: var(--fg-on-dark-3);
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+  }
+
+  .commit-toc__num {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--color-warm);
+    font-variant-numeric: tabular-nums;
   }
 
   .commit-toc a:hover {
-    color: var(--color-warm-deep);
+    color: var(--fg-on-dark-1);
+    border-bottom-color: var(--color-warm);
   }
 
   .commit-section {
-    scroll-margin-top: calc(var(--nav-height) + 80px);
+    scroll-margin-top: calc(var(--nav-height) + 24px);
   }
 
-  .commit-section__head {
-    max-width: 760px;
-    margin-bottom: var(--space-8);
+  .commit-head {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: start;
+    margin-bottom: clamp(40px, 6vw, 72px);
   }
 
-  .commit-section__head h2 {
-    margin-top: var(--space-3);
+  .commit-head h2 {
+    max-width: 13ch;
   }
 
-  .commit-section__head .prose-lg {
-    margin-top: var(--space-5);
+  .commit-head__lead {
+    margin: 0;
+    font-size: var(--fs-body-lg);
+    line-height: 1.7;
     color: var(--color-text-muted);
+    max-width: 56ch;
   }
 
   .commit-items {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .commit-item {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: var(--space-6);
-    padding: var(--space-7) 0;
-    border-top: 1px solid var(--color-border);
-    align-items: start;
-  }
-
-  .commit-item:last-child {
     border-bottom: 1px solid var(--color-border);
   }
 
-  .commit-item__index span {
-    font-family: var(--font-heading);
-    font-size: 0.82rem;
-    letter-spacing: 0.22em;
-    color: var(--color-warm-deep);
-    font-weight: 600;
-  }
-
-  .commit-item__body {
-    max-width: 68ch;
-  }
-
-  .commit-item__body h3 {
-    font-size: clamp(1.35rem, 2vw, 1.65rem);
-    line-height: 1.25;
-    margin: 0 0 var(--space-4);
-  }
-
-  .commit-item__body p {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: var(--color-text);
-    margin: 0;
-  }
-
   .commit-reporting {
-    scroll-margin-top: calc(var(--nav-height) + 80px);
+    scroll-margin-top: calc(var(--nav-height) + 24px);
+  }
+
+  .commit-reporting__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: start;
+  }
+
+  .commit-reporting__side p {
+    margin: 0 0 var(--space-6);
+    color: var(--fg-on-dark-2);
+    font-size: var(--fs-body-lg);
+    line-height: 1.7;
+    max-width: 56ch;
   }
 
   .commit-reporting__cta {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-4);
-    margin-top: var(--space-7);
   }
 
-  @media (max-width: 780px) {
-    .commit-toc ul {
-      gap: var(--space-3) var(--space-5);
-    }
-
-    .commit-item {
+  @media (max-width: 900px) {
+    .commit-head,
+    .commit-reporting__grid {
       grid-template-columns: 1fr;
-      gap: var(--space-3);
-      padding: var(--space-6) 0;
     }
   }
 </style>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import { LINKS } from "../config";
 
 const team = [
   {
@@ -48,30 +49,35 @@ const team = [
 >
   <PageHero
     eyebrow="Team"
+    index="The People"
     title="The people behind Rangeway."
     lede="Every decision in this company is made by someone who has run a real property for real guests, or driven a real EV on a real road trip. Usually both."
     image="/images/basecamp-interior.jpg"
     imageAlt="Warm interior of a Rangeway driver's lounge"
+    caption="driver's lounge · Basecamp"
   />
 
   <section class="section">
     <div class="container">
-      <div class="reveal" style="max-width: 620px; margin-bottom: var(--space-7);">
-        <p class="eyebrow">Team</p>
-        <h2>The people behind the network.</h2>
+      <div class="kicker reveal">
+        <span class="kicker__index">01</span>
+        <span class="kicker__label">The Team</span>
       </div>
-      <ul class="team-grid">
-        {team.map((m) => (
-          <li class="team-card reveal">
-            <div class="team-card__photo">
-              <img src={m.photo} alt={`Portrait of ${m.name}`} loading="lazy" />
-            </div>
-            <div class="team-card__body">
+      <ul class="team-list">
+        {team.map((m, i) => (
+          <li class="team-row reveal">
+            <span class="team-row__num">{String(i + 1).padStart(2, "0")}</span>
+            <figure class="fig team-row__fig">
+              <div class="fig__frame team-row__frame">
+                <img src={m.photo} alt={`Portrait of ${m.name}`} loading="lazy" />
+              </div>
+            </figure>
+            <div class="team-row__body">
               <h3>{m.name}</h3>
-              <p class="team-card__role">{m.role}</p>
-              <p class="team-card__bio">{m.bio}</p>
+              <p class="team-row__role">{m.role}</p>
+              <p class="team-row__bio">{m.bio}</p>
               <a
-                class="team-card__linkedin"
+                class="team-row__linkedin"
                 href={m.linkedin}
                 target="_blank"
                 rel="noopener"
@@ -89,150 +95,147 @@ const team = [
     </div>
   </section>
 
-  <section class="section section-cream">
-    <div class="container-narrow text-center reveal">
-      <p class="eyebrow">Join us</p>
-      <h2>We are hiring.</h2>
-      <p class="prose-lg muted" style="margin-top: var(--space-4);">
-        Rangeway is looking for hospitality operators, site leads, energy engineers, and people who
-        care about how a good stop feels. If the thesis rings true, we want to hear from you.
-      </p>
-      <div class="hiring-ctas">
-        <a class="btn btn-primary" href="mailto:careers@rangeway.co?subject=Joining%20Rangeway">
-          Email careers@rangeway.co
-        </a>
-        <a
-          class="btn btn-outline"
-          href="https://www.linkedin.com/company/rangewayenergy/jobs/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          View LinkedIn jobs
-        </a>
+  <section class="section band-dark">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">02</span>
+        <span class="kicker__label">Join Us</span>
+      </div>
+      <div class="hiring reveal">
+        <h2>We are hiring.</h2>
+        <div class="hiring__side">
+          <p>
+            Rangeway is looking for hospitality operators, site leads, energy engineers, and
+            people who care about how a good stop feels. If the thesis rings true, we want to
+            hear from you.
+          </p>
+          <div class="hiring__ctas">
+            <a class="btn btn-warm" href="mailto:careers@rangeway.co?subject=Joining%20Rangeway">
+              Email careers@rangeway.co
+            </a>
+            <a class="btn btn-ghost" href={LINKS.linkedinJobs} target="_blank" rel="noopener noreferrer">
+              View LinkedIn jobs
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .hiring-ctas {
-    display: flex;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: var(--space-6);
-  }
-
-  .team-grid {
+  .team-list {
     list-style: none;
     padding: 0;
     margin: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .team-row {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-6);
+    grid-template-columns: minmax(64px, 1fr) minmax(0, 3fr) minmax(0, 7fr);
+    gap: var(--space-5) clamp(24px, 4vw, 64px);
+    padding: clamp(32px, 4.5vw, 56px) 0;
+    border-top: 1px solid var(--color-border);
+    align-items: start;
   }
 
-  .team-grid--single {
-    grid-template-columns: 1fr;
-  }
-
-  .team-grid--single .team-card {
-    max-width: 760px;
-  }
-
-  .team-card {
-    display: flex;
-    gap: var(--space-5);
-    padding: var(--space-6);
-    background: var(--surface-raised);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    align-items: flex-start;
-  }
-
-  .team-card--placeholder {
-    background: var(--surface-alt);
-    border-style: dashed;
-  }
-
-  .team-card__photo {
-    flex-shrink: 0;
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    overflow: hidden;
-    background: var(--surface-alt);
-  }
-
-  .team-card__photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-  }
-
-  .team-card h3 {
-    font-size: 1.3rem;
-    margin: 0;
-  }
-
-  .team-card__role {
+  .team-row__num {
     font-family: var(--font-heading);
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
+    font-weight: 700;
+    font-size: 0.84rem;
+    letter-spacing: var(--ls-eyebrow);
+    color: var(--accent-on-light);
+    font-variant-numeric: tabular-nums;
+    padding-top: 6px;
+  }
+
+  .team-row__fig {
+    max-width: 280px;
+  }
+
+  .team-row__frame {
+    aspect-ratio: 4 / 5;
+  }
+
+  .team-row__frame img {
+    object-position: center top;
+    filter: grayscale(1);
+  }
+
+  .team-row__body h3 {
+    font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+    font-weight: 800;
+  }
+
+  .team-row__role {
+    font-family: var(--font-heading);
+    font-size: 0.74rem;
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
-    color: var(--color-warm-deep);
-    font-weight: 600;
+    color: var(--accent-on-light);
+    font-weight: 700;
     margin: var(--space-2) 0 var(--space-4);
   }
 
-  .team-card--placeholder .team-card__role {
-    color: var(--color-text-muted);
-  }
-
-  .team-card__bio {
-    font-size: 1rem;
-    line-height: 1.65;
+  .team-row__bio {
+    font-size: 1.05rem;
+    line-height: 1.7;
     color: var(--color-text);
     margin: 0 0 var(--space-4);
+    max-width: 64ch;
   }
 
-  .team-card__linkedin {
+  .team-row__linkedin {
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
     font-family: var(--font-heading);
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: var(--ls-allcaps);
     text-transform: uppercase;
     color: var(--color-text-muted);
   }
 
-  .team-card__linkedin:hover {
-    color: var(--color-warm-deep);
+  .team-row__linkedin:hover {
+    color: var(--accent-on-light);
   }
 
-  .team-card--placeholder .team-card__bio {
-    color: var(--color-text-muted);
-    font-style: italic;
+  .hiring {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: end;
   }
 
-  @media (min-width: 901px) {
-    .team-card:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-      justify-self: center;
-      width: 100%;
-      max-width: calc(50% - var(--space-6) / 2);
-    }
+  .hiring__side p {
+    margin: 0 0 var(--space-6);
+    color: var(--fg-on-dark-2);
+    font-size: 1.08rem;
+    line-height: 1.7;
+    max-width: 44ch;
+  }
+
+  .hiring__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
   }
 
   @media (max-width: 900px) {
-    .team-grid {
+    .team-row {
       grid-template-columns: 1fr;
+      gap: var(--space-4);
     }
-    .team-card {
-      flex-direction: column;
+
+    .team-row__fig {
+      max-width: 220px;
+    }
+
+    .hiring {
+      grid-template-columns: 1fr;
+      align-items: start;
     }
   }
 </style>

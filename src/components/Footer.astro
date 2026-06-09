@@ -1,80 +1,61 @@
 ---
-import PathMark from "./PathMark.astro";
+import { CLIMATIZE_URL, LINKS } from "../config";
 const year = new Date().getFullYear();
 ---
 
-<footer class="site-footer">
-  <div class="container site-footer__inner">
-    <div class="site-footer__brand">
-      <a href="/" class="site-footer__logo" aria-label="Rangeway home">
-        <PathMark size={34} color="#F5F1EB" accent="#F4A855" />
-        <span>Rangeway</span>
-      </a>
-      <p class="site-footer__tag">Travel farther, stop better.</p>
-      <address class="site-footer__address">
-        2661 Market Street, STE 85787<br />
-        San Francisco, CA 94114
-      </address>
-      <ul class="site-footer__details-list">
-        <li><a href="tel:+16504206300">(650) 420-6300</a></li>
-        <li><a href="mailto:hello@rangeway.co">hello@rangeway.co</a></li>
-      </ul>
-      <div class="site-footer__social">
-        <a href="https://instagram.com/RangewayEV" aria-label="Instagram" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="5" />
-            <circle cx="12" cy="12" r="4" />
-            <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
-          </svg>
-        </a>
-        <a href="https://www.linkedin.com/company/rangewayenergy" aria-label="LinkedIn" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.4c0-1.3-.03-2.98-1.82-2.98-1.82 0-2.1 1.42-2.1 2.88V21h-4V9z" />
-          </svg>
-        </a>
-        <a href="https://x.com/RangewayEV" aria-label="X" target="_blank" rel="noopener">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.244 2H21l-6.52 7.45L22 22h-6.77l-5.3-6.93L3.75 22H1l7-8L1.55 2h6.93l4.8 6.34L18.24 2zm-2.37 18h1.86L7.21 4h-2L15.87 20z" />
-          </svg>
-        </a>
+<footer class="folio-footer">
+  <div class="container">
+    <div class="folio-footer__top">
+      <p class="folio-footer__tag">Travel farther,<br />stop better.</p>
+
+      <div class="folio-footer__columns">
+        <div>
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="/network">The Network</a></li>
+            <li><a href="/mojave">Rangeway Mojave</a></li>
+            <li><a href="/our-story">Our Story</a></li>
+            <li><a href="/team">Team</a></li>
+            <li><a href="/partners">Partners</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul>
+            <li><a href="/investors">Investors</a></li>
+            <li><a href={LINKS.linkedinJobs} target="_blank" rel="noopener">Careers</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Follow along</h3>
+          <ul>
+            <li><a href={LINKS.fieldNotes} target="_blank" rel="noopener">Field Notes</a></li>
+            <li><a href={LINKS.newsroom} target="_blank" rel="noopener">Newsroom</a></li>
+            <li><a href={LINKS.instagram} target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href={LINKS.linkedin} target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href={LINKS.x} target="_blank" rel="noopener">X</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Reach us</h3>
+          <address>
+            2661 Market Street, STE 85787<br />
+            San Francisco, CA 94114
+          </address>
+          <ul>
+            <li><a href="tel:+16504206300">(650) 420-6300</a></li>
+            <li><a href="mailto:hello@rangeway.co">hello@rangeway.co</a></li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <div class="site-footer__columns">
-      <div>
-        <h3>Explore</h3>
-        <ul>
-          <li><a href="/network">The Network</a></li>
-          <li><a href="/our-story">Our Story</a></li>
-          <li><a href="/team">Team</a></li>
-          <li><a href="/partners">Partners</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Company</h3>
-        <ul>
-          <li><a href="/investors">Investors</a></li>
-          <li><a href="https://www.linkedin.com/company/rangewayenergy/jobs/" target="_blank" rel="noopener">Careers</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Follow along</h3>
-        <ul>
-          <li><a href="https://fieldnotes.rangeway.co" target="_blank" rel="noopener">Field Notes</a></li>
-          <li><a href="https://newsroom.rangeway.co" target="_blank" rel="noopener">Newsroom</a></li>
-          <li><a href="https://instagram.com/RangewayEV" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.linkedin.com/company/rangewayenergy" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://x.com/RangewayEV" target="_blank" rel="noopener">X</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+    <a class="folio-footer__wordmark" href="/" aria-label="Rangeway home">Rangeway</a>
 
-  <div class="site-footer__legal">
-    <div class="container site-footer__legal-row">
+    <div class="folio-footer__legal">
       <p>© {year} Rangeway Energy, Inc. All rights reserved.</p>
-      <p class="site-footer__legal-links">
+      <p class="folio-footer__legal-links">
         <a href="/commitments">Our Commitments</a>
         <span aria-hidden="true">·</span>
         <a href="/privacy">Privacy Policy</a>
@@ -82,230 +63,170 @@ const year = new Date().getFullYear();
         <a href="/terms">Terms of Service</a>
       </p>
     </div>
-    <div class="container site-footer__disclosure">
+
+    <div class="folio-footer__disclosure">
       <p>
-        Rangeway Energy, Inc. is raising capital on <a href="https://climatize.earth" target="_blank" rel="noopener">Climatize</a> to fund Rangeway Mojave, the first location in the Rangeway network. This communication is for informational purposes only and is not an offer to sell, nor a solicitation of an offer to buy, any security. Offers may only be made through the Climatize platform. Visit <a href="https://climatize.earth" target="_blank" rel="noopener">climatize.earth</a> for the full offering details, including risk factors. Investing involves risk, including possible loss of principal.
+        Rangeway Energy, Inc. is raising capital on <a href={CLIMATIZE_URL} target="_blank" rel="noopener">Climatize</a> to fund Rangeway Mojave, the first location in the Rangeway network. This communication is for informational purposes only and is not an offer to sell, nor a solicitation of an offer to buy, any security. Offers may only be made through the Climatize platform. Visit <a href={CLIMATIZE_URL} target="_blank" rel="noopener">climatize.earth</a> for the full offering details, including risk factors. Investing involves risk, including possible loss of principal.
       </p>
     </div>
   </div>
 </footer>
 
 <style>
-  .site-footer {
+  .folio-footer {
     background: var(--color-ink);
     color: var(--color-cream);
-    border-radius: 40px 40px 0 0;
-    margin-top: var(--space-8);
-    padding-top: var(--space-9);
-    position: relative;
+    padding-top: clamp(72px, 9vw, 128px);
     overflow: hidden;
-    isolation: isolate;
   }
 
-  .site-footer::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 15% 10%, rgba(244, 168, 85, 0.12), transparent 42%);
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  .site-footer__inner {
+  .folio-footer__top {
     display: grid;
-    grid-template-columns: 1.1fr 1.9fr;
-    gap: var(--space-8);
-    padding-bottom: var(--space-9);
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    gap: var(--space-8) clamp(40px, 6vw, 120px);
+    padding-bottom: clamp(56px, 7vw, 96px);
   }
 
-  .site-footer__logo {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-3);
+  .folio-footer__tag {
+    margin: 0;
     font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: var(--color-cream);
+    font-weight: 800;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.05;
+    letter-spacing: var(--ls-heading);
+    color: var(--fg-on-dark-1);
   }
 
-  .site-footer__tag {
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    margin-top: var(--space-4);
-    color: var(--color-cream);
-    opacity: 0.75;
-  }
-
-  .site-footer__social {
-    display: flex;
-    gap: var(--space-4);
-    margin-top: var(--space-6);
-    color: var(--color-cream);
-    opacity: 0.8;
-  }
-
-  .site-footer__social a {
-    width: 40px;
-    height: 40px;
-    border-radius: 999px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.06);
-    color: var(--color-cream);
-    transition: background var(--dur-fast) var(--ease-standard),
-      color var(--dur-fast) var(--ease-standard),
-      transform var(--dur-fast) var(--ease-standard);
-  }
-
-  .site-footer__social a:hover {
-    background: var(--color-warm);
-    color: var(--color-charcoal);
-    transform: translateY(-1px);
-  }
-
-  .site-footer__columns {
+  .folio-footer__columns {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-6);
   }
 
-  .site-footer__address {
-    font-style: normal;
-    font-size: 0.92rem;
-    line-height: 1.6;
-    color: var(--color-cream);
-    opacity: 0.78;
-    margin: var(--space-5) 0 var(--space-3);
-  }
-
-  .site-footer__details-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 var(--space-5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-    font-size: 0.92rem;
-  }
-
-  .site-footer__details-list a {
-    color: var(--color-cream);
-    opacity: 0.85;
-    border-bottom: 1px solid rgba(245, 241, 235, 0.2);
-    padding-bottom: 2px;
-  }
-
-  .site-footer__details-list a:hover {
-    color: var(--color-warm);
-    opacity: 1;
-    border-bottom-color: var(--color-warm);
-  }
-
-  .site-footer h3 {
-    font-size: 0.78rem;
+  .folio-footer h3 {
+    font-size: 0.72rem;
     font-weight: 700;
-    line-height: 1.4;
-    letter-spacing: 0.18em;
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: var(--color-warm);
     margin: 0 0 var(--space-4);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-on-dark);
   }
 
-  .site-footer ul {
+  .folio-footer ul {
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
+    font-size: 0.95rem;
   }
 
-  .site-footer a {
-    color: var(--color-cream);
-    opacity: 0.82;
+  .folio-footer ul a {
+    color: var(--fg-on-dark-2);
   }
 
-  .site-footer a:hover {
-    opacity: 1;
+  .folio-footer ul a:hover {
     color: var(--color-warm);
   }
 
-  .site-footer__legal {
-    border-top: 1px solid rgba(245, 241, 235, 0.1);
-    padding: var(--space-5) 0;
-    font-size: 0.85rem;
-    opacity: 0.6;
+  .folio-footer address {
+    font-style: normal;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--fg-on-dark-2);
+    margin: 0 0 var(--space-3);
   }
 
-  .site-footer__legal-row {
+  /* Signature: the wordmark set at folio scale across the footer */
+  .folio-footer__wordmark {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(4rem, 14.5vw, 15rem);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    color: var(--fg-on-dark-1);
+    text-align: center;
+    border-top: 1px solid var(--border-on-dark);
+    padding-top: clamp(32px, 4vw, 56px);
+    margin-bottom: clamp(32px, 4vw, 56px);
+    transition: color var(--dur-med) var(--ease-standard);
+  }
+
+  .folio-footer__wordmark:hover {
+    color: var(--color-warm);
+  }
+
+  .folio-footer__legal {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: var(--space-4);
+    border-top: 1px solid var(--border-on-dark);
+    padding: var(--space-5) 0;
+    font-size: 0.85rem;
+    color: var(--fg-on-dark-3);
   }
 
-  .site-footer__legal p {
+  .folio-footer__legal p {
     margin: 0;
   }
 
-  .site-footer__legal-links {
+  .folio-footer__legal-links {
     display: inline-flex;
     align-items: center;
     gap: 10px;
   }
 
-  .site-footer__legal-links a {
-    color: var(--color-cream);
-    opacity: 1;
+  .folio-footer__legal-links a {
+    color: var(--fg-on-dark-2);
   }
 
-  .site-footer__legal-links a:hover {
+  .folio-footer__legal-links a:hover {
     color: var(--color-warm);
   }
 
-  .site-footer__legal-links span {
-    opacity: 0.4;
+  .folio-footer__disclosure {
+    padding: var(--space-5) 0 var(--space-7);
+    border-top: 1px solid rgba(251, 247, 241, 0.08);
   }
 
-  .site-footer__disclosure {
-    margin-top: var(--space-5);
-    padding-top: var(--space-5);
-    border-top: 1px solid rgba(245, 241, 235, 0.06);
-  }
-
-  .site-footer__disclosure p {
+  .folio-footer__disclosure p {
     margin: 0;
-    font-size: 0.74rem;
+    font-size: 0.76rem;
     line-height: 1.65;
-    color: var(--color-cream);
-    opacity: 0.55;
+    color: var(--fg-on-dark-3);
     max-width: 96ch;
   }
 
-  .site-footer__disclosure a {
-    color: var(--color-cream);
-    opacity: 1;
+  .folio-footer__disclosure a {
+    color: var(--fg-on-dark-2);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
   }
 
-  .site-footer__disclosure a:hover {
+  .folio-footer__disclosure a:hover {
     color: var(--color-warm);
   }
 
-  @media (max-width: 960px) {
-    .site-footer__inner {
+  @media (max-width: 1000px) {
+    .folio-footer__top {
       grid-template-columns: 1fr;
-      gap: var(--space-7);
     }
 
+    .folio-footer__columns {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-7) var(--space-6);
+    }
   }
 
-  @media (max-width: 560px) {
-    .site-footer__columns {
+  @media (max-width: 520px) {
+    .folio-footer__columns {
       grid-template-columns: 1fr;
     }
   }

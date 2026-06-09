@@ -40,10 +40,14 @@ const leaders = [
 
 <section class="leadership section">
   <div class="container">
-    <div class="leadership__heading reveal">
-      <p class="eyebrow">Leadership</p>
+    <div class="kicker reveal">
+      <span class="kicker__index">06</span>
+      <span class="kicker__label">Leadership</span>
+    </div>
+
+    <div class="section-head reveal">
       <h2>The people building Rangeway.</h2>
-      <p class="leadership__lede">
+      <p class="section-head__lede">
         Hospitality operators, energy veterans, and EV community organizers.
       </p>
     </div>
@@ -51,14 +55,17 @@ const leaders = [
     <ul class="leadership__grid">
       {leaders.map((l) => (
         <li class="leader reveal">
-          <div class="leader__photo">
-            <img src={l.photo} alt={`Portrait of ${l.name}`} loading="lazy" />
-          </div>
-          <div class="leader__body">
-            <h3 class="leader__name">{l.name}</h3>
-            <p class="leader__role">{l.role}</p>
-            <p class="leader__bio">{l.bio}</p>
-          </div>
+          <figure class="fig">
+            <div class="fig__frame leader__frame">
+              <img src={l.photo} alt={`Portrait of ${l.name}`} loading="lazy" />
+            </div>
+            <figcaption class="fig__caption">
+              <strong>{l.name.split(" ")[0]}</strong>
+            </figcaption>
+          </figure>
+          <h3 class="leader__name">{l.name}</h3>
+          <p class="leader__role">{l.role}</p>
+          <p class="leader__bio">{l.bio}</p>
         </li>
       ))}
     </ul>
@@ -76,88 +83,45 @@ const leaders = [
 </section>
 
 <style>
-  .leadership__heading {
-    max-width: 620px;
-    margin-bottom: var(--space-7);
-  }
-
-  .leadership__lede {
-    margin-top: var(--space-4);
-    color: var(--color-text-muted);
-    font-size: 1.08rem;
-  }
-
   .leadership__grid {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: var(--space-5);
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-6) var(--space-5);
   }
 
-  .leader {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    padding: var(--space-6);
-    background: var(--surface-raised);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    transition: transform var(--dur-fast) var(--ease-standard),
-      border-color var(--dur-fast) var(--ease-standard),
-      box-shadow var(--dur-fast) var(--ease-standard);
+  .leader__frame {
+    aspect-ratio: 4 / 5;
   }
 
-  .leader:hover {
-    transform: translateY(-3px);
-    border-color: var(--color-warm);
-    box-shadow: var(--shadow-soft);
-  }
-
-  .leader__photo {
-    width: 88px;
-    height: 88px;
-    border-radius: 50%;
-    overflow: hidden;
-    background: var(--surface-alt);
-  }
-
-  .leader__photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .leader__frame img {
     object-position: center top;
-  }
-
-  .leader__body {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-    flex: 1;
+    filter: grayscale(1);
   }
 
   .leader__name {
-    font-size: 1.2rem;
-    margin: 0;
+    font-size: 1.12rem;
+    margin: var(--space-4) 0 0;
+    font-weight: 800;
   }
 
   .leader__role {
     font-family: var(--font-heading);
-    font-size: 0.76rem;
-    letter-spacing: 0.18em;
+    font-size: 0.7rem;
+    letter-spacing: var(--ls-allcaps);
     text-transform: uppercase;
-    color: var(--color-warm-deep);
-    font-weight: 600;
-    margin: 0 0 var(--space-2);
+    color: var(--accent-on-light);
+    font-weight: 700;
+    margin: var(--space-2) 0 var(--space-3);
   }
 
   .leader__bio {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     line-height: 1.6;
-    color: var(--color-text);
-    margin: 0 0 var(--space-3);
-    flex: 1;
+    color: var(--color-text-muted);
+    margin: 0;
   }
 
   .leadership__cta {
@@ -166,11 +130,17 @@ const leaders = [
 
   @media (max-width: 1100px) {
     .leadership__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .leadership__grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  @media (max-width: 560px) {
+  @media (max-width: 460px) {
     .leadership__grid {
       grid-template-columns: 1fr;
     }

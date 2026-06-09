@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import { CAMPAIGN_MODE, CLIMATIZE_URL, LINKS } from "../config";
 ---
 
 <BaseLayout
@@ -10,72 +11,170 @@ import PageHero from "../components/PageHero.astro";
 >
   <PageHero
     eyebrow="The First Rangeway Location"
+    index="Site 01"
     title="Rangeway Mojave."
     lede="Off-grid, solar-powered ultra-fast charging on the CA-14 corridor, with launch coming in 2027."
     image="/images/basecamp-rosamond.jpg"
     imageAlt="Aerial view of Rangeway Mojave at dusk with solar canopy, battery storage, and charging plaza beside the highway"
-    align="left"
+    caption="Rangeway Mojave · Antelope Valley, California"
     scrim="strong"
   >
     <div class="mojave-hero__ctas">
-      <a class="btn btn-warm" href="https://rangewaymojave.com" target="_blank" rel="noopener">
-        Visit the microsite
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12" />
-          <polyline points="13 6 19 12 13 18" />
-        </svg>
-      </a>
-      <a class="btn btn-ghost" href="https://fieldnotes.rangeway.co" target="_blank" rel="noopener">
-        Subscribe to Field Notes
-      </a>
+      {CAMPAIGN_MODE ? (
+        <>
+          <a class="btn btn-warm" href={CLIMATIZE_URL} target="_blank" rel="noopener">
+            Invest in Mojave
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="13 6 19 12 13 18" />
+            </svg>
+          </a>
+          <a class="btn btn-ghost" href={LINKS.mojaveMicrosite} target="_blank" rel="noopener">
+            Visit the microsite
+          </a>
+        </>
+      ) : (
+        <>
+          <a class="btn btn-warm" href={LINKS.mojaveMicrosite} target="_blank" rel="noopener">
+            Visit the microsite
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="13 6 19 12 13 18" />
+            </svg>
+          </a>
+          <a class="btn btn-ghost" href={LINKS.fieldNotes} target="_blank" rel="noopener">
+            Subscribe to Field Notes
+          </a>
+        </>
+      )}
     </div>
   </PageHero>
 
+  {CAMPAIGN_MODE && (
+    <section class="mojave-raise section">
+      <div class="container">
+        <div class="kicker reveal">
+          <span class="kicker__index">Now Open</span>
+          <span class="kicker__label">The Mojave Raise</span>
+        </div>
+        <div class="mojave-raise__grid reveal">
+          <h2>Anyone can build this with us.</h2>
+          <div class="mojave-raise__side">
+            <p>
+              Rangeway is raising capital on Climatize to build Rangeway Mojave, the first
+              location in the network. The campaign is open to everyone, not just accredited
+              investors. Anyone can invest in the first site, starting at the campaign minimum.
+            </p>
+            <div class="mojave-raise__ctas">
+              <a class="btn btn-warm" href={CLIMATIZE_URL} target="_blank" rel="noopener">
+                Invest in Mojave
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="13 6 19 12 13 18" />
+                </svg>
+              </a>
+              <a class="btn-link" href="/investors">
+                Read the investment case
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="13 6 19 12 13 18" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class={`section ${CAMPAIGN_MODE ? "section-cream" : ""}`}>
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">01</span>
+        <span class="kicker__label">Why Here</span>
+      </div>
+      <div class="mojave-corridor reveal">
+        <h2>The corridor that's been waiting.</h2>
+        <div class="mojave-corridor__body">
+          <p>
+            The CA-14 corridor connects the Los Angeles basin to the high desert and points
+            north. It is the daily commute for the aerospace and defense workforce at Edwards
+            Air Force Base, Northrop Grumman, Lockheed Martin, Boeing, NASA, and Virgin
+            Galactic, and on weekends, it carries travelers heading to the Eastern Sierra and
+            beyond.
+          </p>
+          <p>
+            Right now, those drivers have nowhere to charge in a place worth waiting in.
+            Rangeway Mojave changes that.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
-    <div class="container-narrow prose-lg reveal">
-      <p class="eyebrow">Why here</p>
-      <h2>The corridor that's been waiting.</h2>
-      <p>
-        The CA-14 corridor connects the Los Angeles basin to the high desert and points north. It is the daily commute for the aerospace and defense workforce at Edwards Air Force Base, Northrop Grumman, Lockheed Martin, Boeing, NASA, and Virgin Galactic, and on weekends, it carries travelers heading to the Eastern Sierra and beyond.
-      </p>
-      <p>
-        Right now, those drivers have nowhere to charge in a place worth waiting in. Rangeway Mojave changes that.
-      </p>
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">02</span>
+        <span class="kicker__label">The Build</span>
+      </div>
+      <div class="section-head reveal">
+        <h2>Built from the ground up. Powered by the sun.</h2>
+      </div>
+
+      <div class="mojave-phases">
+        <div class="index-row reveal">
+          <span class="index-row__num">Phase I</span>
+          <h3>Off-grid ultra-fast charging.</h3>
+          <p>
+            Phase I delivers ultra-fast charging under a custom timber canopy, powered entirely
+            by an on-site solar array and battery energy storage system. The entire site
+            operates independently of the electrical grid, engineered by
+            <a href="https://carbondc.io" target="_blank" rel="noopener">Carbon DC</a>, whose
+            off-grid platform is already operating at multiple sites across California's desert
+            corridors. Fresh food and drinks are served from our on-site Rivian EDV food truck,
+            with desert-native landscaping and shaded seating that round out the experience.
+          </p>
+        </div>
+        <div class="index-row reveal">
+          <span class="index-row__num">Phase II</span>
+          <h3>The full Rangeway experience.</h3>
+          <p>
+            Phase II brings a climate-controlled driver's lounge with a staffed cafe,
+            comfortable seating, comfortable restrooms, and on-site coffee roasting from
+            <a href="https://redcanyonroasting.co" target="_blank" rel="noopener">Red Canyon Roasting Company</a>.
+            The lounge is coming shortly after launch.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section section-cream">
-    <div class="container-narrow reveal">
-      <p class="eyebrow">Phase I</p>
-      <h2>Built from the ground up. Powered by the sun.</h2>
-      <p class="prose-lg">
-        Phase I delivers ultra-fast charging under a custom timber canopy, powered entirely by an on-site solar array and battery energy storage system. The entire site operates independently of the electrical grid, engineered by <a href="https://carbondc.io" target="_blank" rel="noopener">Carbon DC</a>, whose off-grid platform is already operating at multiple sites across California's desert corridors.
-      </p>
-      <p class="prose-lg">
-        Fresh food and drinks are served from our on-site Rivian EDV food truck, with desert-native landscaping and shaded seating that round out the experience.
-      </p>
-      <p class="prose-lg muted">
-        Phase II brings the full Rangeway experience: a climate-controlled driver's lounge with a staffed cafe, comfortable seating, comfortable restrooms, and on-site coffee roasting from <a href="https://redcanyonroasting.co" target="_blank" rel="noopener">Red Canyon Roasting Company</a>. The lounge is coming shortly after launch.
-      </p>
-    </div>
-  </section>
-
-  <section class="section section-dark">
-    <div class="container-narrow text-center reveal">
-      <p class="eyebrow eyebrow-muted" style="color: var(--color-warm);">Read the full story</p>
-      <h2>Every network starts with one site. This is ours.</h2>
-      <p class="prose-lg" style="margin-top: var(--space-5); opacity: 0.85;">
-        Visit the Rangeway Mojave microsite for the full story: site stats, how the off-grid platform works, the vision behind the network, and how to follow construction progress.
-      </p>
-      <div style="margin-top: var(--space-7); display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-        <a class="btn btn-warm" href="https://rangewaymojave.com" target="_blank" rel="noopener">
-          Visit Rangeway Mojave
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="13 6 19 12 13 18" />
-          </svg>
-        </a>
-        <a class="btn btn-ghost" href="/network">Explore the Network</a>
+  <section class="section band-dark">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">03</span>
+        <span class="kicker__label">The Full Story</span>
+      </div>
+      <div class="mojave-story reveal">
+        <h2>Every network starts with one site. This is ours.</h2>
+        <div class="mojave-story__side">
+          <p>
+            Visit the Rangeway Mojave microsite for the full story: site stats, how the
+            off-grid platform works, the vision behind the network, and how to follow
+            construction progress.
+          </p>
+          <div class="mojave-story__ctas">
+            <a class="btn btn-warm" href={LINKS.mojaveMicrosite} target="_blank" rel="noopener">
+              Visit Rangeway Mojave
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="13 6 19 12 13 18" />
+              </svg>
+            </a>
+            <a class="btn btn-ghost" href="/network">Explore the Network</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -87,5 +186,105 @@ import PageHero from "../components/PageHero.astro";
     flex-wrap: wrap;
     gap: var(--space-3);
     margin-top: var(--space-6);
+  }
+
+  .mojave-raise__grid,
+  .mojave-story__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: end;
+  }
+
+  .mojave-raise__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: end;
+  }
+
+  .mojave-raise__grid h2 {
+    max-width: 14ch;
+  }
+
+  .mojave-raise__side p {
+    margin: 0 0 var(--space-6);
+    color: var(--color-text-muted);
+    font-size: 1.08rem;
+    line-height: 1.7;
+    max-width: 46ch;
+  }
+
+  .mojave-raise__ctas,
+  .mojave-story__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .mojave-corridor {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: start;
+  }
+
+  .mojave-corridor h2 {
+    max-width: 13ch;
+  }
+
+  .mojave-corridor__body p {
+    font-size: var(--fs-body-lg);
+    line-height: 1.7;
+    margin: 0 0 var(--space-5);
+    max-width: 52ch;
+  }
+
+  .mojave-corridor__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .mojave-phases {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .mojave-phases .index-row p a {
+    color: var(--accent-on-light);
+    font-weight: 600;
+    border-bottom: 1px solid rgba(232, 146, 58, 0.32);
+    padding-bottom: 1px;
+  }
+
+  .mojave-phases .index-row p a:hover {
+    border-bottom-color: var(--accent-on-light);
+  }
+
+  .mojave-story {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: end;
+  }
+
+  .mojave-story h2 {
+    max-width: 15ch;
+  }
+
+  .mojave-story__side p {
+    margin: 0 0 var(--space-6);
+    color: var(--fg-on-dark-2);
+    font-size: 1.08rem;
+    line-height: 1.7;
+    max-width: 46ch;
+  }
+
+  @media (max-width: 900px) {
+    .mojave-raise__grid,
+    .mojave-corridor,
+    .mojave-story {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
   }
 </style>

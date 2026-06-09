@@ -17,54 +17,60 @@ colors:
   ash-400: "#999999"
   ash-600: "#666666"
 typography:
+  mega:
+    fontFamily: "Raleway, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+    fontSize: "clamp(3.4rem, 11vw, 9.5rem)"
+    fontWeight: 800
+    lineHeight: 0.92
+    letterSpacing: "-0.045em"
   display:
     fontFamily: "Raleway, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
-    fontSize: "clamp(3.6rem, 8vw, 6.2rem)"
-    fontWeight: 700
-    lineHeight: 0.95
-    letterSpacing: "-0.05em"
+    fontSize: "clamp(3rem, 7.5vw, 7rem)"
+    fontWeight: 800
+    lineHeight: 0.92
+    letterSpacing: "-0.045em"
   headline:
     fontFamily: "Raleway, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
-    fontSize: "clamp(2.6rem, 5vw, 4rem)"
-    fontWeight: 700
-    lineHeight: 1.02
-    letterSpacing: "-0.04em"
+    fontSize: "clamp(2.6rem, 5.6vw, 4.6rem)"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "-0.035em"
   title:
     fontFamily: "Raleway, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
-    fontSize: "clamp(2.2rem, 4vw, 3.45rem)"
-    fontWeight: 700
-    lineHeight: 1.02
-    letterSpacing: "-0.04em"
+    fontSize: "clamp(2.3rem, 4.6vw, 3.9rem)"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "-0.035em"
   subtitle:
     fontFamily: "Raleway, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
-    fontSize: "clamp(1.6rem, 3vw, 2.2rem)"
+    fontSize: "clamp(1.5rem, 2.6vw, 2rem)"
     fontWeight: 700
     lineHeight: 1.25
-    letterSpacing: "-0.03em"
+    letterSpacing: "-0.025em"
   body:
     fontFamily: "Source Sans 3, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
     fontSize: "1.08rem"
     fontWeight: 400
-    lineHeight: 1.75
+    lineHeight: 1.7
     letterSpacing: "0"
   body-lg:
     fontFamily: "Source Sans 3, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
-    fontSize: "1.28rem"
+    fontSize: "1.26rem"
     fontWeight: 400
-    lineHeight: 1.75
+    lineHeight: 1.7
     letterSpacing: "0"
-  eyebrow:
-    fontFamily: "Source Sans 3, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
-    fontSize: "0.78rem"
+  kicker:
+    fontFamily: "Raleway, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+    fontSize: "0.76rem"
     fontWeight: 700
     lineHeight: 1.55
     letterSpacing: "0.22em"
   caption:
-    fontFamily: "Source Sans 3, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
-    fontSize: "0.86rem"
-    fontWeight: 400
+    fontFamily: "Raleway, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+    fontSize: "0.72rem"
+    fontWeight: 600
     lineHeight: 1.55
-    letterSpacing: "0"
+    letterSpacing: "0.16em"
 rounded:
   pill: "999px"
   xl: "32px"
@@ -86,273 +92,302 @@ spacing:
 components:
   button-primary:
     backgroundColor: "{colors.hearth-amber}"
-    textColor: "{colors.stovepipe-charcoal}"
+    textColor: "{colors.blackpine-ink}"
     typography: "{typography.body}"
     rounded: "{rounded.pill}"
     padding: "14px 26px"
     height: "52px"
   button-primary-hover:
     backgroundColor: "{colors.hearth-amber-lite}"
-    textColor: "{colors.stovepipe-charcoal}"
+    textColor: "{colors.blackpine-ink}"
   button-dark:
-    backgroundColor: "{colors.stovepipe-charcoal}"
-    textColor: "{colors.paper-white}"
+    backgroundColor: "{colors.blackpine-ink}"
+    textColor: "{colors.drift-cream}"
     typography: "{typography.body}"
     rounded: "{rounded.pill}"
     padding: "14px 26px"
     height: "52px"
   button-ghost:
-    backgroundColor: "{colors.paper-white}"
-    textColor: "{colors.paper-white}"
+    backgroundColor: "transparent"
+    textColor: "{colors.drift-cream}"
     typography: "{typography.body}"
     rounded: "{rounded.pill}"
     padding: "14px 26px"
     height: "52px"
   button-outline:
-    backgroundColor: "{colors.adobe-cream}"
-    textColor: "{colors.stovepipe-charcoal}"
+    backgroundColor: "transparent"
+    textColor: "currentColor"
     typography: "{typography.body}"
     rounded: "{rounded.pill}"
     padding: "10px 20px"
     height: "44px"
-  button-outline-hover:
-    backgroundColor: "{colors.stovepipe-charcoal}"
-    textColor: "{colors.adobe-cream}"
-  format-card:
-    backgroundColor: "{colors.paper-white}"
-    textColor: "{colors.stovepipe-charcoal}"
-    typography: "{typography.body}"
-    rounded: "{rounded.xl}"
-    padding: "26px 28px 28px"
-  nav-pill:
-    backgroundColor: "{colors.blackpine-ink}"
-    textColor: "{colors.paper-white}"
-    typography: "{typography.body}"
-    rounded: "{rounded.pill}"
-    padding: "10px 14px 10px 20px"
-    height: "64px"
-  eyebrow-tag:
+  masthead:
     backgroundColor: "{colors.adobe-cream}"
-    textColor: "{colors.hearth-amber}"
-    typography: "{typography.eyebrow}"
-    rounded: "{rounded.pill}"
-    padding: "0"
-  hero-pill:
+    textColor: "{colors.stovepipe-charcoal}"
+    typography: "{typography.caption}"
+    rounded: "0"
+    height: "76px"
+  masthead-cta:
     backgroundColor: "{colors.hearth-amber}"
-    textColor: "{colors.hearth-amber-lite}"
+    textColor: "{colors.blackpine-ink}"
     typography: "{typography.caption}"
     rounded: "{rounded.pill}"
-    padding: "7px 14px 7px 12px"
+    padding: "8px 20px"
+    height: "42px"
+  kicker-unit:
+    backgroundColor: "transparent"
+    textColor: "{colors.stovepipe-charcoal}"
+    typography: "{typography.kicker}"
+    rounded: "0"
+    padding: "16px 0 0"
+  figure-plate:
+    backgroundColor: "transparent"
+    textColor: "{colors.stovepipe-charcoal}"
+    typography: "{typography.caption}"
+    rounded: "{rounded.xs}"
+    padding: "0"
   contact-input:
-    backgroundColor: "{colors.adobe-cream}"
+    backgroundColor: "transparent"
     textColor: "{colors.stovepipe-charcoal}"
     typography: "{typography.body}"
-    rounded: "{rounded.sm}"
-    padding: "12px 14px"
+    rounded: "0"
+    padding: "10px 2px 12px"
 ---
 
-# Design System: Rangeway
+# Design System: Rangeway "Folio"
 
 ## 1. Overview
 
-**Creative North Star: "The High Desert Lodge."**
+**Creative North Star: "The High Desert Folio."**
 
-Rangeway's visual system is the lobby of a quiet hospitality property at dusk. Warm amber light pools across cream plaster walls, timber and stone do the structural work, and the hardware (charging, kilowatts, equipment) is present but recessed. The system speaks in the voice of a senior hotelier, not a startup founder: plainspoken, declarative, generous with space. Every page treats the stop as the product, the charger as a consequence.
+The Rangeway site is a printed hospitality brand book brought to the web. Pages read like
+chapters in a development prospectus for a premium property: hairline rules, numbered
+sections, captioned photographic plates, oversized Raleway display type, and generous cream
+negative space. At the emotional beats (the cover, the Mojave raise, the Indoor Comfort
+Guarantee, the closing chapters) the folio goes cinematic: full-bleed photography on
+Blackpine Ink, type set large over scrimmed imagery.
 
-Color is restrained on the surface and committed at the accents. **Hearth Amber** (`#F4A855`) is the only saturated voice in the palette and earns its place by appearing rarely: the eyebrow rule above section titles, the hero pill, the primary CTA, the focus ring, the moment of emphasis inside a quote. Cream (`#F5F1EB`) and Charcoal (`#2D2D2D`) carry the rest. Both light and dark surfaces are first-class: dark sections feel like the lobby after sundown, lit by amber radial washes; light sections feel like the same room at mid-morning.
-
-Type is the editorial spine. **Raleway** at display weight (`-0.05em` letter-spacing, `0.95` line-height) carries the architecture; **Source Sans 3** at `1.75` line-height carries the prose. The eyebrow is a load-bearing element, not a decoration: a hairline rule, then `0.22em` tracked uppercase warm text, then the headline. It's the system's signature unit of pacing, and it appears on nearly every section.
-
-This system explicitly rejects the four anti-references in [PRODUCT.md](PRODUCT.md): Tesla-Supercharger utility cold, generic SaaS-cream landing-page reflex, REI outdoor-gear green-and-brown, and ultra-luxe champagne-and-marble distance. The shared sin across all four is feeling abstract or category-coded. Rangeway is specific to itself.
+The voice is unchanged: a senior hotelier, not a startup founder. The system still rejects
+the four anti-references in [PRODUCT.md](PRODUCT.md): Tesla-utility cold, SaaS-cream
+landing-page reflex, REI green-and-brown, and champagne-and-marble luxe.
 
 **Key Characteristics:**
-- **Single-accent palette.** Hearth Amber on cream and charcoal. No secondary, no tertiary.
-- **Editorial pacing.** Eyebrow + headline + lede, repeated as the primary section opener.
-- **Pill geometry on interaction, soft generous radii on containers.** Buttons and tags are pills (`999px`); cards are `32px`.
-- **Both schemes first-class.** Light is the day surface, dark is the evening surface. Neither is a fallback.
-- **Long, soft, ambient shadows** that read as light pooling, not as UI elevation.
-- **Backdrop blur reserved for floating chrome** (nav, captions, pills over imagery), never decorative on flat sections.
-- **No statistics, no logo strips, no hero-metric template.** Quiet confidence over hype.
+- **Editorial backbone.** Every chapter opens with the Kicker Unit: a full-width hairline
+  rule, an index on the left, a tracked-uppercase label on the right.
+- **Asymmetric grids.** Headlines sit in a wide left column; ledes, body copy, and CTAs sit
+  in a narrower right column, aligned to the headline's baseline. Nothing is centered.
+- **Photography as plates.** Images are square-cornered (`4px`), and carry a hairline-ruled
+  caption row beneath: an index in the accent color, a place label on the right.
+- **Light/dark rhythm.** The page base is a single flat Adobe Cream; structure comes from
+  hairlines and ink bands, not alternating cream/white stripes. Dark bands are flat
+  Blackpine Ink or full-bleed scrimmed photography.
+- **Two accents, one per surface.** Hearth Amber accents dark surfaces and buttons.
+  Piñon Sage accents small text on light surfaces (see The Accent Contrast Rule).
+- **Numbered everything.** Chapters, list rows, menu items, format pages, and plates all
+  carry tabular index numbers. The ghost numeral (`.folio-num`, outlined, oversized) is the
+  system's graphic flourish.
 
-## 2. Colors: The High Desert Palette
+## 2. Colors
 
-A restrained four-color foundation: one warm accent, two neutrals (light and dark), one secondary natural. Saturation is low across the system and concentrated in a single hue.
+The palette is unchanged from the previous system: Hearth Amber, the charcoal/ink neutrals,
+the cream family, Piñon Sage, and the ash grays. What changed is the assignment.
 
-### Primary
-- **Hearth Amber** (`#F4A855`): the brand's voice. Used for the eyebrow rule and uppercase eyebrow text, the primary button gradient (paired with `#F7C27A` Lantern Glow at the highlight), focus rings, hover states, the hero status pill, and the warm radial wash that lights every section. Always paired with a darker companion (`#E8923A`) when a gradient is used.
-- **Deep Hearth Ember** (`#E8923A`): the darker amber. Used for hover-state companion in the primary gradient, eyebrow text on cream cards (where AA contrast on `#F5F1EB` requires it), and `<em>` inside large pull-quotes.
-- **Lantern Glow** (`#F7C27A`): the lighter amber. Hero pill text on dark imagery, primary button gradient highlight, soft accents over deep-charcoal surfaces.
+### The Accent Contrast Rule (supersedes prior amber-on-cream guidance)
 
-### Secondary (used sparingly)
-- **Piñon Sage** (`#4A5D52`): the only non-amber chromatic color, defined but used quietly. Reserved for moments where a second hue is necessary (illustrative chrome, secondary tags). It must never compete with Hearth Amber for attention.
+Measured ratios: Hearth Amber Deep (`#E8923A`) on Adobe Cream is **2.17:1**, which fails
+WCAG AA at every size. Piñon Sage (`#4A5D52`) on Adobe Cream is **6.27:1** (passes AA for
+normal text). Hearth Amber (`#F4A855`) on Blackpine Ink is **9.17:1** (passes), and ink on
+amber (buttons) is the same 9.17:1.
 
-### Neutral (Cream family, light surfaces)
-- **Adobe Cream** (`#F5F1EB`): the principal warm surface. Section background for `.section-cream`, the daytime body wash, eyebrow rule cards.
-- **Drift Cream** (`#FBF7F1`): the page top. Lighter than Adobe; appears at the start of the radial-gradient page background and in card surfaces that need to lift slightly off section cream.
-- **Adobe Cream Dim** (`#ECE6DC`): the intermediate cream. Mid-page gradient stop and section divisions where two cream surfaces meet.
+Therefore:
+- **On light surfaces**, small accent text (kicker indexes, taglines, roles, plate caption
+  indexes, accent links, `<em>` inside pull quotes) uses **Piñon Sage** via the
+  `--accent-on-light` token.
+- **On dark surfaces**, the same elements use **Hearth Amber** (the `.band-dark` overrides
+  and the dark `prefers-color-scheme` flip of `--accent-on-light`).
+- **Amber on light surfaces is reserved for non-text use**: the primary button surface,
+  focus rings, and decorative marks.
 
-### Neutral (Charcoal family, dark surfaces)
-- **Stovepipe Charcoal** (`#2D2D2D`): the principal dark text color and the dark-button surface.
-- **Blackpine Ink** (`#171514`): the deepest surface. Footer, hero behind imagery, `.section-dark` floor. Always carries an amber radial wash to keep it from feeling cold.
+### Surfaces
 
-### Neutral (Functional grays, text + borders)
-- **Ash 600** (`#666666`): muted body text.
-- **Ash 400** (`#999999`): tertiary captions, placeholders.
-- **Ash 200** (`#E5E5E5`): hairlines on light surfaces (paired with cream).
-- **Ash 100** (`#F8F7F5`): rarely-used near-white surface for raised inputs.
+- **Adobe Cream** (`#F5F1EB`): the single flat page base (`--surface-page`).
+- **Adobe Cream Dim** (`#ECE6DC`): `--surface-alt`, used sparingly for alternate panels.
+- **Drift Cream** (`#FBF7F1`): `--surface-raised` and text-on-ink (`--fg-on-dark-*`).
+- **Blackpine Ink** (`#171514`): dark bands, masthead menu, footer, photographic scrims.
+- Borders are tinted rgba hairlines: `rgba(45,45,45,0.14)` (light), `rgba(45,45,45,0.32)`
+  (strong, used for kicker rules), `rgba(251,247,241,0.16)` on ink.
 
-Borders are not gray. They are tinted rgba: `rgba(45, 45, 45, 0.08)` on light, `rgba(255, 255, 255, 0.08)` on dark. Hairlines stay tied to the dominant text color rather than introducing a third neutral.
-
-### Named Rules
-
-**The Single Voice Rule.** Hearth Amber is the only saturated color on any given screen. It carries roughly 5–10% of surface area and never competes with itself across sections. If two sections in sequence both need amber emphasis, the second one yields.
-
-**The Tinted Neutral Rule.** No `#000` and no `#FFF` as text or surface. Both ends of the value scale are warm-tinted: `Blackpine Ink` (`#171514`) at the floor, `Drift Cream` (`#FBF7F1`) at the ceiling. The page itself uses a radial-gradient wash so even the "background" is never a flat neutral.
-
-**The Lit Surface Rule.** Every dark surface in this system must carry a warm radial wash (e.g. `radial-gradient(circle at top left, rgba(244, 168, 85, 0.18), transparent 34%)`). Charcoal alone reads as utility cold; charcoal with amber light reads as a hospitality lobby after sundown.
+Dark `prefers-color-scheme` remains first-class: surfaces flip via the semantic tokens.
 
 ## 3. Typography
 
-**Display Font:** Raleway (system-ui fallback)
-**Body Font:** Source Sans 3 (system-ui fallback)
-**Label/Mono Font:** none — labels share the body family, distinguished by tracking and case.
+**Display Font:** Raleway. **Body Font:** Source Sans 3.
 
-**Character:** Raleway is geometric but warm at its high weights, with a slight humanist flex at the terminals. It carries scale beautifully (the display step uses `-0.05em` tracking and `0.95` line-height to compress the headline into a sculptural block). Source Sans 3 below it is unfussy, slightly condensed, with a tall x-height that survives at small captions. The pairing reads as editorial without ever tipping into magazine-pastiche.
+The folio pushes Raleway harder than the previous system: weight **800** at display and
+headline sizes, and a new **mega** step (`clamp(3.4rem, 11vw, 9.5rem)`) used twice only:
+the homepage cover headline and the footer wordmark. Labels (kicker, captions, nav links)
+moved from Source Sans 3 to **Raleway 600–700 tracked uppercase**, which gives the chrome a
+drafted, printed feel.
 
 ### Hierarchy
 
-- **Display** (Raleway 700, `clamp(3.6rem, 8vw, 6.2rem)`, `0.95` line-height, `-0.05em` letter-spacing): hero headline only. `text-wrap: balance`. Always at most two lines, broken at a meaningful caesura ("Travel Farther, / Stop Better.").
-- **Headline** (Raleway 700, `clamp(2.6rem, 5vw, 4rem)`, `1.02` line-height, `-0.04em`): page-level H1 outside the hero. Used on internal pages.
-- **Title** (Raleway 700, `clamp(2.2rem, 4vw, 3.45rem)`, `1.02` line-height, `-0.04em`): section openers (H2). Maximum width ~22ch on pull quotes.
-- **Subtitle** (Raleway 700, `clamp(1.6rem, 3vw, 2.2rem)`, `1.25` line-height, `-0.03em`): subsection or card-level (H3).
-- **Body** (Source Sans 3 400, `1.08rem`, `1.75` line-height, `0` tracking): default prose. Maximum line length ~52ch in long-form passages, ~65ch where text fills a column.
-- **Body Large** (Source Sans 3 400, `1.28rem`, `1.75` line-height): leding paragraphs and important first paragraphs. One step up from body for emphasis without bolding.
-- **Eyebrow** (Source Sans 3 700, `0.78rem`, `0.22em` tracking, uppercase, Hearth Amber): the section opener label. Always paired with a leading 38px hairline rule (`.eyebrow::before`). Used at the top of nearly every section.
-- **Caption** (Source Sans 3 400, `0.86rem`, `1.55` line-height): image captions, footer fine print, secondary metadata.
+- **Mega** (Raleway 800): homepage cover headline, footer wordmark. Stacked lines; one line
+  may take the accent color (e.g. "Stop Better." in Hearth Amber over the ink scrim).
+- **Display** (Raleway 800, `clamp(3rem, 7.5vw, 7rem)`): chapter-opener H1 on interior pages.
+- **Headline / Title** (Raleway 800): section H2s, max-width `12–16ch`, set in the wide
+  column of the asymmetric grid.
+- **Pull quote** (`.pullquote`, Raleway 800, `clamp(1.9rem, 4vw, 3.4rem)`): thesis moments.
+  `<em>` renders in the accent color with normal style, never italic.
+- **Body / Body Large** (Source Sans 3 400): unchanged. Line length `42–56ch` in columns.
+- **Kicker** (Raleway 700, `0.76rem`, `0.22em` tracked uppercase): the chapter label.
+- **Caption** (Raleway 600, `0.72rem`, `0.16em` tracked uppercase): plate captions, nav
+  links, footer column headers, micro labels.
 
-### Named Rules
+## 4. Layout Grammar (new in Folio)
 
-**The Eyebrow Rule.** Section openers begin with the eyebrow unit: a 38px hairline rule, then the eyebrow text in tracked uppercase Hearth Amber, then the headline. This sequence is the most-repeated unit in the system. Skipping it makes a section feel orphaned. Doubling it (an eyebrow inside a card inside an eyebrow-led section) makes the page feel cluttered.
+### The Kicker Unit (signature)
 
-**The Display Tracking Rule.** Headlines at H1/H2 size always use negative letter-spacing in the `-0.04em` to `-0.05em` range. Body and small text always use `0`. Never apply heading tracking to body sizes; never let display sizes default to `normal`.
+```html
+<div class="kicker">
+  <span class="kicker__index">02</span>
+  <span class="kicker__label">The Network</span>
+</div>
+```
 
-**The Italic Pull Rule.** Inside a Title-sized pull quote, an `<em>` is rendered Hearth Amber Deep with `font-style: normal` (not italic). The color emphasis replaces italics; mixing both reads as overdesigned. See `.positioning__quote em`.
+A full-width `1px` rule (`--color-border-strong`), `16px` of air, then index left (accent
+color, tabular numerals) and label right (text color, tracked uppercase). Every major
+section opens with one. Homepage chapters are numbered 01–07; interior pages restart at 01.
+The campaign raise band uses words instead of numbers ("Now Open / The Mojave Raise") to
+mark it as an interlude outside the chapter sequence.
 
-**The Pill Casing Rule.** Tracked-uppercase labels (eyebrow, captions on cards, form field labels, scroll cue) live at `0.12em–0.22em` letter-spacing, never below `0.08em`. If a label is uppercased it must be tracked.
+### The Asymmetric Section Head
 
-## 4. Elevation
+`.section-head`: a `7fr / 4fr` grid, headline left, lede bottom-right aligned to the
+baseline (`align-items: end`). Collapses to one column under `900px`. Most sections follow
+the same two-column geometry for their body content (`7/4`, `6/5`, or `5/6` depending on
+text weight).
 
-The system uses **soft ambient shadow plus tonal layering**, never structural lift. Shadows here are a metaphor for warm light pooling under a hanging fixture, not a UI elevation hierarchy. Cards do not "float above" the surface — they "rest on" it. The shadows are long (`50px`–`90px` y-offset blur) and low alpha (`0.10`–`0.16`), which reads as ambient light rather than a hard drop.
+### Figure Plates
 
-The hero, footer, and `.section-dark` surfaces are flat, lit instead by amber radial-gradient washes from a top-left light source. Depth on dark surfaces is conveyed by gradient and atmosphere, not shadow.
+```html
+<figure class="fig">
+  <div class="fig__frame"><img ... /></div>
+  <figcaption class="fig__caption">
+    <strong>02</strong><span>Waystation · Joshua Tree</span>
+  </figcaption>
+</figure>
+```
 
-### Shadow Vocabulary
+Square-cornered (`4px`) frames; caption row below with a top hairline, index in the accent
+color, place label right-aligned. Real place names only.
 
-- **shadow-soft** (`0 18px 50px rgba(24, 18, 14, 0.10)`): default card resting state on light surfaces.
-- **shadow** (`0 24px 80px rgba(24, 18, 14, 0.14)`): media containers, large cards, the our-story image frame.
-- **shadow-warm** (`0 16px 40px rgba(244, 168, 85, 0.24)`): under primary CTA buttons. The amber shadow signals "lit from within" and matches the hearth-amber gradient surface above it.
-- **shadow-dark** (`0 14px 34px rgba(23, 21, 20, 0.18)`): dark CTA on light section.
-- **shadow-nav** (`0 20px 60px rgba(12, 10, 9, 0.28)`): scrolled-state nav bar; the deepest shadow in the system, used only on the nav-pill when it docks.
-- **format-card hover** (`0 36px 90px rgba(0, 0, 0, 0.16)`): the hover step from `0 28px 80px rgba(0, 0, 0, 0.10)`. The card lifts `4px` and the shadow lengthens.
+### Index Rows
 
-### Named Rules
+`.index-row`: the folio's replacement for card grids. A `1fr / 5fr / 6fr` grid row
+(number / heading / body) with hairline tops, used for amenities, thesis points, values,
+waypoints, phases, and pillars. The container takes a closing `border-bottom`.
 
-**The Lantern Pool Rule.** Shadows are wide, soft, and long (`y-offset ≥ 14px`, `blur ≥ 34px`, `alpha ≤ 0.18` for resting states). A short, dark shadow with high alpha reads as Material Design or 2014-app drop-shadow, both of which violate the hospitality voice. If a shadow looks crisp at 100% zoom, it is too small.
+### Ghost Numerals
 
-**The No-Lift-On-Atmosphere Rule.** Sections with a radial-gradient atmospheric wash (hero, footer, `.section-dark`, `.positioning__wash`) do not contain shadowed cards. The atmosphere is doing the depth work. Adding a shadow on top reads as competing depth signals.
+`.folio-num`: outlined oversized index digits (`-webkit-text-stroke` on transparent fill)
+used as a graphic element beside asides. Decorative only, `aria-hidden` context.
+
+### Staggered Entry Grid
+
+Format entries (homepage Network section, /network) sit in a two-column grid where even
+entries drop by `clamp(40px, 6vw, 88px)` at desktop, like plates pasted on facing pages.
+
+### Cinematic Bands
+
+`.band-dark` is flat ink. The cinematic variants (`Hero`, `ClimatizeRaise feature`,
+`ComfortGuarantee`, chapter openers) layer a full-bleed photograph with an ink scrim strong
+enough to hold `--fg-on-dark-2` body text at AA wherever text actually sits. Scrims are
+ink-tinted linear gradients, never pure black.
 
 ## 5. Components
 
+### Masthead (replaces the nav pill)
+
+A full-width fixed bar, `76px`, hairline bottom border. Over heroes it is transparent with
+cream text; once scrolled past `24px`, and on all non-hero pages, it goes solid Adobe Cream
+with charcoal text. Links are Raleway tracked-uppercase micro labels with an amber hover
+underline. The mobile toggle is a pill labeled "Menu"/"Close"; the menu is a full-screen
+Blackpine Ink overlay with numbered, hairline-ruled, display-scale links.
+
+**Campaign CTA:** when `CAMPAIGN_MODE` is on (`src/config.ts`), the masthead carries a
+persistent amber "Invest in Mojave" pill (ink text, 9.17:1) linking to `CLIMATIZE_URL`.
+It also appears inside the mobile menu. Flipping the flag removes both.
+
 ### Buttons
 
-The system has four button variants, all sharing one geometry: a `999px` pill at `52px` minimum height with `14px 26px` padding (the `.btn-outline` is the small variant at `44px / 10px 20px`). Every primary action across the site uses the warm gradient.
+Unchanged geometry: `999px` pills, `52px` height. The primary is now **flat Hearth Amber**
+with **Blackpine Ink** text (no gradient); hover swaps to Hearth Amber Lite with a `1px`
+lift. Dark, ghost, and outline variants as before. The warm shadow remains.
 
-- **Shape:** pill (`border-radius: 999px`), `52px` minimum height, `14px 26px` padding, Source Sans 3 700 at `1rem`.
-- **Primary (`.btn-warm`, `.btn-primary`):** charcoal text on a `135deg` Hearth Amber gradient (`#F4A855 → #F7C27A`). Carries `shadow-warm` to amplify the lit-from-within feel. Hover swaps to a brighter Lantern-Glow-led gradient (`#F8C987 → #E8923A`) and lifts `1px`. The amber-on-charcoal pairing keeps text contrast high while preserving warmth.
-- **Dark (`.btn-dark`):** white text on a `135deg` charcoal-to-ink gradient (`#2D2D2D → #171514`) with `shadow-dark`. Used as the secondary on light surfaces where the warm primary already exists nearby.
-- **Ghost (`.btn-ghost`):** white text on `rgba(255, 255, 255, 0.06)` with a `rgba(255, 255, 255, 0.26)` hairline border. Reserved for dark surfaces (hero, footer); never used on cream.
-- **Outline (`.btn-outline`):** smaller (`44px / 10px 20px`), inherits color, hairline border. Hover inverts: charcoal fill, cream text. Used for tertiary actions and on form inquiry rows.
+### Chapter Opener (PageHero)
 
-State change is exclusively `transform: translateY(-1px)` plus a color shift, transitioning over `0.2s` on the project's standard ease curve. No scale jumps.
+Interior pages open with a full-bleed image (`min-height: min(78vh, 820px)`), an on-image
+kicker (hairline at `rgba(251,247,241,0.42)`), a Display-sized H1 in the wide column, lede
+in the right column, optional CTA slot, and a "Plate" caption strip beneath the image.
 
-### Arrow Link / Inline Link
+### Format Entry (replaces Format Card)
 
-- **Style:** Source Sans 3 700 at `0.92rem` with the project's heading family, paired with a 14px chevron SVG. Color inherits from context (text color in body, white on dark sections). Hover shifts to Hearth Amber Deep and the chevron translates `3px` right.
-- **No underline at rest.** Underlines appear only in legal/disclosure prose where clickability cannot be implied by adjacency.
+A figure plate (4:3) with caption, then name at `1.7–2.3rem` Raleway 800, sage tagline,
+muted description, arrow link. No card surface, no border radius, no shadow; the hairline
+caption is the frame. Hover scales the image `1.035` and warms the arrow link.
 
-### Cards (Format Card)
+### Forms
 
-- **Corner Style:** generous `32px` (`{rounded.xl}`) — the largest radius in the system, reserved for image-led cards.
-- **Background:** `Paper White` (light scheme) or `surface-raised` (dark scheme). Border is the tinted rgba hairline, not gray.
-- **Shadow Strategy:** `0 28px 80px rgba(0,0,0,0.10)` at rest, `0 36px 90px rgba(0,0,0,0.16)` on hover. The card lifts `-4px` on hover and the inner image scales `1.04` over `0.6s`.
-- **Internal Padding:** `26px 28px 28px`. Slightly more bottom padding than top to give the description and arrow-link room to breathe above the implicit bottom edge.
-- **Composition:** image at `aspect-ratio: 16 / 10` filling the top half, body below. Image carries an optional pill-tag (`Pill` overlay, charcoal `0.7` background with `8px` blur) sitting at `top-left: 18px`.
+Editorial underline fields: no boxes. Transparent surface, `1px` bottom hairline at
+`--color-border-strong`, Raleway tracked-uppercase labels above. Focus thickens the rule
+with the accent color. Same FormSubmit action and fields as before.
 
-### Inputs / Form Fields
+### Footer
 
-- **Style:** Source Sans 3 400 at `1rem`, `12px 14px` padding, `14px` radius (`{rounded.sm}`), Adobe Cream surface, tinted-rgba hairline border. The cream surface inside cream sections distinguishes itself by shadow and label, not by stark fill contrast.
-- **Labels:** Raleway 600, `0.78rem`, tracked uppercase at `0.12em`. Always above the field, never floating, never inside.
-- **Focus:** border shifts to Hearth Amber, surface flips to Paper White, and a `4px` Hearth-Amber `0.14` glow ring appears. The glow is the affordance, not a focus outline.
-- **Disabled / Error:** error states haven't been built yet; when they are, follow the same focus-glow pattern using a sage or burnt-clay tint, never red.
+Blackpine Ink. Top: the tagline at headline scale beside four hairline-topped link columns
+(Explore / Company / Follow along / Reach us). Middle: the **wordmark signature**, the word
+"Rangeway" at mega scale spanning the container between hairlines. Bottom: legal row and
+the Climatize disclosure (reads `CLIMATIZE_URL` from config).
 
-### Navigation
+## 6. Campaign Mode
 
-The nav is a free-floating pill, not a bar. At rest it sits `18px` from the top, full-width container-padded, with a `rgba(32, 28, 26, 0.36)` translucent fill and a `24px` backdrop blur. Once scrolled past `40px` it docks: opacity rises to `0.88`, the `shadow-nav` appears, and the border softens.
+`src/config.ts` exports `CAMPAIGN_MODE` (boolean) and `CLIMATIZE_URL`. The flag is the only
+change required to switch states:
 
-- **Geometry:** `999px` pill, `64px` minimum height, `10px 14px 10px 20px` asymmetric padding (left padding extra for the brand mark).
-- **Links:** Source Sans 3 500, `0.95rem`, `rgba(255, 255, 255, 0.82)`. Hover fills the link with `rgba(255, 255, 255, 0.08)` and lifts color to white. Each link is a mini pill at `999px`.
-- **Brand mark:** the **PathMark** SVG (a stylized "R" path with an amber dot at the bowl junction), sized to 26px in the nav, paired with the wordmark in Raleway 700.
-- **Mobile:** at `≤1180px` the link list collapses behind a hamburger toggle. The mobile menu drops as a `24px`-radius blurred panel beneath the nav pill.
+- **On:** masthead CTA; the homepage raise band (`ClimatizeRaise variant="feature"`, the
+  cinematic Rosamond aerial) sits directly below the hero; /mojave leads with "Invest in
+  Mojave" and a dedicated raise section.
+- **Off:** no masthead CTA; the raise renders as `variant="standard"` (quiet editorial
+  section) after the thesis chapter; /mojave leads with the microsite.
 
-### Hero Pill (Status Tag)
+The footer disclosure remains in both states. Every Climatize link on the site reads from
+`CLIMATIZE_URL` so the live campaign URL can be swapped in one place.
 
-The signature attention pill that sits above the hero headline. A condensed translucent pill on dark imagery, used for time-sensitive announcements (currently the Climatize raise).
-
-- **Style:** `7px 14px 7px 12px` padding, `999px` radius. Surface is `rgba(244, 168, 85, 0.14)` over an `0.45` warm border, `10px` backdrop blur, Lantern-Glow text.
-- **Indicator:** a leading `8px` Hearth-Amber dot with a `4px` halo (`box-shadow: 0 0 0 4px rgba(244, 168, 85, 0.18)`).
-- **Hover:** background warms to `0.22`, text brightens to white, `1px` lift. The chevron translates right.
-
-### Eyebrow Unit (signature)
-
-Not a component in the React/Astro sense, but the most-reused composition in the system. It is what makes a Rangeway section recognizably Rangeway.
-
-- **Composition:** a 38px × 1px hairline rule at `currentColor`, an inline-flex gap of `10px`, then the label in Source Sans 3 700, `0.78rem`, `0.22em` tracked uppercase, Hearth Amber.
-- **Variants:** `.eyebrow--plain` removes the rule (used inside cards). On dark sections (`.section-dark .eyebrow`) the text stays Hearth Amber but the rule keeps its full opacity. On light sections, the rule sits at the warm color with `0.8` opacity.
-
-### Image Caption
-
-The pill caption that overlays photography (e.g. "Driver's Lounge · Basecamp" on the our-story image).
-
-- **Style:** `7px 11px` padding, `999px` radius, `rgba(24, 21, 20, 0.7)` surface with `8px` blur, white text, `1px` `rgba(255, 255, 255, 0.14)` border, Raleway 600 at `0.72rem`, `0.08em` tracked uppercase.
-- **Placement:** absolute `18px` from the bottom-left of the media. On mobile, drops to `12px`.
-
-## 6. Do's and Don'ts
+## 7. Do's and Don'ts
 
 ### Do:
-
-- **Do** open every section with the Eyebrow Unit (38px hairline rule + tracked-uppercase Hearth Amber label) before the headline. This is the system's signature unit of pacing.
-- **Do** keep Hearth Amber to roughly 5–10% of any screen. Eyebrows, focus rings, primary CTA, hero pill, the rare `<em>` inside a pull quote.
-- **Do** use the warm gradient (`#F4A855 → #F7C27A`) only on primary CTAs, never as a section background. The gradient earns its weight by being rare.
-- **Do** light every dark surface with a top-left amber radial wash (`rgba(244, 168, 85, 0.18)` at `34%` falloff). Cold charcoal alone reads as utility infrastructure, which is the brand's first anti-reference.
-- **Do** use long, soft, low-alpha shadows (`y-offset ≥ 14px`, `blur ≥ 34px`, `alpha ≤ 0.18`). Shadows should read as ambient lantern light, not as UI lift.
-- **Do** keep body line length at `52ch–65ch`. Wider runs collapse the editorial pacing.
-- **Do** treat both light and dark schemes as first-class surfaces. Test every component in both. Both should feel like the same lobby, at different hours.
-- **Do** caption photography with the pill caption (`Driver's Lounge · Basecamp`). Specific real-place names in the chrome reinforce the "specific over generic" principle from PRODUCT.md.
-- **Do** use `text-wrap: balance` on every headline and pull quote. The display sizes break unforgivably without it.
+- **Do** open every section with the Kicker Unit. It is the system's signature pacing.
+- **Do** keep the asymmetric two-column geometry; if a section wants centering, it is
+  probably a kicker plus a wide-column headline instead.
+- **Do** caption photography as plates with real place names.
+- **Do** use sage for small accent text on cream, amber for accent text on ink, and amber
+  surfaces (with ink text) for primary actions. Never amber small text on cream (2.17:1).
+- **Do** number lists, chapters, plates, and menu items with tabular numerals.
+- **Do** collapse all motion under `prefers-reduced-motion` (the global reveal and the hero
+  line stagger already do).
+- **Do** use `text-wrap: balance` on headlines.
 
 ### Don't:
-
-- **Don't** use raw `#000` or `#FFF` for any surface or text. Use `Blackpine Ink` (`#171514`) and `Drift Cream` (`#FBF7F1`). Untinted neutrals are the SaaS-cream landing-page reflex.
-- **Don't** use `border-left` or `border-right` greater than `1px` as a colored stripe on cards, callouts, or list items. Use full borders, background tints, or leading numbers instead.
-- **Don't** apply `background-clip: text` to gradients. Headlines are solid color (text or paper-white). Emphasis is weight, scale, or warm `<em>`.
-- **Don't** introduce a second saturated color. Piñon Sage exists in tokens but must never compete with Hearth Amber for the eye. No teal, no navy, no signal-red, no indigo.
-- **Don't** build a hero-metric section ("100+ Locations / 350kW / 24/7"). PRODUCT.md prohibits statistics. The hero earns belief through imagery and copy, not numbers.
-- **Don't** build "trusted by" logo strips, three-icon feature grids with circular icon backgrounds, gradient-text marketing headlines, or purple-and-mint SaaS palettes. Every one of these belongs to the generic-startup-landing anti-reference.
-- **Don't** use earthy-green-and-warm-brown REI palettes. Rangeway lives outdoors but is hospitality, not gear. Sage stays muted; brown is replaced by warm cream.
-- **Don't** use champagne-on-marble luxury cues (gold serif Didone, taupe-on-ivory spacing, all-caps small-tracked labels framed in thin gold rules). That's the ultra-luxe anti-reference; Rangeway is warm and present, not aloof.
-- **Don't** use em dashes or `--` in any rendered copy. Use commas, colons, semicolons, periods, or parentheses.
-- **Don't** start sentences with "And." Don't use sentence fragments. Don't use hashtags. Don't use statistics. Don't use "stations" or "units" or "rooms" or "cabins". Formats are **Trailhead**, **Waystation**, **Basecamp**.
-- **Don't** add CSS layout-property animations (`width`, `height`, `padding`). Animate `transform` and `opacity`. Use `--ease-out: cubic-bezier(0.22, 1, 0.36, 1)` or the standard ease, never bounce or elastic.
-- **Don't** stack two sections with the same background. Adobe Cream → Drift Cream gradient page wash → cream section → cream-dim section is fine; cream → cream → cream reads as undifferentiated. Vary the surface.
-- **Don't** put a shadow on a card inside an atmospheric (radial-wash) section. The atmosphere is the depth signal; competing shadows muddy it.
-- **Don't** rely on emoji for personality, lowercase-friend tone for warmth, or quirky microcopy for delight. Warmth lives in materials, light, and place. Confidence carries the voice.
+- **Don't** reintroduce the old grammar: centered heroes, alternating cream/white bands,
+  narrow centered prose columns, rounded image cards with drop shadows, the floating nav
+  pill, or the hero status pill.
+- **Don't** use raw `#000`/`#FFF`; use Blackpine Ink and Drift Cream.
+- **Don't** introduce hues beyond the palette. Sage is the light-surface accent, not a new
+  brand color; it never appears at large scale.
+- **Don't** use em dashes or `--` in rendered copy. No sentences starting with "And." No
+  fragments, hashtags, or statistics. No "stations", "units", "rooms", or "cabins".
+- **Don't** build hero-metric strips, logo walls, or three-icon feature grids.
+- **Don't** animate layout properties; animate `transform` and `opacity` only, on the
+  standard ease curves.
+- **Don't** put text on photography without a scrim strong enough for AA at the exact spot
+  the text sits. Check both columns of the asymmetric grid, not just the headline side.

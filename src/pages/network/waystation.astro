@@ -1,175 +1,37 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import PageHero from "../../components/PageHero.astro";
-import FormatNav from "../../components/FormatNav.astro";
-
-const amenities = [
-  { title: "Ultra-fast charging", body: "A sensible array for regional and interstate routes, sized to keep a steady flow without ever feeling industrial." },
-  { title: "Climate-controlled driver's lounge", body: "Comfortable, considered space that's warm in winter, cool in summer, and welcoming year-round." },
-  { title: "Comfortable restrooms", body: "Clean, well-lit, and well-stocked, the kind you'd find at a good hotel lobby." },
-  { title: "Comfortable seating", body: "Soft chairs, work-friendly surfaces, and thoughtful lighting that make it a place to actually settle in." },
-  { title: "High-speed Wi-Fi", body: "Reliable enough to take a meeting on, and open to every driver." },
-  { title: "Local coffee, snacks, and provisions", body: "A curated pantry of local goods, with the kind of small details that turn a stop into a moment." }
-];
+import FormatPage from "../../components/FormatPage.astro";
 ---
 
-<BaseLayout
-  title="Waystation · The Network"
-  description="Streamlined comfort. Ultra-fast charging paired with a climate-controlled driver's lounge at the heart of the network."
-  image="/images/waystation-joshua-tree.jpg"
->
-  <PageHero
-    eyebrow="Waystation"
-    title="Streamlined comfort."
-    lede="Ultra-fast charging paired with a climate-controlled driver's lounge at the heart of the network, built for the longest stops."
-    image="/images/waystation-joshua-tree.jpg"
-    imageAlt="A Waystation at Joshua Tree at dusk"
-  />
-
-  <FormatNav current="waystation" />
-
-  <section class="section">
-    <div class="container format-intro">
-      <div class="reveal">
-        <p class="eyebrow">What a Waystation is</p>
-        <h2>Where the network finds its rhythm.</h2>
-      </div>
-      <div class="format-intro__body reveal">
-        <p class="prose-lg">
-          The Waystation is Rangeway at steady state. A location that can hold a regional route on
-          its own, with enough capacity for a busy afternoon and enough comfort for the longest
-          stops.
-        </p>
-        <p class="prose-lg muted">
-          Every Waystation honors the Indoor Comfort Guarantee, with a climate-controlled driver's
-          lounge, comfortable restrooms, and high-speed Wi-Fi as the baseline of the experience.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-cream">
-    <div class="container">
-      <div class="reveal" style="margin-bottom: var(--space-8); max-width: 620px;">
-        <p class="eyebrow">What you'll find</p>
-        <h2>The full driver's lounge experience.</h2>
-      </div>
-      <div class="amenity-grid">
-        {amenities.map((a) => (
-          <article class="amenity reveal">
-            <h3>{a.title}</h3>
-            <p>{a.body}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="format-gallery section">
-    <div class="container">
-      <div class="gallery-grid">
-        <div class="gallery-grid__item gallery-grid__item--lg reveal">
-          <img src="/images/waystation-hawaii.jpg" alt="Waystation on the Hawaiian coast" loading="lazy" />
-        </div>
-        <div class="gallery-grid__item reveal">
-          <img src="/images/waystation-shasta.jpg" alt="Waystation near Mount Shasta" loading="lazy" style="object-position: center 100%;" />
-        </div>
-        <div class="gallery-grid__item reveal">
-          <img src="/images/trailhead-interior.jpg" alt="Warm driver's lounge interior" loading="lazy" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-dark">
-    <div class="container-narrow text-center reveal">
-      <p class="eyebrow eyebrow-muted" style="color: var(--color-warm);">Next up</p>
-      <h2>On the highest-traffic runs, a Basecamp takes over.</h2>
-      <p class="prose-lg" style="margin-top: var(--space-5); opacity: 0.85;">
-        More charging, more space, and a fully staffed experience that becomes the flagship of the network.
-      </p>
-      <div style="margin-top: var(--space-6);">
-        <a class="btn btn-warm" href="/network/basecamp">
-          Explore the Basecamp
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="13 6 19 12 13 18" />
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-</BaseLayout>
-
-<style>
-  .format-intro {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: var(--space-8);
-    align-items: start;
-  }
-
-  .format-intro__body p {
-    font-size: 1.15rem;
-    line-height: 1.7;
-  }
-
-  .amenity-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-6);
-  }
-
-  .amenity {
-    background: var(--surface-raised);
-    padding: var(--space-6);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
-  }
-
-  .amenity h3 {
-    font-size: 1.2rem;
-    margin-bottom: var(--space-3);
-  }
-
-  .amenity p {
-    color: var(--color-text-muted);
-    margin: 0;
-  }
-
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: repeat(2, 280px);
-    gap: var(--space-4);
-  }
-
-  .gallery-grid__item {
-    overflow: hidden;
-    border-radius: var(--radius-md);
-  }
-
-  .gallery-grid__item--lg {
-    grid-row: span 2;
-  }
-
-  .gallery-grid__item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  @media (max-width: 900px) {
-    .format-intro,
-    .amenity-grid {
-      grid-template-columns: 1fr;
-    }
-    .gallery-grid {
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(3, 240px);
-    }
-    .gallery-grid__item--lg {
-      grid-row: auto;
-    }
-  }
-</style>
+<FormatPage
+  slug="waystation"
+  num="02"
+  name="Waystation"
+  metaTitle="Waystation · The Network"
+  metaDescription="Streamlined comfort. Ultra-fast charging paired with a climate-controlled driver's lounge at the heart of the network."
+  heroTitle="Streamlined comfort."
+  heroLede="Ultra-fast charging paired with a climate-controlled driver's lounge at the heart of the network, built for the longest stops."
+  heroImage="/images/waystation-joshua-tree.jpg"
+  heroAlt="A Waystation at Joshua Tree at dusk"
+  heroCaption="Waystation · Joshua Tree, California"
+  introTitle="Where the network finds its rhythm."
+  introBody="The Waystation is Rangeway at steady state. A location that can hold a regional route on its own, with enough capacity for a busy afternoon and enough comfort for the longest stops."
+  introMuted="Every Waystation honors the Indoor Comfort Guarantee, with a climate-controlled driver's lounge, comfortable restrooms, and high-speed Wi-Fi as the baseline of the experience."
+  amenitiesTitle="The full driver's lounge experience."
+  amenities={[
+    { title: "Ultra-fast charging", body: "A sensible array for regional and interstate routes, sized to keep a steady flow without ever feeling industrial." },
+    { title: "Climate-controlled driver's lounge", body: "Comfortable, considered space that's warm in winter, cool in summer, and welcoming year-round." },
+    { title: "Comfortable restrooms", body: "Clean, well-lit, and well-stocked, the kind you'd find at a good hotel lobby." },
+    { title: "Comfortable seating", body: "Soft chairs, work-friendly surfaces, and thoughtful lighting that make it a place to actually settle in." },
+    { title: "High-speed Wi-Fi", body: "Reliable enough to take a meeting on, and open to every driver." },
+    { title: "Local coffee, snacks, and provisions", body: "A curated pantry of local goods, with the kind of small details that turn a stop into a moment." }
+  ]}
+  gallery={[
+    { src: "/images/waystation-hawaii.jpg", alt: "Waystation on the Hawaiian coast", caption: "Waystation on the coast" },
+    { src: "/images/waystation-shasta.jpg", alt: "Waystation near Mount Shasta", caption: "Waystation near Mount Shasta", position: "center 100%" },
+    { src: "/images/trailhead-interior.jpg", alt: "Warm driver's lounge interior", caption: "driver's lounge interior" }
+  ]}
+  nextTitle="On the highest-traffic runs, a Basecamp takes over."
+  nextBody="More charging, more space, and a fully staffed experience that becomes the flagship of the network."
+  nextCtaText="Explore the Basecamp"
+  nextCtaHref="/network/basecamp"
+/>

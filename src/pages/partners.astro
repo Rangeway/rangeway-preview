@@ -94,43 +94,54 @@ const partnerGroups = [
 >
   <PageHero
     eyebrow="Partners"
+    index="Built With"
     title="Built with the best, hosted by the best."
     lede="Rangeway is a brand and an operating company. We work with hospitality operators who host us on their properties, and with technology partners who build the systems behind the experience."
     image="/images/waystation-exterior.png"
     imageAlt="A Waystation in warm evening light"
+    caption="Waystation in evening light"
   />
 
-  <section class="section section-cream host-section">
-    <div class="container host-section__inner reveal">
-      <p class="eyebrow">For hospitality operators</p>
-      <h2>Host a Rangeway on your property.</h2>
-      <p class="prose-lg">
-        Rangeway sites are designed to belong on hospitality properties: flagship resorts, lodges,
-        boutique inns, and the corridors that connect them. If you operate a property that fits the
-        brand and want to host a Rangeway, we would like to hear about it.
-      </p>
-      <p class="prose-lg muted">
-        Tell us about the property: location, size, the kind of guests it serves, and what brought
-        Rangeway to mind. We read every inquiry.
-      </p>
-      <div class="host-section__ctas">
-        <a class="btn btn-primary" href="mailto:partners@rangeway.co?subject=Host%20a%20Rangeway%20Inquiry">
-          Inquire about hosting
-        </a>
+  <section class="section band-dark">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">01</span>
+        <span class="kicker__label">For Hospitality Operators</span>
+      </div>
+      <div class="host reveal">
+        <h2>Host a Rangeway on your property.</h2>
+        <div class="host__side">
+          <p>
+            Rangeway sites are designed to belong on hospitality properties: flagship resorts,
+            lodges, boutique inns, and the corridors that connect them. If you operate a property
+            that fits the brand and want to host a Rangeway, we would like to hear about it.
+          </p>
+          <p class="host__muted">
+            Tell us about the property: location, size, the kind of guests it serves, and what
+            brought Rangeway to mind. We read every inquiry.
+          </p>
+          <a class="btn btn-warm" href="mailto:partners@rangeway.co?subject=Host%20a%20Rangeway%20Inquiry">
+            Inquire about hosting
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="reveal" style="max-width: 640px; margin-bottom: var(--space-7);">
-        <p class="eyebrow">Technology and infrastructure partners</p>
+      <div class="kicker reveal">
+        <span class="kicker__index">02</span>
+        <span class="kicker__label">Technology and Infrastructure</span>
+      </div>
+      <div class="section-head reveal">
         <h2>The systems behind the experience.</h2>
       </div>
+
       {partnerGroups.map((group) => (
         <div class="partner-group">
-          <p class="eyebrow eyebrow--plain partner-group__title reveal">{group.title}</p>
-          <ul class="partners-list">
+          <p class="partner-group__title reveal">{group.title}</p>
+          <ul class="partner-list">
             {group.partners.map((p) => (
               <li class="partner-row reveal">
                 <div class="partner-row__label">
@@ -165,43 +176,85 @@ const partnerGroups = [
     </div>
   </section>
 
-  <section class="section section-cream">
-    <div class="container-narrow text-center reveal">
-      <p class="eyebrow">Partner with Rangeway</p>
-      <h2>Want to work with us?</h2>
-      <p class="prose-lg muted" style="margin-top: var(--space-4);">
-        We are always looking for hospitality operators, real estate partners, technology providers,
-        and energy companies who share the conviction that charging should be better.
-      </p>
-      <div style="margin-top: var(--space-6);">
-        <a class="btn btn-primary" href="mailto:partners@rangeway.co?subject=Partnership%20Inquiry">
-          Email partners@rangeway.co
-        </a>
+  <section class="section">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">03</span>
+        <span class="kicker__label">Partner With Rangeway</span>
+      </div>
+      <div class="partner-cta reveal">
+        <h2>Want to work with us?</h2>
+        <div class="partner-cta__side">
+          <p>
+            We are always looking for hospitality operators, real estate partners, technology
+            providers, and energy companies who share the conviction that charging should be
+            better.
+          </p>
+          <a class="btn btn-primary" href="mailto:partners@rangeway.co?subject=Partnership%20Inquiry">
+            Email partners@rangeway.co
+          </a>
+        </div>
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .partners-list {
+  .host {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: start;
+  }
+
+  .host h2 {
+    max-width: 13ch;
+  }
+
+  .host__side p {
+    margin: 0 0 var(--space-5);
+    color: var(--fg-on-dark-2);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 50ch;
+  }
+
+  .host__muted {
+    color: var(--fg-on-dark-3);
+  }
+
+  .host__side .btn {
+    margin-top: var(--space-2);
+  }
+
+  .partner-group {
+    margin-top: clamp(48px, 6vw, 80px);
+  }
+
+  .partner-group__title {
+    font-family: var(--font-heading);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--accent-on-light);
+    margin: 0 0 var(--space-4);
+  }
+
+  .partner-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
+    border-bottom: 1px solid var(--color-border);
   }
 
   .partner-row {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: var(--space-8);
-    padding: var(--space-7) 0;
-    border-bottom: 1px solid var(--color-border);
-    align-items: start;
-  }
-
-  .partner-row:first-child {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-5) clamp(32px, 5vw, 96px);
+    padding: clamp(28px, 4vw, 48px) 0;
     border-top: 1px solid var(--color-border);
+    align-items: start;
   }
 
   .partner-row__label {
@@ -212,14 +265,16 @@ const partnerGroups = [
 
   .partner-row__mark {
     flex-shrink: 0;
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-sm);
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-xs);
     overflow: hidden;
-    background: var(--surface-alt);
+    background: var(--surface-raised);
+    border: 1px solid var(--color-border);
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 6px;
   }
 
   .partner-row__mark img {
@@ -228,27 +283,19 @@ const partnerGroups = [
     object-fit: contain;
   }
 
-  .partner-group + .partner-group {
-    margin-top: var(--space-9);
-  }
-
-  .partner-group__title {
-    margin: 0 0 var(--space-4);
-    color: var(--color-warm-deep);
-  }
-
   .partner-row h3 {
-    font-size: clamp(1.6rem, 2.4vw, 2rem);
-    font-weight: 700;
+    font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+    font-weight: 800;
     margin: 0;
   }
 
   .partner-row__role {
     font-family: var(--font-heading);
-    font-size: 0.82rem;
-    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    letter-spacing: var(--ls-allcaps);
     text-transform: uppercase;
     color: var(--color-text-muted);
+    font-weight: 700;
     margin: var(--space-2) 0 0;
   }
 
@@ -257,31 +304,29 @@ const partnerGroups = [
     line-height: 1.7;
     color: var(--color-text);
     margin: 0 0 var(--space-4);
+    max-width: 62ch;
   }
 
-  @media (max-width: 780px) {
-    .partner-row {
+  .partner-cta {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: end;
+  }
+
+  .partner-cta__side p {
+    margin: 0 0 var(--space-6);
+    color: var(--color-text-muted);
+    font-size: 1.08rem;
+    line-height: 1.7;
+    max-width: 44ch;
+  }
+
+  @media (max-width: 900px) {
+    .host,
+    .partner-row,
+    .partner-cta {
       grid-template-columns: 1fr;
-      gap: var(--space-4);
     }
-  }
-
-  .host-section__inner {
-    max-width: 720px;
-  }
-
-  .host-section__inner h2 {
-    margin-top: var(--space-4);
-  }
-
-  .host-section__inner p {
-    margin-top: var(--space-5);
-  }
-
-  .host-section__ctas {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-6);
   }
 </style>

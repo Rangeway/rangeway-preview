@@ -1,59 +1,75 @@
 ---
 ---
 
-<section class="partners section">
-  <div class="container partners__inner reveal">
-    <p class="eyebrow">Built with</p>
-    <h2>The partners behind the network.</h2>
-    <p class="partners__lede">
-      Rangeway is operated by a small team and built with partners across structure, energy,
-      software, and driver experience.
-      <a href="https://carbondc.io" target="_blank" rel="noopener">Carbon DC</a> anchors our
-      off-grid sites,
-      <a href="https://louteq.com" target="_blank" rel="noopener">LoüTeq</a> builds every
-      structure,
-      <a href="https://ekoenergetyka.com/america/" target="_blank" rel="noopener">Ekoenergetyka</a>
-      delivers the chargers, and
-      <a href="https://chargemate.ai" target="_blank" rel="noopener">ChargeMate</a> stands by
-      every driver.
-    </p>
-    <a class="btn-link partners__cta" href="/partners">
-      See all partners
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="5" y1="12" x2="19" y2="12" />
-        <polyline points="13 6 19 12 13 18" />
-      </svg>
-    </a>
+<section class="partners section band-dark">
+  <div class="container">
+    <div class="kicker reveal">
+      <span class="kicker__index">07</span>
+      <span class="kicker__label">Built With</span>
+    </div>
+
+    <div class="partners__grid reveal">
+      <h2>The partners behind the network.</h2>
+      <div class="partners__side">
+        <p class="partners__lede">
+          Rangeway is operated by a small team and built with partners across structure, energy,
+          software, and driver experience.
+          <a href="https://carbondc.io" target="_blank" rel="noopener">Carbon DC</a> anchors our
+          off-grid sites,
+          <a href="https://louteq.com" target="_blank" rel="noopener">LoüTeq</a> builds every
+          structure,
+          <a href="https://ekoenergetyka.com/america/" target="_blank" rel="noopener">Ekoenergetyka</a>
+          delivers the chargers, and
+          <a href="https://chargemate.ai" target="_blank" rel="noopener">ChargeMate</a> stands by
+          every driver.
+        </p>
+        <a class="btn-link partners__cta" href="/partners">
+          See all partners
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="13 6 19 12 13 18" />
+          </svg>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
-  .partners__inner {
-    max-width: 760px;
+  .partners__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: start;
+  }
+
+  .partners__grid h2 {
+    max-width: 13ch;
   }
 
   .partners__lede {
-    margin-top: var(--space-5);
-    color: var(--color-text);
+    margin: 0 0 var(--space-6);
+    color: var(--fg-on-dark-2);
     font-size: 1.1rem;
     line-height: 1.75;
+    max-width: 48ch;
   }
 
   .partners__lede a {
-    color: var(--color-warm-deep);
+    color: var(--color-warm);
     font-weight: 600;
-    border-bottom: 1px solid rgba(232, 146, 58, 0.32);
+    border-bottom: 1px solid rgba(244, 168, 85, 0.4);
     padding-bottom: 1px;
-    transition: color var(--dur-fast) var(--ease-standard),
-      border-color var(--dur-fast) var(--ease-standard);
   }
 
   .partners__lede a:hover {
-    color: var(--color-warm-deep);
-    border-bottom-color: var(--color-warm-deep);
+    color: var(--color-warm-lite);
+    border-bottom-color: var(--color-warm-lite);
   }
 
-  .partners__cta {
-    margin-top: var(--space-6);
+  @media (max-width: 900px) {
+    .partners__grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

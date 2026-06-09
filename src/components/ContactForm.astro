@@ -51,44 +51,43 @@ const { compact = false } = Astro.props;
   .contact-form {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: var(--space-6);
     width: 100%;
-    max-width: 560px;
+    max-width: 600px;
   }
 
   .contact-form__row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-4);
+    gap: var(--space-6);
   }
 
   .contact-form label {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
     font-family: var(--font-heading);
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
-    font-weight: 600;
-    color: inherit;
-    opacity: 0.9;
+    font-weight: 700;
+    color: var(--color-text-muted);
   }
 
+  /* Editorial fields: hairline underline, no boxes */
   .contact-form input,
   .contact-form select,
   .contact-form textarea {
     font-family: var(--font-body);
-    font-size: 1rem;
-    padding: 12px 14px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--color-border);
-    background: var(--surface-alt);
+    font-size: 1.05rem;
+    padding: 10px 2px 12px;
+    border: 0;
+    border-bottom: 1px solid var(--color-border-strong);
+    border-radius: 0;
+    background: transparent;
     color: var(--color-text);
     width: 100%;
-    transition: border-color 0.2s var(--ease-out),
-      background 0.2s var(--ease-out),
-      box-shadow 0.2s var(--ease-out);
+    transition: border-color 0.2s var(--ease-out);
     text-transform: none;
     letter-spacing: 0;
     font-weight: 400;
@@ -104,9 +103,8 @@ const { compact = false } = Astro.props;
   .contact-form select:focus,
   .contact-form textarea:focus {
     outline: none;
-    border-color: var(--color-warm);
-    background: var(--color-white);
-    box-shadow: 0 0 0 4px rgba(244, 168, 85, 0.14);
+    border-bottom-color: var(--accent-on-light);
+    box-shadow: 0 1px 0 0 var(--accent-on-light);
   }
 
   .contact-form textarea {
@@ -116,7 +114,7 @@ const { compact = false } = Astro.props;
 
   .contact-form button {
     align-self: flex-start;
-    margin-top: var(--space-3);
+    margin-top: var(--space-2);
   }
 
   .contact-form__honey {
