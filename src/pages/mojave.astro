@@ -2,6 +2,44 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import { CAMPAIGN_MODE, CLIMATIZE_URL, LINKS } from "../config";
+
+const phaseOne = [
+  {
+    title: "Charging under bamboo.",
+    body: "An open-bay charging plaza beneath a custom canopy of structurally engineered bamboo, where pulling in feels like pulling up to a property, not a parking lot."
+  },
+  {
+    title: "Solar that's already running.",
+    body: "On-site solar generation and battery energy storage, integrated into a single off-grid platform that Carbon DC already operates at sites across North America."
+  },
+  {
+    title: "Food from our food truck.",
+    body: "Fresh food and drinks served from our on-site electric food truck, because you deserve more than a vending machine while you wait."
+  },
+  {
+    title: "A lounge from day one.",
+    body: "A climate-controlled mobile lounge, solar-powered and built for the desert, giving drivers a comfortable place to sit, cool off, and wait from the day we open."
+  },
+  {
+    title: "A site shaped by place.",
+    body: "Native high-desert landscaping, shaded seating that holds the afternoon, and a layout designed to read as part of the Mojave Desert, not bolted onto it."
+  }
+];
+
+const howItWorks = [
+  {
+    title: "Solar panels generate the power.",
+    body: "A ground-mounted solar array captures Mojave sunlight across several acres of dedicated solar field, in one of the strongest solar-resource areas in the United States."
+  },
+  {
+    title: "Batteries store it.",
+    body: "A battery energy storage system holds the energy and manages load, ensuring consistent charging power regardless of time of day or cloud cover."
+  },
+  {
+    title: "Chargers deliver it.",
+    body: "Ultra-fast DC charging ports dispense the stored solar energy directly to your vehicle, and the entire system operates independently of the electrical grid."
+  }
+];
 ---
 
 <BaseLayout
@@ -104,10 +142,40 @@ import { CAMPAIGN_MODE, CLIMATIZE_URL, LINKS } from "../config";
             beyond.
           </p>
           <p>
-            Right now, those drivers have nowhere to charge in a place worth waiting in.
-            Rangeway Mojave changes that.
+            It is one of the busiest single corridors in California without a hospitality-led
+            charging stop. The drivers who use it are technically literate and early to EV
+            adoption, and they drive this stretch every day. Right now, they have nowhere to
+            charge in a place worth waiting in. Rangeway Mojave changes that.
           </p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mojave-quote section">
+    <div class="container">
+      <div class="mojave-quote__grid">
+        <div class="mojave-quote__text reveal">
+          <blockquote class="pullquote">
+            In a desert corridor where summer afternoons run hot enough to make charging
+            miserable in any open lot, <em>indoor comfort is not an amenity, it is the
+            product.</em>
+          </blockquote>
+          <p class="mojave-quote__attr">Zak Winnick, Founder and CEO</p>
+        </div>
+        <figure class="fig reveal">
+          <div class="fig__frame mojave-quote__frame">
+            <img
+              src="/images/mojave-canopy-dusk.jpg"
+              alt="The Rangeway Mojave charging canopy at dusk, with arched timber bays lit from within, vehicles charging, and the desert sunset behind"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="fig__caption">
+            <strong>Render</strong>
+            <span>The charging plaza at dusk</span>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -116,36 +184,83 @@ import { CAMPAIGN_MODE, CLIMATIZE_URL, LINKS } from "../config";
     <div class="container">
       <div class="kicker reveal">
         <span class="kicker__index">02</span>
-        <span class="kicker__label">The Build</span>
+        <span class="kicker__label">Phase I</span>
       </div>
       <div class="section-head reveal">
-        <h2>Built from the ground up. Powered by the sun.</h2>
+        <h2>Built from the ground up, powered by the sun.</h2>
+        <p class="section-head__lede">
+          Engineered by <a class="mojave-link" href="https://carbondc.io" target="_blank" rel="noopener">Carbon DC</a>,
+          whose off-grid platform is already operating at multiple sites across California's
+          desert corridors.
+        </p>
       </div>
 
-      <div class="mojave-phases">
-        <div class="index-row reveal">
-          <span class="index-row__num">Phase I</span>
-          <h3>Off-grid ultra-fast charging.</h3>
-          <p>
-            Phase I delivers ultra-fast charging under a custom timber canopy, powered entirely
-            by an on-site solar array and battery energy storage system. The entire site
-            operates independently of the electrical grid, engineered by
-            <a href="https://carbondc.io" target="_blank" rel="noopener">Carbon DC</a>, whose
-            off-grid platform is already operating at multiple sites across California's desert
-            corridors. Fresh food and drinks are served from our on-site Rivian EDV food truck,
-            with desert-native landscaping and shaded seating that round out the experience.
-          </p>
+      <div class="mojave-phase-list">
+        {phaseOne.map((item, i) => (
+          <div class="index-row reveal">
+            <span class="index-row__num">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <figure class="fig mojave-aerial reveal">
+        <div class="fig__frame mojave-aerial__frame">
+          <img
+            src="/images/mojave-site-aerial.jpg"
+            alt="Daytime aerial rendering of Rangeway Mojave with the solar field, battery storage, bamboo charging canopy, food truck, and shaded seating beside the CA-14"
+            loading="lazy"
+          />
         </div>
-        <div class="index-row reveal">
-          <span class="index-row__num">Phase II</span>
-          <h3>The full Rangeway experience.</h3>
-          <p>
-            Phase II brings a climate-controlled driver's lounge with a staffed cafe,
-            comfortable seating, comfortable restrooms, and on-site coffee roasting from
-            <a href="https://redcanyonroasting.co" target="_blank" rel="noopener">Red Canyon Roasting Company</a>.
-            The lounge is coming shortly after launch.
-          </p>
-        </div>
+        <figcaption class="fig__caption">
+          <strong>Plate</strong>
+          <span>Phase I concept · Solar field, battery storage, charging plaza, and food truck seating</span>
+        </figcaption>
+      </figure>
+
+      <p class="mojave-phase2 reveal">
+        Phase II grows the mobile lounge into the full Basecamp experience: a permanent,
+        climate-controlled building with a staffed cafe, comfortable seating, comfortable
+        restrooms, and on-site coffee roasting from
+        <a class="mojave-link" href="https://redcanyonroasting.co" target="_blank" rel="noopener">Red Canyon Roasting Company</a>.
+        The lounge grows with the site.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-cream">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">03</span>
+        <span class="kicker__label">How It Works</span>
+      </div>
+      <div class="section-head reveal">
+        <h2>Sunlight in, electrons out, grid optional.</h2>
+        <p class="section-head__lede">
+          This is not experimental technology. We are deploying a proven platform, not testing
+          a prototype.
+        </p>
+      </div>
+
+      <div class="mojave-how-list">
+        {howItWorks.map((step, i) => (
+          <div class="index-row reveal">
+            <span class="index-row__num">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mojave-how__cta reveal">
+        <a class="btn-link" href="https://carbondc.io" target="_blank" rel="noopener">
+          Learn more about Carbon DC
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17L17 7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg>
+        </a>
       </div>
     </div>
   </section>
@@ -153,7 +268,7 @@ import { CAMPAIGN_MODE, CLIMATIZE_URL, LINKS } from "../config";
   <section class="section band-dark">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">03</span>
+        <span class="kicker__index">04</span>
         <span class="kicker__label">The Full Story</span>
       </div>
       <div class="mojave-story reveal">
@@ -186,14 +301,6 @@ import { CAMPAIGN_MODE, CLIMATIZE_URL, LINKS } from "../config";
     flex-wrap: wrap;
     gap: var(--space-3);
     margin-top: var(--space-6);
-  }
-
-  .mojave-raise__grid,
-  .mojave-story__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
-    gap: var(--space-6) clamp(48px, 7vw, 120px);
-    align-items: end;
   }
 
   .mojave-raise__grid {
@@ -245,19 +352,69 @@ import { CAMPAIGN_MODE, CLIMATIZE_URL, LINKS } from "../config";
     margin-bottom: 0;
   }
 
-  .mojave-phases {
+  .mojave-quote__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: var(--space-7) clamp(48px, 7vw, 120px);
+    align-items: center;
+  }
+
+  .mojave-quote__text .pullquote {
+    max-width: 22ch;
+  }
+
+  .mojave-quote__attr {
+    margin: var(--space-5) 0 0;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    font-family: var(--font-heading);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    max-width: 22rem;
+  }
+
+  .mojave-quote__frame {
+    aspect-ratio: 4 / 3;
+  }
+
+  .mojave-link {
+    color: var(--accent-on-light);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .mojave-link:hover {
+    opacity: 0.85;
+  }
+
+  .mojave-phase-list,
+  .mojave-how-list {
     border-bottom: 1px solid var(--color-border);
   }
 
-  .mojave-phases .index-row p a {
-    color: var(--accent-on-light);
-    font-weight: 600;
-    border-bottom: 1px solid rgba(232, 146, 58, 0.32);
-    padding-bottom: 1px;
+  .mojave-aerial {
+    margin-top: clamp(40px, 6vw, 72px);
   }
 
-  .mojave-phases .index-row p a:hover {
-    border-bottom-color: var(--accent-on-light);
+  .mojave-aerial__frame {
+    aspect-ratio: 21 / 9;
+  }
+
+  .mojave-phase2 {
+    margin: clamp(40px, 6vw, 72px) 0 0;
+    font-size: var(--fs-body-lg);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    max-width: 62ch;
+  }
+
+  .mojave-how__cta {
+    margin-top: var(--space-7);
   }
 
   .mojave-story {
@@ -282,9 +439,14 @@ import { CAMPAIGN_MODE, CLIMATIZE_URL, LINKS } from "../config";
   @media (max-width: 900px) {
     .mojave-raise__grid,
     .mojave-corridor,
+    .mojave-quote__grid,
     .mojave-story {
       grid-template-columns: 1fr;
       align-items: start;
+    }
+
+    .mojave-aerial__frame {
+      aspect-ratio: 16 / 10;
     }
   }
 </style>
