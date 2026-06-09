@@ -34,6 +34,12 @@ jobs:
           printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           printf '%s\n' "$VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts
-          rsync -az --delete --chmod=D755,F644 \
-            -e "ssh -i $HOME/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
-            dist/ deploy@72.60.71.39:/var/www/rangeway-preview/
+          SSH="ssh -i $HOME/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=15 -o ServerAliveInterval=10 -o ServerAliveCountMax=3"
+          rc=1
+          for attempt in 1 2 3; do
+            rsync -az --delete --chmod=D755,F644 -e "$SSH" \
+              dist/ deploy@72.60.71.39:/var/www/rangeway-preview/ && { rc=0; break; }
+            echo "::warning::deploy attempt $attempt failed"
+            [ "$attempt" -lt 3 ] && sleep $((attempt*10)) || true
+          done
+          exit $rc
