@@ -3,42 +3,51 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import FormatCard from "../components/FormatCard.astro";
 import ComfortGuarantee from "../sections/ComfortGuarantee.astro";
+import { LINKS } from "../config";
 
 const formats = [
   {
+    num: "01",
     name: "Trailhead",
     tagline: "Where the journey begins",
     description:
       "Ultra-fast charging under a covered canopy, with clean restrooms nearby and reliable Wi-Fi. Purpose-built for emerging corridors and the communities that support them.",
     image: "/images/trailhead-hero.jpg",
     imageAlt: "A Trailhead canopy with warm lighting",
+    caption: "Trailhead · Emerging corridors",
     href: "/network/trailhead"
   },
   {
+    num: "02",
     name: "Waystation",
     tagline: "Streamlined comfort",
     description:
       "Ultra-fast charging paired with a climate-controlled driver's lounge, comfortable restrooms, generous seating, and high-speed Wi-Fi.",
     image: "/images/waystation-joshua-tree.jpg",
     imageAlt: "A Waystation nestled into the Joshua Tree landscape",
+    caption: "Waystation · Joshua Tree",
     href: "/network/waystation"
   },
   {
+    num: "03",
     name: "Basecamp",
     tagline: "The full-service destination",
     description:
       "Ultra-fast charging, a staffed driver's lounge, and a staffed cafe. Our flagship experience on high-traffic corridors.",
     image: "/images/basecamp-hero-desert.jpg",
     imageAlt: "A Basecamp at dusk with a lit lounge, charging canopy, and desert mountains behind",
+    caption: "Basecamp · High-traffic corridors",
     href: "/network/basecamp"
   },
   {
+    num: "04",
     name: "Summit",
     tagline: "Where the road meets rest",
     description:
       "Modular Lookouts, a central clubhouse, and fully off-grid solar charging. A hospitality-first destination where the stop becomes the journey.",
     image: "/images/summit-1.jpg",
     imageAlt: "A Summit Lookout framed by the desert",
+    caption: "Summit · Overnight destinations",
     href: "/network/summit"
   }
 ];
@@ -51,22 +60,43 @@ const formats = [
 >
   <PageHero
     eyebrow="The Network"
+    index="02"
     title="Four formats. One unwavering standard."
     lede="Each Rangeway location is shaped by its corridor and community, and held to the same hospitality standard across the network."
     image="/images/network-hero.jpg"
     imageAlt="A Rangeway Basecamp at dawn with a solar-integrated wood canopy, ultra-fast chargers, and driver's lounge beyond"
+    caption="Basecamp at dawn · The Network"
     scrim="strong"
   />
 
-  <section class="section section-cream">
-    <div class="container-narrow text-center reveal">
-      <p class="eyebrow">Why four formats</p>
-      <h2>Hospitality scales with the road.</h2>
-      <p class="prose-lg muted" style="margin-top: var(--space-5);">
-        A quiet corridor deserves a Trailhead. A regional route deserves a Waystation. A high-traffic
-        run deserves a Basecamp. A weekend belongs at a Summit. The scale shifts. The standard
-        does not.
-      </p>
+  <section class="section">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">01</span>
+        <span class="kicker__label">Why Four Formats</span>
+      </div>
+      <div class="network-why reveal">
+        <blockquote class="pullquote network-why__quote">
+          Hospitality scales <em>with the road.</em>
+        </blockquote>
+        <p class="network-why__body">
+          A quiet corridor deserves a Trailhead. A regional route deserves a Waystation. A
+          high-traffic run deserves a Basecamp. A weekend belongs at a Summit. The scale shifts.
+          The standard does not.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section network-formats">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">02</span>
+        <span class="kicker__label">The Formats</span>
+      </div>
+      <div class="network-formats__grid">
+        {formats.map((f) => <FormatCard {...f} />)}
+      </div>
     </div>
   </section>
 
@@ -74,56 +104,87 @@ const formats = [
 
   <section class="section">
     <div class="container">
-      <div class="network-heading reveal">
-        <p class="eyebrow">The formats</p>
-        <h2>One standard, four expressions.</h2>
-        <p class="network-heading__lede">
-          Each format delivers the same hospitality promise at a scale that fits the corridor.
-        </p>
+      <div class="kicker reveal">
+        <span class="kicker__index">03</span>
+        <span class="kicker__label">Keep Going</span>
       </div>
-      <div class="network-grid">
-        {formats.map((f) => <FormatCard {...f} />)}
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-cream">
-    <div class="container-narrow text-center reveal">
-      <p class="eyebrow">Keep going</p>
-      <h2>The network keeps building.</h2>
-      <p class="prose-lg muted" style="margin-top: var(--space-4);">
-        Follow along as new sites come online.
-      </p>
-      <div style="margin-top: var(--space-6); display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-        <a class="btn btn-primary" href="https://fieldnotes.rangeway.co" target="_blank" rel="noopener">
-          Subscribe to Field Notes
-        </a>
-        <a class="btn btn-outline" href="/our-story">Read our story</a>
+      <div class="network-next reveal">
+        <h2>The network keeps building.</h2>
+        <div class="network-next__side">
+          <p>Follow along as new sites come online.</p>
+          <div class="network-next__ctas">
+            <a class="btn btn-primary" href={LINKS.fieldNotes} target="_blank" rel="noopener">
+              Subscribe to Field Notes
+            </a>
+            <a class="btn btn-outline" href="/our-story">Read our story</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .network-heading {
-    max-width: 620px;
-    margin-bottom: var(--space-7);
+  .network-why {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: start;
   }
 
-  .network-heading__lede {
-    margin-top: var(--space-4);
+  .network-why__quote {
+    max-width: 16ch;
+  }
+
+  .network-why__body {
+    margin: 0;
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border);
     color: var(--color-text-muted);
-    font-size: 1.08rem;
+    font-size: 1.1rem;
+    line-height: 1.75;
+    max-width: 42ch;
   }
 
-  .network-grid {
+  .network-formats__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-6);
+    gap: clamp(48px, 6vw, 96px) clamp(32px, 5vw, 80px);
+  }
+
+  @media (min-width: 901px) {
+    .network-formats__grid > :global(.fmt-entry:nth-child(even)) {
+      transform: translateY(clamp(40px, 6vw, 88px));
+    }
+
+    .network-formats__grid {
+      padding-bottom: clamp(40px, 6vw, 88px);
+    }
+  }
+
+  .network-next {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: end;
+  }
+
+  .network-next__side p {
+    margin: 0 0 var(--space-6);
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+  }
+
+  .network-next__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
   }
 
   @media (max-width: 900px) {
-    .network-grid {
+    .network-why,
+    .network-formats__grid,
+    .network-next {
       grid-template-columns: 1fr;
     }
   }

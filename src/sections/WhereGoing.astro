@@ -1,31 +1,60 @@
 ---
+import { LINKS } from "../config";
+
+const waypoints = [
+  {
+    num: "01",
+    title: "Rangeway Mojave is breaking ground in the Antelope Valley.",
+    body: "Off-grid, solar-powered ultra-fast charging on the CA-14 corridor. Coming 2027."
+  },
+  {
+    num: "02",
+    title: "An urban network is taking root in Missouri.",
+    body: "Two sites in development."
+  },
+  {
+    num: "03",
+    title: "Routes are being charted across Montana.",
+    body: ""
+  }
+];
 ---
 
-<section class="where section section-cream">
+<section class="where section">
   <div class="container">
-    <div class="where__heading reveal">
-      <p class="eyebrow">Where We're Going</p>
+    <div class="kicker reveal">
+      <span class="kicker__index">05</span>
+      <span class="kicker__label">Where We're Going</span>
+    </div>
+
+    <div class="section-head reveal">
       <h2>The road ahead.</h2>
-      <ul class="where__list">
-        <li><strong class="where__lead">Rangeway Mojave is breaking ground in the Antelope Valley.</strong> Off-grid, solar-powered ultra-fast charging on the CA-14 corridor. Coming 2027.</li>
-        <li>An urban network is taking root in Missouri, with two sites in development.</li>
-        <li>Routes are being charted across Montana.</li>
-        <li><a class="where__nda-link" href="/investors">Qualified investors</a> can review the full pipeline under NDA.</li>
-      </ul>
+      <p class="section-head__lede">
+        <a class="where__nda-link" href="/investors">Qualified investors</a> can review the full
+        pipeline under NDA.
+      </p>
+    </div>
+
+    <div class="where__list">
+      {waypoints.map((w) => (
+        <div class="index-row reveal">
+          <span class="index-row__num">{w.num}</span>
+          <h3>{w.title}</h3>
+          <p>{w.body}</p>
+        </div>
+      ))}
     </div>
 
     <div class="where__cta reveal">
-      <a class="btn btn-primary" href="https://rangewaymojave.com" target="_blank" rel="noopener">
+      <a class="btn btn-primary" href={LINKS.mojaveMicrosite} target="_blank" rel="noopener">
         Visit Rangeway Mojave
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12" />
           <polyline points="13 6 19 12 13 18" />
         </svg>
       </a>
-      <a class="btn btn-outline" href="/investors">
-        Request investor briefing
-      </a>
-      <a class="btn btn-outline" href="https://fieldnotes.rangeway.co" target="_blank" rel="noopener">
+      <a class="btn btn-outline" href="/investors">Request investor briefing</a>
+      <a class="btn btn-outline" href={LINKS.fieldNotes} target="_blank" rel="noopener">
         Subscribe to Field Notes
       </a>
     </div>
@@ -33,52 +62,12 @@
 </section>
 
 <style>
-  .where__heading {
-    max-width: 820px;
-    margin-bottom: var(--space-7);
-  }
-
-  .where__heading h2 {
-    text-wrap: balance;
-  }
-
   .where__list {
-    list-style: none;
-    padding: 0;
-    margin: var(--space-5) 0 0;
-    max-width: 68ch;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
-  .where__list li {
-    position: relative;
-    padding-left: var(--space-5);
-    font-size: var(--fs-body);
-    line-height: 1.6;
-    color: var(--color-text);
-  }
-
-  .where__list li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.6em;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--color-warm-deep);
-  }
-
-  .where__lead {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .where__nda-link {
-    color: var(--color-warm-deep);
+    color: var(--accent-on-light);
     font-weight: 600;
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -86,7 +75,6 @@
   }
 
   .where__nda-link:hover {
-    color: var(--color-warm-deep);
     opacity: 0.85;
   }
 
@@ -95,9 +83,5 @@
     flex-wrap: wrap;
     gap: var(--space-4);
     margin-top: var(--space-7);
-  }
-
-  .where__cta .btn {
-    min-width: 17em;
   }
 </style>

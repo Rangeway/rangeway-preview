@@ -1,0 +1,247 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "./PageHero.astro";
+import FormatNav from "./FormatNav.astro";
+
+interface Amenity {
+  title: string;
+  body: string;
+}
+
+interface GalleryItem {
+  src: string;
+  alt: string;
+  caption: string;
+  position?: string;
+}
+
+interface Props {
+  slug: "trailhead" | "waystation" | "basecamp";
+  num: string;
+  name: string;
+  metaTitle: string;
+  metaDescription: string;
+  heroTitle: string;
+  heroLede: string;
+  heroImage: string;
+  heroAlt: string;
+  heroCaption: string;
+  introTitle: string;
+  introBody: string;
+  introMuted: string;
+  amenitiesTitle: string;
+  amenities: Amenity[];
+  gallery: GalleryItem[];
+  nextTitle: string;
+  nextBody: string;
+  nextCtaText: string;
+  nextCtaHref: string;
+}
+
+const {
+  slug,
+  num,
+  name,
+  metaTitle,
+  metaDescription,
+  heroTitle,
+  heroLede,
+  heroImage,
+  heroAlt,
+  heroCaption,
+  introTitle,
+  introBody,
+  introMuted,
+  amenitiesTitle,
+  amenities,
+  gallery,
+  nextTitle,
+  nextBody,
+  nextCtaText,
+  nextCtaHref
+} = Astro.props;
+---
+
+<BaseLayout title={metaTitle} description={metaDescription} image={heroImage}>
+  <PageHero
+    eyebrow={name}
+    index={`Format ${num}`}
+    title={heroTitle}
+    lede={heroLede}
+    image={heroImage}
+    imageAlt={heroAlt}
+    caption={heroCaption}
+  />
+
+  <FormatNav current={slug} />
+
+  <section class="section">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">01</span>
+        <span class="kicker__label">What a {name} Is</span>
+      </div>
+      <div class="format-intro reveal">
+        <h2>{introTitle}</h2>
+        <div class="format-intro__body">
+          <p>{introBody}</p>
+          <p class="muted">{introMuted}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section format-amenities">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">02</span>
+        <span class="kicker__label">What You'll Find</span>
+      </div>
+      <div class="section-head reveal">
+        <h2>{amenitiesTitle}</h2>
+      </div>
+      <div class="format-amenities__list">
+        {amenities.map((a, i) => (
+          <div class="index-row reveal">
+            <span class="index-row__num">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{a.title}</h3>
+            <p>{a.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section format-gallery">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">03</span>
+        <span class="kicker__label">Plates</span>
+      </div>
+      <div class={`format-gallery__grid format-gallery__grid--${gallery.length === 2 ? "duo" : "trio"}`}>
+        {gallery.map((g, i) => (
+          <figure class={`fig reveal${i === 0 && gallery.length === 3 ? " format-gallery__lead" : ""}`}>
+            <div class="fig__frame format-gallery__frame">
+              <img src={g.src} alt={g.alt} loading="lazy" style={g.position ? `object-position: ${g.position};` : undefined} />
+            </div>
+            <figcaption class="fig__caption">
+              <strong>{String(i + 1).padStart(2, "0")}</strong>
+              <span>{g.caption}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section band-dark">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">04</span>
+        <span class="kicker__label">Next Up</span>
+      </div>
+      <div class="format-next reveal">
+        <h2>{nextTitle}</h2>
+        <div class="format-next__side">
+          <p>{nextBody}</p>
+          <a class="btn btn-warm" href={nextCtaHref}>
+            {nextCtaText}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="13 6 19 12 13 18" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .format-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: start;
+  }
+
+  .format-intro h2 {
+    max-width: 13ch;
+  }
+
+  .format-intro__body p {
+    font-size: var(--fs-body-lg);
+    line-height: 1.7;
+    margin: 0 0 var(--space-5);
+    max-width: 48ch;
+  }
+
+  .format-intro__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .format-amenities__list {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .format-gallery__grid {
+    display: grid;
+    gap: clamp(24px, 3vw, 48px);
+  }
+
+  .format-gallery__grid--duo {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .format-gallery__grid--trio {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .format-gallery__lead {
+    grid-column: 1 / -1;
+  }
+
+  .format-gallery__lead .format-gallery__frame {
+    aspect-ratio: 21 / 9;
+  }
+
+  .format-gallery__frame {
+    aspect-ratio: 4 / 3;
+  }
+
+  .format-next {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: end;
+  }
+
+  .format-next h2 {
+    max-width: 16ch;
+  }
+
+  .format-next__side p {
+    margin: 0 0 var(--space-6);
+    color: var(--fg-on-dark-2);
+    font-size: 1.08rem;
+    line-height: 1.7;
+    max-width: 44ch;
+  }
+
+  @media (max-width: 900px) {
+    .format-intro,
+    .format-next {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .format-gallery__grid--duo,
+    .format-gallery__grid--trio {
+      grid-template-columns: 1fr;
+    }
+
+    .format-gallery__lead .format-gallery__frame {
+      aspect-ratio: 16 / 10;
+    }
+  }
+</style>

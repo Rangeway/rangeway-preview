@@ -1,92 +1,170 @@
 ---
+import { CLIMATIZE_URL, LINKS } from "../config";
+
+interface Props {
+  /**
+   * "feature": cinematic full-bleed band, used directly below the hero
+   *             while the campaign is open (CAMPAIGN_MODE on).
+   * "standard": quiet editorial section, used when the campaign closes.
+   */
+  variant?: "feature" | "standard";
+}
+
+const { variant = "standard" } = Astro.props;
 ---
 
-<section class="climatize section">
-  <div class="container">
-    <div class="climatize__inner reveal">
-      <div class="climatize__copy">
-        <p class="eyebrow">Now open</p>
-        <h2>Build Rangeway Mojave with us.</h2>
-        <p class="climatize__lede">
-          Rangeway is raising capital on Climatize to build Rangeway Mojave, the first location in the network. The campaign is open to everyone, not just accredited investors. Anyone can invest in the first site, starting at the campaign minimum.
-        </p>
+{variant === "feature" ? (
+  <section class="raise-feature band-dark">
+    <div class="raise-feature__media" aria-hidden="true">
+      <img src="/images/basecamp-rosamond.jpg" alt="" loading="lazy" />
+      <div class="raise-feature__scrim"></div>
+    </div>
+    <div class="container raise-feature__inner">
+      <div class="kicker reveal">
+        <span class="kicker__index">Now Open</span>
+        <span class="kicker__label">The Mojave Raise</span>
       </div>
-
-      <div class="climatize__cta">
-        <a class="btn btn-warm" href="https://climatize.earth" target="_blank" rel="noopener">
-          Invest in Mojave
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="13 6 19 12 13 18" />
-          </svg>
-        </a>
-        <a class="btn-link" href="https://rangewaymojave.com" target="_blank" rel="noopener">
-          Visit Rangeway Mojave
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="13 6 19 12 13 18" />
-          </svg>
-        </a>
+      <div class="raise-feature__grid reveal">
+        <h2>Build Rangeway Mojave with us.</h2>
+        <div class="raise-feature__side">
+          <p>
+            Rangeway is raising capital on Climatize to build Rangeway Mojave, the first location
+            in the network. The campaign is open to everyone, not just accredited investors.
+            Anyone can invest in the first site, starting at the campaign minimum.
+          </p>
+          <div class="raise-feature__ctas">
+            <a class="btn btn-warm" href={CLIMATIZE_URL} target="_blank" rel="noopener">
+              Invest in Mojave
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="13 6 19 12 13 18" />
+              </svg>
+            </a>
+            <a class="btn-link" href={LINKS.mojaveMicrosite} target="_blank" rel="noopener">
+              Visit Rangeway Mojave
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="13 6 19 12 13 18" />
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+) : (
+  <section class="raise-standard section">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">Mojave</span>
+        <span class="kicker__label">The First Location</span>
+      </div>
+      <div class="raise-standard__grid reveal">
+        <h2>Build Rangeway Mojave with us.</h2>
+        <div class="raise-standard__side">
+          <p>
+            Rangeway is raising capital on Climatize to build Rangeway Mojave, the first location
+            in the network. The campaign is open to everyone, not just accredited investors.
+            Anyone can invest in the first site, starting at the campaign minimum.
+          </p>
+          <div class="raise-standard__ctas">
+            <a class="btn btn-warm" href={CLIMATIZE_URL} target="_blank" rel="noopener">
+              Invest in Mojave
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="13 6 19 12 13 18" />
+              </svg>
+            </a>
+            <a class="btn-link" href={LINKS.mojaveMicrosite} target="_blank" rel="noopener">
+              Visit Rangeway Mojave
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="13 6 19 12 13 18" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
 
 <style>
-  .climatize {
-    padding: clamp(72px, 9vw, 120px) 0;
-    background: var(--surface-alt-strong);
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
+  /* Feature: cinematic interlude on the Rosamond aerial */
+  .raise-feature {
     position: relative;
-    isolation: isolate;
     overflow: hidden;
+    isolation: isolate;
+    padding: clamp(96px, 12vw, 180px) 0;
   }
 
-  .climatize::before {
-    content: "";
+  .raise-feature__media {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 85% 20%, rgba(244, 168, 85, 0.12), transparent 45%);
-    pointer-events: none;
     z-index: -1;
   }
 
-  .climatize__inner {
+  .raise-feature__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .raise-feature__scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(100deg, rgba(23, 21, 20, 0.92) 0%, rgba(23, 21, 20, 0.7) 55%, rgba(23, 21, 20, 0.82) 100%),
+      linear-gradient(180deg, rgba(23, 21, 20, 0.3) 0%, rgba(23, 21, 20, 0) 40%, rgba(23, 21, 20, 0.4) 100%);
+  }
+
+  .raise-feature__grid,
+  .raise-standard__grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: var(--space-7);
-    align-items: center;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: end;
   }
 
-  .climatize__copy h2 {
-    margin-bottom: var(--space-4);
-    text-wrap: balance;
+  .raise-feature__grid h2 {
+    font-size: var(--fs-h1);
+    max-width: 14ch;
   }
 
-  .climatize__lede {
-    color: var(--color-text-muted);
-    font-size: 1.1rem;
+  .raise-feature__side p {
+    margin: 0 0 var(--space-6);
+    color: var(--fg-on-dark-2);
+    font-size: 1.08rem;
     line-height: 1.7;
-    margin: 0;
-    max-width: 56ch;
+    max-width: 46ch;
   }
 
-  .climatize__cta {
+  .raise-feature__ctas,
+  .raise-standard__ctas {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-4);
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-5);
   }
 
-  .climatize__cta .btn-link {
-    padding-left: 8px;
+  /* Standard: quiet editorial section */
+  .raise-standard__grid h2 {
+    max-width: 14ch;
+  }
+
+  .raise-standard__side p {
+    margin: 0 0 var(--space-6);
+    color: var(--color-text-muted);
+    font-size: 1.08rem;
+    line-height: 1.7;
+    max-width: 46ch;
   }
 
   @media (max-width: 900px) {
-    .climatize__inner {
+    .raise-feature__grid,
+    .raise-standard__grid {
       grid-template-columns: 1fr;
-      gap: var(--space-5);
+      align-items: start;
     }
   }
 </style>

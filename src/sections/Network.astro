@@ -1,101 +1,178 @@
 ---
-import FormatCard from "../components/FormatCard.astro";
-
 const formats = [
   {
+    num: "01",
     name: "Trailhead",
     tagline: "Where the journey begins",
     description:
       "Ultra-fast charging under a covered canopy, with clean restrooms nearby and reliable Wi-Fi. Purpose-built for emerging corridors and the communities that support them.",
     image: "/images/trailhead-hero.jpg",
     imageAlt: "A Trailhead canopy with warm lighting",
+    caption: "Trailhead · Emerging corridors",
     href: "/network/trailhead"
   },
   {
+    num: "02",
     name: "Waystation",
     tagline: "Streamlined comfort",
     description:
       "Ultra-fast charging paired with a climate-controlled driver's lounge, comfortable restrooms, generous seating, and high-speed Wi-Fi. The heart of the network.",
     image: "/images/waystation-joshua-tree.jpg",
     imageAlt: "A Waystation nestled into the Joshua Tree landscape",
+    caption: "Waystation · Joshua Tree",
     href: "/network/waystation"
   },
   {
+    num: "03",
     name: "Basecamp",
     tagline: "The full-service destination",
     description:
       "Ultra-fast charging, a staffed driver's lounge, and a staffed cafe. Our flagship experience on high-traffic corridors.",
     image: "/images/basecamp-hero-desert.jpg",
     imageAlt: "A Basecamp at dusk with a lit lounge, charging canopy, and desert mountains behind",
+    caption: "Basecamp · High-traffic corridors",
     href: "/network/basecamp"
   },
   {
+    num: "04",
     name: "Summit",
     tagline: "Where the road meets rest",
     description:
       "Modular Lookouts, a central clubhouse, and fully off-grid solar charging. A hospitality-first destination where the stop becomes the journey.",
     image: "/images/summit-1.jpg",
     imageAlt: "A Summit Lookout framed by the desert at dusk",
+    caption: "Summit · Overnight destinations",
     href: "/network/summit"
   }
 ];
 ---
 
-<section id="network" class="section network">
+<section id="network" class="network section">
   <div class="container">
-    <div class="network__heading reveal">
-      <p class="eyebrow">The Network</p>
+    <div class="kicker reveal">
+      <span class="kicker__index">02</span>
+      <span class="kicker__label">The Network</span>
+    </div>
+
+    <div class="section-head reveal">
       <h2>Four formats. One unwavering standard.</h2>
-      <p class="network__lede">
-        Every Rangeway location shares the same hospitality DNA. The scale shifts with the corridor,
-        the community, and the journey.
+      <p class="section-head__lede">
+        Every Rangeway location shares the same hospitality DNA. The scale shifts with the
+        corridor, the community, and the journey.
       </p>
     </div>
 
     <div class="network__grid">
-      {formats.map((f) => <FormatCard {...f} compact />)}
-    </div>
-
-    <div class="network__cta reveal">
-      <a class="btn btn-primary" href="/network">
-        Explore all four formats
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12" />
-          <polyline points="13 6 19 12 13 18" />
-        </svg>
-      </a>
+      {formats.map((f) => (
+        <a class="network__entry reveal" href={f.href}>
+          <figure class="fig">
+            <div class="fig__frame network__frame">
+              <img src={f.image} alt={f.imageAlt} loading="lazy" />
+            </div>
+            <figcaption class="fig__caption">
+              <strong>{f.num}</strong>
+              <span>{f.caption}</span>
+            </figcaption>
+          </figure>
+          <div class="network__entry-body">
+            <h3>{f.name}</h3>
+            <p class="network__tagline">{f.tagline}</p>
+            <p class="network__desc">{f.description}</p>
+            <span class="arrow-link">
+              Explore {f.name}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="13 6 19 12 13 18" />
+              </svg>
+            </span>
+          </div>
+        </a>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
-  .network__heading {
-    max-width: 640px;
-    margin-bottom: var(--space-8);
-  }
-
-  .network__lede {
-    margin-top: var(--space-4);
-    color: var(--color-text-muted);
-    font-size: 1.08rem;
-  }
-
   .network__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-6);
+    gap: clamp(48px, 6vw, 96px) clamp(32px, 5vw, 80px);
   }
 
-  .network__cta {
-    margin-top: var(--space-7);
-    display: flex;
-    justify-content: center;
+  /* Staggered editorial grid: even entries drop a half-step */
+  @media (min-width: 901px) {
+    .network__entry:nth-child(even) {
+      transform: translateY(clamp(40px, 6vw, 88px));
+    }
+
+    .network__grid {
+      padding-bottom: clamp(40px, 6vw, 88px);
+    }
+
+    .network__entry:nth-child(even).reveal {
+      transition-property: opacity;
+    }
+  }
+
+  .network__entry {
+    display: block;
+    color: var(--color-text);
+  }
+
+  .network__entry:hover {
+    color: var(--color-text);
+  }
+
+  .network__frame {
+    aspect-ratio: 4 / 3;
+  }
+
+  .network__frame img {
+    transition: transform 0.7s var(--ease-out);
+  }
+
+  .network__entry:hover .network__frame img {
+    transform: scale(1.035);
+  }
+
+  .network__entry-body {
+    margin-top: var(--space-5);
+  }
+
+  .network__entry-body h3 {
+    font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+    font-weight: 800;
+    letter-spacing: var(--ls-tight);
+  }
+
+  .network__tagline {
+    margin: var(--space-2) 0 var(--space-4);
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--accent-on-light);
+  }
+
+  .network__desc {
+    margin: 0 0 var(--space-4);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 48ch;
+  }
+
+  .network__entry:hover .arrow-link {
+    color: var(--accent-on-light);
+  }
+
+  .network__entry:hover .arrow-link svg {
+    transform: translateX(3px);
   }
 
   @media (max-width: 900px) {
     .network__grid {
       grid-template-columns: 1fr;
-      gap: var(--space-5);
     }
   }
 </style>

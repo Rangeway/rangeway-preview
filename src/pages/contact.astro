@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import ContactForm from "../components/ContactForm.astro";
+import { LINKS } from "../config";
 ---
 
 <BaseLayout
@@ -11,72 +12,68 @@ import ContactForm from "../components/ContactForm.astro";
 >
   <PageHero
     eyebrow="Contact"
+    index="Say Hello"
     title="Say hello."
     lede="Questions about the network, partnerships, investors, or joining the team. We read every note."
     image="/images/basecamp-interior.jpg"
     imageAlt="Warm interior of a Rangeway driver's lounge"
+    caption="driver's lounge · Basecamp"
   />
 
   <section class="section">
     <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">01</span>
+        <span class="kicker__label">Start a Conversation</span>
+      </div>
+
       <div class="contact-layout reveal">
-        <aside class="contact-aside">
-          <p class="eyebrow">What to expect</p>
+        <div class="contact-form-col">
           <h2>A real reply.</h2>
-          <p class="contact-aside__lede">
-            Rangeway is still small enough that every note is read by a person, not routed through a
-            ticket queue. Expect a reply within two business days. Investor and partnership notes
-            usually move faster.
-          </p>
-
-          <ul class="contact-aside__list">
-            <li>
-              <p class="contact-aside__label">Press and media</p>
-              <p class="contact-aside__copy">
-                The <a href="https://newsroom.rangeway.co" target="_blank" rel="noopener">Newsroom</a>
-                has releases, media kits, and the fastest door to our comms team.
-                <br /><br />
-                For time-sensitive inquiries, email
-                <a href="mailto:media@rangeway.co">media@rangeway.co</a>.
-              </p>
-            </li>
-            <li>
-              <p class="contact-aside__label">Open roles</p>
-              <p class="contact-aside__copy">
-                Current postings live on our
-                <a href="https://www.linkedin.com/company/rangewayenergy/jobs/" target="_blank" rel="noopener">LinkedIn jobs page</a>.
-                <br /><br />
-                For an introduction or a role not yet listed, use the form or email
-                <a href="mailto:careers@rangeway.co">careers@rangeway.co</a> directly.
-              </p>
-            </li>
-            <li>
-              <p class="contact-aside__label">Investors under NDA</p>
-              <p class="contact-aside__copy">
-                Pipeline, diligence, and format-level detail are shared under NDA.
-                <br /><br />
-                Select "Investor" and we'll get the paperwork to you, or email
-                <a href="mailto:investors@rangeway.co">investors@rangeway.co</a> directly.
-              </p>
-            </li>
-            <li>
-              <p class="contact-aside__label">Drivers and everything else</p>
-              <p class="contact-aside__copy">
-                Questions about the network, a specific site, or a partnership we haven't named yet.
-                Use the form and we'll route it.
-              </p>
-            </li>
-          </ul>
-        </aside>
-
-        <div class="contact-form-wrap">
-          <p class="eyebrow">Send a note</p>
-          <h2>Start a conversation.</h2>
-          <p class="contact-form-wrap__lede">
-            Pick what applies from the dropdown and we'll route your note to the right inbox.
+          <p class="contact-form-col__lede">
+            Rangeway is still small enough that every note is read by a person, not routed
+            through a ticket queue. Expect a reply within two business days. Investor and
+            partnership notes usually move faster. Pick what applies from the dropdown and
+            we'll route your note to the right inbox.
           </p>
           <ContactForm />
         </div>
+
+        <aside class="contact-aside">
+          <div class="contact-aside__item">
+            <p class="contact-aside__label">Press and media</p>
+            <p class="contact-aside__copy">
+              The <a href={LINKS.newsroom} target="_blank" rel="noopener">Newsroom</a>
+              has releases, media kits, and the fastest door to our comms team. For
+              time-sensitive inquiries, email
+              <a href="mailto:media@rangeway.co">media@rangeway.co</a>.
+            </p>
+          </div>
+          <div class="contact-aside__item">
+            <p class="contact-aside__label">Open roles</p>
+            <p class="contact-aside__copy">
+              Current postings live on our
+              <a href={LINKS.linkedinJobs} target="_blank" rel="noopener">LinkedIn jobs page</a>.
+              For an introduction or a role not yet listed, use the form or email
+              <a href="mailto:careers@rangeway.co">careers@rangeway.co</a> directly.
+            </p>
+          </div>
+          <div class="contact-aside__item">
+            <p class="contact-aside__label">Investors under NDA</p>
+            <p class="contact-aside__copy">
+              Pipeline, diligence, and format-level detail are shared under NDA. Select
+              "Investor" and we'll get the paperwork to you, or email
+              <a href="mailto:investors@rangeway.co">investors@rangeway.co</a> directly.
+            </p>
+          </div>
+          <div class="contact-aside__item">
+            <p class="contact-aside__label">Drivers and everything else</p>
+            <p class="contact-aside__copy">
+              Questions about the network, a specific site, or a partnership we haven't named
+              yet. Use the form and we'll route it.
+            </p>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -85,53 +82,56 @@ import ContactForm from "../components/ContactForm.astro";
 <style>
   .contact-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-7);
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-8) clamp(48px, 7vw, 120px);
     align-items: start;
   }
 
-  .contact-aside__lede {
-    margin: var(--space-4) 0 var(--space-6);
+  .contact-form-col h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .contact-form-col__lede {
+    margin: 0 0 var(--space-7);
     color: var(--color-text-muted);
     font-size: 1.08rem;
     line-height: 1.7;
     max-width: 56ch;
   }
 
-  .contact-aside__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .contact-aside {
     display: flex;
     flex-direction: column;
-    gap: var(--space-5);
-    max-width: 56ch;
   }
 
-  .contact-aside__list li {
-    padding-top: var(--space-5);
+  .contact-aside__item {
+    padding: var(--space-5) 0;
     border-top: 1px solid var(--color-border);
+  }
+
+  .contact-aside__item:last-child {
+    border-bottom: 1px solid var(--color-border);
   }
 
   .contact-aside__label {
     font-family: var(--font-heading);
-    font-size: 0.78rem;
-    letter-spacing: 0.2em;
+    font-size: 0.72rem;
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
-    color: var(--color-warm-deep);
-    font-weight: 600;
+    color: var(--accent-on-light);
+    font-weight: 700;
     margin: 0 0 var(--space-2);
   }
 
   .contact-aside__copy {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.98rem;
     line-height: 1.7;
     color: var(--color-text);
   }
 
   .contact-aside__copy a {
-    color: var(--color-warm-deep);
+    color: var(--accent-on-light);
     font-weight: 600;
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -142,17 +142,9 @@ import ContactForm from "../components/ContactForm.astro";
     opacity: 0.85;
   }
 
-  .contact-form-wrap__lede {
-    margin: var(--space-4) 0 var(--space-6);
-    color: var(--color-text-muted);
-    font-size: 1.08rem;
-    max-width: 56ch;
-  }
-
-  @media (max-width: 760px) {
+  @media (max-width: 900px) {
     .contact-layout {
       grid-template-columns: 1fr;
-      gap: var(--space-8);
     }
   }
 </style>

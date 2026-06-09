@@ -5,126 +5,179 @@ interface Props {
   lede?: string;
   image: string;
   imageAlt: string;
+  /** Chapter index shown in the kicker, e.g. "02" */
+  index?: string;
+  /** Caption strip under the image, e.g. "Basecamp · Antelope Valley, California" */
+  caption?: string;
   align?: "left" | "center";
   scrim?: "default" | "strong";
 }
 
-const { eyebrow, title, lede, image, imageAlt, align = "left", scrim = "default" } = Astro.props;
+const {
+  eyebrow,
+  title,
+  lede,
+  image,
+  imageAlt,
+  index,
+  caption,
+  scrim = "default"
+} = Astro.props;
 ---
 
-<section class={`page-hero page-hero--${align} page-hero--scrim-${scrim}`}>
-  <div class="page-hero__media">
+<section class={`chapter chapter--scrim-${scrim}`}>
+  <div class="chapter__media">
     <img src={image} alt={imageAlt} fetchpriority="high" />
-    <div class="page-hero__scrim"></div>
+    <div class="chapter__scrim"></div>
   </div>
-  <div class="container page-hero__inner">
-    <p class="page-hero__eyebrow">{eyebrow}</p>
-    <h1>{title}</h1>
-    {lede && <p class="page-hero__lede">{lede}</p>}
+
+  <div class="container chapter__inner">
+    <div class="chapter__kicker">
+      <span class="chapter__index">{index ?? "Rangeway"}</span>
+      <span class="chapter__label">{eyebrow}</span>
+    </div>
+    <div class="chapter__body">
+      <h1>{title}</h1>
+      {lede && <p class="chapter__lede">{lede}</p>}
+    </div>
     <slot />
   </div>
+
+  {caption && (
+    <div class="container">
+      <p class="chapter__caption">
+        <strong>Plate</strong>
+        <span>{caption}</span>
+      </p>
+    </div>
+  )}
 </section>
 
 <style>
-  .page-hero {
+  .chapter {
     position: relative;
     color: var(--color-cream);
-    min-height: 72vh;
-    display: flex;
-    align-items: flex-end;
-    padding-top: calc(var(--nav-height) + 60px);
-    padding-bottom: clamp(64px, 8vw, 120px);
+    background: var(--color-ink);
     margin-top: calc(-1 * (var(--nav-height) + 24px));
-    overflow: hidden;
-    isolation: isolate;
+    padding-bottom: 0;
   }
 
-  .page-hero--center {
-    align-items: center;
-    text-align: center;
-    min-height: 68vh;
-  }
-
-  .page-hero__media {
+  .chapter__media {
     position: absolute;
     inset: 0;
-    z-index: -1;
+    overflow: hidden;
   }
 
-  .page-hero__media img {
+  .chapter__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  .page-hero__scrim {
+  .chapter__scrim {
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(23, 21, 20, 0.55) 0%, rgba(23, 21, 20, 0.28) 40%, rgba(23, 21, 20, 0.82) 100%),
-      radial-gradient(circle at 20% 85%, rgba(244, 168, 85, 0.2), transparent 40%);
+      linear-gradient(180deg, rgba(23, 21, 20, 0.6) 0%, rgba(23, 21, 20, 0.18) 38%, rgba(23, 21, 20, 0.86) 100%);
   }
 
-  .page-hero--scrim-strong .page-hero__scrim {
+  .chapter--scrim-strong .chapter__scrim {
     background:
-      linear-gradient(180deg, rgba(23, 21, 20, 0.75) 0%, rgba(23, 21, 20, 0.5) 45%, rgba(23, 21, 20, 0.9) 100%),
-      radial-gradient(circle at 20% 85%, rgba(244, 168, 85, 0.22), transparent 40%);
+      linear-gradient(180deg, rgba(23, 21, 20, 0.72) 0%, rgba(23, 21, 20, 0.42) 40%, rgba(23, 21, 20, 0.92) 100%);
   }
 
-  .page-hero--center .page-hero__inner {
-    max-width: 760px;
-    margin: 0 auto;
+  .chapter__inner {
+    position: relative;
+    z-index: 1;
+    min-height: min(78vh, 820px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: calc(var(--nav-height) + 80px);
+    padding-bottom: clamp(48px, 6vw, 88px);
   }
 
-  .page-hero__inner {
-    max-width: 780px;
-  }
-
-  .page-hero__eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--font-body);
+  /* Kicker rendered over the image: hairline + index + tracked label */
+  .chapter__kicker {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid rgba(251, 247, 241, 0.42);
+    margin-bottom: clamp(24px, 4vw, 48px);
+    font-family: var(--font-heading);
     font-size: var(--fs-eyebrow);
     font-weight: 700;
     letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
+  }
+
+  .chapter__index {
     color: var(--color-warm);
-    margin: 0 0 var(--space-4);
+    font-variant-numeric: tabular-nums;
   }
 
-  .page-hero__eyebrow::before {
-    content: "";
-    width: 38px;
-    height: 1px;
-    background: currentColor;
-    opacity: 1;
+  .chapter__label {
+    text-align: right;
+    color: var(--fg-on-dark-1);
   }
 
-  .page-hero--center .page-hero__eyebrow {
-    justify-content: center;
+  .chapter__body {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-5) clamp(40px, 6vw, 96px);
+    align-items: end;
   }
 
-  .page-hero h1 {
-    color: var(--color-cream);
+  .chapter h1 {
+    color: var(--fg-on-dark-1);
+    font-size: var(--fs-display);
+    font-weight: 800;
+    line-height: var(--lh-display);
+    letter-spacing: var(--ls-display);
+    margin: 0;
+  }
+
+  .chapter__lede {
+    margin: 0;
+    font-size: clamp(1.05rem, 1.4vw, 1.22rem);
+    line-height: 1.6;
+    max-width: 44ch;
+    color: var(--fg-on-dark-2);
+  }
+
+  /* Plate caption strip under the image, on the ink base */
+  .chapter__caption {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin: 0;
+    padding: var(--space-3) 0 var(--space-4);
+    border-top: 1px solid var(--border-on-dark);
     font-family: var(--font-heading);
-    font-size: clamp(2.75rem, 6vw, 5.25rem);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-allcaps);
+    text-transform: uppercase;
+    color: var(--fg-on-dark-3);
+    position: relative;
+    z-index: 1;
+  }
+
+  .chapter__caption strong {
+    color: var(--color-warm);
     font-weight: 700;
-    line-height: var(--lh-heading);
-    letter-spacing: var(--ls-heading);
-    text-wrap: balance;
   }
 
-  .page-hero__lede {
-    margin-top: var(--space-5);
-    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
-    line-height: 1.55;
-    max-width: 58ch;
-    opacity: 0.9;
-  }
+  @media (max-width: 900px) {
+    .chapter__body {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
 
-  .page-hero--center .page-hero__lede {
-    margin-left: auto;
-    margin-right: auto;
+    .chapter__inner {
+      min-height: 66vh;
+    }
   }
 </style>

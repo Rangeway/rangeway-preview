@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import { LINKS } from "../config";
 
 const values = [
   {
@@ -33,175 +34,194 @@ const values = [
 >
   <PageHero
     eyebrow="Our Story"
+    index="Origins"
     title="Hospitality DNA meets EV passion."
     lede="Rangeway is not a charging company with amenities. It is a hospitality company that happens to charge vehicles."
     image="/images/basecamp-interior.jpg"
     imageAlt="Interior of a Rangeway driver's lounge"
+    caption="driver's lounge · Basecamp"
   />
 
   <section class="section">
-    <div class="container-narrow prose-lg reveal">
-      <p>
-        Rangeway was founded by a hospitality operator who has spent his career at luxury resorts,
-        wellness retreats, and flagship urban hotels. That is an unusual background for an EV
-        charging company, and that is the point.
-      </p>
-      <p>
-        It is also only half of the story. Rangeway's founder is equally rooted in the EV driver
-        community, as a club director and co-founder. The instincts behind every Rangeway decision
-        come from years of running guest experiences at the highest level, and from countless
-        conversations with drivers on real road trips.
-      </p>
-      <p>
-        That combination is the conviction behind Rangeway. The EV charging industry has treated
-        charging as a utility problem. We believe it is a hospitality problem. Drivers are guests.
-        Stops are experiences. The wait is the product. We know which stops have broken the trip,
-        which lounges never existed, and which corridors have been left behind. We have been the
-        drivers stopping at them.
-      </p>
-      <p>
-        So we are building the answer on our own terms. Every location is designed as a place you
-        would choose, not a place you tolerate. Every format, from the smallest Trailhead to the
-        largest Summit, holds the same hospitality standard. The scale shifts with the road. The
-        care does not.
-      </p>
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">01</span>
+        <span class="kicker__label">Where We Come From</span>
+      </div>
+      <div class="story-open reveal">
+        <blockquote class="pullquote story-open__quote">
+          Drivers are guests. Stops are experiences. <em>The wait is the product.</em>
+        </blockquote>
+        <div class="story-open__body prose">
+          <p>
+            Rangeway was founded by a hospitality operator who has spent his career at luxury
+            resorts, wellness retreats, and flagship urban hotels. That is an unusual background
+            for an EV charging company, and that is the point.
+          </p>
+          <p>
+            It is also only half of the story. Rangeway's founder is equally rooted in the EV
+            driver community, as a club director and co-founder. The instincts behind every
+            Rangeway decision come from years of running guest experiences at the highest level,
+            and from countless conversations with drivers on real road trips.
+          </p>
+          <p>
+            That combination is the conviction behind Rangeway. The EV charging industry has
+            treated charging as a utility problem. We believe it is a hospitality problem. We
+            know which stops have broken the trip, which lounges never existed, and which
+            corridors have been left behind. We have been the drivers stopping at them.
+          </p>
+          <p>
+            So we are building the answer on our own terms. Every location is designed as a
+            place you would choose, not a place you tolerate. Every format, from the smallest
+            Trailhead to the largest Summit, holds the same hospitality standard. The scale
+            shifts with the road. The care does not.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section section-cream">
+  <section class="section story-values">
     <div class="container">
-      <div class="reveal" style="max-width: 640px; margin-bottom: var(--space-8);">
-        <p class="eyebrow">What we believe</p>
+      <div class="kicker reveal">
+        <span class="kicker__index">02</span>
+        <span class="kicker__label">What We Believe</span>
+      </div>
+      <div class="section-head reveal">
         <h2>Four ideas the network is built on.</h2>
       </div>
-
-      <div class="values">
+      <div class="story-values__list">
         {values.map((v) => (
-          <article class="value reveal">
-            <span class="value__num">/{v.num}</span>
+          <div class="index-row reveal">
+            <span class="index-row__num">{v.num}</span>
             <h3>{v.title}</h3>
             <p>{v.body}</p>
-          </article>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section team-strip">
+  <section class="section">
     <div class="container">
-      <div class="team-strip__heading reveal">
-        <p class="eyebrow">The team</p>
-        <h2>The people behind Rangeway.</h2>
-        <p class="prose-lg muted" style="margin-top: var(--space-4); max-width: 52ch;">
-          We are a small group of hospitality operators, energy veterans, and EV community
-          organizers, building the network together.
-        </p>
+      <div class="kicker reveal">
+        <span class="kicker__index">03</span>
+        <span class="kicker__label">The Team</span>
       </div>
-      <div style="margin-top: var(--space-6);">
-        <a class="btn btn-link" href="/team">
-          Meet the team
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="13 6 19 12 13 18" />
-          </svg>
-        </a>
+      <div class="story-team reveal">
+        <h2>The people behind Rangeway.</h2>
+        <div class="story-team__side">
+          <p>
+            We are a small group of hospitality operators, energy veterans, and EV community
+            organizers, building the network together.
+          </p>
+          <a class="btn-link" href="/team">
+            Meet the team
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="13 6 19 12 13 18" />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section section-dark where-dark">
-    <div class="container-narrow reveal">
-      <p class="eyebrow" style="color: var(--color-warm);">Where we're going</p>
-      <h2>The road ahead.</h2>
-      <ul class="where-dark__list">
-        <li><strong>Rangeway Mojave is breaking ground in the Antelope Valley.</strong> Off-grid, solar-powered ultra-fast charging on the CA-14 corridor, with launch coming in 2027.</li>
-        <li>An urban network is taking root in Missouri, with two sites in development.</li>
-        <li>Routes are being charted across Montana.</li>
-        <li><a href="/investors">Qualified investors</a> can review the full pipeline under NDA.</li>
-      </ul>
-      <div class="where-dark__cta">
+  <section class="section band-dark">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">04</span>
+        <span class="kicker__label">Where We're Going</span>
+      </div>
+      <div class="section-head reveal">
+        <h2>The road ahead.</h2>
+        <p class="section-head__lede">
+          <a class="story-nda" href="/investors">Qualified investors</a> can review the full
+          pipeline under NDA.
+        </p>
+      </div>
+      <div class="story-road__list">
+        <div class="index-row reveal">
+          <span class="index-row__num">01</span>
+          <h3>Rangeway Mojave is breaking ground in the Antelope Valley.</h3>
+          <p>Off-grid, solar-powered ultra-fast charging on the CA-14 corridor, with launch coming in 2027.</p>
+        </div>
+        <div class="index-row reveal">
+          <span class="index-row__num">02</span>
+          <h3>An urban network is taking root in Missouri.</h3>
+          <p>Two sites in development.</p>
+        </div>
+        <div class="index-row reveal">
+          <span class="index-row__num">03</span>
+          <h3>Routes are being charted across Montana.</h3>
+          <p></p>
+        </div>
+      </div>
+      <div class="story-road__cta reveal">
         <a class="btn btn-warm" href="/investors">Request investor briefing</a>
-        <a class="btn btn-outline" href="https://fieldnotes.rangeway.co" target="_blank" rel="noopener">Subscribe to Field Notes</a>
+        <a class="btn btn-ghost" href={LINKS.fieldNotes} target="_blank" rel="noopener">Subscribe to Field Notes</a>
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .values {
+  .story-open {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-7);
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: var(--space-7) clamp(48px, 7vw, 120px);
+    align-items: start;
   }
 
-  .value {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    padding-top: var(--space-5);
-    border-top: 1px solid var(--color-border);
+  .story-open__quote {
+    max-width: 16ch;
+    position: sticky;
+    top: calc(var(--nav-height) + 32px);
   }
 
-  .value__num {
-    font-family: var(--font-heading);
-    font-size: 0.82rem;
-    letter-spacing: 0.22em;
-    color: var(--color-warm-deep);
-    font-weight: 600;
+  .story-open__body p {
+    font-size: var(--fs-body-lg);
+    line-height: 1.75;
+    max-width: 56ch;
   }
 
-  .value h3 {
-    font-size: 1.35rem;
-    line-height: 1.25;
+  .story-values__list,
+  .story-road__list {
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .value p {
+  .band-dark .story-road__list {
+    border-bottom-color: var(--border-on-dark);
+  }
+
+  .story-team {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: end;
+  }
+
+  .story-team__side p {
+    margin: 0 0 var(--space-5);
     color: var(--color-text-muted);
-    margin: 0;
-    max-width: 52ch;
+    font-size: 1.08rem;
+    line-height: 1.7;
+    max-width: 44ch;
   }
 
-  .team-strip__heading {
-    max-width: 620px;
-  }
-
-  .where-dark__list {
-    list-style: none;
-    padding: 0;
-    margin: var(--space-5) 0 0;
-    max-width: 68ch;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
-  .where-dark__list li {
-    position: relative;
-    padding-left: var(--space-5);
-    font-size: var(--fs-body);
-    line-height: 1.6;
-    opacity: 0.92;
-  }
-
-  .where-dark__list li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.6em;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--color-warm);
-  }
-
-  .where-dark__list a {
+  .story-nda {
     color: var(--color-warm);
     font-weight: 600;
     text-decoration: underline;
+    text-decoration-thickness: 1px;
     text-underline-offset: 3px;
   }
 
-  .where-dark__cta {
+  .story-nda:hover {
+    color: var(--color-warm-lite);
+  }
+
+  .story-road__cta {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-4);
@@ -209,8 +229,13 @@ const values = [
   }
 
   @media (max-width: 900px) {
-    .values {
+    .story-open,
+    .story-team {
       grid-template-columns: 1fr;
+    }
+
+    .story-open__quote {
+      position: static;
     }
   }
 </style>

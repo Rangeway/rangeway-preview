@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import FormatNav from "../../components/FormatNav.astro";
+import { LINKS } from "../../config";
 
 const experiences = [
   {
@@ -34,110 +35,149 @@ const experiences = [
 >
   <PageHero
     eyebrow="Summit"
+    index="Format 04"
     title="Where the road meets rest."
     lede="A hospitality-first destination where the stop itself becomes part of the journey, with modular Lookouts, a central clubhouse, and fully off-grid solar."
     image="/images/summit-1.jpg"
     imageAlt="A Summit Lookout at dusk"
+    caption="Summit Lookout at dusk"
   />
 
   <FormatNav current="summit" />
 
   <section class="section">
-    <div class="container summit-intro">
-      <div class="reveal">
-        <p class="eyebrow">What Summit is</p>
-        <h2>The stop that becomes the trip.</h2>
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">01</span>
+        <span class="kicker__label">What Summit Is</span>
       </div>
-      <div class="summit-intro__body reveal">
-        <p class="prose-lg">
-          Summit is Rangeway's hospitality north star. It is the format we build when charging is no
-          longer the point, because the stop itself is the reason you came. A weekend, a way to
-          break up a long drive, a night under real darkness.
-        </p>
-        <p class="prose-lg muted">
-          Everything we know about how hotels feel at their best lives here. The lighting is
-          careful. The materials are honest. The service is present when you want it and invisible
-          when you don't.
-        </p>
+      <div class="summit-intro reveal">
+        <h2>The stop that becomes the trip.</h2>
+        <div class="summit-intro__body">
+          <p>
+            Summit is Rangeway's hospitality north star. It is the format we build when charging
+            is no longer the point, because the stop itself is the reason you came. A weekend, a
+            way to break up a long drive, a night under real darkness.
+          </p>
+          <p class="muted">
+            Everything we know about how hotels feel at their best lives here. The lighting is
+            careful. The materials are honest. The service is present when you want it and
+            invisible when you don't.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="summit-experiences section section-cream">
+  <section class="section summit-experiences">
     <div class="container">
-      <div class="reveal" style="margin-bottom: var(--space-8); max-width: 620px;">
-        <p class="eyebrow">The experience</p>
+      <div class="kicker reveal">
+        <span class="kicker__index">02</span>
+        <span class="kicker__label">The Experience</span>
+      </div>
+      <div class="section-head reveal">
         <h2>Four ideas that shape every Summit.</h2>
       </div>
-
-      <div class="experiences">
+      <div class="summit-experiences__list">
         {experiences.map((e) => (
-          <article class="experience reveal">
-            <span class="experience__num">{e.num}</span>
+          <div class="index-row reveal">
+            <span class="index-row__num">{e.num}</span>
             <h3>{e.title}</h3>
             <p>{e.body}</p>
-          </article>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="format-gallery section">
+  <section class="section">
     <div class="container">
-      <div class="gallery-grid">
-        <div class="gallery-grid__item gallery-grid__item--lg reveal">
-          <img src="/images/summit-solar-aerial.jpg" alt="Aerial view of a Summit with clubhouse, Lookouts, and off-grid solar array in the desert" loading="lazy" />
-        </div>
-        <div class="gallery-grid__item reveal">
-          <img src="/images/summit-clubhouse-mountains.jpg" alt="A Summit clubhouse with charging canopy and desert mountains behind" loading="lazy" />
-        </div>
-        <div class="gallery-grid__item reveal">
-          <img src="/images/summit-2.jpg" alt="Summit Lookout interior" loading="lazy" />
+      <div class="kicker reveal">
+        <span class="kicker__index">03</span>
+        <span class="kicker__label">Plates</span>
+      </div>
+      <div class="summit-gallery">
+        <figure class="fig reveal summit-gallery__lead">
+          <div class="fig__frame summit-gallery__frame summit-gallery__frame--wide">
+            <img src="/images/summit-solar-aerial.jpg" alt="Aerial view of a Summit with clubhouse, Lookouts, and off-grid solar array in the desert" loading="lazy" />
+          </div>
+          <figcaption class="fig__caption">
+            <strong>01</strong>
+            <span>Summit from above · Off-grid solar</span>
+          </figcaption>
+        </figure>
+        <figure class="fig reveal">
+          <div class="fig__frame summit-gallery__frame">
+            <img src="/images/summit-clubhouse-mountains.jpg" alt="A Summit clubhouse with charging canopy and desert mountains behind" loading="lazy" />
+          </div>
+          <figcaption class="fig__caption">
+            <strong>02</strong>
+            <span>The clubhouse</span>
+          </figcaption>
+        </figure>
+        <figure class="fig reveal">
+          <div class="fig__frame summit-gallery__frame">
+            <img src="/images/summit-2.jpg" alt="Summit Lookout interior" loading="lazy" />
+          </div>
+          <figcaption class="fig__caption">
+            <strong>03</strong>
+            <span>Lookout interior</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band-dark">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">04</span>
+        <span class="kicker__label">The Summit Standard</span>
+      </div>
+      <div class="summit-pillars">
+        <h2 class="reveal">Built on three convictions.</h2>
+        <div class="summit-pillars__list">
+          <div class="index-row reveal">
+            <span class="index-row__num">01</span>
+            <h3>Hospitality over infrastructure</h3>
+            <p>Summit is a hotel-quality experience that happens to include a charger. The balance never shifts.</p>
+          </div>
+          <div class="index-row reveal">
+            <span class="index-row__num">02</span>
+            <h3>Site-specific architecture</h3>
+            <p>Every Summit is designed for its setting. Materials, orientation, and palette are drawn from the land.</p>
+          </div>
+          <div class="index-row reveal">
+            <span class="index-row__num">03</span>
+            <h3>Genuinely off-grid</h3>
+            <p>Fully off-grid solar, with a commitment that is not performative. The network does not need to plug in to plug in.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section-dark">
-    <div class="container summit-pillars">
-      <div class="reveal" style="max-width: 620px;">
-        <p class="eyebrow" style="color: var(--color-warm);">The Summit standard</p>
-        <h2>Built on three convictions.</h2>
+  <section class="section">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">05</span>
+        <span class="kicker__label">Stay Connected</span>
       </div>
-
-      <div class="pillars">
-        <article class="pillar reveal">
-          <h3>Hospitality over infrastructure</h3>
-          <p>Summit is a hotel-quality experience that happens to include a charger. The balance never shifts.</p>
-        </article>
-        <article class="pillar reveal">
-          <h3>Site-specific architecture</h3>
-          <p>Every Summit is designed for its setting. Materials, orientation, and palette are drawn from the land.</p>
-        </article>
-        <article class="pillar reveal">
-          <h3>Genuinely off-grid</h3>
-          <p>Fully off-grid solar, with a commitment that is not performative. The network does not need to plug in to plug in.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-cream">
-    <div class="container-narrow text-center reveal">
-      <p class="eyebrow">Stay connected</p>
-      <h2>First access to Summit openings.</h2>
-      <p class="prose-lg muted" style="margin-top: var(--space-4);">
-        Summit locations are small and intentional. Field Notes subscribers hear first when a new
-        property opens for stays.
-      </p>
-      <div style="margin-top: var(--space-6);">
-        <a class="btn btn-primary" href="https://fieldnotes.rangeway.co" target="_blank" rel="noopener">
-          Subscribe to Field Notes
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="13 6 19 12 13 18" />
-          </svg>
-        </a>
+      <div class="summit-follow reveal">
+        <h2>First access to Summit openings.</h2>
+        <div class="summit-follow__side">
+          <p>
+            Summit locations are small and intentional. Field Notes subscribers hear first when a
+            new property opens for stays.
+          </p>
+          <a class="btn btn-primary" href={LINKS.fieldNotes} target="_blank" rel="noopener">
+            Subscribe to Field Notes
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="13 6 19 12 13 18" />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -146,112 +186,84 @@ const experiences = [
 <style>
   .summit-intro {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: var(--space-8);
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
     align-items: start;
+  }
+
+  .summit-intro h2 {
+    max-width: 13ch;
   }
 
   .summit-intro__body p {
-    font-size: 1.15rem;
+    font-size: var(--fs-body-lg);
     line-height: 1.7;
+    margin: 0 0 var(--space-5);
+    max-width: 48ch;
   }
 
-  .experiences {
+  .summit-intro__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .summit-experiences__list {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .summit-gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-7);
+    gap: clamp(24px, 3vw, 48px);
   }
 
-  .experience {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
+  .summit-gallery__lead {
+    grid-column: 1 / -1;
   }
 
-  .experience__num {
-    font-family: var(--font-heading);
-    font-size: 0.82rem;
-    letter-spacing: 0.22em;
-    color: var(--color-warm-deep);
-    font-weight: 600;
+  .summit-gallery__frame {
+    aspect-ratio: 4 / 3;
   }
 
-  .experience h3 {
-    font-size: 1.4rem;
+  .summit-gallery__frame--wide {
+    aspect-ratio: 21 / 9;
   }
 
-  .experience p {
+  .summit-pillars h2 {
+    margin-bottom: clamp(40px, 6vw, 72px);
+  }
+
+  .summit-pillars__list {
+    border-bottom: 1px solid var(--border-on-dark);
+  }
+
+  .summit-follow {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: end;
+  }
+
+  .summit-follow__side p {
+    margin: 0 0 var(--space-6);
     color: var(--color-text-muted);
-    font-size: 1.02rem;
-    margin: 0;
-  }
-
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: repeat(2, 280px);
-    gap: var(--space-4);
-  }
-
-  .gallery-grid__item {
-    overflow: hidden;
-    border-radius: var(--radius-md);
-  }
-
-  .gallery-grid__item--lg {
-    grid-row: span 2;
-  }
-
-  .gallery-grid__item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .summit-pillars {
-    display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: var(--space-8);
-    align-items: start;
-  }
-
-  .pillars {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-6);
-  }
-
-  .pillar {
-    padding-top: var(--space-5);
-    border-top: 1px solid rgba(245, 241, 235, 0.15);
-  }
-
-  .pillar h3 {
-    color: var(--color-cream);
-    font-size: 1.25rem;
-    margin-bottom: var(--space-3);
-  }
-
-  .pillar p {
-    color: var(--color-cream);
-    opacity: 0.78;
-    margin: 0;
+    font-size: 1.08rem;
+    line-height: 1.7;
+    max-width: 44ch;
   }
 
   @media (max-width: 900px) {
     .summit-intro,
-    .summit-pillars,
-    .experiences {
+    .summit-follow {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .summit-gallery {
       grid-template-columns: 1fr;
     }
 
-    .gallery-grid {
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(3, 240px);
-    }
-
-    .gallery-grid__item--lg {
-      grid-row: auto;
+    .summit-gallery__frame--wide {
+      aspect-ratio: 16 / 10;
     }
   }
 </style>

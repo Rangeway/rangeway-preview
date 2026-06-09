@@ -1,177 +1,37 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import PageHero from "../../components/PageHero.astro";
-import FormatNav from "../../components/FormatNav.astro";
-
-const amenities = [
-  { title: "Ultra-fast charging", body: "Flagship-scale capacity for the highest-traffic corridors, designed for steady throughput and peak weekends alike." },
-  { title: "Staffed driver's lounge", body: "Our most generous indoor space, with seating zones for work, for family, and for quiet." },
-  { title: "Staffed cafe", body: "A real kitchen with a real menu, local coffee, warm food, and hospitality in the room." },
-  { title: "Trailkeepers on site", body: "Hospitality staff trained to help, not just to supervise, with a difference that's felt the moment you walk in." },
-  { title: "Extended hours", body: "Built for the full arc of the day, from early mornings to late nights to long holiday weekends." },
-  { title: "Amenities for families and travelers", body: "Play corners for kids, nursing rooms, and pet-friendly patios that turn a stop into the kind our guests recommend." }
-];
+import FormatPage from "../../components/FormatPage.astro";
 ---
 
-<BaseLayout
-  title="Basecamp · The Network"
-  description="The full-service destination. Ultra-fast charging, a staffed driver's lounge, and a staffed cafe at flagship scale."
-  image="/images/basecamp-hero-desert.jpg"
->
-  <PageHero
-    eyebrow="Basecamp"
-    title="The full-service destination."
-    lede="Our flagship experience, with ultra-fast charging, a staffed driver's lounge, a staffed cafe, and the people who make it all feel effortless."
-    image="/images/basecamp-hero-desert.jpg"
-    imageAlt="A Basecamp at dusk with a lit lounge, charging canopy, and desert mountains behind"
-  />
-
-  <FormatNav current="basecamp" />
-
-  <section class="section">
-    <div class="container format-intro">
-      <div class="reveal">
-        <p class="eyebrow">What a Basecamp is</p>
-        <h2>Hospitality at full scale.</h2>
-      </div>
-      <div class="format-intro__body reveal">
-        <p class="prose-lg">
-          Basecamp is what happens when we stop apologizing for charging stops. It is an actual
-          destination, staffed by people who know your name before you leave, placed on corridors
-          where the traffic earns the full experience.
-        </p>
-        <p class="prose-lg muted">
-          Everything we have learned about hospitality at flagship properties shows up here. The
-          cafe is real, the service is real, and the comfort is real. The chargers happen to be
-          excellent too.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-cream">
-    <div class="container">
-      <div class="reveal" style="margin-bottom: var(--space-8); max-width: 620px;">
-        <p class="eyebrow">What you'll find</p>
-        <h2>A staffed, hospitality-led experience.</h2>
-      </div>
-      <div class="amenity-grid">
-        {amenities.map((a) => (
-          <article class="amenity reveal">
-            <h3>{a.title}</h3>
-            <p>{a.body}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="format-gallery section">
-    <div class="container">
-      <div class="gallery-grid">
-        <div class="gallery-grid__item gallery-grid__item--lg reveal">
-          <img src="/images/basecamp-rosamond.jpg" alt="Aerial view of a desert Basecamp with solar canopy, battery storage, and driver's lounge beside the highway" loading="lazy" />
-        </div>
-        <div class="gallery-grid__item reveal">
-          <img src="/images/basecamp-cortex.jpg" alt="Aerial view of a Basecamp in an urban setting with charging canopy and driver's lounge" loading="lazy" />
-        </div>
-        <div class="gallery-grid__item reveal">
-          <img src="/images/basecamp-stlouis-arch.jpg" alt="A Basecamp at dusk in St. Louis with the Gateway Arch and observation tower in the background" loading="lazy" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-dark">
-    <div class="container-narrow text-center reveal">
-      <p class="eyebrow eyebrow-muted" style="color: var(--color-warm);">One step further</p>
-      <h2>For the journey that should last overnight, there is Summit.</h2>
-      <p class="prose-lg" style="margin-top: var(--space-5); opacity: 0.85;">
-        Modular Lookouts, a central clubhouse, and fully off-grid solar charging, where the stop
-        becomes the trip.
-      </p>
-      <div style="margin-top: var(--space-6);">
-        <a class="btn btn-warm" href="/network/summit">
-          Explore Summit
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="13 6 19 12 13 18" />
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-</BaseLayout>
-
-<style>
-  .format-intro {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: var(--space-8);
-    align-items: start;
-  }
-
-  .format-intro__body p {
-    font-size: 1.15rem;
-    line-height: 1.7;
-  }
-
-  .amenity-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-6);
-  }
-
-  .amenity {
-    background: var(--surface-raised);
-    padding: var(--space-6);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
-  }
-
-  .amenity h3 {
-    font-size: 1.2rem;
-    margin-bottom: var(--space-3);
-  }
-
-  .amenity p {
-    color: var(--color-text-muted);
-    margin: 0;
-  }
-
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: repeat(2, 280px);
-    gap: var(--space-4);
-  }
-
-  .gallery-grid__item {
-    overflow: hidden;
-    border-radius: var(--radius-md);
-  }
-
-  .gallery-grid__item--lg {
-    grid-row: span 2;
-  }
-
-  .gallery-grid__item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  @media (max-width: 900px) {
-    .format-intro,
-    .amenity-grid {
-      grid-template-columns: 1fr;
-    }
-    .gallery-grid {
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(3, 240px);
-    }
-    .gallery-grid__item--lg {
-      grid-row: auto;
-    }
-  }
-</style>
+<FormatPage
+  slug="basecamp"
+  num="03"
+  name="Basecamp"
+  metaTitle="Basecamp · The Network"
+  metaDescription="The full-service destination. Ultra-fast charging, a staffed driver's lounge, and a staffed cafe at flagship scale."
+  heroTitle="The full-service destination."
+  heroLede="Our flagship experience, with ultra-fast charging, a staffed driver's lounge, a staffed cafe, and the people who make it all feel effortless."
+  heroImage="/images/basecamp-hero-desert.jpg"
+  heroAlt="A Basecamp at dusk with a lit lounge, charging canopy, and desert mountains behind"
+  heroCaption="Basecamp · High-traffic corridors"
+  introTitle="Hospitality at full scale."
+  introBody="Basecamp is what happens when we stop apologizing for charging stops. It is an actual destination, staffed by people who know your name before you leave, placed on corridors where the traffic earns the full experience."
+  introMuted="Everything we have learned about hospitality at flagship properties shows up here. The cafe is real, the service is real, and the comfort is real. The chargers happen to be excellent too."
+  amenitiesTitle="A staffed, hospitality-led experience."
+  amenities={[
+    { title: "Ultra-fast charging", body: "Flagship-scale capacity for the highest-traffic corridors, designed for steady throughput and peak weekends alike." },
+    { title: "Staffed driver's lounge", body: "Our most generous indoor space, with seating zones for work, for family, and for quiet." },
+    { title: "Staffed cafe", body: "A real kitchen with a real menu, local coffee, warm food, and hospitality in the room." },
+    { title: "Trailkeepers on site", body: "Hospitality staff trained to help, not just to supervise, with a difference that's felt the moment you walk in." },
+    { title: "Extended hours", body: "Built for the full arc of the day, from early mornings to late nights to long holiday weekends." },
+    { title: "Amenities for families and travelers", body: "Play corners for kids, nursing rooms, and pet-friendly patios that turn a stop into the kind our guests recommend." }
+  ]}
+  gallery={[
+    { src: "/images/basecamp-rosamond.jpg", alt: "Aerial view of a desert Basecamp with solar canopy, battery storage, and driver's lounge beside the highway", caption: "Basecamp · Antelope Valley" },
+    { src: "/images/basecamp-cortex.jpg", alt: "Aerial view of a Basecamp in an urban setting with charging canopy and driver's lounge", caption: "Basecamp · Urban corridor" },
+    { src: "/images/basecamp-stlouis-arch.jpg", alt: "A Basecamp at dusk in St. Louis with the Gateway Arch and observation tower in the background", caption: "Basecamp · St. Louis" }
+  ]}
+  nextTitle="For the journey that should last overnight, there is Summit."
+  nextBody="Modular Lookouts, a central clubhouse, and fully off-grid solar charging, where the stop becomes the trip."
+  nextCtaText="Explore Summit"
+  nextCtaHref="/network/summit"
+/>

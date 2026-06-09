@@ -9,6 +9,7 @@ import WhereGoing from "../sections/WhereGoing.astro";
 import Leadership from "../sections/Leadership.astro";
 import Partners from "../sections/Partners.astro";
 import ClimatizeRaise from "../sections/ClimatizeRaise.astro";
+import { CAMPAIGN_MODE } from "../config";
 ---
 
 <BaseLayout
@@ -17,8 +18,9 @@ import ClimatizeRaise from "../sections/ClimatizeRaise.astro";
   bodyClass="has-hero"
 >
   <Hero />
+  {CAMPAIGN_MODE && <ClimatizeRaise variant="feature" />}
   <Positioning />
-  <ClimatizeRaise />
+  {!CAMPAIGN_MODE && <ClimatizeRaise variant="standard" />}
   <Network />
   <ComfortGuarantee />
   <OurStory />

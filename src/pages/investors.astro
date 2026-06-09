@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import ClimatizeRaise from "../sections/ClimatizeRaise.astro";
+import { LINKS } from "../config";
 
 const thesis = [
   {
@@ -29,56 +31,67 @@ const thesis = [
 >
   <PageHero
     eyebrow="Investors"
+    index="The Case"
     title="A hospitality category the charging industry never built."
     lede="Rangeway is a hospitality brand for EV drivers. Charging is our beachhead, and experience is the business."
     image="/images/waystation-gualala.png"
     imageAlt="A Waystation in the evening light"
+    caption="Waystation · Gualala, California"
   >
-    <div class="hero-ctas">
-      <a class="btn btn-warm" href="https://investors.rangeway.co" target="_blank" rel="noopener">
+    <div class="inv-hero__ctas">
+      <a class="btn btn-warm" href={LINKS.investorHub} target="_blank" rel="noopener">
         Visit the Investor Hub
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12" />
           <polyline points="13 6 19 12 13 18" />
         </svg>
       </a>
-      <a class="btn btn-outline" href="mailto:investors@rangeway.co?subject=Investor%20Briefing%20Request">
+      <a class="btn btn-ghost" href="mailto:investors@rangeway.co?subject=Investor%20Briefing%20Request">
         investors@rangeway.co
       </a>
     </div>
   </PageHero>
 
   <section class="section">
-    <div class="container investors-intro">
-      <div class="reveal">
-        <p class="eyebrow">The opportunity</p>
-        <h2>Charging is a hospitality problem the industry has misread.</h2>
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">01</span>
+        <span class="kicker__label">The Opportunity</span>
       </div>
-      <div class="investors-intro__body reveal">
-        <p class="prose-lg">
-          EV drivers wait at chargers on every long drive. Today, that wait happens in a parking
-          lot. Rangeway is building the first national network designed for the people inside the
-          vehicle, not just the vehicle itself, with hospitality operators at the helm.
-        </p>
-        <p class="prose-lg muted">
-          The investment case is simple. Hospitality is a learnable craft, the chargers are a
-          solved problem, and the category is wide open. We are building the brand that will
-          define it.
-        </p>
+      <div class="inv-open reveal">
+        <blockquote class="pullquote inv-open__quote">
+          Charging is a hospitality problem <em>the industry has misread.</em>
+        </blockquote>
+        <div class="inv-open__body">
+          <p>
+            EV drivers wait at chargers on every long drive. Today, that wait happens in a
+            parking lot. Rangeway is building the first national network designed for the people
+            inside the vehicle, not just the vehicle itself, with hospitality operators at the
+            helm.
+          </p>
+          <p class="muted">
+            The investment case is simple. Hospitality is a learnable craft, the chargers are a
+            solved problem, and the category is wide open. We are building the brand that will
+            define it.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section recognition">
+  <section class="section inv-recognition">
     <div class="container">
-      <div class="reveal" style="max-width: 720px;">
-        <p class="eyebrow">Recognition</p>
-        <p class="prose-lg" style="margin-top: var(--space-4);">
+      <div class="kicker reveal">
+        <span class="kicker__index">02</span>
+        <span class="kicker__label">Recognition</span>
+      </div>
+      <div class="inv-recognition__body reveal">
+        <p class="prose-lg">
           Rangeway was named among the next generation of charge point operators in Ohm
           Analytics' Q3 2025 US EV Charging Market Report, and is a quarter-finalist in the
           Pepperdine Most Fundable Companies program.
         </p>
-        <div style="margin-top: var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-5);">
+        <div class="inv-recognition__links">
           <a
             class="btn-link"
             href="https://hs-21752392.f.hubspotstarter.net/hubfs/21752392/OhmAnalytics_EVCharging_2025Q3Report_20251211_Sample.pdf"
@@ -108,20 +121,22 @@ const thesis = [
     </div>
   </section>
 
-  <section class="section section-cream">
+  <section class="section">
     <div class="container">
-      <div class="reveal" style="max-width: 640px; margin-bottom: var(--space-8);">
-        <p class="eyebrow">The thesis</p>
+      <div class="kicker reveal">
+        <span class="kicker__index">03</span>
+        <span class="kicker__label">The Thesis</span>
+      </div>
+      <div class="section-head reveal">
         <h2>Four convictions the plan rests on.</h2>
       </div>
-
-      <div class="thesis">
+      <div class="inv-thesis">
         {thesis.map((t, i) => (
-          <article class="thesis-item reveal">
-            <span class="thesis-item__num">/{String(i + 1).padStart(2, "0")}</span>
+          <div class="index-row reveal">
+            <span class="index-row__num">{String(i + 1).padStart(2, "0")}</span>
             <h3>{t.title}</h3>
             <p>{t.body}</p>
-          </article>
+          </div>
         ))}
       </div>
     </div>
@@ -129,79 +144,71 @@ const thesis = [
 
   <section class="section">
     <div class="container">
-      <div class="reveal" style="max-width: 640px; margin-bottom: var(--space-6);">
-        <p class="eyebrow">The plan in context</p>
+      <div class="kicker reveal">
+        <span class="kicker__index">04</span>
+        <span class="kicker__label">The Plan in Context</span>
+      </div>
+      <div class="inv-plan reveal">
         <h2>Built for scale. Built to last.</h2>
-      </div>
-      <div class="reveal investors-prose">
-        <p class="prose-lg">
-          The public EV charging market is on a long-term growth curve, and the largest single-year
-          expansion in DC fast charging on record just happened. Reliability remains the industry's
-          open wound, with public charging too often still failing when drivers most need it to
-          work.
-        </p>
-        <p class="prose-lg">
-          Rangeway is being built into that gap. The network plan covers multiple formats across a
-          multi-state footprint, funded through a combination of equity, site-level debt,
-          non-dilutive programs, and partner-funded energy infrastructure. The unit economics,
-          corridor strategy, and capital plan live in the full investor briefing.
-        </p>
-        <p class="prose-lg muted">
-          Request the briefing for the detailed model, site-level projections, and source
-          attribution.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-cream">
-    <div class="container">
-      <div class="reveal" style="max-width: 640px; margin-bottom: var(--space-6);">
-        <p class="eyebrow">The roadmap</p>
-        <h2>A phased build.</h2>
-      </div>
-      <div class="reveal investors-prose">
-        <p class="prose-lg">
-          Rangeway is moving through site control and early development now, with first revenue
-          coming online in the phase that follows. Network expansion, the first Summit, and
-          multi-state operations are built into the longer arc. The detailed milestone schedule,
-          including target quarters and capital deployment sequencing, is in the investor briefing.
-        </p>
+        <div class="inv-plan__body">
+          <p>
+            The public EV charging market is on a long-term growth curve, and the largest
+            single-year expansion in DC fast charging on record just happened. Reliability
+            remains the industry's open wound, with public charging too often still failing when
+            drivers most need it to work.
+          </p>
+          <p>
+            Rangeway is being built into that gap. The network plan covers multiple formats
+            across a multi-state footprint, funded through a combination of equity, site-level
+            debt, non-dilutive programs, and partner-funded energy infrastructure. The unit
+            economics, corridor strategy, and capital plan live in the full investor briefing.
+          </p>
+          <p class="muted">
+            Request the briefing for the detailed model, site-level projections, and source
+            attribution.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="reveal climatize-cta">
-        <p class="eyebrow">Now open</p>
-        <h2>Build Rangeway Mojave with us.</h2>
-        <p class="prose-lg" style="margin-top: var(--space-5); max-width: 56ch;">
-          Rangeway is raising capital on Climatize to build Rangeway Mojave, the first location in the network. The campaign is open to everyone, not just accredited investors. Anyone can invest in the first site, starting at the campaign minimum.
-        </p>
-        <div style="margin-top: var(--space-6); display: flex; gap: var(--space-4); flex-wrap: wrap;">
-          <a class="btn btn-warm" href="https://climatize.earth" target="_blank" rel="noopener">
-            Invest in Mojave
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="13 6 19 12 13 18" />
-            </svg>
-          </a>
+      <div class="kicker reveal">
+        <span class="kicker__index">05</span>
+        <span class="kicker__label">The Roadmap</span>
+      </div>
+      <div class="inv-plan reveal">
+        <h2>A phased build.</h2>
+        <div class="inv-plan__body">
+          <p>
+            Rangeway is moving through site control and early development now, with first
+            revenue coming online in the phase that follows. Network expansion, the first
+            Summit, and multi-state operations are built into the longer arc. The detailed
+            milestone schedule, including target quarters and capital deployment sequencing, is
+            in the investor briefing.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section-dark">
-    <div class="container investor-cta">
-      <div class="reveal">
-        <p class="eyebrow" style="color: var(--color-warm);">Get in touch</p>
+  <ClimatizeRaise variant="feature" />
+
+  <section class="section band-dark">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__index">06</span>
+        <span class="kicker__label">Get in Touch</span>
+      </div>
+      <div class="inv-cta reveal">
         <h2>Request the investor briefing.</h2>
-        <p class="prose-lg" style="margin-top: var(--space-5); opacity: 0.88; max-width: 52ch;">
-          Our investor materials include the market thesis, corridor strategy, format economics,
-          partner roster, and capital plan. We share them with serious partners on request.
-        </p>
-        <div style="margin-top: var(--space-6); display: flex; gap: var(--space-4); flex-wrap: wrap;">
+        <div class="inv-cta__side">
+          <p>
+            Our investor materials include the market thesis, corridor strategy, format
+            economics, partner roster, and capital plan. We share them with serious partners on
+            request.
+          </p>
           <a class="btn btn-warm" href="mailto:investors@rangeway.co?subject=Investor%20Briefing%20Request">
             Email investors@rangeway.co
           </a>
@@ -212,80 +219,96 @@ const thesis = [
 </BaseLayout>
 
 <style>
-  .hero-ctas {
+  .inv-hero__ctas {
     display: flex;
     gap: var(--space-4);
     flex-wrap: wrap;
     margin-top: var(--space-6);
   }
 
-  .investors-intro {
+  .inv-open {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: var(--space-8);
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: var(--space-7) clamp(48px, 7vw, 120px);
     align-items: start;
   }
 
-  .investors-intro__body p {
-    font-size: 1.15rem;
+  .inv-open__quote {
+    max-width: 18ch;
+  }
+
+  .inv-open__body p {
+    font-size: var(--fs-body-lg);
     line-height: 1.7;
+    margin: 0 0 var(--space-5);
+    max-width: 50ch;
   }
 
-  .thesis {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-7);
+  .inv-open__body p:last-child {
+    margin-bottom: 0;
   }
 
-  .thesis-item {
+  .inv-recognition__body {
+    max-width: 760px;
+  }
+
+  .inv-recognition__body .prose-lg {
+    margin: 0 0 var(--space-5);
+  }
+
+  .inv-recognition__links {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    padding-top: var(--space-5);
-    border-top: 1px solid var(--color-border);
-  }
-
-  .thesis-item__num {
-    font-family: var(--font-heading);
-    font-size: 0.82rem;
-    letter-spacing: 0.22em;
-    color: var(--color-warm-deep);
-    font-weight: 600;
-  }
-
-  .thesis-item h3 {
-    font-size: 1.3rem;
-    line-height: 1.3;
-  }
-
-  .thesis-item p {
-    color: var(--color-text-muted);
-    margin: 0;
-  }
-
-  .investor-cta {
-    max-width: 640px;
-  }
-
-  .investors-prose {
-    max-width: 64ch;
-    display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: var(--space-5);
   }
 
-  .investors-prose p {
-    margin: 0;
+  .inv-thesis {
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .climatize-cta {
-    max-width: 720px;
+  .inv-plan {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: start;
+  }
+
+  .inv-plan h2 {
+    max-width: 12ch;
+  }
+
+  .inv-plan__body p {
+    font-size: var(--fs-body-lg);
+    line-height: 1.7;
+    margin: 0 0 var(--space-5);
+    max-width: 56ch;
+  }
+
+  .inv-plan__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .inv-cta {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: end;
+  }
+
+  .inv-cta__side p {
+    margin: 0 0 var(--space-6);
+    color: var(--fg-on-dark-2);
+    font-size: 1.08rem;
+    line-height: 1.7;
+    max-width: 44ch;
   }
 
   @media (max-width: 900px) {
-    .investors-intro,
-    .thesis {
+    .inv-open,
+    .inv-plan,
+    .inv-cta {
       grid-template-columns: 1fr;
+      align-items: start;
     }
   }
 </style>
