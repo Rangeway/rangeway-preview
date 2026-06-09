@@ -8,6 +8,13 @@ const leaders = [
     linkedin: "https://www.linkedin.com/in/zakwinnick"
   },
   {
+    name: "Luke Schüette",
+    role: "Director of Design and Construction",
+    bio: "Luke designs Rangeway's solar canopies and lounge structures, and chairs ASTM's task group on Structural Engineered Bamboo.",
+    photo: "/images/team/luke-schuette.jpg",
+    linkedin: "https://www.linkedin.com/in/luke-d-sch%C3%BCette/"
+  },
+  {
     name: "Theo Reichgelt",
     role: "Brand and Growth",
     bio: "Theo founded Nexxt Industry and hosts The eMobility Marketing Podcast.",
@@ -85,7 +92,7 @@ const leaders = [
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: var(--space-5);
   }
 

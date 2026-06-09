@@ -1,0 +1,306 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+
+const sections = [
+  {
+    id: "environment",
+    eyebrow: "01 — Environment",
+    tocLabel: "Environment",
+    title: "Environmental sustainability",
+    lead:
+      "Rangeway exists because the way America travels is changing. Every premium charging session we deliver helps another driver make long-distance electric travel feel normal, comfortable, and reliable. That is how the transition actually happens. Environmental responsibility is built into how every Rangeway location is designed, financed, built, and operated.",
+    items: [
+      {
+        title: "Solar-first charging.",
+        body:
+          "Our flagship site is designed around nearly 1 MW of on-site solar generation paired with battery energy storage. The Summit format goes further, operating 100% off-grid on solar and battery storage with no grid draw. Wherever the load profile and site allow, we reduce reliance on the grid first, then meet what remains with the cleanest power available."
+      },
+      {
+        title: "Lower-carbon construction.",
+        body:
+          "Our preferred structural partner uses engineered bamboo and modular fabrication for our driver's lounges, canopies, clubhouses, and Lookouts. The result is a meaningfully lower embodied carbon footprint than conventional steel-and-concrete construction, delivered at the premium finish a Rangeway location requires."
+      },
+      {
+        title: "Participating in the transition.",
+        body:
+          "Rangeway participates in California's Low Carbon Fuel Standard program. The cleanest mile is the one a driver actually chooses to take in an EV, and our network exists to make that mile easier to choose."
+      },
+      {
+        title: "Built for the long term.",
+        body:
+          "A Rangeway location is built to last. Our hardware-flexible Trailheads are engineered to evolve into Waystations and Basecamps as demand grows, so the first chargers we put in the ground continue serving drivers for decades. Building for permanence is itself a sustainability choice."
+      }
+    ]
+  },
+  {
+    id: "social-impact",
+    eyebrow: "02 — Communities",
+    tocLabel: "Communities",
+    title: "Social impact",
+    lead:
+      "We build where charging is thinnest. Rural communities, smaller cities, and the corridors that connect them are the places where the EV transition stalls without good infrastructure. A Rangeway location is designed to be a real economic presence in those communities, not a kiosk in a parking lot.",
+    items: [
+      {
+        title: "Investing in rural and underserved corridors.",
+        body:
+          "Our network focuses on routes and communities that have been left behind by the first wave of EV infrastructure. We choose sites where a premium location can do more than serve drivers, it can anchor local economic activity."
+      },
+      {
+        title: "Local jobs, local presence.",
+        body:
+          "Every Basecamp and Summit creates hospitality-grade jobs in communities where those jobs matter. Our Trailkeepers are local hires, trained in the kind of hospitality that builds careers, not just hourly shifts."
+      },
+      {
+        title: "Building community around the journey.",
+        body:
+          "Our founder co-leads NorCal EVs and serves as Community Director of the Bay Area Rivian Club. The Trail Marker Podcast and our Field Notes publication exist to share what we are learning with drivers, operators, and the broader EV community. Rangeway is being built in public, with the community it serves."
+      }
+    ]
+  },
+  {
+    id: "inclusion",
+    eyebrow: "03 — Inclusion",
+    tocLabel: "Inclusion",
+    title: "Diversity, equity, and inclusion",
+    lead:
+      "Premium hospitality should welcome everyone. The same standard applies to who we serve at our locations and to who we build our company with.",
+    items: [
+      {
+        title: "A driver's lounge designed for every traveler.",
+        body:
+          "Climate-controlled indoor comfort is not a luxury, it is access. A clean, safe, well-lit driver's lounge matters more to a parent traveling with young children, a driver with limited mobility, an older traveler, or a woman driving alone at night than any spec sheet can capture. We design our locations so that every guest is comfortable, regardless of how or why they are on the road."
+      },
+      {
+        title: "Hiring as we grow.",
+        body:
+          "Rangeway is in its earliest stage. As we build out our team, we are committed to sourcing candidates broadly, hiring for character and capability, and building a workplace where the best people want to do the work of their careers. We will measure ourselves on outcomes, not statements."
+      },
+      {
+        title: "Serving the corridors that get overlooked.",
+        body:
+          "The communities where we build are themselves underrepresented in EV infrastructure investment. Showing up in those places, with the same quality of experience we would build anywhere, is part of how we think about equity."
+      }
+    ]
+  },
+  {
+    id: "growth",
+    eyebrow: "04 — People",
+    tocLabel: "People",
+    title: "Career growth and learning",
+    lead:
+      "We think like hotel operators, not utility companies. That shapes how we hire, how we train, and what we offer the people who work at a Rangeway location.",
+    items: [
+      {
+        title: "The Trailkeeper standard.",
+        body:
+          "The people who staff our Basecamps and Summits are called Trailkeepers, and the role is built around hospitality training, mentorship, and real career progression. A Trailkeeper at their first location should be able to see a path to leading one, and the company grows by promoting from within wherever possible."
+      },
+      {
+        title: "Hospitality DNA, applied to a new category.",
+        body:
+          "Our founder spent more than 15 years in luxury hospitality operations before starting Rangeway. The training standards, service principles, and growth pathways that build great hotel teams are the same ones we are bringing to EV charging. There is no industry equivalent for this yet. We are building it."
+      },
+      {
+        title: "Learning in public.",
+        body:
+          "Our podcast and publication are not just outward-facing. They are part of how we capture what we are learning and share it across the team and the broader industry. Working at Rangeway should mean working in a place where curiosity is part of the job."
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Our Commitments · Rangeway"
+  description="The commitments Rangeway holds itself to, from how we design and power our locations to how we hire and who we serve."
+  image="/images/basecamp-cortex-dusk.jpg"
+>
+  <PageHero
+    eyebrow="What we build for"
+    title="Our commitments."
+    lede="A hospitality company that takes its work seriously should be able to say what it stands for, and show its work. These are the commitments we hold ourselves to as we build Rangeway, from how we design and power our locations to how we hire and who we serve."
+    image="/images/basecamp-cortex-dusk.jpg"
+    imageAlt="A Rangeway location at golden hour"
+  />
+
+  <nav class="commit-toc" aria-label="On this page">
+    <div class="container">
+      <ul>
+        {sections.map((s) => (
+          <li><a href={`#${s.id}`}>{s.tocLabel}</a></li>
+        ))}
+        <li><a href="#reporting">Accountability</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  {sections.map((s, i) => (
+    <section
+      id={s.id}
+      class={`section commit-section ${i % 2 === 1 ? "section-cream" : ""}`}
+    >
+      <div class="container">
+        <header class="commit-section__head reveal">
+          <p class="eyebrow">{s.eyebrow}</p>
+          <h2>{s.title}</h2>
+          <p class="prose-lg">{s.lead}</p>
+        </header>
+
+        <ul class="commit-items">
+          {s.items.map((item, idx) => (
+            <li class="commit-item reveal">
+              <div class="commit-item__index">
+                <span>{String(idx + 1).padStart(2, "0")}</span>
+              </div>
+              <div class="commit-item__body">
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  ))}
+
+  <section id="reporting" class="section section-dark commit-reporting">
+    <div class="container-narrow reveal">
+      <p class="eyebrow" style="color: var(--color-warm);">Accountability</p>
+      <h2>Showing our work.</h2>
+      <p class="prose-lg">
+        Commitments without evidence are just slogans. As the network grows, Rangeway will publish
+        what these commitments add up to: renewable generation and grid offset across the network,
+        embodied carbon comparisons across our build standards, team composition as we hire, and
+        the local economic footprint of each location we open. A hospitality company that takes the
+        environment, its communities, and its people seriously should be able to show its work, and
+        we will.
+      </p>
+      <div class="commit-reporting__cta">
+        <a class="btn btn-warm" href="/network">See where we're building</a>
+        <a class="btn btn-outline" href="mailto:careers@rangeway.co?subject=Joining%20the%20Rangeway%20team">
+          Join the team
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .commit-toc {
+    border-bottom: 1px solid var(--color-border);
+    background: var(--surface-alt);
+  }
+
+  .commit-toc ul {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-4) 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-6);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .commit-toc a {
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    transition: color var(--dur-fast) var(--ease-standard);
+  }
+
+  .commit-toc a:hover {
+    color: var(--color-warm-deep);
+  }
+
+  .commit-section {
+    scroll-margin-top: calc(var(--nav-height) + 80px);
+  }
+
+  .commit-section__head {
+    max-width: 760px;
+    margin-bottom: var(--space-8);
+  }
+
+  .commit-section__head h2 {
+    margin-top: var(--space-3);
+  }
+
+  .commit-section__head .prose-lg {
+    margin-top: var(--space-5);
+    color: var(--color-text-muted);
+  }
+
+  .commit-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .commit-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: var(--space-6);
+    padding: var(--space-7) 0;
+    border-top: 1px solid var(--color-border);
+    align-items: start;
+  }
+
+  .commit-item:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .commit-item__index span {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    letter-spacing: 0.22em;
+    color: var(--color-warm-deep);
+    font-weight: 600;
+  }
+
+  .commit-item__body {
+    max-width: 68ch;
+  }
+
+  .commit-item__body h3 {
+    font-size: clamp(1.35rem, 2vw, 1.65rem);
+    line-height: 1.25;
+    margin: 0 0 var(--space-4);
+  }
+
+  .commit-item__body p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .commit-reporting {
+    scroll-margin-top: calc(var(--nav-height) + 80px);
+  }
+
+  .commit-reporting__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-7);
+  }
+
+  @media (max-width: 780px) {
+    .commit-toc ul {
+      gap: var(--space-3) var(--space-5);
+    }
+
+    .commit-item {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+      padding: var(--space-6) 0;
+    }
+  }
+</style>

@@ -11,6 +11,13 @@ const team = [
     linkedin: "https://www.linkedin.com/in/zakwinnick"
   },
   {
+    name: "Luke Schüette",
+    role: "Director of Design and Construction",
+    bio: "Luke leads design and construction for the Rangeway network. A structural systems innovator, Luke chairs ASTM's task group on Structural Engineered Bamboo and holds patents in solar charging structures. He has designed for industry leaders like BMW, Rivian, and Tesla. His solar canopies and lounge structures define the look of every Rangeway destination.",
+    photo: "/images/team/luke-schuette.jpg",
+    linkedin: "https://www.linkedin.com/in/luke-d-sch%C3%BCette/"
+  },
+  {
     name: "Theo Reichgelt",
     role: "Brand and Growth",
     bio: "Theo founded Nexxt Industry, Europe's leading eMobility marketing agency, and specializes in charging network brand development and market positioning. He also hosts The eMobility Marketing Podcast.",
@@ -91,8 +98,8 @@ const team = [
         care about how a good stop feels. If the thesis rings true, we want to hear from you.
       </p>
       <div class="hiring-ctas">
-        <a class="btn btn-primary" href="mailto:careers@rangewayev.com?subject=Joining%20Rangeway">
-          Email careers@rangewayev.com
+        <a class="btn btn-primary" href="mailto:careers@rangeway.co?subject=Joining%20Rangeway">
+          Email careers@rangeway.co
         </a>
         <a
           class="btn btn-outline"
@@ -209,6 +216,15 @@ const team = [
   .team-card--placeholder .team-card__bio {
     color: var(--color-text-muted);
     font-style: italic;
+  }
+
+  @media (min-width: 901px) {
+    .team-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: 100%;
+      max-width: calc(50% - var(--space-6) / 2);
+    }
   }
 
   @media (max-width: 900px) {
