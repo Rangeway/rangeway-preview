@@ -1,4 +1,4 @@
-name: Build & deploy to VPS
+name: Build & publish for VPS pull-deploy
 
 on:
   push:
@@ -8,6 +8,9 @@ on:
 concurrency:
   group: deploy-preview
   cancel-in-progress: true
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
@@ -25,24 +28,19 @@ jobs:
           npm ci
           npm run build
 
-      - name: Deploy to VPS via rsync
+      # The VPS polls the deploy-dist branch every 2 minutes and rsyncs it
+      # into /var/www/rangeway-preview (rangeway-deploy.timer on the server).
+      # CI never connects to the VPS: Hostinger's network edge intermittently
+      # drops inbound connections from GitHub's shared runner IP ranges, so
+      # push-based SSH deploys were randomly failing.
+      - name: Publish dist to deploy-dist branch
         env:
-          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
-          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mkdir -p ~/.ssh
-          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          printf '%s\n' "$VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts
-          # Port 2222: Hostinger's network edge intermittently drops port 22
-          # traffic from GitHub's shared runner IP ranges; the alternate sshd
-          # port bypasses that filtering entirely.
-          SSH="ssh -p 2222 -i $HOME/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=15 -o ServerAliveInterval=10 -o ServerAliveCountMax=3"
-          rc=1
-          for attempt in 1 2 3; do
-            rsync -az --delete --chmod=D755,F644 -e "$SSH" \
-              dist/ deploy@72.60.71.39:/var/www/rangeway-preview/ && { rc=0; break; }
-            echo "::warning::deploy attempt $attempt failed"
-            [ "$attempt" -lt 3 ] && sleep $((attempt*10)) || true
-          done
-          exit $rc
+          cd dist
+          git init -q -b deploy-dist
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "deploy ${GITHUB_SHA}"
+          git push -q --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" deploy-dist
