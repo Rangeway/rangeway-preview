@@ -49,7 +49,6 @@ const howItWorks = [
 >
   <PageHero
     eyebrow="The First Rangeway Location"
-    index="Site 01"
     title="Rangeway Mojave."
     lede="Off-grid, solar-powered ultra-fast charging on the CA-14 corridor, with launch coming in 2027."
     image="/images/basecamp-rosamond.jpg"
@@ -128,7 +127,6 @@ const howItWorks = [
   <section class={`section ${CAMPAIGN_MODE ? "section-cream" : ""}`}>
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">01</span>
         <span class="kicker__label">Why Here</span>
       </div>
       <div class="mojave-corridor reveal">
@@ -183,7 +181,6 @@ const howItWorks = [
   <section class="section">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">02</span>
         <span class="kicker__label">Phase I</span>
       </div>
       <div class="section-head reveal">
@@ -198,7 +195,6 @@ const howItWorks = [
       <div class="mojave-phase-list">
         {phaseOne.map((item, i) => (
           <div class="index-row reveal">
-            <span class="index-row__num">{String(i + 1).padStart(2, "0")}</span>
             <h3>{item.title}</h3>
             <p>{item.body}</p>
           </div>
@@ -232,7 +228,6 @@ const howItWorks = [
   <section class="section section-cream">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">03</span>
         <span class="kicker__label">How It Works</span>
       </div>
       <div class="section-head reveal">
@@ -246,7 +241,6 @@ const howItWorks = [
       <div class="mojave-how-list">
         {howItWorks.map((step, i) => (
           <div class="index-row reveal">
-            <span class="index-row__num">{String(i + 1).padStart(2, "0")}</span>
             <h3>{step.title}</h3>
             <p>{step.body}</p>
           </div>
@@ -268,7 +262,6 @@ const howItWorks = [
   <section class="section band-dark">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">04</span>
         <span class="kicker__label">The Full Story</span>
       </div>
       <div class="mojave-story reveal">

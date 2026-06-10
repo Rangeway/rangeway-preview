@@ -62,7 +62,6 @@ const links = [
                 href={l.href}
                 {...(l.external ? { target: "_blank", rel: "noopener" } : {})}
               >
-                <span class="menu__num">{String(i + 1).padStart(2, "0")}</span>
                 <span class="menu__label">{l.label}</span>
               </a>
             </li>

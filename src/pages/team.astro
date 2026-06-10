@@ -49,7 +49,6 @@ const team = [
 >
   <PageHero
     eyebrow="Team"
-    index="The People"
     title="The people behind Rangeway."
     lede="Every decision in this company is made by someone who has run a real property for real guests, or driven a real EV on a real road trip. Usually both."
     image="/images/basecamp-interior.jpg"
@@ -60,13 +59,11 @@ const team = [
   <section class="section">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">01</span>
         <span class="kicker__label">The Team</span>
       </div>
       <ul class="team-list">
         {team.map((m, i) => (
           <li class="team-row reveal">
-            <span class="team-row__num">{String(i + 1).padStart(2, "0")}</span>
             <figure class="fig team-row__fig">
               <div class="fig__frame team-row__frame">
                 <img src={m.photo} alt={`Portrait of ${m.name}`} loading="lazy" />
@@ -98,7 +95,6 @@ const team = [
   <section class="section band-dark">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">02</span>
         <span class="kicker__label">Join Us</span>
       </div>
       <div class="hiring reveal">
@@ -133,21 +129,11 @@ const team = [
 
   .team-row {
     display: grid;
-    grid-template-columns: minmax(64px, 1fr) minmax(0, 3fr) minmax(0, 7fr);
+    grid-template-columns: minmax(0, 3fr) minmax(0, 8fr);
     gap: var(--space-5) clamp(24px, 4vw, 64px);
     padding: clamp(32px, 4.5vw, 56px) 0;
     border-top: 1px solid var(--color-border);
     align-items: start;
-  }
-
-  .team-row__num {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 0.84rem;
-    letter-spacing: var(--ls-eyebrow);
-    color: var(--accent-on-light);
-    font-variant-numeric: tabular-nums;
-    padding-top: 6px;
   }
 
   .team-row__fig {

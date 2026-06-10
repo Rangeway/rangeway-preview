@@ -65,7 +65,6 @@ const {
 <BaseLayout title={metaTitle} description={metaDescription} image={heroImage}>
   <PageHero
     eyebrow={name}
-    index={`Format ${num}`}
     title={heroTitle}
     lede={heroLede}
     image={heroImage}
@@ -78,7 +77,6 @@ const {
   <section class="section">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">01</span>
         <span class="kicker__label">What a {name} Is</span>
       </div>
       <div class="format-intro reveal">
@@ -94,7 +92,6 @@ const {
   <section class="section format-amenities">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">02</span>
         <span class="kicker__label">What You'll Find</span>
       </div>
       <div class="section-head reveal">
@@ -103,7 +100,6 @@ const {
       <div class="format-amenities__list">
         {amenities.map((a, i) => (
           <div class="index-row reveal">
-            <span class="index-row__num">{String(i + 1).padStart(2, "0")}</span>
             <h3>{a.title}</h3>
             <p>{a.body}</p>
           </div>
@@ -115,8 +111,7 @@ const {
   <section class="section format-gallery">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">03</span>
-        <span class="kicker__label">Plates</span>
+        <span class="kicker__label">Gallery</span>
       </div>
       <div class={`format-gallery__grid format-gallery__grid--${gallery.length === 2 ? "duo" : "trio"}`}>
         {gallery.map((g, i) => (
@@ -125,7 +120,6 @@ const {
               <img src={g.src} alt={g.alt} loading="lazy" style={g.position ? `object-position: ${g.position};` : undefined} />
             </div>
             <figcaption class="fig__caption">
-              <strong>{String(i + 1).padStart(2, "0")}</strong>
               <span>{g.caption}</span>
             </figcaption>
           </figure>
@@ -137,7 +131,6 @@ const {
   <section class="section band-dark">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">04</span>
         <span class="kicker__label">Next Up</span>
       </div>
       <div class="format-next reveal">

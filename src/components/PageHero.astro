@@ -5,8 +5,6 @@ interface Props {
   lede?: string;
   image: string;
   imageAlt: string;
-  /** Chapter index shown in the kicker, e.g. "02" */
-  index?: string;
   /** Caption strip under the image, e.g. "Basecamp · Antelope Valley, California" */
   caption?: string;
   align?: "left" | "center";
@@ -19,7 +17,6 @@ const {
   lede,
   image,
   imageAlt,
-  index,
   caption,
   scrim = "default"
 } = Astro.props;
@@ -33,7 +30,6 @@ const {
 
   <div class="container chapter__inner">
     <div class="chapter__kicker">
-      <span class="chapter__index">{index ?? "Rangeway"}</span>
       <span class="chapter__label">{eyebrow}</span>
     </div>
     <div class="chapter__body">
@@ -46,7 +42,6 @@ const {
   {caption && (
     <div class="container">
       <p class="chapter__caption">
-        <strong>Plate</strong>
         <span>{caption}</span>
       </p>
     </div>
@@ -113,13 +108,7 @@ const {
     text-transform: uppercase;
   }
 
-  .chapter__index {
-    color: var(--color-warm);
-    font-variant-numeric: tabular-nums;
-  }
-
   .chapter__label {
-    text-align: right;
     color: var(--fg-on-dark-1);
   }
 

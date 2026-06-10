@@ -173,7 +173,7 @@ landing-page reflex, REI green-and-brown, and champagne-and-marble luxe.
 
 **Key Characteristics:**
 - **Editorial backbone.** Every chapter opens with the Kicker Unit: a full-width hairline
-  rule, an index on the left, a tracked-uppercase label on the right.
+  rule with a tracked-uppercase label beneath it.
 - **Asymmetric grids.** Headlines sit in a wide left column; ledes, body copy, and CTAs sit
   in a narrower right column, aligned to the headline's baseline. Nothing is centered.
 - **Photography as plates.** Images are square-cornered (`4px`), and carry a hairline-ruled
@@ -183,9 +183,9 @@ landing-page reflex, REI green-and-brown, and champagne-and-marble luxe.
   Blackpine Ink or full-bleed scrimmed photography.
 - **Two accents, one per surface.** Hearth Amber accents dark surfaces and buttons.
   Piñon Sage accents small text on light surfaces (see The Accent Contrast Rule).
-- **Numbered everything.** Chapters, list rows, menu items, format pages, and plates all
-  carry tabular index numbers. The ghost numeral (`.folio-num`, outlined, oversized) is the
-  system's graphic flourish.
+- **No numbering.** Sections, list rows, and plates are unnumbered; the hairline rules and
+  tracked labels carry the structure. (Numeric 01/02 indexing was tried and removed: it
+  reads as template-generated.)
 
 ## 2. Colors
 
@@ -249,16 +249,15 @@ drafted, printed feel.
 
 ```html
 <div class="kicker">
-  <span class="kicker__index">02</span>
   <span class="kicker__label">The Network</span>
 </div>
 ```
 
-A full-width `1px` rule (`--color-border-strong`), `16px` of air, then index left (accent
-color, tabular numerals) and label right (text color, tracked uppercase). Every major
-section opens with one. Homepage chapters are numbered 01–07; interior pages restart at 01.
-The campaign raise band uses words instead of numbers ("Now Open / The Mojave Raise") to
-mark it as an interlude outside the chapter sequence.
+A full-width `1px` rule (`--color-border-strong`), `16px` of air, then the label in tracked
+uppercase. Every major section opens with one. A two-slot variant pairs a short accent word
+on the left (`.kicker__index`, accent color) with the label on the right, e.g.
+"Now Open / The Mojave Raise" on the campaign band or "Rangeway / America's First…" on the
+cover. Numeric indexes are banned (they read as template-generated).
 
 ### The Asymmetric Section Head
 
@@ -273,24 +272,22 @@ text weight).
 <figure class="fig">
   <div class="fig__frame"><img ... /></div>
   <figcaption class="fig__caption">
-    <strong>02</strong><span>Waystation · Joshua Tree</span>
+    <strong>Waystation</strong><span>Joshua Tree</span>
   </figcaption>
 </figure>
 ```
 
-Square-cornered (`4px`) frames; caption row below with a top hairline, index in the accent
-color, place label right-aligned. Real place names only.
+Square-cornered (`4px`) frames; caption row below with a top hairline. The optional
+`<strong>` slot is a word label in the accent color (a format name, "Interior", "Render"),
+never a number. Real place names only.
 
 ### Index Rows
 
-`.index-row`: the folio's replacement for card grids. A `1fr / 5fr / 6fr` grid row
-(number / heading / body) with hairline tops, used for amenities, thesis points, values,
-waypoints, phases, and pillars. The container takes a closing `border-bottom`.
-
-### Ghost Numerals
-
-`.folio-num`: outlined oversized index digits (`-webkit-text-stroke` on transparent fill)
-used as a graphic element beside asides. Decorative only, `aria-hidden` context.
+`.index-row`: the folio's replacement for card grids. A `5fr / 6fr` grid row
+(heading / body) with hairline tops, used for amenities, thesis points, values, waypoints,
+and pillars. Rows with a meaningful word label ("Phase I") add an `.index-row__num` span,
+which switches the grid to `1fr / 5fr / 6fr`. The container takes a closing
+`border-bottom`.
 
 ### Staggered Entry Grid
 
@@ -372,7 +369,6 @@ The footer disclosure remains in both states. Every Climatize link on the site r
 - **Do** caption photography as plates with real place names.
 - **Do** use sage for small accent text on cream, amber for accent text on ink, and amber
   surfaces (with ink text) for primary actions. Never amber small text on cream (2.17:1).
-- **Do** number lists, chapters, plates, and menu items with tabular numerals.
 - **Do** collapse all motion under `prefers-reduced-motion` (the global reveal and the hero
   line stagger already do).
 - **Do** use `text-wrap: balance` on headlines.
@@ -384,6 +380,8 @@ The footer disclosure remains in both states. Every Climatize link on the site r
 - **Don't** use raw `#000`/`#FFF`; use Blackpine Ink and Drift Cream.
 - **Don't** introduce hues beyond the palette. Sage is the light-surface accent, not a new
   brand color; it never appears at large scale.
+- **Don't** number sections, list rows, plates, or menu items (no 01/02/03 indexes). Word
+  labels ("Phase I", "Now Open") are fine; numerals read as template-generated.
 - **Don't** use em dashes or `--` in rendered copy. No sentences starting with "And." No
   fragments, hashtags, or statistics. No "stations", "units", "rooms", or "cabins".
 - **Don't** build hero-metric strips, logo walls, or three-icon feature grids.

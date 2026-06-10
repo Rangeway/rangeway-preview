@@ -35,7 +35,6 @@ const experiences = [
 >
   <PageHero
     eyebrow="Summit"
-    index="Format 04"
     title="Where the road meets rest."
     lede="A hospitality-first destination where the stop itself becomes part of the journey, with modular Lookouts, a central clubhouse, and fully off-grid solar."
     image="/images/summit-1.jpg"
@@ -48,7 +47,6 @@ const experiences = [
   <section class="section">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">01</span>
         <span class="kicker__label">What Summit Is</span>
       </div>
       <div class="summit-intro reveal">
@@ -72,7 +70,6 @@ const experiences = [
   <section class="section summit-experiences">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">02</span>
         <span class="kicker__label">The Experience</span>
       </div>
       <div class="section-head reveal">
@@ -81,7 +78,6 @@ const experiences = [
       <div class="summit-experiences__list">
         {experiences.map((e) => (
           <div class="index-row reveal">
-            <span class="index-row__num">{e.num}</span>
             <h3>{e.title}</h3>
             <p>{e.body}</p>
           </div>
@@ -93,8 +89,7 @@ const experiences = [
   <section class="section">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">03</span>
-        <span class="kicker__label">Plates</span>
+        <span class="kicker__label">Gallery</span>
       </div>
       <div class="summit-gallery">
         <figure class="fig reveal summit-gallery__lead">
@@ -102,7 +97,6 @@ const experiences = [
             <img src="/images/summit-solar-aerial.jpg" alt="Aerial view of a Summit with clubhouse, Lookouts, and off-grid solar array in the desert" loading="lazy" />
           </div>
           <figcaption class="fig__caption">
-            <strong>01</strong>
             <span>Summit from above · Off-grid solar</span>
           </figcaption>
         </figure>
@@ -111,7 +105,6 @@ const experiences = [
             <img src="/images/summit-clubhouse-mountains.jpg" alt="A Summit clubhouse with charging canopy and desert mountains behind" loading="lazy" />
           </div>
           <figcaption class="fig__caption">
-            <strong>02</strong>
             <span>The clubhouse</span>
           </figcaption>
         </figure>
@@ -120,7 +113,6 @@ const experiences = [
             <img src="/images/summit-2.jpg" alt="Summit Lookout interior" loading="lazy" />
           </div>
           <figcaption class="fig__caption">
-            <strong>03</strong>
             <span>Lookout interior</span>
           </figcaption>
         </figure>
@@ -131,24 +123,20 @@ const experiences = [
   <section class="section band-dark">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">04</span>
         <span class="kicker__label">The Summit Standard</span>
       </div>
       <div class="summit-pillars">
         <h2 class="reveal">Built on three convictions.</h2>
         <div class="summit-pillars__list">
           <div class="index-row reveal">
-            <span class="index-row__num">01</span>
             <h3>Hospitality over infrastructure</h3>
             <p>Summit is a hotel-quality experience that happens to include a charger. The balance never shifts.</p>
           </div>
           <div class="index-row reveal">
-            <span class="index-row__num">02</span>
             <h3>Site-specific architecture</h3>
             <p>Every Summit is designed for its setting. Materials, orientation, and palette are drawn from the land.</p>
           </div>
           <div class="index-row reveal">
-            <span class="index-row__num">03</span>
             <h3>Genuinely off-grid</h3>
             <p>Fully off-grid solar, with a commitment that is not performative. The network does not need to plug in to plug in.</p>
           </div>
@@ -160,7 +148,6 @@ const experiences = [
   <section class="section">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">05</span>
         <span class="kicker__label">Stay Connected</span>
       </div>
       <div class="summit-follow reveal">

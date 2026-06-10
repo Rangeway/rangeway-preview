@@ -19,7 +19,6 @@ const formats = [
       {formats.map((f) => (
         <li>
           <a href={f.href} class={current === f.slug ? "is-current" : ""} aria-current={current === f.slug ? "page" : undefined}>
-            <span class="format-nav__num">{f.num}</span>
             {f.name}
           </a>
         </li>

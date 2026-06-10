@@ -118,7 +118,6 @@ const sections = [
 >
   <PageHero
     eyebrow="What We Build For"
-    index="Commitments"
     title="Our commitments."
     lede="A hospitality company that takes its work seriously should be able to say what it stands for, and show its work. These are the commitments we hold ourselves to as we build Rangeway, from how we design and power our locations to how we hire and who we serve."
     image="/images/basecamp-cortex-dusk.jpg"
@@ -131,9 +130,9 @@ const sections = [
       <span class="commit-toc__label">On This Page</span>
       <ul>
         {sections.map((s) => (
-          <li><a href={`#${s.id}`}><span class="commit-toc__num">{s.num}</span>{s.tocLabel}</a></li>
+          <li><a href={`#${s.id}`}>{s.tocLabel}</a></li>
         ))}
-        <li><a href="#reporting"><span class="commit-toc__num">05</span>Accountability</a></li>
+        <li><a href="#reporting">Accountability</a></li>
       </ul>
     </div>
   </nav>
@@ -142,7 +141,6 @@ const sections = [
     <section id={s.id} class="section commit-section">
       <div class="container">
         <div class="kicker reveal">
-          <span class="kicker__index">{s.num}</span>
           <span class="kicker__label">{s.tocLabel}</span>
         </div>
         <div class="commit-head reveal">
@@ -152,7 +150,6 @@ const sections = [
         <div class="commit-items">
           {s.items.map((item, idx) => (
             <div class="index-row reveal">
-              <span class="index-row__num">{String(idx + 1).padStart(2, "0")}</span>
               <h3>{item.title}</h3>
               <p>{item.body}</p>
             </div>
@@ -165,7 +162,6 @@ const sections = [
   <section id="reporting" class="section band-dark commit-reporting">
     <div class="container">
       <div class="kicker reveal">
-        <span class="kicker__index">05</span>
         <span class="kicker__label">Accountability</span>
       </div>
       <div class="commit-reporting__grid reveal">
@@ -237,13 +233,6 @@ const sections = [
     color: var(--fg-on-dark-3);
     padding-bottom: 3px;
     border-bottom: 1px solid transparent;
-  }
-
-  .commit-toc__num {
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    color: var(--color-warm);
-    font-variant-numeric: tabular-nums;
   }
 
   .commit-toc a:hover {

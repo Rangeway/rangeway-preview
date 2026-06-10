@@ -4,7 +4,6 @@
 <section id="positioning" class="positioning section">
   <div class="container">
     <div class="kicker reveal">
-      <span class="kicker__index">01</span>
       <span class="kicker__label">Our Thesis</span>
     </div>
 
@@ -15,7 +14,6 @@
         </blockquote>
       </div>
       <aside class="positioning__aside reveal">
-        <span class="folio-num" aria-hidden="true">01</span>
         <p>
           Every Rangeway location is designed the way a hospitality operator designs a property.
           Lighting, materials, service, sequence. The charging happens inside a space built for
@@ -40,9 +38,6 @@
   }
 
   .positioning__aside {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-6);
     padding-top: var(--space-2);
   }
 
@@ -59,10 +54,6 @@
   @media (max-width: 900px) {
     .positioning__grid {
       grid-template-columns: 1fr;
-    }
-
-    .positioning__aside .folio-num {
-      display: none;
     }
   }
 </style>
