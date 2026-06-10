@@ -59,5 +59,6 @@ normalize any stale domains, `npm run build`, and push. Rollback: `git reset --h
 - DNS at Cloudflare, DNS-only: A record `preview.rangewayev.com` → `72.60.71.39`.
 
 ## Infra notes
-- Server path: `/var/www/rangeway-preview/`; CI secrets `VPS_SSH_KEY` + `VPS_KNOWN_HOSTS`.
+- Server path: `/var/www/rangeway-preview/`. No CI secrets needed: the publish step uses
+  the default `GITHUB_TOKEN`, and the VPS pulls anonymously (public repo).
 - GitHub Pages disabled. VPS is the only host.
