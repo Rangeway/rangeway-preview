@@ -110,10 +110,13 @@ const heroAlt =
     color: var(--fg-on-dark-1);
   }
 
+  /* Center the headline + lede/CTA cluster vertically (kicker rule stays at
+     the top) instead of pinning it to the bottom. The auto margins on the
+     stage top and base bottom split the free space evenly above and below. */
   .hero__stage {
-    flex: 1;
     display: flex;
     align-items: flex-end;
+    margin-top: auto;
   }
 
   .hero__headline {
@@ -160,6 +163,7 @@ const heroAlt =
     justify-content: space-between;
     gap: var(--space-6);
     margin-top: clamp(28px, 4vw, 48px);
+    margin-bottom: auto;
     padding-top: var(--space-5);
     border-top: 1px solid rgba(251, 247, 241, 0.42);
   }
