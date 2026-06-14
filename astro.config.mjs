@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://preview.rangewayev.com',
+  site: 'https://preview.rangeway.co',
   output: 'static',
   trailingSlash: 'ignore',
   build: {

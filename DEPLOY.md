@@ -1,11 +1,11 @@
-# Deploy & Ops — rangeway-preview (preview.rangewayev.com)
+# Deploy & Ops — rangeway-preview (preview.rangeway.co)
 
 A **noindexed staging mirror of `rangeway-pages`**, plus a preview-only Rangeway Mojave
 location page (`/mojave`). Self-hosted on the Hostinger VPS, served by Nginx at
-**https://preview.rangewayev.com** from `/var/www/rangeway-preview/` on `72.60.71.39`.
+**https://preview.rangeway.co** from `/var/www/rangeway-preview/` on `72.60.71.39`.
 
 > ⚠️ **Keep this site noindexed.** `public/robots.txt` is `Disallow: /` on purpose. Don't
-> change `astro.config.mjs` `site:` away from `preview.rangewayev.com` or touch `public/CNAME`.
+> change `astro.config.mjs` `site:` away from `preview.rangeway.co` or touch `public/CNAME`.
 
 ## How to deploy
 **Push to `main`.** GitHub Actions builds Astro and force-pushes `dist/` to the
@@ -56,7 +56,7 @@ normalize any stale domains, `npm run build`, and push. Rollback: `git reset --h
 
 ## TLS / DNS
 - HTTPS via Let's Encrypt (certbot on the VPS) — auto-renews.
-- DNS at Cloudflare, DNS-only: A record `preview.rangewayev.com` → `72.60.71.39`.
+- DNS at Cloudflare, DNS-only: A record `preview.rangeway.co` → `72.60.71.39`.
 
 ## Infra notes
 - Server path: `/var/www/rangeway-preview/`. No CI secrets needed: the publish step uses
