@@ -8,6 +8,7 @@ export default defineConfig({
     format: 'directory'
   },
   redirects: {
-    '/summit': '/network/summit'
+    '/summit': '/network/summit',
+    '/mojave': 'https://rangewaymojave.com'
   }
 });
