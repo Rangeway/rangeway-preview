@@ -1,5 +1,5 @@
 ---
-import { CLIMATIZE_URL, LINKS } from "../config";
+import { LINKS } from "../config";
 const year = new Date().getFullYear();
 ---
 
@@ -61,12 +61,6 @@ const year = new Date().getFullYear();
         <a href="/privacy">Privacy Policy</a>
         <span aria-hidden="true">·</span>
         <a href="/terms">Terms of Service</a>
-      </p>
-    </div>
-
-    <div class="folio-footer__disclosure">
-      <p>
-        Rangeway Energy, Inc. is raising capital on <a href={CLIMATIZE_URL} target="_blank" rel="noopener">Climatize</a> to fund Rangeway Mojave, the first location in the Rangeway network. This communication is for informational purposes only and is not an offer to sell, nor a solicitation of an offer to buy, any security. Offers may only be made through the Climatize platform. Visit <a href={CLIMATIZE_URL} target="_blank" rel="noopener">climatize.earth</a> for the full offering details, including risk factors. Investing involves risk, including possible loss of principal.
       </p>
     </div>
   </div>
@@ -187,30 +181,6 @@ const year = new Date().getFullYear();
   }
 
   .folio-footer__legal-links a:hover {
-    color: var(--color-warm);
-  }
-
-  .folio-footer__disclosure {
-    padding: var(--space-5) 0 var(--space-7);
-    border-top: 1px solid rgba(251, 247, 241, 0.08);
-  }
-
-  .folio-footer__disclosure p {
-    margin: 0;
-    font-size: 0.76rem;
-    line-height: 1.65;
-    color: var(--fg-on-dark-3);
-    max-width: 96ch;
-  }
-
-  .folio-footer__disclosure a {
-    color: var(--fg-on-dark-2);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
-  }
-
-  .folio-footer__disclosure a:hover {
     color: var(--color-warm);
   }
 

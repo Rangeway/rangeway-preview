@@ -10,7 +10,7 @@ Three audiences in priority order, with the first carrying tie-breaks on the hom
 
 1. **Hotel operators and property owners** evaluating whether to host a Rangeway on their land. They are reading the site the way a hospitality executive reads a brand deck: looking for evidence that this brand belongs on a premium property, not signage cluttering a parking lot. They make decisions in long horizons and care about brand fit, guest experience, and operator credibility.
 2. **EV drivers** imagining a road trip with Rangeway in it. They want to feel that a stop is somewhere they'd want to be, not somewhere they have to be. They arrive on the site after hearing the brand from a club, a podcast, a peer, or a press piece, and they're forming a felt sense of what "Rangeway" means.
-3. **Climatize-track and accredited investors** evaluating the Mojave raise and the broader thesis. They want to see a serious operator with a defensible position, not a deck dressed as a website.
+3. **Investors** evaluating the opportunity and the broader thesis. They want to see a serious operator with a defensible position, not a deck dressed as a website.
 
 Drivers and investors have dedicated surfaces (`/network`, `/our-story`, `/investors`, `/mojave`). The shared homepage and brand chrome lean operator-first.
 

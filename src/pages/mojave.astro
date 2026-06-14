@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
-import { CAMPAIGN_MODE, CLIMATIZE_URL, LINKS } from "../config";
+import { LINKS } from "../config";
 
 const phaseOne = [
   {
@@ -57,74 +57,20 @@ const howItWorks = [
     scrim="strong"
   >
     <div class="mojave-hero__ctas">
-      {CAMPAIGN_MODE ? (
-        <>
-          <a class="btn btn-warm" href={CLIMATIZE_URL} target="_blank" rel="noopener">
-            Invest in Mojave
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="13 6 19 12 13 18" />
-            </svg>
-          </a>
-          <a class="btn btn-ghost" href={LINKS.mojaveMicrosite} target="_blank" rel="noopener">
-            Visit the microsite
-          </a>
-        </>
-      ) : (
-        <>
-          <a class="btn btn-warm" href={LINKS.mojaveMicrosite} target="_blank" rel="noopener">
-            Visit the microsite
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="13 6 19 12 13 18" />
-            </svg>
-          </a>
-          <a class="btn btn-ghost" href={LINKS.fieldNotes} target="_blank" rel="noopener">
-            Subscribe to Field Notes
-          </a>
-        </>
-      )}
+      <a class="btn btn-warm" href={LINKS.mojaveMicrosite} target="_blank" rel="noopener">
+        Visit the microsite
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="13 6 19 12 13 18" />
+        </svg>
+      </a>
+      <a class="btn btn-ghost" href={LINKS.fieldNotes} target="_blank" rel="noopener">
+        Subscribe to Field Notes
+      </a>
     </div>
   </PageHero>
 
-  {CAMPAIGN_MODE && (
-    <section class="mojave-raise section">
-      <div class="container">
-        <div class="kicker reveal">
-          <span class="kicker__index">Now Open</span>
-          <span class="kicker__label">The Mojave Raise</span>
-        </div>
-        <div class="mojave-raise__grid reveal">
-          <h2>Anyone can build this with us.</h2>
-          <div class="mojave-raise__side">
-            <p>
-              Rangeway is raising capital on Climatize to build Rangeway Mojave, the first
-              location in the network. The campaign is open to everyone, not just accredited
-              investors. Anyone can invest in the first site, starting at the campaign minimum.
-            </p>
-            <div class="mojave-raise__ctas">
-              <a class="btn btn-warm" href={CLIMATIZE_URL} target="_blank" rel="noopener">
-                Invest in Mojave
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="13 6 19 12 13 18" />
-                </svg>
-              </a>
-              <a class="btn-link" href="/investors">
-                Read the investment case
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="13 6 19 12 13 18" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )}
-
-  <section class={`section ${CAMPAIGN_MODE ? "section-cream" : ""}`}>
+  <section class="section">
     <div class="container">
       <div class="kicker reveal">
         <span class="kicker__label">Why Here</span>
@@ -296,26 +242,6 @@ const howItWorks = [
     margin-top: var(--space-6);
   }
 
-  .mojave-raise__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
-    gap: var(--space-6) clamp(48px, 7vw, 120px);
-    align-items: end;
-  }
-
-  .mojave-raise__grid h2 {
-    max-width: 14ch;
-  }
-
-  .mojave-raise__side p {
-    margin: 0 0 var(--space-6);
-    color: var(--color-text-muted);
-    font-size: 1.08rem;
-    line-height: 1.7;
-    max-width: 46ch;
-  }
-
-  .mojave-raise__ctas,
   .mojave-story__ctas {
     display: flex;
     flex-wrap: wrap;
@@ -430,7 +356,6 @@ const howItWorks = [
   }
 
   @media (max-width: 900px) {
-    .mojave-raise__grid,
     .mojave-corridor,
     .mojave-quote__grid,
     .mojave-story {

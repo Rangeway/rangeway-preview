@@ -163,7 +163,7 @@ components:
 The Rangeway site is a printed hospitality brand book brought to the web. Pages read like
 chapters in a development prospectus for a premium property: hairline rules, numbered
 sections, captioned photographic plates, oversized Raleway display type, and generous cream
-negative space. At the emotional beats (the cover, the Mojave raise, the Indoor Comfort
+negative space. At the emotional beats (the cover, the Indoor Comfort
 Guarantee, the closing chapters) the folio goes cinematic: full-bleed photography on
 Blackpine Ink, type set large over scrimmed imagery.
 
@@ -256,8 +256,8 @@ drafted, printed feel.
 A full-width `1px` rule (`--color-border-strong`), `16px` of air, then the label in tracked
 uppercase. Every major section opens with one. A two-slot variant pairs a short accent word
 on the left (`.kicker__index`, accent color) with the label on the right, e.g.
-"Now Open / The Mojave Raise" on the campaign band or "Rangeway / America's First…" on the
-cover. Numeric indexes are banned (they read as template-generated).
+"Rangeway / America's First…" on the cover. Numeric indexes are banned (they read as
+template-generated).
 
 ### The Asymmetric Section Head
 
@@ -296,8 +296,8 @@ entries drop by `clamp(40px, 6vw, 88px)` at desktop, like plates pasted on facin
 
 ### Cinematic Bands
 
-`.band-dark` is flat ink. The cinematic variants (`Hero`, `ClimatizeRaise feature`,
-`ComfortGuarantee`, chapter openers) layer a full-bleed photograph with an ink scrim strong
+`.band-dark` is flat ink. The cinematic variants (`Hero`, `ComfortGuarantee`,
+chapter openers) layer a full-bleed photograph with an ink scrim strong
 enough to hold `--fg-on-dark-2` body text at AA wherever text actually sits. Scrims are
 ink-tinted linear gradients, never pure black.
 
@@ -310,10 +310,6 @@ cream text; once scrolled past `24px`, and on all non-hero pages, it goes solid 
 with charcoal text. Links are Raleway tracked-uppercase micro labels with an amber hover
 underline. The mobile toggle is a pill labeled "Menu"/"Close"; the menu is a full-screen
 Blackpine Ink overlay with numbered, hairline-ruled, display-scale links.
-
-**Campaign CTA:** when `CAMPAIGN_MODE` is on (`src/config.ts`), the masthead carries a
-persistent amber "Invest in Mojave" pill (ink text, 9.17:1) linking to `CLIMATIZE_URL`.
-It also appears inside the mobile menu. Flipping the flag removes both.
 
 ### Buttons
 
@@ -343,22 +339,7 @@ with the accent color. Same FormSubmit action and fields as before.
 
 Blackpine Ink. Top: the tagline at headline scale beside four hairline-topped link columns
 (Explore / Company / Follow along / Reach us). Middle: the **wordmark signature**, the word
-"Rangeway" at mega scale spanning the container between hairlines. Bottom: legal row and
-the Climatize disclosure (reads `CLIMATIZE_URL` from config).
-
-## 6. Campaign Mode
-
-`src/config.ts` exports `CAMPAIGN_MODE` (boolean) and `CLIMATIZE_URL`. The flag is the only
-change required to switch states:
-
-- **On:** masthead CTA; the homepage raise band (`ClimatizeRaise variant="feature"`, the
-  cinematic Rosamond aerial) sits directly below the hero; /mojave leads with "Invest in
-  Mojave" and a dedicated raise section.
-- **Off:** no masthead CTA; the raise renders as `variant="standard"` (quiet editorial
-  section) after the thesis chapter; /mojave leads with the microsite.
-
-The footer disclosure remains in both states. Every Climatize link on the site reads from
-`CLIMATIZE_URL` so the live campaign URL can be swapped in one place.
+"Rangeway" at mega scale spanning the container between hairlines. Bottom: legal row.
 
 ## 7. Do's and Don'ts
 

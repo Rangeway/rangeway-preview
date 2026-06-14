@@ -1,6 +1,6 @@
 ---
 import PathMark from "./PathMark.astro";
-import { CAMPAIGN_MODE, CLIMATIZE_URL, LINKS } from "../config";
+import { LINKS } from "../config";
 
 const links = [
   { href: "/network", label: "The Network" },
@@ -35,11 +35,6 @@ const links = [
     </nav>
 
     <div class="masthead__actions">
-      {CAMPAIGN_MODE && (
-        <a class="masthead__cta" href={CLIMATIZE_URL} target="_blank" rel="noopener">
-          Invest in Mojave
-        </a>
-      )}
       <button
         class="masthead__toggle"
         aria-expanded="false"
@@ -69,11 +64,6 @@ const links = [
         </ol>
       </nav>
       <div class="menu__foot">
-        {CAMPAIGN_MODE && (
-          <a class="btn btn-warm" href={CLIMATIZE_URL} target="_blank" rel="noopener">
-            Invest in Mojave
-          </a>
-        )}
         <div class="menu__social">
           <a href={LINKS.instagram} target="_blank" rel="noopener">Instagram</a>
           <a href={LINKS.linkedin} target="_blank" rel="noopener">LinkedIn</a>
@@ -175,30 +165,6 @@ const links = [
     display: flex;
     align-items: center;
     gap: var(--space-4);
-  }
-
-  .masthead__cta {
-    display: inline-flex;
-    align-items: center;
-    min-height: 42px;
-    padding: 8px 20px;
-    border-radius: var(--radius-pill);
-    background: var(--color-warm);
-    color: var(--color-ink);
-    font-family: var(--font-heading);
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    transition: background var(--dur-fast) var(--ease-standard),
-      transform var(--dur-fast) var(--ease-standard);
-  }
-
-  .masthead__cta:hover {
-    background: var(--color-warm-lite);
-    color: var(--color-ink);
-    transform: translateY(-1px);
   }
 
   .masthead__toggle {
@@ -316,13 +282,6 @@ const links = [
 
     .masthead__toggle {
       display: inline-flex;
-    }
-  }
-
-  @media (max-width: 560px) {
-    .masthead__cta {
-      padding: 8px 14px;
-      font-size: 0.7rem;
     }
   }
 
