@@ -137,12 +137,10 @@ const formats = [
   }
 
   @media (min-width: 901px) {
-    .network-formats__grid > :global(.fmt-entry:nth-child(even)) {
-      transform: translateY(clamp(40px, 6vw, 88px));
-    }
-
-    .network-formats__grid {
-      padding-bottom: clamp(40px, 6vw, 88px);
+    .network-formats__grid > :global(.fmt-entry:nth-child(3)) {
+      grid-column: 1 / -1;
+      width: calc(50% - clamp(16px, 2.5vw, 40px));
+      justify-self: center;
     }
   }
 

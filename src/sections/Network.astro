@@ -86,18 +86,12 @@ const formats = [
     gap: clamp(48px, 6vw, 96px) clamp(32px, 5vw, 80px);
   }
 
-  /* Staggered editorial grid: even entries drop a half-step */
+  /* Three formats: two level on top, Summit centered below them */
   @media (min-width: 901px) {
-    .network__entry:nth-child(even) {
-      transform: translateY(clamp(40px, 6vw, 88px));
-    }
-
-    .network__grid {
-      padding-bottom: clamp(40px, 6vw, 88px);
-    }
-
-    .network__entry:nth-child(even).reveal {
-      transition-property: opacity;
+    .network__entry:nth-child(3) {
+      grid-column: 1 / -1;
+      width: calc(50% - clamp(16px, 2.5vw, 40px));
+      justify-self: center;
     }
   }
 
