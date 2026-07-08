@@ -1,4 +1,6 @@
 ---
+import ResponsiveImage from "./ResponsiveImage.astro";
+
 interface Props {
   name: string;
   tagline: string;
@@ -6,18 +8,16 @@ interface Props {
   image: string;
   imageAlt: string;
   href: string;
-  /** Folio index shown in the figure caption, e.g. "01" */
-  num?: string;
   /** Plate caption, e.g. "Waystation · Joshua Tree" */
   caption?: string;
 }
-const { name, tagline, description, image, imageAlt, href, num, caption } = Astro.props;
+const { name, tagline, description, image, imageAlt, href, caption } = Astro.props;
 ---
 
 <a class="fmt-entry reveal" href={href}>
   <figure class="fig">
     <div class="fig__frame fmt-entry__frame">
-      <img src={image} alt={imageAlt} loading="lazy" />
+      <ResponsiveImage src={image} alt={imageAlt} loading="lazy" />
     </div>
     <figcaption class="fig__caption">
       <span>{caption ?? name}</span>
@@ -51,11 +51,14 @@ const { name, tagline, description, image, imageAlt, href, num, caption } = Astr
     aspect-ratio: 4 / 3;
   }
 
-  .fmt-entry__frame img {
+  .fmt-entry__frame :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     transition: transform 0.7s var(--ease-out);
   }
 
-  .fmt-entry:hover .fmt-entry__frame img {
+  .fmt-entry:hover .fmt-entry__frame :global(img) {
     transform: scale(1.035);
   }
 

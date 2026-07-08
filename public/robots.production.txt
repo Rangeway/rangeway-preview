@@ -1,0 +1,5 @@
+# Copy over robots.txt when cutting over to production (rangeway.co / live apex).
+User-agent: *
+Allow: /
+
+Sitemap: https://rangeway.co/sitemap-index.xml

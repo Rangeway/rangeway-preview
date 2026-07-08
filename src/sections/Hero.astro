@@ -1,6 +1,6 @@
 ---
-const desktopImage = "/images/hero-mountain-waystation.png";
-const mobileImage = "/images/hero-mountain-waystation-mobile.png";
+const desktopImage = "/images/hero-mountain-waystation.jpg";
+const mobileImage = "/images/hero-mountain-waystation-mobile.jpg";
 const heroAlt =
   "A Rangeway Waystation at dusk with sunset-lit mountains behind, lounge interior glowing through the glass facade, and a Rivian charging under the timber canopy";
 ---
@@ -8,8 +8,17 @@ const heroAlt =
 <section class="hero">
   <div class="hero__media">
     <picture>
+      <source media="(max-width: 720px)" type="image/webp" srcset="/images/hero-mountain-waystation-mobile.webp" />
       <source media="(max-width: 720px)" srcset={mobileImage} />
-      <img src={desktopImage} alt={heroAlt} fetchpriority="high" />
+      <source type="image/webp" srcset="/images/hero-mountain-waystation.webp" />
+      <img
+        src={desktopImage}
+        alt={heroAlt}
+        width={1672}
+        height={941}
+        fetchpriority="high"
+        decoding="async"
+      />
     </picture>
     <div class="hero__scrim"></div>
   </div>
@@ -30,7 +39,8 @@ const heroAlt =
 
     <div class="hero__base">
       <p class="hero__lede">
-        Hospitality operators run every location, and the stop, not the charger, is the point.
+        Built for properties that care how a stop feels, and for the drivers who plan around it.
+        Hospitality operators run every location. The stop, not the charger, is the point.
       </p>
       <div class="hero__ctas">
         <a class="btn btn-warm" href="/network">
@@ -40,7 +50,7 @@ const heroAlt =
             <polyline points="13 6 19 12 13 18" />
           </svg>
         </a>
-        <a class="btn btn-ghost" href="/our-story">Our Story</a>
+        <a class="btn btn-ghost" href="/partners#host">Host a Rangeway</a>
       </div>
     </div>
   </div>
@@ -64,9 +74,13 @@ const heroAlt =
     z-index: -1;
   }
 
-  .hero__media img {
+  .hero__media :global(picture),
+  .hero__media :global(img) {
     width: 100%;
     height: 100%;
+  }
+
+  .hero__media :global(img) {
     object-fit: cover;
     object-position: center 65%;
   }
@@ -86,7 +100,6 @@ const heroAlt =
     padding-bottom: clamp(36px, 5vw, 64px);
   }
 
-  /* Editorial rule across the top of the cover */
   .hero__kicker {
     display: flex;
     align-items: baseline;
@@ -110,9 +123,6 @@ const heroAlt =
     color: var(--fg-on-dark-1);
   }
 
-  /* Center the headline + lede/CTA cluster vertically (kicker rule stays at
-     the top) instead of pinning it to the bottom. The auto margins on the
-     stage top and base bottom split the free space evenly above and below. */
   .hero__stage {
     display: flex;
     align-items: flex-end;
@@ -172,7 +182,7 @@ const heroAlt =
     margin: 0;
     font-size: clamp(1.05rem, 1.5vw, 1.24rem);
     line-height: 1.6;
-    max-width: 42ch;
+    max-width: 46ch;
     color: var(--fg-on-dark-2);
   }
 
@@ -192,7 +202,7 @@ const heroAlt =
   }
 
   @media (max-width: 820px) {
-    .hero__media img {
+    .hero__media :global(img) {
       object-position: center center;
     }
 

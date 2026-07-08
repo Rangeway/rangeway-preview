@@ -5,7 +5,6 @@ import PageHero from "../components/PageHero.astro";
 const sections = [
   {
     id: "environment",
-    num: "01",
     tocLabel: "Environment",
     title: "Environmental sustainability",
     lead:
@@ -35,7 +34,6 @@ const sections = [
   },
   {
     id: "social-impact",
-    num: "02",
     tocLabel: "Communities",
     title: "Social impact",
     lead:
@@ -60,7 +58,6 @@ const sections = [
   },
   {
     id: "inclusion",
-    num: "03",
     tocLabel: "Inclusion",
     title: "Diversity, equity, and inclusion",
     lead:
@@ -85,7 +82,6 @@ const sections = [
   },
   {
     id: "growth",
-    num: "04",
     tocLabel: "People",
     title: "Career growth and learning",
     lead:
@@ -148,7 +144,7 @@ const sections = [
           <p class="commit-head__lead">{s.lead}</p>
         </div>
         <div class="commit-items">
-          {s.items.map((item, idx) => (
+          {s.items.map((item) => (
             <div class="index-row reveal">
               <h3>{item.title}</h3>
               <p>{item.body}</p>

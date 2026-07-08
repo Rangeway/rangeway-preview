@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import ContactForm from "../components/ContactForm.astro";
 
 const partnerGroups = [
   {
@@ -119,25 +120,25 @@ const partnerGroups = [
 <BaseLayout
   title="Partners · Rangeway"
   description="The partners building Rangeway. Energy infrastructure, hardware, structures, software, and support."
-  image="/images/waystation-exterior.png"
+  image="/images/waystation-exterior.jpg"
 >
   <PageHero
     eyebrow="Partners"
     title="Built with the best, hosted by the best."
     lede="Rangeway is a brand and an operating company. We work with hospitality operators who host us on their properties, and with technology partners who build the systems behind the experience."
-    image="/images/waystation-exterior.png"
+    image="/images/waystation-exterior.jpg"
     imageAlt="A Waystation in warm evening light"
     caption="Waystation in evening light"
   />
 
-  <section class="section band-dark">
+  <section id="host" class="section">
     <div class="container">
       <div class="kicker reveal">
         <span class="kicker__label">For Hospitality Operators</span>
       </div>
       <div class="host reveal">
-        <h2>Host a Rangeway on your property.</h2>
-        <div class="host__side">
+        <div class="host__intro">
+          <h2>Host a Rangeway on your property.</h2>
           <p>
             Rangeway sites are designed to belong on hospitality properties: flagship resorts,
             lodges, boutique inns, and the corridors that connect them. If you operate a property
@@ -145,11 +146,15 @@ const partnerGroups = [
           </p>
           <p class="host__muted">
             Tell us about the property: location, size, the kind of guests it serves, and what
-            brought Rangeway to mind. We read every inquiry.
+            brought Rangeway to mind. We read every inquiry, and you can also reach
+            <a href="mailto:partners@rangeway.co">partners@rangeway.co</a> directly.
           </p>
-          <a class="btn btn-warm" href="mailto:partners@rangeway.co?subject=Host%20a%20Rangeway%20Inquiry">
-            Inquire about hosting
-          </a>
+        </div>
+        <div class="host__form">
+          <ContactForm
+            hostMode
+            subject="Host a Rangeway Inquiry"
+          />
         </div>
       </div>
     </div>
@@ -186,7 +191,7 @@ const partnerGroups = [
                 </div>
                 <div class="partner-row__body">
                   <p>{p.description}</p>
-                  <a class="btn-link" href={p.href} target="_blank" rel="noopener">
+                  <a class="btn-link" href={p.href} target="_blank" rel="noopener noreferrer">
                     Visit {p.name}
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M7 17L17 7" />
@@ -215,7 +220,10 @@ const partnerGroups = [
             providers, and energy companies who share the conviction that charging should be
             better.
           </p>
-          <a class="btn btn-primary" href="mailto:partners@rangeway.co?subject=Partnership%20Inquiry">
+          <a class="btn btn-primary" href="#host">
+            Host inquiry form
+          </a>
+          <a class="btn btn-outline" href="mailto:partners@rangeway.co?subject=Partnership%20Inquiry">
             Email partners@rangeway.co
           </a>
         </div>
@@ -227,29 +235,38 @@ const partnerGroups = [
 <style>
   .host {
     display: grid;
-    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
-    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: var(--space-7) clamp(48px, 7vw, 120px);
     align-items: start;
   }
 
   .host h2 {
     max-width: 13ch;
+    margin-bottom: var(--space-5);
   }
 
-  .host__side p {
+  .host__intro p {
     margin: 0 0 var(--space-5);
-    color: var(--fg-on-dark-2);
+    color: var(--color-text);
     font-size: 1.1rem;
     line-height: 1.7;
     max-width: 50ch;
   }
 
   .host__muted {
-    color: var(--fg-on-dark-3);
+    color: var(--color-text-muted);
   }
 
-  .host__side .btn {
-    margin-top: var(--space-2);
+  .host__muted a {
+    color: var(--accent-on-light);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .host__form {
+    padding-top: var(--space-2);
   }
 
   .partner-group {
@@ -345,6 +362,17 @@ const partnerGroups = [
     font-size: 1.08rem;
     line-height: 1.7;
     max-width: 44ch;
+  }
+
+  .partner-cta__side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .partner-cta__side .btn {
+    margin: 0;
   }
 
   @media (max-width: 900px) {

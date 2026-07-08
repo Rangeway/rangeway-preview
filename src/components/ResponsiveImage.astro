@@ -1,0 +1,65 @@
+---
+/**
+ * Serves WebP when a sibling exists in public/, with a JPEG/PNG fallback.
+ * Pass paths under /images/… Prefer .jpg sources for photographic content.
+ */
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  loading?: "lazy" | "eager";
+  fetchpriority?: "high" | "low" | "auto";
+  class?: string;
+  style?: string;
+  sizes?: string;
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  loading = "lazy",
+  fetchpriority,
+  class: className,
+  style,
+  sizes
+} = Astro.props;
+
+const webpSrc = src.replace(/\.(jpe?g|png)$/i, ".webp");
+const hasWebpCandidate = /\.(jpe?g|png)$/i.test(src);
+---
+
+{
+  hasWebpCandidate ? (
+    <picture>
+      <source type="image/webp" srcset={webpSrc} sizes={sizes} />
+      <img
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={loading}
+        fetchpriority={fetchpriority}
+        class={className}
+        style={style}
+        sizes={sizes}
+        decoding="async"
+      />
+    </picture>
+  ) : (
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loading}
+      fetchpriority={fetchpriority}
+      class={className}
+      style={style}
+      sizes={sizes}
+      decoding="async"
+    />
+  )
+}

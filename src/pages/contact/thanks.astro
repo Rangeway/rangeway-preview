@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+---
+
+<BaseLayout
+  title="Message received · Rangeway"
+  description="Thank you for writing to Rangeway. We read every note and will reply within two business days."
+  bodyClass="has-hero"
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Message received."
+    lede="Thank you for writing. A person on the Rangeway team will read your note and reply within two business days. Investor and partnership notes usually move faster."
+    image="/images/basecamp-interior.jpg"
+    imageAlt="Warm interior of a Rangeway driver's lounge"
+    caption="driver's lounge · Basecamp"
+  >
+    <div class="thanks__ctas">
+      <a class="btn btn-warm" href="/">
+        Back to the start
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="13 6 19 12 13 18" />
+        </svg>
+      </a>
+      <a class="btn btn-ghost" href="/network">Explore the Network</a>
+      <a class="btn btn-ghost" href="/partners#host">Host a Rangeway</a>
+    </div>
+  </PageHero>
+</BaseLayout>
+
+<style>
+  .thanks__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+</style>

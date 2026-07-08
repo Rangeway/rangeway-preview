@@ -1,0 +1,60 @@
+---
+---
+
+<section class="close section band-dark">
+  <div class="container">
+    <div class="kicker reveal">
+      <span class="kicker__label">Next Step</span>
+    </div>
+
+    <div class="close__grid reveal">
+      <h2>Built for properties that care how a stop feels.</h2>
+      <div class="close__side">
+        <p>
+          Whether you host hospitality land, plan trips around good stops, or evaluate the
+          category, there is a clear door in.
+        </p>
+        <div class="close__actions">
+          <a class="btn btn-warm" href="/partners#host">Host a Rangeway</a>
+          <a class="btn btn-ghost" href="/investors">Investors</a>
+          <a class="btn btn-ghost" href="/contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .close__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: end;
+  }
+
+  .close__grid h2 {
+    max-width: 14ch;
+    color: var(--fg-on-dark-1);
+  }
+
+  .close__side p {
+    margin: 0 0 var(--space-6);
+    color: var(--fg-on-dark-2);
+    font-size: 1.1rem;
+    line-height: 1.75;
+    max-width: 44ch;
+  }
+
+  .close__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  @media (max-width: 900px) {
+    .close__grid {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+  }
+</style>

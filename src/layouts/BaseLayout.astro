@@ -1,7 +1,17 @@
 ---
+import "@fontsource/raleway/400.css";
+import "@fontsource/raleway/500.css";
+import "@fontsource/raleway/600.css";
+import "@fontsource/raleway/700.css";
+import "@fontsource/raleway/800.css";
+import "@fontsource/source-sans-3/300.css";
+import "@fontsource/source-sans-3/400.css";
+import "@fontsource/source-sans-3/600.css";
+import "@fontsource/source-sans-3/700.css";
 import "../styles/global.css";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import { SITE } from "../config";
 
 interface Props {
   title?: string;
@@ -12,12 +22,58 @@ interface Props {
 
 const {
   title = "Rangeway · Travel farther, stop better.",
-  description = "America's first hospitality-driven EV charging network. Designed by hospitality operators, with the stop as the product.",
+  description = SITE.description,
   image = "/images/waystation-hawaii.jpg",
   bodyClass = ""
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImage = new URL(image, Astro.site).toString();
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") ?? "https://preview.rangeway.co";
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE.name,
+  legalName: SITE.legalName,
+  url: siteOrigin,
+  logo: `${siteOrigin}/favicon.svg`,
+  description: SITE.description,
+  email: SITE.email,
+  telephone: SITE.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: SITE.address.street,
+    addressLocality: SITE.address.city,
+    addressRegion: SITE.address.region,
+    postalCode: SITE.address.postal,
+    addressCountry: SITE.address.country
+  },
+  sameAs: [
+    "https://instagram.com/RangewayEV",
+    "https://www.linkedin.com/company/rangewayenergy",
+    "https://x.com/RangewayEV",
+    "https://newsroom.rangeway.co",
+    "https://fieldnotes.rangeway.co"
+  ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      email: "hello@rangeway.co",
+      telephone: SITE.phone,
+      areaServed: "US",
+      availableLanguage: "English"
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "investor relations",
+      email: "investors@rangeway.co",
+      areaServed: "US",
+      availableLanguage: "English"
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -30,24 +86,20 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {SITE.noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.site).toString()} />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="Rangeway" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(image, Astro.site).toString()} />
+    <meta name="twitter:image" content={ogImage} />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;600;700&display=swap"
-    />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
 
     <script is:inline defer src="https://tinylytics.app/embed/9_N5xEnQSTdibXFSDoqf.js"></script>
   </head>

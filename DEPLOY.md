@@ -4,8 +4,11 @@ A **noindexed staging mirror of `rangeway-pages`**, with a few preview-only loca
 callouts that link out to the per-site microsites. Self-hosted on the Hostinger VPS, served
 by Nginx at **https://preview.rangeway.co** from `/var/www/rangeway-preview/` on `72.60.71.39`.
 
-> ⚠️ **Keep this site noindexed.** `public/robots.txt` is `Disallow: /` on purpose. Don't
-> change `astro.config.mjs` `site:` away from `preview.rangeway.co` or touch `public/CNAME`.
+> ⚠️ **Keep this site noindexed.** `public/robots.txt` is `Disallow: /` on purpose, and
+> `SITE.noindex` in `src/config.ts` emits a matching meta tag. Don't change
+> `astro.config.mjs` `site:` away from `preview.rangeway.co` or touch `public/CNAME`
+> until production cutover. A production-ready robots file lives at
+> `public/robots.production.txt`. Sitemap is generated at build time for when you open crawlers.
 
 ## How to deploy
 **Push to `main`.** GitHub Actions builds Astro and force-pushes `dist/` to the

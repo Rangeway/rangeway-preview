@@ -85,10 +85,14 @@ const effectiveDate = "April 21, 2026";
       <h2>3. Third-Party Service Providers</h2>
       <p>We use the following third-party services to operate the Site:</p>
       <ul>
-        <li><strong>GitHub Pages:</strong> Hosts the Site.</li>
         <li>
-          <strong>Formsubmit.co:</strong> Processes contact form submissions and routes them
-          to our internal email inbox.
+          <strong>Self-hosted infrastructure:</strong> The Site is served from Rangeway-operated
+          servers (currently a VPS with Nginx). Static assets are published via our continuous
+          deployment pipeline.
+        </li>
+        <li>
+          <strong>Formsubmit.co:</strong> Processes contact form submissions (including a spam
+          check) and routes them to our internal email inbox.
         </li>
         <li>
           <strong>Buttondown:</strong> Operates our Field Notes newsletter. Subscriber email

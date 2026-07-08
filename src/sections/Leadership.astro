@@ -1,4 +1,6 @@
 ---
+import ResponsiveImage from "../components/ResponsiveImage.astro";
+
 const leaders = [
   {
     name: "Zak Winnick",
@@ -56,7 +58,7 @@ const leaders = [
         <li class="leader reveal">
           <figure class="fig">
             <div class="fig__frame leader__frame">
-              <img src={l.photo} alt={`Portrait of ${l.name}`} loading="lazy" />
+              <ResponsiveImage src={l.photo} alt={`Portrait of ${l.name}`} loading="lazy" />
             </div>
             <figcaption class="fig__caption">
               <strong>{l.name.split(" ")[0]}</strong>
@@ -95,7 +97,7 @@ const leaders = [
     aspect-ratio: 4 / 5;
   }
 
-  .leader__frame img {
+  .leader__frame :global(img) {
     object-position: center top;
     filter: grayscale(1);
   }

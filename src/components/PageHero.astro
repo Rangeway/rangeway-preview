@@ -1,4 +1,6 @@
 ---
+import ResponsiveImage from "./ResponsiveImage.astro";
+
 interface Props {
   eyebrow: string;
   title: string;
@@ -24,7 +26,12 @@ const {
 
 <section class={`chapter chapter--scrim-${scrim}`}>
   <div class="chapter__media">
-    <img src={image} alt={imageAlt} fetchpriority="high" />
+    <ResponsiveImage
+      src={image}
+      alt={imageAlt}
+      fetchpriority="high"
+      loading="eager"
+    />
     <div class="chapter__scrim"></div>
   </div>
 
@@ -63,9 +70,13 @@ const {
     overflow: hidden;
   }
 
-  .chapter__media img {
+  .chapter__media :global(picture),
+  .chapter__media :global(img) {
     width: 100%;
     height: 100%;
+  }
+
+  .chapter__media :global(img) {
     object-fit: cover;
   }
 
@@ -92,7 +103,6 @@ const {
     padding-bottom: clamp(48px, 6vw, 88px);
   }
 
-  /* Kicker rendered over the image: hairline + index + tracked label */
   .chapter__kicker {
     display: flex;
     align-items: baseline;
@@ -136,7 +146,6 @@ const {
     color: var(--fg-on-dark-2);
   }
 
-  /* Plate caption strip under the image, on the ink base */
   .chapter__caption {
     display: flex;
     justify-content: space-between;

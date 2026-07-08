@@ -2,15 +2,23 @@
 import PathMark from "./PathMark.astro";
 import { LINKS } from "../config";
 
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+
 const links = [
-  { href: "/network", label: "The Network" },
-  { href: "/our-story", label: "Our Story" },
-  { href: "/team", label: "Team" },
-  { href: "/partners", label: "Partners" },
-  { href: "/investors", label: "Investors" },
+  { href: "/network", label: "The Network", match: "/network" },
+  { href: "/our-story", label: "Our Story", match: "/our-story" },
+  { href: "/team", label: "Team", match: "/team" },
+  { href: "/partners", label: "Partners", match: "/partners" },
+  { href: "/investors", label: "Investors", match: "/investors" },
   { href: LINKS.newsroom, label: "Newsroom", external: true },
-  { href: "/contact", label: "Contact" }
+  { href: "/contact", label: "Contact", match: "/contact" }
 ];
+
+function isActive(match?: string) {
+  if (!match) return false;
+  if (match === "/") return pathname === "/";
+  return pathname === match || pathname.startsWith(`${match}/`);
+}
 ---
 
 <header class="masthead" data-nav>
@@ -26,7 +34,9 @@ const links = [
           <li>
             <a
               href={l.href}
-              {...(l.external ? { target: "_blank", rel: "noopener" } : {})}
+              class:list={[{ "is-active": isActive(l.match) }]}
+              aria-current={isActive(l.match) ? "page" : undefined}
+              {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             >{l.label}</a>
           </li>
         ))}
@@ -34,6 +44,7 @@ const links = [
     </nav>
 
     <div class="masthead__actions">
+      <a class="masthead__cta" href="/partners#host">Host</a>
       <button
         class="masthead__toggle"
         aria-expanded="false"
@@ -50,23 +61,30 @@ const links = [
     <div class="menu__inner">
       <nav aria-label="Menu">
         <ol class="menu__list">
-          {links.map((l, i) => (
+          {links.map((l) => (
             <li>
               <a
                 href={l.href}
-                {...(l.external ? { target: "_blank", rel: "noopener" } : {})}
+                class:list={[{ "is-active": isActive(l.match) }]}
+                aria-current={isActive(l.match) ? "page" : undefined}
+                {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               >
                 <span class="menu__label">{l.label}</span>
               </a>
             </li>
           ))}
+          <li>
+            <a href="/partners#host">
+              <span class="menu__label">Host a Rangeway</span>
+            </a>
+          </li>
         </ol>
       </nav>
       <div class="menu__foot">
         <div class="menu__social">
-          <a href={LINKS.instagram} target="_blank" rel="noopener">Instagram</a>
-          <a href={LINKS.linkedin} target="_blank" rel="noopener">LinkedIn</a>
-          <a href={LINKS.x} target="_blank" rel="noopener">X</a>
+          <a href={LINKS.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href={LINKS.x} target="_blank" rel="noopener noreferrer">X</a>
         </div>
       </div>
     </div>
@@ -88,7 +106,6 @@ const links = [
       border-color var(--dur-med) var(--ease-standard);
   }
 
-  /* Solid editorial state: scrolled, on interior pages, or menu open */
   .masthead.is-scrolled,
   .masthead.is-open,
   :global(body:not(.has-hero)) .masthead {
@@ -154,7 +171,8 @@ const links = [
     border-bottom: 1px solid transparent;
   }
 
-  .masthead__nav a:hover {
+  .masthead__nav a:hover,
+  .masthead__nav a.is-active {
     opacity: 1;
     color: currentColor;
     border-bottom-color: var(--color-warm);
@@ -163,7 +181,31 @@ const links = [
   .masthead__actions {
     display: flex;
     align-items: center;
-    gap: var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .masthead__cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    background: var(--color-warm);
+    color: var(--color-ink);
+    font-family: var(--font-heading);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: var(--ls-allcaps);
+    text-transform: uppercase;
+  }
+
+  .masthead__cta:hover {
+    background: var(--color-warm-lite);
+    color: var(--color-ink);
+  }
+
+  .masthead.is-open .masthead__cta {
+    display: none;
   }
 
   .masthead__toggle {
@@ -182,7 +224,6 @@ const links = [
     text-transform: uppercase;
   }
 
-  /* Full-screen ink menu */
   .menu {
     position: fixed;
     inset: var(--nav-height) 0 0 0;
@@ -227,15 +268,6 @@ const links = [
     border-bottom: 1px solid var(--border-on-dark);
   }
 
-  .menu__num {
-    font-family: var(--font-heading);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: var(--ls-eyebrow);
-    color: var(--color-warm);
-    font-variant-numeric: tabular-nums;
-  }
-
   .menu__label {
     font-family: var(--font-heading);
     font-weight: 800;
@@ -244,7 +276,8 @@ const links = [
     line-height: 1.05;
   }
 
-  .menu__list a:hover .menu__label {
+  .menu__list a:hover .menu__label,
+  .menu__list a.is-active .menu__label {
     color: var(--color-warm);
   }
 
@@ -294,6 +327,10 @@ const links = [
     }
 
     .masthead__toggle {
+      padding: 8px 12px;
+    }
+
+    .masthead__cta {
       padding: 8px 12px;
     }
   }

@@ -5,9 +5,9 @@ interface Props {
 const { current } = Astro.props;
 
 const formats = [
-  { slug: "waystation", num: "01", name: "Waystation", href: "/network/waystation" },
-  { slug: "basecamp", num: "02", name: "Basecamp", href: "/network/basecamp" },
-  { slug: "summit", num: "03", name: "Summit", href: "/network/summit" }
+  { slug: "waystation", name: "Waystation", href: "/network/waystation" },
+  { slug: "basecamp", name: "Basecamp", href: "/network/basecamp" },
+  { slug: "summit", name: "Summit", href: "/network/summit" }
 ];
 ---
 
@@ -72,13 +72,6 @@ const formats = [
     color: var(--fg-on-dark-3);
     padding-bottom: 3px;
     border-bottom: 1px solid transparent;
-  }
-
-  .format-nav__num {
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    color: var(--color-warm);
-    font-variant-numeric: tabular-nums;
   }
 
   .format-nav a:hover,

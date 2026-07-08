@@ -2,26 +2,23 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import FormatNav from "../../components/FormatNav.astro";
+import ResponsiveImage from "../../components/ResponsiveImage.astro";
 import { LINKS } from "../../config";
 
 const experiences = [
   {
-    num: "01",
     title: "Arrive at a destination, not a stop.",
     body: "Summit is sited at places worth staying, with dark skies, quiet ground, and horizons you remember. You pull in to recharge and find yourself unwilling to leave."
   },
   {
-    num: "02",
     title: "Rest in a modular Lookout.",
     body: "Each Lookout is a small, considered space of its own, with warm materials, generous glass, and a bed made with hospitality instincts. Designed to be moved, but sited to stay."
   },
   {
-    num: "03",
     title: "Gather at the clubhouse.",
     body: "The clubhouse is the central hub of every Summit, with a fire, a long table, and a kitchen with real food where conversation tends to happen on its own."
   },
   {
-    num: "04",
     title: "Charge off the grid.",
     body: "Every Summit is fully off-grid solar, with power native to the land and charging that's quiet, clean, and unobtrusive by design."
   }
@@ -94,7 +91,7 @@ const experiences = [
       <div class="summit-gallery">
         <figure class="fig reveal summit-gallery__lead">
           <div class="fig__frame summit-gallery__frame summit-gallery__frame--wide">
-            <img src="/images/summit-solar-aerial.jpg" alt="Aerial view of a Summit with clubhouse, Lookouts, and off-grid solar array in the desert" loading="lazy" />
+            <ResponsiveImage src="/images/summit-solar-aerial.jpg" alt="Aerial view of a Summit with clubhouse, Lookouts, and off-grid solar array in the desert" loading="lazy" />
           </div>
           <figcaption class="fig__caption">
             <span>Summit from above · Off-grid solar</span>
@@ -102,7 +99,7 @@ const experiences = [
         </figure>
         <figure class="fig reveal">
           <div class="fig__frame summit-gallery__frame">
-            <img src="/images/summit-clubhouse-mountains.jpg" alt="A Summit clubhouse with charging canopy and desert mountains behind" loading="lazy" />
+            <ResponsiveImage src="/images/summit-clubhouse-mountains.jpg" alt="A Summit clubhouse with charging canopy and desert mountains behind" loading="lazy" />
           </div>
           <figcaption class="fig__caption">
             <span>The clubhouse</span>
@@ -110,7 +107,7 @@ const experiences = [
         </figure>
         <figure class="fig reveal">
           <div class="fig__frame summit-gallery__frame">
-            <img src="/images/summit-2.jpg" alt="Summit Lookout interior" loading="lazy" />
+            <ResponsiveImage src="/images/summit-2.jpg" alt="Summit Lookout interior" loading="lazy" />
           </div>
           <figcaption class="fig__caption">
             <span>Lookout interior</span>
@@ -157,7 +154,7 @@ const experiences = [
             Summit locations are small and intentional. Field Notes subscribers hear first when a
             new property opens for stays.
           </p>
-          <a class="btn btn-primary" href={LINKS.fieldNotes} target="_blank" rel="noopener">
+          <a class="btn btn-primary" href={LINKS.fieldNotes} target="_blank" rel="noopener noreferrer">
             Subscribe to Field Notes
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
@@ -209,6 +206,12 @@ const experiences = [
 
   .summit-gallery__frame {
     aspect-ratio: 4 / 3;
+  }
+
+  .summit-gallery__frame :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .summit-gallery__frame--wide {

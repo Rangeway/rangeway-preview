@@ -1,19 +1,42 @@
 ---
 interface Props {
   compact?: boolean;
+  /** Prefill the interest select (must match an option label). */
+  defaultInterest?: string;
+  /** Subject line for Formsubmit. */
+  subject?: string;
+  /** Show host-oriented property fields. */
+  hostMode?: boolean;
 }
-const { compact = false } = Astro.props;
+
+const {
+  compact = false,
+  defaultInterest = "",
+  subject = "New Rangeway Website Inquiry",
+  hostMode = false
+} = Astro.props;
+
+const thanksUrl = new URL("/contact/thanks/", Astro.site).toString();
 ---
 
 <form
-  class={compact ? "contact-form contact-form--compact" : "contact-form"}
+  class:list={["contact-form", { "contact-form--compact": compact, "contact-form--host": hostMode }]}
   action="https://formsubmit.co/hello@rangeway.co"
   method="POST"
+  data-contact-form
 >
-  <input type="hidden" name="_subject" value="New Rangeway Website Inquiry" />
+  <input type="hidden" name="_subject" value={subject} />
   <input type="hidden" name="_template" value="table" />
-  <input type="hidden" name="_captcha" value="false" />
-  <input type="text" name="_honey" class="contact-form__honey" tab autocomplete="off" aria-hidden="true" />
+  <input type="hidden" name="_captcha" value="true" />
+  <input type="hidden" name="_next" value={thanksUrl} />
+  <input
+    type="text"
+    name="_honey"
+    class="contact-form__honey"
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+  />
 
   <div class="contact-form__row">
     <label>
@@ -26,25 +49,64 @@ const { compact = false } = Astro.props;
     </label>
   </div>
 
-  <label>
-    <span>Interest</span>
-    <select name="interest" required>
-      <option value="">Select one</option>
-      <option>EV Driver</option>
-      <option>Potential Partner</option>
-      <option>Investor</option>
-      <option>Careers</option>
-      <option>Media</option>
-      <option>Other</option>
-    </select>
-  </label>
+  {
+    hostMode ? (
+      <>
+        <input type="hidden" name="interest" value="Potential Partner" />
+        <div class="contact-form__row">
+          <label>
+            <span>Property or company</span>
+            <input type="text" name="property" required autocomplete="organization" />
+          </label>
+          <label>
+            <span>Location</span>
+            <input type="text" name="location" required placeholder="City, state" />
+          </label>
+        </div>
+        <label>
+          <span>Property type</span>
+          <select name="property_type" required>
+            <option value="">Select one</option>
+            <option>Resort or lodge</option>
+            <option>Boutique hotel or inn</option>
+            <option>Highway or corridor property</option>
+            <option>Mixed-use or other</option>
+          </select>
+        </label>
+      </>
+    ) : (
+      <label>
+        <span>Interest</span>
+        <select name="interest" required>
+          <option value="" selected={!defaultInterest}>Select one</option>
+          {["EV Driver", "Potential Partner", "Investor", "Careers", "Media", "Other"].map((opt) => (
+            <option value={opt} selected={defaultInterest === opt}>{opt}</option>
+          ))}
+        </select>
+      </label>
+    )
+  }
 
   <label>
-    <span>Message</span>
-    <textarea name="message" rows={5} required></textarea>
+    <span>{hostMode ? "Tell us about the property" : "Message"}</span>
+    <textarea
+      name="message"
+      rows={hostMode ? 6 : 5}
+      required
+      placeholder={
+        hostMode
+          ? "Location, size, the guests you serve, and what brought Rangeway to mind."
+          : undefined
+      }
+    ></textarea>
   </label>
 
-  <button type="submit" class="btn btn-warm">Send message</button>
+  <div class="contact-form__actions">
+    <button type="submit" class="btn btn-warm" data-submit>
+      <span data-submit-label>{hostMode ? "Inquire about hosting" : "Send message"}</span>
+    </button>
+    <p class="contact-form__status" data-status hidden aria-live="polite"></p>
+  </div>
 </form>
 
 <style>
@@ -74,7 +136,6 @@ const { compact = false } = Astro.props;
     color: var(--color-text-muted);
   }
 
-  /* Editorial fields: hairline underline, no boxes */
   .contact-form input,
   .contact-form select,
   .contact-form textarea {
@@ -87,7 +148,7 @@ const { compact = false } = Astro.props;
     background: transparent;
     color: var(--color-text);
     width: 100%;
-    transition: border-color 0.2s var(--ease-out);
+    transition: border-color 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
     text-transform: none;
     letter-spacing: 0;
     font-weight: 400;
@@ -102,7 +163,8 @@ const { compact = false } = Astro.props;
   .contact-form input:focus,
   .contact-form select:focus,
   .contact-form textarea:focus {
-    outline: none;
+    outline: 2px solid var(--accent-on-light);
+    outline-offset: 4px;
     border-bottom-color: var(--accent-on-light);
     box-shadow: 0 1px 0 0 var(--accent-on-light);
   }
@@ -112,9 +174,22 @@ const { compact = false } = Astro.props;
     min-height: 120px;
   }
 
-  .contact-form button {
-    align-self: flex-start;
+  .contact-form__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
     margin-top: var(--space-2);
+  }
+
+  .contact-form__status {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+  }
+
+  .contact-form.is-sending .contact-form__status {
+    color: var(--accent-on-light);
   }
 
   .contact-form__honey {
@@ -132,3 +207,32 @@ const { compact = false } = Astro.props;
     }
   }
 </style>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>("[data-contact-form]").forEach((form) => {
+    const submit = form.querySelector<HTMLButtonElement>("[data-submit]");
+    const label = form.querySelector<HTMLElement>("[data-submit-label]");
+    const status = form.querySelector<HTMLElement>("[data-status]");
+    const idleLabel = label?.textContent ?? "Send message";
+
+    form.addEventListener("submit", () => {
+      form.classList.add("is-sending");
+      if (submit) submit.disabled = true;
+      if (label) label.textContent = "Sending…";
+      if (status) {
+        status.hidden = false;
+        status.textContent = "Routing your note. You will land on a confirmation page next.";
+      }
+    });
+
+    window.addEventListener("pageshow", () => {
+      form.classList.remove("is-sending");
+      if (submit) submit.disabled = false;
+      if (label) label.textContent = idleLabel;
+      if (status) {
+        status.hidden = true;
+        status.textContent = "";
+      }
+    });
+  });
+</script>
