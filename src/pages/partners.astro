@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
-import ContactForm from "../components/ContactForm.astro";
 
 const partnerGroups = [
   {
@@ -124,41 +123,12 @@ const partnerGroups = [
 >
   <PageHero
     eyebrow="Partners"
-    title="Built with the best, hosted by the best."
-    lede="Rangeway is a brand and an operating company. We work with hospitality operators who host us on their properties, and with technology partners who build the systems behind the experience."
+    title="Built with the people who make the experience possible."
+    lede="Rangeway is a brand and operating company. We work with technology, infrastructure, and service partners who build the systems behind the driver experience."
     image="/images/waystation-exterior.jpg"
     imageAlt="A Waystation in warm evening light"
     caption="Waystation in evening light"
   />
-
-  <section id="host" class="section">
-    <div class="container">
-      <div class="kicker reveal">
-        <span class="kicker__label">For Hospitality Operators</span>
-      </div>
-      <div class="host reveal">
-        <div class="host__intro">
-          <h2>Host a Rangeway on your property.</h2>
-          <p>
-            Rangeway sites are designed to belong on hospitality properties: flagship resorts,
-            lodges, boutique inns, and the corridors that connect them. If you operate a property
-            that fits the brand and want to host a Rangeway, we would like to hear about it.
-          </p>
-          <p class="host__muted">
-            Tell us about the property: location, size, the kind of guests it serves, and what
-            brought Rangeway to mind. We read every inquiry, and you can also reach
-            <a href="mailto:partners@rangeway.co">partners@rangeway.co</a> directly.
-          </p>
-        </div>
-        <div class="host__form">
-          <ContactForm
-            hostMode
-            subject="Host a Rangeway Inquiry"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="section">
     <div class="container">
@@ -204,6 +174,11 @@ const partnerGroups = [
           </ul>
         </div>
       ))}
+      <p class="partner-disclosure reveal">
+        Partner listings reflect Rangeway's current collaborations. Site-specific configurations
+        vary by project phase. <a href="https://newsroom.rangeway.co" target="_blank" rel="noopener noreferrer">The Newsroom</a>
+        carries public project announcements.
+      </p>
     </div>
   </section>
 
@@ -216,14 +191,10 @@ const partnerGroups = [
         <h2>Want to work with us?</h2>
         <div class="partner-cta__side">
           <p>
-            We are always looking for hospitality operators, real estate partners, technology
-            providers, and energy companies who share the conviction that charging should be
-            better.
+            We work with technology providers, energy companies, and service partners who share
+            the conviction that charging should be better.
           </p>
-          <a class="btn btn-primary" href="#host">
-            Host inquiry form
-          </a>
-          <a class="btn btn-outline" href="mailto:partners@rangeway.co?subject=Partnership%20Inquiry">
+          <a class="btn btn-primary" href="mailto:partners@rangeway.co?subject=Partnership%20Inquiry">
             Email partners@rangeway.co
           </a>
         </div>
@@ -233,42 +204,6 @@ const partnerGroups = [
 </BaseLayout>
 
 <style>
-  .host {
-    display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-    gap: var(--space-7) clamp(48px, 7vw, 120px);
-    align-items: start;
-  }
-
-  .host h2 {
-    max-width: 13ch;
-    margin-bottom: var(--space-5);
-  }
-
-  .host__intro p {
-    margin: 0 0 var(--space-5);
-    color: var(--color-text);
-    font-size: 1.1rem;
-    line-height: 1.7;
-    max-width: 50ch;
-  }
-
-  .host__muted {
-    color: var(--color-text-muted);
-  }
-
-  .host__muted a {
-    color: var(--accent-on-light);
-    font-weight: 600;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
-  }
-
-  .host__form {
-    padding-top: var(--space-2);
-  }
-
   .partner-group {
     margin-top: clamp(48px, 6vw, 80px);
   }
@@ -375,8 +310,22 @@ const partnerGroups = [
     margin: 0;
   }
 
+  .partner-disclosure {
+    max-width: 62ch;
+    margin: var(--space-6) 0 0;
+    color: var(--color-text-muted);
+    font-size: var(--fs-body-sm);
+  }
+
+  .partner-disclosure a {
+    color: var(--accent-on-light);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
   @media (max-width: 900px) {
-    .host,
     .partner-row,
     .partner-cta {
       grid-template-columns: 1fr;

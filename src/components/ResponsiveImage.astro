@@ -1,6 +1,8 @@
 ---
+import { getResponsiveImage } from "../lib/responsive-images.mjs";
+
 /**
- * Serves WebP when a sibling exists in public/, with a JPEG/PNG fallback.
+ * Serves width-based WebP when a sibling exists in public/, with a JPEG/PNG fallback.
  * Pass paths under /images/… Prefer .jpg sources for photographic content.
  */
 interface Props {
@@ -27,24 +29,24 @@ const {
   sizes
 } = Astro.props;
 
-const webpSrc = src.replace(/\.(jpe?g|png)$/i, ".webp");
+const responsiveImage = getResponsiveImage(src);
 const hasWebpCandidate = /\.(jpe?g|png)$/i.test(src);
 ---
 
 {
   hasWebpCandidate ? (
     <picture>
-      <source type="image/webp" srcset={webpSrc} sizes={sizes} />
+      <source type="image/webp" srcset={responsiveImage.webpSrcset} sizes={sizes ?? "100vw"} />
       <img
         src={src}
         alt={alt}
-        width={width}
-        height={height}
+        width={width ?? responsiveImage.width}
+        height={height ?? responsiveImage.height}
         loading={loading}
         fetchpriority={fetchpriority}
         class={className}
         style={style}
-        sizes={sizes}
+        sizes={sizes ?? "100vw"}
         decoding="async"
       />
     </picture>
@@ -52,13 +54,13 @@ const hasWebpCandidate = /\.(jpe?g|png)$/i.test(src);
     <img
       src={src}
       alt={alt}
-      width={width}
-      height={height}
+      width={width ?? responsiveImage.width}
+      height={height ?? responsiveImage.height}
       loading={loading}
       fetchpriority={fetchpriority}
       class={className}
       style={style}
-      sizes={sizes}
+      sizes={sizes ?? "100vw"}
       decoding="async"
     />
   )

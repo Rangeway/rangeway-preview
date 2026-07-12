@@ -1,0 +1,78 @@
+import assert from "node:assert/strict";
+import { existsSync } from "node:fs";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+import test from "node:test";
+import { fileURLToPath } from "node:url";
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const readSource = (relativePath) => readFile(path.join(root, relativePath), "utf8");
+
+test("content remains visible when JavaScript is unavailable", async () => {
+  const [layout, styles] = await Promise.all([
+    readSource("src/layouts/BaseLayout.astro"),
+    readSource("src/styles/global.css")
+  ]);
+
+  assert.match(layout, /document\.documentElement\.classList\.add\("js"\)/);
+  assert.match(styles, /html\.js \.reveal\s*\{[\s\S]*?opacity:\s*0/);
+  assert.match(styles, /html\.js \.reveal\.is-visible\s*\{[\s\S]*?opacity:\s*1/);
+});
+
+test("the mobile menu contains focus and restores it when closed", async () => {
+  const nav = await readSource("src/components/Nav.astro");
+
+  assert.match(nav, /previouslyFocused/);
+  assert.match(nav, /main\.inert/);
+  assert.match(nav, /focusableSelector/);
+});
+
+test("contact forms recover when navigation does not begin", async () => {
+  const form = await readSource("src/components/ContactForm.astro");
+
+  assert.match(form, /submissionTimeout/);
+  assert.match(form, /try again/i);
+  assert.match(form, /pagehide/);
+});
+
+test("Rangeway does not solicit site hosts", async () => {
+  const files = [
+    "src/sections/Hero.astro",
+    "src/sections/CloseCta.astro",
+    "src/sections/Positioning.astro",
+    "src/pages/partners.astro",
+    "src/components/Nav.astro",
+    "src/components/Footer.astro",
+    "src/components/ContactForm.astro",
+    "astro.config.mjs"
+  ];
+  const source = (await Promise.all(files.map(readSource))).join("\n");
+
+  assert.doesNotMatch(source, /Host a Rangeway Site/i);
+  assert.doesNotMatch(source, /hostMode/);
+  assert.doesNotMatch(source, /partners#host/);
+  assert.doesNotMatch(source, /properties that care how a stop feels/i);
+  assert.doesNotMatch(source, /hospitality operators run every location/i);
+  assert.match(source, /chargevia\.net/);
+});
+
+test("responsive image helpers provide dimensions and a width-based WebP source set", async () => {
+  const helperPath = path.join(root, "src/lib/responsive-images.mjs");
+  assert.equal(existsSync(helperPath), true, "responsive image helper should exist");
+
+  const { getResponsiveImage } = await import(helperPath);
+  assert.deepEqual(getResponsiveImage("/images/basecamp-interior.jpg"), {
+    width: 1024,
+    height: 1024,
+    webpSrcset: "/images/basecamp-interior-640.webp 640w, /images/basecamp-interior.webp 1024w"
+  });
+});
+
+test("preview and production deployment behavior comes from one shared configuration", async () => {
+  const configPath = path.join(root, "site.config.mjs");
+  assert.equal(existsSync(configPath), true, "shared deployment configuration should exist");
+
+  const { SITE_ORIGIN, SITE_NOINDEX } = await import(configPath);
+  assert.equal(SITE_ORIGIN, "https://preview.rangeway.co");
+  assert.equal(SITE_NOINDEX, true);
+});

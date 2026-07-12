@@ -1,10 +1,11 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { SITE_ORIGIN } from './site.config.mjs';
 
-// Preview host. At production cutover, set site to https://rangeway.co
-// (or the live apex) and set SITE.noindex = false in src/config.ts.
+// The origin and crawler policy come from site.config.mjs so canonical, form, and
+// robots behavior change together at production cutover.
 export default defineConfig({
-  site: 'https://preview.rangeway.co',
+  site: SITE_ORIGIN,
   output: 'static',
   trailingSlash: 'ignore',
   build: {
@@ -18,6 +19,6 @@ export default defineConfig({
   redirects: {
     '/summit': '/network/summit',
     '/mojave': 'https://rangewaymojave.com',
-    '/host': '/partners#host'
+    '/host': 'https://chargevia.net'
   }
 });

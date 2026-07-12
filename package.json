@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/prepare-site.mjs && node scripts/generate-responsive-images.mjs && astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "test": "node --test test/site-regressions.test.mjs",
     "astro": "astro"
   },
   "dependencies": {

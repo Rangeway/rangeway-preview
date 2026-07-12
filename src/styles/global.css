@@ -644,14 +644,14 @@ section {
 
 /* ---------- Reveal on scroll ---------- */
 
-.reveal {
+html.js .reveal {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity var(--dur-slow) var(--ease-out),
     transform var(--dur-slow) var(--ease-out);
 }
 
-.reveal.is-visible {
+html.js .reveal.is-visible {
   opacity: 1;
   transform: none;
 }

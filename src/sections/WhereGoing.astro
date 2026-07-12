@@ -32,7 +32,7 @@ const waypoints = [
 ];
 ---
 
-<section class="where section">
+<section id="where-going" class="where section">
   <div class="container">
     <div class="kicker reveal">
       <span class="kicker__label">Where We're Going</span>
@@ -44,6 +44,8 @@ const waypoints = [
         Status on the ground today. <a class="where__nda-link" href="/investors">Qualified investors</a> can review the full pipeline under NDA.
       </p>
     </div>
+
+    <p class="where__updated reveal">Last reviewed July 12, 2026. Each project link leads to its latest public update.</p>
 
     <div class="where__list">
       {waypoints.map((w) => (
@@ -68,8 +70,7 @@ const waypoints = [
     </div>
 
     <div class="where__cta reveal">
-      <a class="btn btn-primary" href="/partners#host">Host a Rangeway</a>
-      <a class="btn btn-outline" href="/investors">Request investor briefing</a>
+      <a class="btn btn-primary" href="/network">Explore the Network</a>
       <a class="btn btn-outline" href={LINKS.fieldNotes} target="_blank" rel="noopener noreferrer">
         Subscribe to Field Notes
       </a>
@@ -128,6 +129,12 @@ const waypoints = [
 
   .where__link {
     margin-top: var(--space-4);
+  }
+
+  .where__updated {
+    margin: calc(-1 * var(--space-6)) 0 var(--space-6);
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-muted);
   }
 
   .where__nda-link {

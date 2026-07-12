@@ -44,7 +44,6 @@ function isActive(match?: string) {
     </nav>
 
     <div class="masthead__actions">
-      <a class="masthead__cta" href="/partners#host">Host</a>
       <button
         class="masthead__toggle"
         aria-expanded="false"
@@ -73,11 +72,6 @@ function isActive(match?: string) {
               </a>
             </li>
           ))}
-          <li>
-            <a href="/partners#host">
-              <span class="menu__label">Host a Rangeway</span>
-            </a>
-          </li>
         </ol>
       </nav>
       <div class="menu__foot">
@@ -182,30 +176,6 @@ function isActive(match?: string) {
     display: flex;
     align-items: center;
     gap: var(--space-3);
-  }
-
-  .masthead__cta {
-    display: inline-flex;
-    align-items: center;
-    min-height: 42px;
-    padding: 8px 18px;
-    border-radius: var(--radius-pill);
-    background: var(--color-warm);
-    color: var(--color-ink);
-    font-family: var(--font-heading);
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: var(--ls-allcaps);
-    text-transform: uppercase;
-  }
-
-  .masthead__cta:hover {
-    background: var(--color-warm-lite);
-    color: var(--color-ink);
-  }
-
-  .masthead.is-open .masthead__cta {
-    display: none;
   }
 
   .masthead__toggle {
@@ -330,9 +300,6 @@ function isActive(match?: string) {
       padding: 8px 12px;
     }
 
-    .masthead__cta {
-      padding: 8px 12px;
-    }
   }
 </style>
 
@@ -341,6 +308,10 @@ function isActive(match?: string) {
   const toggle = document.querySelector<HTMLButtonElement>("[data-toggle]");
   const toggleLabel = document.querySelector<HTMLElement>("[data-toggle-label]");
   const menu = document.querySelector<HTMLElement>("[data-menu]");
+  const main = document.querySelector<HTMLElement>("main");
+  const footer = document.querySelector<HTMLElement>("footer");
+  const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  let previouslyFocused: HTMLElement | null = null;
 
   if (masthead) {
     const onScroll = () => {
@@ -358,6 +329,16 @@ function isActive(match?: string) {
       toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       if (toggleLabel) toggleLabel.textContent = open ? "Close" : "Menu";
       document.body.style.overflow = open ? "hidden" : "";
+      if (main) main.inert = open;
+      if (footer) footer.inert = open;
+
+      if (open) {
+        previouslyFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+        requestAnimationFrame(() => menu.querySelector<HTMLElement>(focusableSelector)?.focus());
+      } else {
+        previouslyFocused?.focus();
+        previouslyFocused = null;
+      }
     };
 
     toggle.addEventListener("click", (e) => {
@@ -371,6 +352,21 @@ function isActive(match?: string) {
 
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && !menu.hidden) setOpen(false);
+    });
+
+    menu.addEventListener("keydown", (e) => {
+      if (e.key !== "Tab") return;
+      const focusable = Array.from(menu.querySelectorAll<HTMLElement>(focusableSelector));
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) return;
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     });
   }
 </script>

@@ -5,22 +5,19 @@ interface Props {
   defaultInterest?: string;
   /** Subject line for Formsubmit. */
   subject?: string;
-  /** Show host-oriented property fields. */
-  hostMode?: boolean;
 }
 
 const {
   compact = false,
   defaultInterest = "",
-  subject = "New Rangeway Website Inquiry",
-  hostMode = false
+  subject = "New Rangeway Website Inquiry"
 } = Astro.props;
 
 const thanksUrl = new URL("/contact/thanks/", Astro.site).toString();
 ---
 
 <form
-  class:list={["contact-form", { "contact-form--compact": compact, "contact-form--host": hostMode }]}
+  class:list={["contact-form", { "contact-form--compact": compact }]}
   action="https://formsubmit.co/hello@rangeway.co"
   method="POST"
   data-contact-form
@@ -49,61 +46,28 @@ const thanksUrl = new URL("/contact/thanks/", Astro.site).toString();
     </label>
   </div>
 
-  {
-    hostMode ? (
-      <>
-        <input type="hidden" name="interest" value="Potential Partner" />
-        <div class="contact-form__row">
-          <label>
-            <span>Property or company</span>
-            <input type="text" name="property" required autocomplete="organization" />
-          </label>
-          <label>
-            <span>Location</span>
-            <input type="text" name="location" required placeholder="City, state" />
-          </label>
-        </div>
-        <label>
-          <span>Property type</span>
-          <select name="property_type" required>
-            <option value="">Select one</option>
-            <option>Resort or lodge</option>
-            <option>Boutique hotel or inn</option>
-            <option>Highway or corridor property</option>
-            <option>Mixed-use or other</option>
-          </select>
-        </label>
-      </>
-    ) : (
-      <label>
-        <span>Interest</span>
-        <select name="interest" required>
-          <option value="" selected={!defaultInterest}>Select one</option>
-          {["EV Driver", "Potential Partner", "Investor", "Careers", "Media", "Other"].map((opt) => (
-            <option value={opt} selected={defaultInterest === opt}>{opt}</option>
-          ))}
-        </select>
-      </label>
-    )
-  }
+  <label>
+    <span>Interest</span>
+    <select name="interest" required>
+      <option value="" selected={!defaultInterest}>Select one</option>
+      {["EV Driver", "Potential Partner", "Investor", "Careers", "Media", "Other"].map((opt) => (
+        <option value={opt} selected={defaultInterest === opt}>{opt}</option>
+      ))}
+    </select>
+  </label>
 
   <label>
-    <span>{hostMode ? "Tell us about the property" : "Message"}</span>
+    <span>Message</span>
     <textarea
       name="message"
-      rows={hostMode ? 6 : 5}
+      rows={5}
       required
-      placeholder={
-        hostMode
-          ? "Location, size, the guests you serve, and what brought Rangeway to mind."
-          : undefined
-      }
     ></textarea>
   </label>
 
   <div class="contact-form__actions">
     <button type="submit" class="btn btn-warm" data-submit>
-      <span data-submit-label>{hostMode ? "Inquire about hosting" : "Send message"}</span>
+      <span data-submit-label>Send message</span>
     </button>
     <p class="contact-form__status" data-status hidden aria-live="polite"></p>
   </div>
@@ -214,6 +178,15 @@ const thanksUrl = new URL("/contact/thanks/", Astro.site).toString();
     const label = form.querySelector<HTMLElement>("[data-submit-label]");
     const status = form.querySelector<HTMLElement>("[data-status]");
     const idleLabel = label?.textContent ?? "Send message";
+    let submissionTimeout: number | undefined;
+
+    const resetSubmission = () => {
+      if (submissionTimeout) window.clearTimeout(submissionTimeout);
+      submissionTimeout = undefined;
+      form.classList.remove("is-sending");
+      if (submit) submit.disabled = false;
+      if (label) label.textContent = idleLabel;
+    };
 
     form.addEventListener("submit", () => {
       form.classList.add("is-sending");
@@ -223,16 +196,23 @@ const thanksUrl = new URL("/contact/thanks/", Astro.site).toString();
         status.hidden = false;
         status.textContent = "Routing your note. You will land on a confirmation page next.";
       }
+      submissionTimeout = window.setTimeout(() => {
+        resetSubmission();
+        if (status) {
+          status.hidden = false;
+          status.textContent = "We could not confirm delivery. Check your connection and try again.";
+        }
+      }, 12000);
     });
 
     window.addEventListener("pageshow", () => {
-      form.classList.remove("is-sending");
-      if (submit) submit.disabled = false;
-      if (label) label.textContent = idleLabel;
+      resetSubmission();
       if (status) {
         status.hidden = true;
         status.textContent = "";
       }
     });
+
+    window.addEventListener("pagehide", resetSubmission);
   });
 </script>

@@ -27,11 +27,16 @@ Pushes to `main` trigger `.github/workflows/deploy.yml`, which builds and force-
 
 ## Production cutover checklist
 
-1. Set `site` in `astro.config.mjs` to the live origin (e.g. `https://rangeway.co`).
-2. Set `SITE.noindex = false` in `src/config.ts`.
-3. Replace `public/robots.txt` with `public/robots.production.txt` (adjust sitemap URL if needed).
-4. Confirm DNS, TLS, and the deploy target for the live host.
-5. Rebuild and deploy; verify canonicals, OG URLs, and `/sitemap-index.xml`.
+1. Set `RANGEWAY_SITE_ORIGIN` to the live origin (for example, `https://rangeway.co`).
+2. Set `RANGEWAY_NOINDEX=false` in the build environment.
+3. Confirm DNS, TLS, and the deploy target for the live host.
+4. Rebuild and deploy; the build generates `robots.txt`, canonicals, OG URLs, form return URLs, and `/sitemap-index.xml` from the same origin configuration.
+
+Example production build:
+
+```bash
+RANGEWAY_SITE_ORIGIN=https://rangeway.co RANGEWAY_NOINDEX=false npm run build
+```
 
 ## Writing rules
 
@@ -52,7 +57,7 @@ All user-facing copy must follow the Rangeway voice:
 - `/network/summit`
 - `/our-story`
 - `/team`
-- `/partners` (includes host inquiry at `#host`)
+- `/partners`
 - `/investors`
 - `/contact` and `/contact/thanks`
 - `/commitments`, `/privacy`, `/terms`

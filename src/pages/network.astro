@@ -71,6 +71,28 @@ const formats = [
     </div>
   </section>
 
+  <section class="section network-planning">
+    <div class="container">
+      <div class="kicker reveal">
+        <span class="kicker__label">For Drivers</span>
+      </div>
+      <div class="network-planning__grid reveal">
+        <h2>Plan for the places that are taking shape.</h2>
+        <div class="network-planning__side">
+          <p>
+            Rangeway's first locations are in development. This page is a guide to the experience
+            we are building, not a live charging map. Project pages carry the latest public news
+            as sites move toward opening.
+          </p>
+          <div class="network-planning__links">
+            <a class="btn-link" href={LINKS.bozemanMicrosite} target="_blank" rel="noopener noreferrer">Rangeway Bozeman</a>
+            <a class="btn-link" href={LINKS.mojaveMicrosite} target="_blank" rel="noopener noreferrer">Rangeway Mojave</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section network-formats">
     <div class="container">
       <div class="kicker reveal">
@@ -94,7 +116,6 @@ const formats = [
         <div class="network-next__side">
           <p>Follow along as new sites come online.</p>
           <div class="network-next__ctas">
-            <a class="btn btn-primary" href="/partners#host">Host a Rangeway</a>
             <a class="btn btn-outline" href={LINKS.fieldNotes} target="_blank" rel="noopener noreferrer">
               Subscribe to Field Notes
             </a>
@@ -149,6 +170,35 @@ const formats = [
     align-items: end;
   }
 
+  .network-planning {
+    background: var(--surface-alt);
+  }
+
+  .network-planning__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-6) clamp(48px, 7vw, 120px);
+    align-items: start;
+  }
+
+  .network-planning__grid h2 {
+    max-width: 13ch;
+  }
+
+  .network-planning__side p {
+    margin: 0 0 var(--space-5);
+    color: var(--color-text-muted);
+    font-size: var(--fs-body-lg);
+    line-height: 1.7;
+    max-width: 46ch;
+  }
+
+  .network-planning__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+  }
+
   .network-next__side p {
     margin: 0 0 var(--space-6);
     color: var(--color-text-muted);
@@ -164,7 +214,8 @@ const formats = [
   @media (max-width: 900px) {
     .network-why,
     .network-formats__grid,
-    .network-next {
+    .network-next,
+    .network-planning__grid {
       grid-template-columns: 1fr;
     }
   }
