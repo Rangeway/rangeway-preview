@@ -56,6 +56,39 @@ test("Rangeway does not solicit site hosts", async () => {
   assert.match(source, /chargevia\.net/);
 });
 
+test("Electric Era uses its light logo in dark mode", async () => {
+  const partnerPage = await readSource("src/pages/partners.astro");
+  const darkLogoPath = "public/images/partners/electric-era-white.jpg";
+
+  assert.match(
+    partnerPage,
+    /name: "Electric Era",[\s\S]*?logoDark: "\/images\/partners\/electric-era-white\.jpg"/
+  );
+  assert.equal(existsSync(path.join(root, darkLogoPath)), true);
+});
+
+test("team headshots receive a grayscale overlay", async () => {
+  const teamPage = await readSource("src/pages/team.astro");
+
+  assert.match(teamPage, /\.team-row__frame :global\(img\)\s*\{[\s\S]*?filter:\s*grayscale\(1\)/);
+});
+
+test("team hiring heading is vertically centered with its supporting copy", async () => {
+  const teamPage = await readSource("src/pages/team.astro");
+
+  assert.match(
+    teamPage,
+    /\.hiring\s*\{[\s\S]*?align-items:\s*center/
+  );
+});
+
+test("team hiring section has no bottom padding", async () => {
+  const teamPage = await readSource("src/pages/team.astro");
+
+  assert.match(teamPage, /class="section band-dark hiring-section"/);
+  assert.match(teamPage, /\.hiring-section\s*\{[\s\S]*?padding-bottom:\s*0/);
+});
+
 test("responsive image helpers provide dimensions and a width-based WebP source set", async () => {
   const helperPath = path.join(root, "src/lib/responsive-images.mjs");
   assert.equal(existsSync(helperPath), true, "responsive image helper should exist");

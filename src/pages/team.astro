@@ -93,7 +93,7 @@ const team = [
     </div>
   </section>
 
-  <section class="section band-dark">
+  <section class="section band-dark hiring-section">
     <div class="container">
       <div class="kicker reveal">
         <span class="kicker__label">Join Us</span>
@@ -145,7 +145,7 @@ const team = [
     aspect-ratio: 4 / 5;
   }
 
-  .team-row__frame img {
+  .team-row__frame :global(img) {
     object-position: center top;
     filter: grayscale(1);
   }
@@ -193,7 +193,11 @@ const team = [
     display: grid;
     grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
     gap: var(--space-6) clamp(48px, 7vw, 120px);
-    align-items: end;
+    align-items: center;
+  }
+
+  .hiring-section {
+    padding-bottom: 0;
   }
 
   .hiring__side p {

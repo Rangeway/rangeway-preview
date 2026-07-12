@@ -68,6 +68,10 @@ export const imageMetadata = {
     "width": 200,
     "height": 200
   },
+  "/images/partners/electric-era-white.jpg": {
+    "width": 200,
+    "height": 200
+  },
   "/images/summit-1.jpg": {
     "width": 2200,
     "height": 1200
