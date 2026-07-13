@@ -1,29 +1,35 @@
 ---
 ---
 
-<section class="close section band-dark">
+<section class="close section">
   <div class="container">
     <div class="kicker reveal">
-      <span class="kicker__label">Next Step</span>
+      <span class="kicker__label">Keep Going</span>
     </div>
 
     <div class="close__grid reveal">
       <h2>Built for drivers who care how a stop feels.</h2>
       <div class="close__side">
         <p>
-          Whether you plan trips around good stops or evaluate the category, there is a clear
-          door in.
+          See how Rangeway turns charging time into a better part of the journey.
         </p>
-        <div class="close__actions">
-          <a class="btn btn-warm" href="/network">Explore the Network</a>
-          <a class="btn btn-ghost" href="/contact">Contact</a>
-        </div>
+        <a class="close__action" href="/network">Explore the Network</a>
       </div>
     </div>
   </div>
 </section>
 
 <style>
+  .close {
+    color: var(--color-paper);
+    background: var(--color-oxide);
+  }
+
+  .close .kicker {
+    color: var(--color-paper);
+    border-top-color: rgb(255 250 240 / 42%);
+  }
+
   .close__grid {
     display: grid;
     grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
@@ -33,21 +39,32 @@
 
   .close__grid h2 {
     max-width: 14ch;
-    color: var(--fg-on-dark-1);
+    color: var(--color-paper);
   }
 
   .close__side p {
     margin: 0 0 var(--space-6);
-    color: var(--fg-on-dark-2);
+    color: rgb(255 250 240 / 86%);
     font-size: 1.1rem;
     line-height: 1.75;
     max-width: 44ch;
   }
 
-  .close__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
+  .close__action {
+    display: inline-flex;
+    padding: 16px 22px;
+    border: 2px solid var(--color-paper);
+    color: var(--color-paper);
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: var(--ls-allcaps);
+    text-transform: uppercase;
+  }
+
+  .close__action:hover {
+    color: var(--color-highway);
+    background: var(--color-paper);
   }
 
   @media (max-width: 900px) {

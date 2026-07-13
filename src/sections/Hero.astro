@@ -1,58 +1,45 @@
 ---
 const desktopImage = "/images/hero-mountain-waystation.jpg";
-const mobileImage = "/images/hero-mountain-waystation-mobile.jpg";
 const heroAlt =
-  "A Rangeway Waystation at dusk with sunset-lit mountains behind, lounge interior glowing through the glass facade, and a Rivian charging under the timber canopy";
+  "A concept rendering of the Rangeway Basecamp in Bozeman, Montana, with sunset-lit mountains behind a glowing glass lounge and an EV charging beneath the timber canopy";
 ---
 
 <section class="hero">
-  <div class="hero__media">
-    <picture>
-      <source media="(max-width: 720px)" type="image/webp" srcset="/images/hero-mountain-waystation-mobile.webp" />
-      <source media="(max-width: 720px)" srcset={mobileImage} />
-      <source type="image/webp" srcset="/images/hero-mountain-waystation.webp" />
-      <img
-        src={desktopImage}
-        alt={heroAlt}
-        width={1672}
-        height={941}
-        fetchpriority="high"
-        decoding="async"
-      />
-    </picture>
-    <div class="hero__scrim"></div>
-  </div>
-
-  <div class="hero__frame container">
-    <div class="hero__kicker">
-      <span class="hero__kicker-left">Rangeway</span>
-      <span class="hero__kicker-right">America's First Hospitality-Driven EV Charging Network</span>
-    </div>
-
-    <div class="hero__stage">
+  <div class="hero__nav-field" aria-hidden="true"></div>
+  <div class="hero__split">
+    <div class="hero__story">
+      <p class="hero__kicker">America's first hospitality-driven EV charging network</p>
       <h1 class="hero__headline">
-        <span class="hero__line">Travel</span>
-        <span class="hero__line">Farther,</span>
-        <span class="hero__line hero__line--warm">Stop Better.</span>
+        <span>Travel farther.</span>
+        <span>Stop better.</span>
       </h1>
-    </div>
-
-    <div class="hero__base">
       <p class="hero__lede">
         Built around drivers who plan their journeys with care. Every Rangeway location is
         operated to a hospitality standard. The stop, not the charger, is the point.
       </p>
-      <div class="hero__ctas">
-        <a class="btn btn-warm" href="/network">
-          Discover the Network
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="13 6 19 12 13 18" />
-          </svg>
-        </a>
-        <a class="btn btn-ghost" href="#where-going">See What's Coming</a>
-      </div>
+      <a class="hero__action" href="/network">
+        Discover the Network
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="13 6 19 12 13 18" />
+        </svg>
+      </a>
     </div>
+
+    <figure class="hero__media">
+      <picture>
+        <source type="image/webp" srcset="/images/hero-mountain-waystation.webp" />
+        <img
+          src={desktopImage}
+          alt={heroAlt}
+          width={1672}
+          height={941}
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
+      <figcaption>Basecamp concept · Bozeman, Montana</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -61,17 +48,108 @@ const heroAlt =
     position: relative;
     min-height: 100vh;
     min-height: 100svh;
-    display: flex;
-    color: var(--color-white);
+    display: grid;
+    grid-template-rows: var(--nav-height) minmax(0, 1fr);
+    background: var(--color-highway);
+  }
+
+  .hero__nav-field {
+    background: var(--color-highway);
+  }
+
+  .hero__split {
+    position: relative;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 40fr) minmax(0, 60fr);
     overflow: hidden;
-    isolation: isolate;
-    background: var(--color-ink);
+    background: var(--color-sun);
+  }
+
+  .hero__story {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(48px, 6vw, 96px) var(--gutter);
+    color: var(--color-highway);
+    background: var(--color-sun);
+  }
+
+  .hero__kicker {
+    max-width: 42ch;
+    margin: 0 0 clamp(28px, 4vw, 56px);
+    padding-top: var(--space-3);
+    border-top: 1px solid rgb(23 49 62 / 45%);
+    font-family: var(--font-heading);
+    font-size: var(--fs-eyebrow);
+    font-weight: 700;
+    line-height: var(--lh-compact);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+  }
+
+  .hero__headline {
+    display: flex;
+    flex-direction: column;
+    max-width: 7ch;
+    font-size: clamp(3.6rem, 7.8vw, 8.4rem);
+    line-height: 0.86;
+    letter-spacing: var(--ls-display);
+    color: var(--color-highway);
+  }
+
+  .hero__headline span {
+    opacity: 0;
+    transform: translateY(0.35em);
+    animation: heroLine 0.9s var(--ease-out) forwards;
+  }
+
+  .hero__headline span:nth-child(2) {
+    animation-delay: 0.12s;
+  }
+
+  @keyframes heroLine {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .hero__lede {
+    max-width: 43ch;
+    margin: clamp(28px, 4vw, 48px) 0 var(--space-6);
+    font-size: clamp(1rem, 1.25vw, 1.18rem);
+    line-height: 1.55;
+  }
+
+  .hero__action {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: fit-content;
+    padding: 14px 20px;
+    border: 2px solid currentColor;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: var(--ls-allcaps);
+    text-transform: uppercase;
+  }
+
+  .hero__action:hover {
+    color: var(--color-paper);
+    background: var(--color-highway);
   }
 
   .hero__media {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
+    position: relative;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    background: var(--color-sun);
+    clip-path: ellipse(88% 83% at 100% 48%);
   }
 
   .hero__media :global(picture),
@@ -82,141 +160,65 @@ const heroAlt =
 
   .hero__media :global(img) {
     object-fit: cover;
-    object-position: center 65%;
+    object-position: 56% 68%;
   }
 
-  .hero__scrim {
+  .hero__media figcaption {
     position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg, rgba(23, 21, 20, 0.62) 0%, rgba(23, 21, 20, 0.16) 36%, rgba(23, 21, 20, 0.78) 100%);
-  }
-
-  .hero__frame {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding-top: calc(var(--nav-height) + 28px);
-    padding-bottom: clamp(36px, 5vw, 64px);
-  }
-
-  .hero__kicker {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--space-4);
-    padding-top: var(--space-4);
-    border-top: 1px solid rgba(251, 247, 241, 0.42);
+    right: var(--space-5);
+    bottom: var(--space-5);
+    padding: 7px 10px;
+    color: var(--fg-on-dark-1);
+    background: rgb(23 49 62 / 82%);
     font-family: var(--font-heading);
-    font-size: var(--fs-eyebrow);
+    font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: var(--ls-eyebrow);
+    letter-spacing: var(--ls-allcaps);
     text-transform: uppercase;
   }
 
-  .hero__kicker-left {
-    color: var(--color-warm);
-  }
-
-  .hero__kicker-right {
-    text-align: right;
-    color: var(--fg-on-dark-1);
-  }
-
-  .hero__stage {
-    display: flex;
-    align-items: flex-end;
-    margin-top: auto;
-  }
-
-  .hero__headline {
-    margin: 0;
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: var(--fs-mega);
-    line-height: var(--lh-display);
-    letter-spacing: var(--ls-display);
-    color: var(--fg-on-dark-1);
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hero__line {
-    display: block;
-    opacity: 0;
-    transform: translateY(0.35em);
-    animation: heroLine 0.9s var(--ease-out) forwards;
-  }
-
-  .hero__line:nth-child(2) {
-    animation-delay: 0.12s;
-  }
-
-  .hero__line:nth-child(3) {
-    animation-delay: 0.24s;
-  }
-
-  .hero__line--warm {
-    color: var(--color-warm);
-  }
-
-  @keyframes heroLine {
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-
-  .hero__base {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: var(--space-6);
-    margin-top: clamp(28px, 4vw, 48px);
-    margin-bottom: auto;
-    padding-top: var(--space-5);
-    border-top: 1px solid rgba(251, 247, 241, 0.42);
-  }
-
-  .hero__lede {
-    margin: 0;
-    font-size: clamp(1.05rem, 1.5vw, 1.24rem);
-    line-height: 1.6;
-    max-width: 46ch;
-    color: var(--fg-on-dark-2);
-  }
-
-  .hero__ctas {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-    justify-content: flex-end;
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .hero__line {
+    .hero__headline span {
       opacity: 1;
       transform: none;
       animation: none;
     }
   }
 
-  @media (max-width: 820px) {
+  @media (max-width: 760px) {
+    .hero {
+      min-height: 100svh;
+      grid-template-rows: var(--nav-height) auto;
+    }
+
+    .hero__split {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto minmax(300px, 44svh);
+    }
+
+    .hero__story {
+      padding-top: var(--space-7);
+      padding-bottom: var(--space-7);
+    }
+
+    .hero__kicker {
+      margin-bottom: var(--space-6);
+    }
+
+    .hero__headline {
+      font-size: clamp(3.2rem, 17vw, 5rem);
+    }
+
+    .hero__lede {
+      margin-top: var(--space-6);
+    }
+
     .hero__media :global(img) {
-      object-position: center center;
+      object-position: 58% 66%;
     }
 
-    .hero__kicker-right {
-      display: none;
-    }
-
-    .hero__base {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .hero__ctas {
-      justify-content: flex-start;
+    .hero__media {
+      clip-path: none;
     }
   }
 </style>

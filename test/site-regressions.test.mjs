@@ -7,6 +7,13 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const readSource = (relativePath) => readFile(path.join(root, relativePath), "utf8");
+const extractObjectContaining = (source, needle) => {
+  const needleIndex = source.indexOf(needle);
+  const objectStart = source.lastIndexOf("{", needleIndex);
+  const objectEnd = source.indexOf("}", needleIndex);
+  assert.ok(needleIndex >= 0 && objectStart >= 0 && objectEnd > needleIndex);
+  return source.slice(objectStart, objectEnd + 1);
+};
 
 test("content remains visible when JavaScript is unavailable", async () => {
   const [layout, styles] = await Promise.all([
@@ -60,6 +67,107 @@ test("homepage components expose the approved experience sequence", async () => 
   assert.match(projects, /PROJECTS/);
 });
 
+test("homepage network derives format identity and routes from shared content", async () => {
+  const network = await readSource("src/sections/Network.astro");
+
+  assert.match(network, /import\s*\{\s*FORMATS\s*\}\s*from\s*["']\.\.\/data\/site-content["']/);
+  assert.match(network, /FORMATS\.map/);
+  assert.doesNotMatch(network, /name:\s*"(?:Waystation|Basecamp|Summit)"/);
+  assert.doesNotMatch(network, /tagline:\s*"/);
+  assert.doesNotMatch(network, /href:\s*"\/network\//);
+});
+
+test("homepage follows the approved experience-first architecture", async () => {
+  const home = await readSource("src/pages/index.astro");
+  const frontmatterEnd = home.indexOf("\n---", 3);
+  assert.notEqual(frontmatterEnd, -1, "homepage Astro frontmatter should close");
+
+  const renderedHome = home.slice(frontmatterEnd + 4);
+  const order = ["<Hero", "<ArrivalStrip", "<ExperienceCollage", "<FieldGuideGrid", "<Network", "<ProjectStrip", "<CloseCta"];
+  const renderedIndexes = order.map((component) => renderedHome.indexOf(component));
+  renderedIndexes.forEach((index, componentIndex) => {
+    assert.notEqual(index, -1, `${order[componentIndex]} should render on the homepage`);
+  });
+  for (let index = 1; index < order.length; index += 1) {
+    assert.ok(renderedIndexes[index - 1] < renderedIndexes[index]);
+  }
+  assert.doesNotMatch(renderedHome, /<(?:Positioning|ComfortGuarantee)\b/);
+});
+
+test("homepage restores the approved clipped Basecamp hero", async () => {
+  const hero = await readSource("src/sections/Hero.astro");
+
+  assert.match(hero, /\.hero__media\s*\{[^}]*clip-path:\s*ellipse\(88% 83% at 100% 48%\)/s);
+  assert.match(hero, /@media\s*\(max-width:\s*760px\)[\s\S]*?\.hero__media\s*\{[^}]*clip-path:\s*none/s);
+  assert.doesNotMatch(hero, /hero__swoop/);
+  assert.match(hero, /const desktopImage = "\/images\/hero-mountain-waystation\.jpg"/);
+  assert.match(hero, /srcset="\/images\/hero-mountain-waystation\.webp"/);
+  assert.match(hero, /const heroAlt\s*=\s*[\s\S]*?concept rendering[\s\S]*?Rangeway Basecamp[\s\S]*?Bozeman, Montana/);
+  assert.match(hero, /Basecamp concept · Bozeman, Montana/);
+});
+
+test("homepage hero gives the desktop image a 60 percent column without changing mobile stacking", async () => {
+  const hero = await readSource("src/sections/Hero.astro");
+
+  assert.match(
+    hero,
+    /\.hero__split\s*\{[^}]*grid-template-columns:\s*minmax\(0, 40fr\) minmax\(0, 60fr\)[^}]*overflow:\s*hidden/s
+  );
+  assert.match(
+    hero,
+    /@media\s*\(max-width:\s*760px\)[\s\S]*?\.hero__split\s*\{[^}]*grid-template-columns:\s*1fr/s
+  );
+});
+
+test("homepage content sections share the Network chapter-header grammar", async () => {
+  const sections = await Promise.all([
+    readSource("src/components/ExperienceCollage.astro"),
+    readSource("src/components/FieldGuideGrid.astro"),
+    readSource("src/components/ProjectStrip.astro")
+  ]);
+  const labels = ["The Experience", "The Field Guide", "Where We Are Going"];
+  const obsoleteClassHooks = [
+    /experience-collage__(?:header|eyebrow|lede)/,
+    /field-guide__(?:header|eyebrow|lede)/,
+    /project-strip__(?:header|eyebrow|lede)/
+  ];
+
+  sections.forEach((section, index) => {
+    const sharedHeader = new RegExp(
+      `<div class="kicker reveal">\\s*<span class="kicker__label">${labels[index]}</span>\\s*</div>\\s*<div class="section-head reveal">\\s*<h2[^>]*>[\\s\\S]*?</h2>\\s*<p class="section-head__lede">`
+    );
+    assert.match(section, sharedHeader);
+    assert.doesNotMatch(section, obsoleteClassHooks[index]);
+  });
+});
+
+test("Project Vision top-aligns only its shared section-head row", async () => {
+  const projects = await readSource("src/components/ProjectStrip.astro");
+
+  assert.match(projects, /\.project-vision\s+\.section-head\s*\{[^}]*align-items:\s*start/s);
+});
+
+test("homepage image and format grids have no artificial vertical stagger offsets", async () => {
+  const [collage, guide, network] = await Promise.all([
+    readSource("src/components/ExperienceCollage.astro"),
+    readSource("src/components/FieldGuideGrid.astro"),
+    readSource("src/sections/Network.astro")
+  ]);
+  const nthChildMarginOffset = /:nth-child\([^)]*\)[^{]*\{[^}]*margin-top:/s;
+
+  assert.doesNotMatch(collage, nthChildMarginOffset);
+  assert.doesNotMatch(guide, nthChildMarginOffset);
+  assert.doesNotMatch(network, nthChildMarginOffset);
+});
+
+test("homepage Network cards stretch to one equal desktop row height", async () => {
+  const network = await readSource("src/sections/Network.astro");
+
+  assert.match(network, /\.network__grid\s*\{[^}]*align-items:\s*stretch/s);
+  assert.match(network, /\.network__entry\s*\{[^}]*height:\s*100%/s);
+  assert.match(network, /@media\s*\(max-width:\s*900px\)[\s\S]*?grid-template-columns:\s*1fr/);
+});
+
 test("homepage image components keep focal positions injectable and preserve figure semantics", async () => {
   const [imageTypes, collage, guide] = await Promise.all([
     readSource("src/components/homepage-images.ts"),
@@ -74,6 +182,47 @@ test("homepage image components keep focal positions injectable and preserve fig
   assert.match(collage, /<figcaption>/);
   assert.match(guide, /<figure>/);
   assert.match(guide, /<figcaption>/);
+});
+
+test("homepage uses a distinct Trailhead lounge image for Real comfort", async () => {
+  const home = await readSource("src/pages/index.astro");
+  const experienceStart = home.indexOf("const experienceImages");
+  const guideStart = home.indexOf("const guideImages");
+  const frontmatterEnd = home.indexOf("\n---", guideStart);
+
+  assert.ok(experienceStart >= 0 && guideStart > experienceStart && frontmatterEnd > guideStart);
+
+  const experienceImages = home.slice(experienceStart, guideStart);
+  const guideImages = home.slice(guideStart, frontmatterEnd);
+  assert.match(experienceImages, /\/images\/basecamp-interior\.jpg/);
+  assert.doesNotMatch(guideImages, /\/images\/basecamp-interior\.jpg/);
+  assert.match(guideImages, /\/images\/trailhead-interior\.jpg/);
+
+  const realComfortImage = extractObjectContaining(guideImages, "/images/trailhead-interior.jpg");
+  const alt = realComfortImage.match(/alt\s*:\s*"([^"]+)"/i)?.[1];
+  const caption = realComfortImage.match(/caption\s*:\s*"([^"]+)"/i)?.[1];
+  assert.ok(alt, "Real comfort image should have alt text");
+  for (const detail of ["people", "seating", "work", "lounge"]) {
+    assert.match(alt, new RegExp(detail, "i"));
+  }
+  assert.ok(caption, "Real comfort image should have a caption");
+  assert.match(caption, /Real comfort/i);
+});
+
+test("homepage responsive picture wrappers fill their image plates", async () => {
+  const [collage, guide] = await Promise.all([
+    readSource("src/components/ExperienceCollage.astro"),
+    readSource("src/components/FieldGuideGrid.astro")
+  ]);
+
+  assert.match(
+    collage,
+    /\.experience-collage__frame :global\(picture\)\s*\{[^}]*display:\s*block;[^}]*width:\s*100%;[^}]*height:\s*100%/s
+  );
+  assert.match(
+    guide,
+    /\.field-guide__frame :global\(picture\)\s*\{[^}]*display:\s*block;[^}]*width:\s*100%;[^}]*height:\s*100%/s
+  );
 });
 
 test("the Field Guide requires exactly four images", async () => {
@@ -95,18 +244,29 @@ test("the mobile menu contains focus and restores it when closed", async () => {
   assert.match(nav, /focusableSelector/);
 });
 
-test("the header uses both official Rangeway lockups", async () => {
+test("the header keeps the official white Rangeway lockup on Highway Navy", async () => {
   const [brand, nav] = await Promise.all([
     readSource("src/components/BrandLockup.astro"),
     readSource("src/components/Nav.astro")
   ]);
 
-  assert.match(brand, /rangeway-lockup-charcoal\.svg/);
   assert.match(brand, /rangeway-lockup-white\.svg/);
+  assert.match(nav, /<BrandLockup tone="white"/);
+  assert.doesNotMatch(nav, /tone="charcoal"|surface-page|lockup--charcoal/);
+  assert.match(nav, /\.masthead\s*\{[\s\S]*?background:\s*var\(--color-highway\)/);
   assert.match(nav, /aria-label="Rangeway home"/);
   assert.doesNotMatch(nav, /masthead__wordmark/);
-  assert.equal(existsSync(path.join(root, "public/images/logo/rangeway-lockup-charcoal.svg")), true);
   assert.equal(existsSync(path.join(root, "public/images/logo/rangeway-lockup-white.svg")), true);
+});
+
+test("footer places its single official lockup before the tagline", async () => {
+  const footer = await readSource("src/components/Footer.astro");
+  const brandHook = 'class="folio-footer__brand"';
+  const taglineHook = 'class="folio-footer__tag"';
+
+  assert.ok(footer.indexOf(brandHook) < footer.indexOf(taglineHook));
+  assert.equal((footer.match(/class="folio-footer__brand"/g) ?? []).length, 1);
+  assert.match(footer, /<BrandLockup tone="white"/);
 });
 
 test("the current primary navigation remains intact", async () => {
@@ -137,7 +297,6 @@ test("Rangeway does not solicit site hosts", async () => {
   const files = [
     "src/sections/Hero.astro",
     "src/sections/CloseCta.astro",
-    "src/sections/Positioning.astro",
     "src/pages/partners.astro",
     "src/components/Nav.astro",
     "src/components/Footer.astro",
@@ -162,19 +321,38 @@ test("partner logos follow the page surface instead of the OS color scheme", asy
   assert.match(partnerPage, /<img src=\{p\.logo\}/);
 });
 
+test("partner logo tiles provide a restrained 72px contained mark", async () => {
+  const partnerPage = await readSource("src/pages/partners.astro");
+  const markRule = partnerPage.match(/\.partner-row__mark\s*\{([^}]*)\}/s)?.[1];
+  const imageRule = partnerPage.match(/\.partner-row__mark img\s*\{([^}]*)\}/s)?.[1];
+
+  assert.ok(markRule);
+  assert.match(markRule, /width:\s*72px/);
+  assert.match(markRule, /height:\s*72px/);
+  assert.ok(imageRule);
+  assert.match(imageRule, /width:\s*100%/);
+  assert.match(imageRule, /height:\s*100%/);
+  assert.match(imageRule, /object-fit:\s*contain/);
+});
+
+test("Partners call to action top-aligns its heading and supporting content", async () => {
+  const partnerPage = await readSource("src/pages/partners.astro");
+
+  assert.match(partnerPage, /\.partner-cta\s*\{[^}]*align-items:\s*start/s);
+});
+
 test("team headshots receive a grayscale overlay", async () => {
   const teamPage = await readSource("src/pages/team.astro");
 
   assert.match(teamPage, /\.team-row__frame :global\(img\)\s*\{[\s\S]*?filter:\s*grayscale\(1\)/);
 });
 
-test("team hiring heading is vertically centered with its supporting copy", async () => {
+test("team hiring heading top-aligns with its supporting copy", async () => {
   const teamPage = await readSource("src/pages/team.astro");
+  const desktopHiringRule = teamPage.match(/\.hiring\s*\{([^}]*)\}/s)?.[1];
 
-  assert.match(
-    teamPage,
-    /\.hiring\s*\{[\s\S]*?align-items:\s*center/
-  );
+  assert.ok(desktopHiringRule);
+  assert.match(desktopHiringRule, /align-items:\s*start/);
 });
 
 test("team hiring section has no bottom padding", async () => {

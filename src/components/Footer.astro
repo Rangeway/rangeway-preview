@@ -7,7 +7,12 @@ const year = new Date().getFullYear();
 <footer class="folio-footer">
   <div class="container">
     <div class="folio-footer__top">
-      <p class="folio-footer__tag">Travel farther,<br />stop better.</p>
+      <div class="folio-footer__brand-column">
+        <a class="folio-footer__brand" href="/" aria-label="Rangeway home">
+          <BrandLockup tone="white" class="folio-footer__lockup" />
+        </a>
+        <p class="folio-footer__tag">Travel farther,<br />stop better.</p>
+      </div>
 
       <div class="folio-footer__columns">
         <div>
@@ -53,10 +58,6 @@ const year = new Date().getFullYear();
       </div>
     </div>
 
-    <a class="folio-footer__brand" href="/" aria-label="Rangeway home">
-      <BrandLockup tone="white" class="folio-footer__lockup" />
-    </a>
-
     <div class="folio-footer__legal">
       <p>© {year} Rangeway Energy, Inc. All rights reserved.</p>
       <p class="folio-footer__legal-links">
@@ -94,6 +95,13 @@ const year = new Date().getFullYear();
     line-height: 1.05;
     letter-spacing: var(--ls-heading);
     color: var(--color-roadmap);
+  }
+
+  .folio-footer__brand-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-6);
   }
 
   .folio-footer__columns {
@@ -147,13 +155,10 @@ const year = new Date().getFullYear();
   }
 
   .folio-footer__brand {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: flex-start;
-    border-top: 1px solid var(--border-on-dark);
-    padding-top: clamp(32px, 4vw, 56px);
-    margin-bottom: clamp(32px, 4vw, 56px);
-    width: 100%;
+    width: fit-content;
   }
 
   .folio-footer__brand :global(.folio-footer__lockup) {

@@ -10,12 +10,19 @@ interface Props {
 const { images } = Astro.props;
 ---
 
-<section class="field-guide" aria-labelledby="field-guide-title">
+<section class="field-guide section" aria-labelledby="field-guide-title">
   <div class="container">
-    <header class="field-guide__header">
-      <p class="field-guide__eyebrow">The Field Guide</p>
+    <div class="kicker reveal">
+      <span class="kicker__label">The Field Guide</span>
+    </div>
+
+    <div class="section-head reveal">
       <h2 id="field-guide-title">Hospitality, built into every stop.</h2>
-    </header>
+      <p class="section-head__lede">
+        Four practical principles shape every location, from the light inside to the moment a
+        driver pulls away. Together, they make hospitality part of the operating standard.
+      </p>
+    </div>
 
     <ol class="field-guide__grid">
       {EXPERIENCE_PRINCIPLES.map((principle, index) => {
@@ -45,30 +52,15 @@ const { images } = Astro.props;
 
 <style>
   .field-guide {
-    padding: var(--space-10) 0;
     background: var(--surface-alt);
   }
 
-  .field-guide__header {
-    display: grid;
-    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
-    gap: var(--space-6);
-    align-items: end;
-    margin-bottom: var(--space-8);
-  }
-
-  .field-guide__eyebrow,
   .field-guide figcaption {
     font-family: var(--font-heading);
     font-size: var(--fs-caption);
     font-weight: 700;
     letter-spacing: var(--ls-allcaps);
     text-transform: uppercase;
-  }
-
-  .field-guide__eyebrow {
-    margin: 0;
-    color: var(--color-oxide);
   }
 
   .field-guide__grid {
@@ -95,6 +87,12 @@ const { images } = Astro.props;
     background: var(--surface-page);
   }
 
+  .field-guide__frame :global(picture) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
   .field-guide__frame :global(img) {
     width: 100%;
     height: 100%;
@@ -118,11 +116,6 @@ const { images } = Astro.props;
   }
 
   @media (max-width: 700px) {
-    .field-guide {
-      padding: var(--space-9) 0;
-    }
-
-    .field-guide__header,
     .field-guide__grid {
       grid-template-columns: 1fr;
     }

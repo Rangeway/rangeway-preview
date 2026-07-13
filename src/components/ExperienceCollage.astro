@@ -9,12 +9,19 @@ interface Props {
 const { images } = Astro.props;
 ---
 
-<section class="experience-collage" aria-labelledby="experience-collage-title">
+<section class="experience-collage section" aria-labelledby="experience-collage-title">
   <div class="container">
-    <header class="experience-collage__header">
-      <p class="experience-collage__eyebrow">The Experience</p>
+    <div class="kicker reveal">
+      <span class="kicker__label">The Experience</span>
+    </div>
+
+    <div class="section-head reveal">
       <h2 id="experience-collage-title">A better place to pause.</h2>
-    </header>
+      <p class="section-head__lede">
+        Rangeway treats charging time as time worth caring for. Warm rooms, thoughtful light,
+        and a clear path back to the road make the stop part of the journey.
+      </p>
+    </div>
 
     <div class="experience-collage__images">
       {images.map((image) => (
@@ -36,30 +43,12 @@ const { images } = Astro.props;
 </section>
 
 <style>
-  .experience-collage {
-    padding: var(--space-10) 0;
-  }
-
-  .experience-collage__header {
-    display: grid;
-    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
-    gap: var(--space-6);
-    align-items: end;
-    margin-bottom: var(--space-8);
-  }
-
-  .experience-collage__eyebrow,
   .experience-collage figcaption {
     font-family: var(--font-heading);
     font-size: var(--fs-caption);
     font-weight: 700;
     letter-spacing: var(--ls-allcaps);
     text-transform: uppercase;
-  }
-
-  .experience-collage__eyebrow {
-    margin: 0;
-    color: var(--color-oxide);
   }
 
   .experience-collage__images {
@@ -79,6 +68,12 @@ const { images } = Astro.props;
     background: var(--surface-alt);
   }
 
+  .experience-collage__frame :global(picture) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
   .experience-collage__frame :global(img) {
     width: 100%;
     height: 100%;
@@ -90,18 +85,7 @@ const { images } = Astro.props;
     color: var(--color-text-muted);
   }
 
-  @media (min-width: 701px) {
-    .experience-collage figure:nth-child(even) {
-      margin-top: var(--space-9);
-    }
-  }
-
   @media (max-width: 700px) {
-    .experience-collage {
-      padding: var(--space-9) 0;
-    }
-
-    .experience-collage__header,
     .experience-collage__images {
       grid-template-columns: 1fr;
     }

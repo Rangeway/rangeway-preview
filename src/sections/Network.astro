@@ -1,38 +1,42 @@
 ---
 import ResponsiveImage from "../components/ResponsiveImage.astro";
+import { FORMATS } from "../data/site-content";
 
-const formats = [
-  {
-    name: "Waystation",
-    tagline: "Streamlined comfort",
+type FormatDetails = {
+  description: string;
+  image: string;
+  imageAlt: string;
+  caption: string;
+};
+
+const formatDetails = {
+  Waystation: {
     description:
       "Ultra-fast charging paired with a climate-controlled driver's lounge, comfortable restrooms, generous seating, and high-speed Wi-Fi. The heart of the network.",
     image: "/images/waystation-joshua-tree.jpg",
     imageAlt: "A Waystation nestled into the Joshua Tree landscape",
-    caption: "Waystation · Joshua Tree",
-    href: "/network/waystation"
+    caption: "Waystation · Joshua Tree"
   },
-  {
-    name: "Basecamp",
-    tagline: "The full-service destination",
+  Basecamp: {
     description:
       "Ultra-fast charging, a staffed driver's lounge, and a staffed cafe. Our flagship experience on high-traffic corridors.",
     image: "/images/basecamp-hero-desert.jpg",
     imageAlt: "A Basecamp at dusk with a lit lounge, charging canopy, and desert mountains behind",
-    caption: "Basecamp · High-traffic corridors",
-    href: "/network/basecamp"
+    caption: "Basecamp · High-traffic corridors"
   },
-  {
-    name: "Summit",
-    tagline: "Where the road meets rest",
+  Summit: {
     description:
       "Modular Lookouts, a central clubhouse, and fully off-grid solar charging. A hospitality-first destination where the stop becomes the journey.",
     image: "/images/summit-1.jpg",
     imageAlt: "A Summit Lookout framed by the desert at dusk",
-    caption: "Summit · Overnight destinations",
-    href: "/network/summit"
+    caption: "Summit · Overnight destinations"
   }
-];
+} satisfies Record<(typeof FORMATS)[number]["name"], FormatDetails>;
+
+const formats = FORMATS.map((format) => ({
+  ...format,
+  ...formatDetails[format.name]
+}));
 ---
 
 <section id="network" class="network section">
@@ -43,7 +47,7 @@ const formats = [
 
     <div class="section-head reveal">
       <h2>Three formats. One unwavering standard.</h2>
-      <p class="section-head__lede">
+      <p class="section-head__lede network__lede">
         Every Rangeway location shares the same hospitality DNA. The scale shifts with the
         corridor, the community, and the journey.
       </p>
@@ -79,23 +83,24 @@ const formats = [
 </section>
 
 <style>
-  .network__grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(48px, 6vw, 96px) clamp(32px, 5vw, 80px);
+  .network {
+    background: var(--color-paper);
   }
 
-  @media (min-width: 901px) {
-    .network__entry:nth-child(3) {
-      grid-column: 1 / -1;
-      width: calc(50% - clamp(16px, 2.5vw, 40px));
-      justify-self: center;
-    }
+  .network__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(20px, 2.5vw, 40px);
+    align-items: stretch;
   }
 
   .network__entry {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     color: var(--color-text);
+    border-top: 4px solid var(--color-highway);
+    background: var(--color-roadmap);
   }
 
   .network__entry:hover {
@@ -103,7 +108,8 @@ const formats = [
   }
 
   .network__frame {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 5 / 4;
+    border-radius: 0;
   }
 
   .network__frame :global(img) {
@@ -118,7 +124,10 @@ const formats = [
   }
 
   .network__entry-body {
-    margin-top: var(--space-5);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: var(--space-5);
   }
 
   .network__entry-body h3 {
@@ -144,6 +153,12 @@ const formats = [
     max-width: 48ch;
   }
 
+  .network__entry-body .arrow-link {
+    margin-top: auto;
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border);
+  }
+
   .network__entry:hover .arrow-link {
     color: var(--accent-on-light);
   }
@@ -155,6 +170,10 @@ const formats = [
   @media (max-width: 900px) {
     .network__grid {
       grid-template-columns: 1fr;
+    }
+
+    .network__frame {
+      aspect-ratio: 16 / 10;
     }
   }
 </style>

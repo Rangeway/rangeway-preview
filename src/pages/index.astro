@@ -1,11 +1,55 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../sections/Hero.astro";
-import Positioning from "../sections/Positioning.astro";
+import ArrivalStrip from "../components/ArrivalStrip.astro";
+import ExperienceCollage from "../components/ExperienceCollage.astro";
+import FieldGuideGrid from "../components/FieldGuideGrid.astro";
 import Network from "../sections/Network.astro";
-import ComfortGuarantee from "../sections/ComfortGuarantee.astro";
-import WhereGoing from "../sections/WhereGoing.astro";
+import ProjectStrip from "../components/ProjectStrip.astro";
 import CloseCta from "../sections/CloseCta.astro";
+import type { FieldGuideImages, GuideImage } from "../components/homepage-images";
+
+const experienceImages: readonly GuideImage[] = [
+  {
+    src: "/images/basecamp-interior.jpg",
+    alt: "Warmly lit Rangeway lounge seating beside broad windows",
+    caption: "A room built for the people waiting",
+    focalPosition: "center 58%"
+  },
+  {
+    src: "/images/waystation-joshua-tree.jpg",
+    alt: "A Rangeway Waystation set among Joshua trees at dusk",
+    caption: "The stop, considered as part of the journey",
+    focalPosition: "center 52%"
+  }
+];
+
+const guideImages: FieldGuideImages = [
+  {
+    src: "/images/basecamp-cortex-dusk.jpg",
+    alt: "A Rangeway charging canopy and glass lounge illuminated at dusk",
+    caption: "Good light · from arrival onward",
+    focalPosition: "center 55%"
+  },
+  {
+    src: "/images/trailhead-interior.jpg",
+    alt: "People using seating and work surfaces inside a bright Rangeway lounge overlooking a forested mountain road",
+    caption: "Real comfort · room to sit, work, and recharge",
+    focalPosition: "center 62%"
+  },
+  {
+    src: "/images/summit-clubhouse-mountains.jpg",
+    alt: "A Rangeway Summit clubhouse facing a mountain landscape",
+    caption: "Room to settle · inside and out",
+    focalPosition: "center 55%"
+  },
+  {
+    src: "/images/hero-utah-waystation.jpg",
+    alt: "A Rangeway Waystation beside an open Utah highway",
+    caption: "Easy momentum · back to the road",
+    focalPosition: "center 60%"
+  }
+];
 ---
 
 <BaseLayout
@@ -14,9 +58,10 @@ import CloseCta from "../sections/CloseCta.astro";
   bodyClass="has-hero"
 >
   <Hero />
-  <Positioning />
+  <ArrivalStrip />
+  <ExperienceCollage images={experienceImages} />
+  <FieldGuideGrid images={guideImages} />
   <Network />
-  <ComfortGuarantee />
-  <WhereGoing />
+  <ProjectStrip />
   <CloseCta />
 </BaseLayout>

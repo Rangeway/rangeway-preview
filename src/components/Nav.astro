@@ -16,7 +16,6 @@ function isActive(href: string, external?: boolean) {
   <div class="masthead__inner">
     <a class="masthead__brand" href="/" aria-label="Rangeway home">
       <BrandLockup tone="white" class="masthead__lockup masthead__lockup--white" />
-      <BrandLockup tone="charcoal" class="masthead__lockup masthead__lockup--charcoal" />
     </a>
 
     <nav class="masthead__nav" aria-label="Primary">
@@ -85,24 +84,8 @@ function isActive(href: string, external?: boolean) {
     z-index: 80;
     height: var(--nav-height);
     color: var(--color-white);
-    border-bottom: 1px solid transparent;
-    transition: background var(--dur-med) var(--ease-standard),
-      color var(--dur-med) var(--ease-standard),
-      border-color var(--dur-med) var(--ease-standard);
-  }
-
-  .masthead.is-scrolled,
-  .masthead.is-open,
-  :global(body:not(.has-hero)) .masthead {
-    background: var(--surface-page);
-    color: var(--color-text);
-    border-bottom-color: var(--color-border-strong);
-  }
-
-  :global(body) .masthead.is-open {
-    background: var(--color-ink);
-    color: var(--color-white);
-    border-bottom-color: var(--border-on-dark);
+    background: var(--color-highway);
+    border-bottom: 1px solid var(--border-on-dark);
   }
 
   .masthead__inner {
@@ -132,25 +115,6 @@ function isActive(href: string, external?: boolean) {
     display: block;
     width: clamp(150px, 15vw, 184px);
     height: auto;
-  }
-
-  .masthead__brand :global(.masthead__lockup--charcoal),
-  .masthead.is-scrolled .masthead__brand :global(.masthead__lockup--white),
-  :global(body:not(.has-hero)) .masthead__brand :global(.masthead__lockup--white) {
-    display: none;
-  }
-
-  .masthead.is-scrolled .masthead__brand :global(.masthead__lockup--charcoal),
-  :global(body:not(.has-hero)) .masthead__brand :global(.masthead__lockup--charcoal) {
-    display: block;
-  }
-
-  :global(body) .masthead.is-open .masthead__brand :global(.masthead__lockup--white) {
-    display: block;
-  }
-
-  :global(body) .masthead.is-open .masthead__brand :global(.masthead__lockup--charcoal) {
-    display: none;
   }
 
   .masthead__nav ul {
@@ -317,14 +281,6 @@ function isActive(href: string, external?: boolean) {
   const footer = document.querySelector<HTMLElement>("footer");
   const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
   let previouslyFocused: HTMLElement | null = null;
-
-  if (masthead) {
-    const onScroll = () => {
-      masthead.classList.toggle("is-scrolled", window.scrollY > 24);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-  }
 
   if (toggle && menu && masthead) {
     const setOpen = (open: boolean) => {

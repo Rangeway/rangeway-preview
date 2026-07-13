@@ -2,18 +2,45 @@
 import { PROJECTS } from "../data/site-content";
 ---
 
-<ol class="project-strip" aria-label="Rangeway projects">
-  {PROJECTS.map((project) => (
-    <li>
-      <a href={project.href} target="_blank" rel="noopener noreferrer">
-        <strong>{project.name}</strong>
-        <span>{project.status}</span>
-      </a>
-    </li>
-  ))}
-</ol>
+<section class="project-vision section" aria-labelledby="project-strip-title">
+  <div class="container">
+    <div class="kicker reveal">
+      <span class="kicker__label">Where We Are Going</span>
+    </div>
+
+    <div class="section-head reveal">
+      <h2 id="project-strip-title">The road starts here.</h2>
+      <p class="section-head__lede">
+        Bozeman, Mojave, and St. Louis show how one hospitality standard can meet different
+        corridors, communities, and stages of development.
+      </p>
+    </div>
+  </div>
+
+  <ol class="project-strip" aria-label="Rangeway projects">
+    {PROJECTS.map((project) => (
+      <li>
+        <a href={project.href} target="_blank" rel="noopener noreferrer">
+          <strong>{project.name}</strong>
+          <span>{project.status}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</section>
 
 <style>
+  .project-vision {
+    padding-bottom: 0;
+    background: var(--color-roadmap);
+  }
+
+  @media (min-width: 901px) {
+    .project-vision .section-head {
+      align-items: start;
+    }
+  }
+
   .project-strip {
     margin: 0;
     padding: 0 var(--gutter);
