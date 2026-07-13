@@ -1,15 +1,10 @@
 ---
 import { EXPERIENCE_PRINCIPLES } from "../data/site-content";
 import ResponsiveImage from "./ResponsiveImage.astro";
-
-export interface GuideImage {
-  src: string;
-  alt: string;
-  caption: string;
-}
+import type { FieldGuideImages } from "./homepage-images";
 
 interface Props {
-  images: GuideImage[];
+  images: FieldGuideImages;
 }
 
 const { images } = Astro.props;
@@ -34,6 +29,7 @@ const { images } = Astro.props;
                   alt={image.alt}
                   loading="lazy"
                   sizes="(max-width: 700px) 100vw, 50vw"
+                  style={image.focalPosition ? `object-position: ${image.focalPosition}` : undefined}
                 />
               </div>
               <figcaption>{image.caption}</figcaption>

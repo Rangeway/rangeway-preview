@@ -60,6 +60,33 @@ test("homepage components expose the approved experience sequence", async () => 
   assert.match(projects, /PROJECTS/);
 });
 
+test("homepage image components keep focal positions injectable and preserve figure semantics", async () => {
+  const [imageTypes, collage, guide] = await Promise.all([
+    readSource("src/components/homepage-images.ts"),
+    readSource("src/components/ExperienceCollage.astro"),
+    readSource("src/components/FieldGuideGrid.astro")
+  ]);
+
+  assert.match(imageTypes, /focalPosition\?: string/);
+  assert.match(collage, /object-position/);
+  assert.match(guide, /object-position/);
+  assert.match(collage, /<figure>/);
+  assert.match(collage, /<figcaption>/);
+  assert.match(guide, /<figure>/);
+  assert.match(guide, /<figcaption>/);
+});
+
+test("the Field Guide requires exactly four images", async () => {
+  const imageTypes = await readSource("src/components/homepage-images.ts");
+  const guide = await readSource("src/components/FieldGuideGrid.astro");
+
+  assert.match(
+    imageTypes,
+    /readonly \[\s*GuideImage,\s*GuideImage,\s*GuideImage,\s*GuideImage\s*\]/
+  );
+  assert.match(guide, /images: FieldGuideImages/);
+});
+
 test("the mobile menu contains focus and restores it when closed", async () => {
   const nav = await readSource("src/components/Nav.astro");
 

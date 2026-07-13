@@ -1,14 +1,9 @@
 ---
 import ResponsiveImage from "./ResponsiveImage.astro";
-
-export interface GuideImage {
-  src: string;
-  alt: string;
-  caption: string;
-}
+import type { GuideImage } from "./homepage-images";
 
 interface Props {
-  images: GuideImage[];
+  images: readonly GuideImage[];
 }
 
 const { images } = Astro.props;
@@ -30,6 +25,7 @@ const { images } = Astro.props;
               alt={image.alt}
               loading="lazy"
               sizes="(max-width: 700px) 100vw, 50vw"
+              style={image.focalPosition ? `object-position: ${image.focalPosition}` : undefined}
             />
           </div>
           <figcaption>{image.caption}</figcaption>
