@@ -55,6 +55,27 @@ test("the mobile menu contains focus and restores it when closed", async () => {
   assert.match(nav, /focusableSelector/);
 });
 
+test("the header uses both official Rangeway lockups", async () => {
+  const [brand, nav] = await Promise.all([
+    readSource("src/components/BrandLockup.astro"),
+    readSource("src/components/Nav.astro")
+  ]);
+
+  assert.match(brand, /rangeway-lockup-charcoal\.svg/);
+  assert.match(brand, /rangeway-lockup-white\.svg/);
+  assert.match(nav, /aria-label="Rangeway home"/);
+  assert.doesNotMatch(nav, /masthead__wordmark/);
+  assert.equal(existsSync(path.join(root, "public/images/logo/rangeway-lockup-charcoal.svg")), true);
+  assert.equal(existsSync(path.join(root, "public/images/logo/rangeway-lockup-white.svg")), true);
+});
+
+test("the current primary navigation remains intact", async () => {
+  const content = await readSource("src/data/site-content.ts");
+  for (const label of ["The Network", "Our Story", "Team", "Partners", "Investors", "Newsroom", "Contact"]) {
+    assert.match(content, new RegExp(`label: "${label}"`));
+  }
+});
+
 test("contact forms recover when navigation does not begin", async () => {
   const form = await readSource("src/components/ContactForm.astro");
 

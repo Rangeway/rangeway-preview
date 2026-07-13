@@ -1,4 +1,5 @@
 ---
+import BrandLockup from "./BrandLockup.astro";
 import { LINKS } from "../config";
 const year = new Date().getFullYear();
 ---
@@ -52,7 +53,9 @@ const year = new Date().getFullYear();
       </div>
     </div>
 
-    <a class="folio-footer__wordmark" href="/" aria-label="Rangeway home">Rangeway</a>
+    <a class="folio-footer__brand" href="/" aria-label="Rangeway home">
+      <BrandLockup tone="white" class="folio-footer__lockup" />
+    </a>
 
     <div class="folio-footer__legal">
       <p>© {year} Rangeway Energy, Inc. All rights reserved.</p>
@@ -69,10 +72,11 @@ const year = new Date().getFullYear();
 
 <style>
   .folio-footer {
-    background: var(--color-ink);
-    color: var(--color-cream);
+    background: var(--color-highway);
+    color: var(--color-roadmap);
     padding-top: clamp(72px, 9vw, 128px);
     overflow: hidden;
+    border-top: 6px solid var(--color-sun);
   }
 
   .folio-footer__top {
@@ -89,7 +93,7 @@ const year = new Date().getFullYear();
     font-size: clamp(1.8rem, 3vw, 2.6rem);
     line-height: 1.05;
     letter-spacing: var(--ls-heading);
-    color: var(--fg-on-dark-1);
+    color: var(--color-roadmap);
   }
 
   .folio-footer__columns {
@@ -99,11 +103,12 @@ const year = new Date().getFullYear();
   }
 
   .folio-footer h3 {
+    font-family: var(--font-heading);
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
-    color: var(--color-warm);
+    color: var(--color-sun);
     margin: 0 0 var(--space-4);
     padding-top: var(--space-3);
     border-top: 1px solid var(--border-on-dark);
@@ -124,7 +129,7 @@ const year = new Date().getFullYear();
   }
 
   .folio-footer ul a:hover {
-    color: var(--color-warm);
+    color: var(--color-sun);
   }
 
   .folio-footer address {
@@ -135,24 +140,25 @@ const year = new Date().getFullYear();
     margin: 0 0 var(--space-3);
   }
 
-  /* Signature: the wordmark set at folio scale across the footer */
-  .folio-footer__wordmark {
-    display: block;
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: clamp(4rem, 14.5vw, 15rem);
-    line-height: 0.9;
-    letter-spacing: -0.05em;
-    color: var(--fg-on-dark-1);
-    text-align: center;
+  .folio-footer__brand {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     border-top: 1px solid var(--border-on-dark);
     padding-top: clamp(32px, 4vw, 56px);
     margin-bottom: clamp(32px, 4vw, 56px);
-    transition: color var(--dur-med) var(--ease-standard);
+    width: 100%;
   }
 
-  .folio-footer__wordmark:hover {
-    color: var(--color-warm);
+  .folio-footer__brand :global(.folio-footer__lockup) {
+    display: block;
+    width: clamp(190px, 22vw, 280px);
+    height: auto;
+    transition: opacity var(--dur-med) var(--ease-standard);
+  }
+
+  .folio-footer__brand:hover :global(.folio-footer__lockup) {
+    opacity: 0.78;
   }
 
   .folio-footer__legal {
@@ -182,7 +188,7 @@ const year = new Date().getFullYear();
   }
 
   .folio-footer__legal-links a:hover {
-    color: var(--color-warm);
+    color: var(--color-sun);
   }
 
   @media (max-width: 1000px) {

@@ -1,0 +1,15 @@
+---
+interface Props {
+  tone: "charcoal" | "white";
+  class?: string;
+}
+
+const { tone, class: className } = Astro.props;
+const sources = {
+  charcoal: "/images/logo/rangeway-lockup-charcoal.svg",
+  white: "/images/logo/rangeway-lockup-white.svg"
+} as const;
+const src = sources[tone];
+---
+
+<img class={className} src={src} width="240" height="56" alt="Rangeway" decoding="async" />

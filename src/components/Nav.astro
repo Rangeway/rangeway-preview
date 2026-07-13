@@ -1,42 +1,33 @@
 ---
-import PathMark from "./PathMark.astro";
+import BrandLockup from "./BrandLockup.astro";
 import { LINKS } from "../config";
+import { NAV_LINKS } from "../data/site-content";
 
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
-const links = [
-  { href: "/network", label: "The Network", match: "/network" },
-  { href: "/our-story", label: "Our Story", match: "/our-story" },
-  { href: "/team", label: "Team", match: "/team" },
-  { href: "/partners", label: "Partners", match: "/partners" },
-  { href: "/investors", label: "Investors", match: "/investors" },
-  { href: LINKS.newsroom, label: "Newsroom", external: true },
-  { href: "/contact", label: "Contact", match: "/contact" }
-];
-
-function isActive(match?: string) {
-  if (!match) return false;
-  if (match === "/") return pathname === "/";
-  return pathname === match || pathname.startsWith(`${match}/`);
+function isActive(href: string, external?: boolean) {
+  if (external) return false;
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
 }
 ---
 
 <header class="masthead" data-nav>
   <div class="masthead__inner">
     <a class="masthead__brand" href="/" aria-label="Rangeway home">
-      <PathMark size={24} color="currentColor" accent="#F4A855" />
-      <span class="masthead__wordmark">Rangeway</span>
+      <BrandLockup tone="white" class="masthead__lockup masthead__lockup--white" />
+      <BrandLockup tone="charcoal" class="masthead__lockup masthead__lockup--charcoal" />
     </a>
 
     <nav class="masthead__nav" aria-label="Primary">
       <ul>
-        {links.map((l) => (
+        {NAV_LINKS.map((l) => (
           <li>
             <a
               href={l.href}
-              class:list={[{ "is-active": isActive(l.match) }]}
-              aria-current={isActive(l.match) ? "page" : undefined}
-              {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              class:list={[{ "is-active": isActive(l.href, "external" in l && l.external) }]}
+              aria-current={isActive(l.href, "external" in l && l.external) ? "page" : undefined}
+              {...("external" in l && l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             >{l.label}</a>
           </li>
         ))}
@@ -60,13 +51,13 @@ function isActive(match?: string) {
     <div class="menu__inner">
       <nav aria-label="Menu">
         <ol class="menu__list">
-          {links.map((l) => (
+          {NAV_LINKS.map((l) => (
             <li>
               <a
                 href={l.href}
-                class:list={[{ "is-active": isActive(l.match) }]}
-                aria-current={isActive(l.match) ? "page" : undefined}
-                {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                class:list={[{ "is-active": isActive(l.href, "external" in l && l.external) }]}
+                aria-current={isActive(l.href, "external" in l && l.external) ? "page" : undefined}
+                {...("external" in l && l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               >
                 <span class="menu__label">{l.label}</span>
               </a>
@@ -128,10 +119,8 @@ function isActive(match?: string) {
   .masthead__brand {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-3);
     color: currentColor;
-    font-family: var(--font-heading);
-    font-weight: 800;
+    flex: 0 0 auto;
   }
 
   .masthead__brand:hover {
@@ -139,9 +128,29 @@ function isActive(match?: string) {
     opacity: 0.85;
   }
 
-  .masthead__wordmark {
-    font-size: 1.3rem;
-    letter-spacing: -0.01em;
+  .masthead__brand :global(.masthead__lockup) {
+    display: block;
+    width: clamp(150px, 15vw, 184px);
+    height: auto;
+  }
+
+  .masthead__brand :global(.masthead__lockup--charcoal),
+  .masthead.is-scrolled .masthead__brand :global(.masthead__lockup--white),
+  :global(body:not(.has-hero)) .masthead__brand :global(.masthead__lockup--white) {
+    display: none;
+  }
+
+  .masthead.is-scrolled .masthead__brand :global(.masthead__lockup--charcoal),
+  :global(body:not(.has-hero)) .masthead__brand :global(.masthead__lockup--charcoal) {
+    display: block;
+  }
+
+  :global(body) .masthead.is-open .masthead__brand :global(.masthead__lockup--white) {
+    display: block;
+  }
+
+  :global(body) .masthead.is-open .masthead__brand :global(.masthead__lockup--charcoal) {
+    display: none;
   }
 
   .masthead__nav ul {
@@ -288,10 +297,6 @@ function isActive(match?: string) {
   }
 
   @media (max-width: 480px) {
-    .masthead__wordmark {
-      display: none;
-    }
-
     .masthead__inner {
       gap: var(--space-3);
     }
