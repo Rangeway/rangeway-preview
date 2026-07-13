@@ -168,6 +168,32 @@ test("homepage Network cards stretch to one equal desktop row height", async () 
   assert.match(network, /@media\s*\(max-width:\s*900px\)[\s\S]*?grid-template-columns:\s*1fr/);
 });
 
+test("homepage Network captions stay contained within their cards", async () => {
+  const network = await readSource("src/sections/Network.astro");
+
+  assert.match(network, /\.network__entry\s*\{[^}]*min-width:\s*0[^}]*overflow:\s*hidden/s);
+  assert.match(
+    network,
+    /\.network__entry\s+\.fig__caption\s*\{[^}]*margin-inline:\s*var\(--space-5\)[^}]*min-width:\s*0/s
+  );
+  assert.match(
+    network,
+    /\.network__entry\s+\.fig__caption\s+span\s*\{[^}]*min-width:\s*0[^}]*overflow-wrap:\s*anywhere/s
+  );
+});
+
+test("Waystation format cards describe the route instead of the photo location", async () => {
+  const [homepageNetwork, networkPage] = await Promise.all([
+    readSource("src/sections/Network.astro"),
+    readSource("src/pages/network.astro")
+  ]);
+
+  for (const source of [homepageNetwork, networkPage]) {
+    assert.match(source, /caption:\s*"Waystation · Regional routes"/);
+    assert.doesNotMatch(source, /caption:\s*"Waystation · Joshua Tree"/);
+  }
+});
+
 test("homepage image components keep focal positions injectable and preserve figure semantics", async () => {
   const [imageTypes, collage, guide] = await Promise.all([
     readSource("src/components/homepage-images.ts"),

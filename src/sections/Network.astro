@@ -15,7 +15,7 @@ const formatDetails = {
       "Ultra-fast charging paired with a climate-controlled driver's lounge, comfortable restrooms, generous seating, and high-speed Wi-Fi. The heart of the network.",
     image: "/images/waystation-joshua-tree.jpg",
     imageAlt: "A Waystation nestled into the Joshua Tree landscape",
-    caption: "Waystation · Joshua Tree"
+    caption: "Waystation · Regional routes"
   },
   Basecamp: {
     description:
@@ -98,9 +98,25 @@ const formats = FORMATS.map((format) => ({
     display: flex;
     flex-direction: column;
     height: 100%;
+    min-width: 0;
+    overflow: hidden;
     color: var(--color-text);
     border-top: 4px solid var(--color-highway);
     background: var(--color-roadmap);
+  }
+
+  .network__entry .fig {
+    min-width: 0;
+  }
+
+  .network__entry .fig__caption {
+    margin-inline: var(--space-5);
+    min-width: 0;
+  }
+
+  .network__entry .fig__caption span {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .network__entry:hover {
