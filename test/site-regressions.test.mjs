@@ -76,6 +76,15 @@ test("the current primary navigation remains intact", async () => {
   }
 });
 
+test("footer wayfinding uses the heading typeface", async () => {
+  const footer = await readSource("src/components/Footer.astro");
+
+  assert.match(
+    footer,
+    /\.folio-footer ul,\s*\.folio-footer address,\s*\.folio-footer__legal\s*\{[^}]*font-family:\s*var\(--font-heading\)/
+  );
+});
+
 test("contact forms recover when navigation does not begin", async () => {
   const form = await readSource("src/components/ContactForm.astro");
 
