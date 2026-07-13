@@ -180,7 +180,7 @@ a:hover {
 }
 
 button {
-  font-family: inherit;
+  font-family: var(--font-heading);
   cursor: pointer;
   border: 0;
   background: transparent;
@@ -448,7 +448,7 @@ section {
   justify-content: center;
   gap: 10px;
   padding: 14px 26px;
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1rem;
   letter-spacing: 0;

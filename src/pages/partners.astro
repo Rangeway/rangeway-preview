@@ -12,8 +12,7 @@ const partnerGroups = [
         description:
           "Every canopy, lounge, and supporting building across the network is built from LoüTeq's Structural Engineered Bamboo, a carbon-negative material stronger than steel and rapidly renewable. BMW and Rivian use the same system.",
         href: "https://louteq.com",
-        logo: "/images/partners/louteq.png",
-        logoDark: "/images/partners/louteq-white.png"
+        logo: "/images/partners/louteq.png"
       }
     ]
   },
@@ -34,8 +33,7 @@ const partnerGroups = [
         description:
           "Ekoenergetyka brings European engineering to the chargers at the heart of the driver experience. The hardware delivers performance, service life, and a design language worthy of a hospitality-forward site.",
         href: "https://ekoenergetyka.com/america/",
-        logo: "/images/partners/ekoenergetyka.png",
-        logoDark: "/images/partners/ekoenergetyka-white.png"
+        logo: "/images/partners/ekoenergetyka.png"
       },
       {
         name: "Electric Era",
@@ -43,8 +41,7 @@ const partnerGroups = [
         description:
           "Electric Era's RetailEdge dispensers bring fast, reliable charging to select Rangeway sites, backed by integrated battery storage that keeps every session quick and consistent.",
         href: "https://electricera.tech",
-        logo: "/images/partners/electric-era-trans.png",
-        logoDark: "/images/partners/electric-era-white.jpg"
+        logo: "/images/partners/electric-era-trans.png"
       },
       {
         name: "HyWatts",
@@ -149,10 +146,7 @@ const partnerGroups = [
                 <div class="partner-row__label">
                   <div class="partner-row__mark">
                     {p.logo && (
-                      <picture>
-                        {p.logoDark && <source srcset={p.logoDark} media="(prefers-color-scheme: dark)" />}
-                        <img src={p.logo} alt={`${p.name} logo`} loading="lazy" />
-                      </picture>
+                      <img src={p.logo} alt={`${p.name} logo`} loading="lazy" />
                     )}
                   </div>
                   <div>

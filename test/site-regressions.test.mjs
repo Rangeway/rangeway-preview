@@ -34,6 +34,13 @@ test("Roadside Revival tokens and typography are explicit", async () => {
   assert.doesNotMatch(styles, /@media\s*\(prefers-color-scheme:\s*dark\)/);
 });
 
+test("native and styled buttons use the heading typeface", async () => {
+  const styles = await readSource("src/styles/global.css");
+
+  assert.match(styles, /button\s*\{[^}]*font-family:\s*var\(--font-heading\)/);
+  assert.match(styles, /\.btn\s*\{[^}]*font-family:\s*var\(--font-heading\)/);
+});
+
 test("shared project content preserves the approved order", async () => {
   const content = await readSource("src/data/site-content.ts");
   assert.ok(content.indexOf('name: "Bozeman"') < content.indexOf('name: "Mojave"'));
@@ -77,15 +84,12 @@ test("Rangeway does not solicit site hosts", async () => {
   assert.match(source, /chargevia\.net/);
 });
 
-test("Electric Era uses its light logo in dark mode", async () => {
+test("partner logos follow the page surface instead of the OS color scheme", async () => {
   const partnerPage = await readSource("src/pages/partners.astro");
-  const darkLogoPath = "public/images/partners/electric-era-white.jpg";
 
-  assert.match(
-    partnerPage,
-    /name: "Electric Era",[\s\S]*?logoDark: "\/images\/partners\/electric-era-white\.jpg"/
-  );
-  assert.equal(existsSync(path.join(root, darkLogoPath)), true);
+  assert.doesNotMatch(partnerPage, /prefers-color-scheme/);
+  assert.doesNotMatch(partnerPage, /logoDark/);
+  assert.match(partnerPage, /<img src=\{p\.logo\}/);
 });
 
 test("team headshots receive a grayscale overlay", async () => {
