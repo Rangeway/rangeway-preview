@@ -19,6 +19,27 @@ test("content remains visible when JavaScript is unavailable", async () => {
   assert.match(styles, /html\.js \.reveal\.is-visible\s*\{[\s\S]*?opacity:\s*1/);
 });
 
+test("Roadside Revival tokens and typography are explicit", async () => {
+  const [layout, styles] = await Promise.all([
+    readSource("src/layouts/BaseLayout.astro"),
+    readSource("src/styles/global.css")
+  ]);
+
+  assert.match(layout, /@fontsource\/raleway\/800\.css/);
+  assert.match(layout, /@fontsource\/source-sans-3\/400\.css/);
+  assert.match(styles, /--color-highway:\s*#17313e/i);
+  assert.match(styles, /--color-sun:\s*#f2b64c/i);
+  assert.match(styles, /--color-oxide:\s*#993a28/i);
+  assert.match(styles, /--color-roadmap:\s*#f7e6c4/i);
+  assert.doesNotMatch(styles, /@media\s*\(prefers-color-scheme:\s*dark\)/);
+});
+
+test("shared project content preserves the approved order", async () => {
+  const content = await readSource("src/data/site-content.ts");
+  assert.ok(content.indexOf('name: "Bozeman"') < content.indexOf('name: "Mojave"'));
+  assert.ok(content.indexOf('name: "Mojave"') < content.indexOf('name: "St. Louis"'));
+});
+
 test("the mobile menu contains focus and restores it when closed", async () => {
   const nav = await readSource("src/components/Nav.astro");
 
