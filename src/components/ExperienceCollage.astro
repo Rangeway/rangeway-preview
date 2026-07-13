@@ -1,0 +1,113 @@
+---
+import ResponsiveImage from "./ResponsiveImage.astro";
+
+export interface GuideImage {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
+interface Props {
+  images: GuideImage[];
+}
+
+const { images } = Astro.props;
+---
+
+<section class="experience-collage" aria-labelledby="experience-collage-title">
+  <div class="container">
+    <header class="experience-collage__header">
+      <p class="experience-collage__eyebrow">The Experience</p>
+      <h2 id="experience-collage-title">A better place to pause.</h2>
+    </header>
+
+    <div class="experience-collage__images">
+      {images.map((image) => (
+        <figure>
+          <div class="experience-collage__frame">
+            <ResponsiveImage
+              src={image.src}
+              alt={image.alt}
+              loading="lazy"
+              sizes="(max-width: 700px) 100vw, 50vw"
+            />
+          </div>
+          <figcaption>{image.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience-collage {
+    padding: var(--space-10) 0;
+  }
+
+  .experience-collage__header {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    gap: var(--space-6);
+    align-items: end;
+    margin-bottom: var(--space-8);
+  }
+
+  .experience-collage__eyebrow,
+  .experience-collage figcaption {
+    font-family: var(--font-heading);
+    font-size: var(--fs-caption);
+    font-weight: 700;
+    letter-spacing: var(--ls-allcaps);
+    text-transform: uppercase;
+  }
+
+  .experience-collage__eyebrow {
+    margin: 0;
+    color: var(--color-oxide);
+  }
+
+  .experience-collage__images {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(24px, 4vw, 64px);
+    align-items: start;
+  }
+
+  .experience-collage figure {
+    margin: 0;
+  }
+
+  .experience-collage__frame {
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--surface-alt);
+  }
+
+  .experience-collage__frame :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .experience-collage figcaption {
+    padding-top: var(--space-3);
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 701px) {
+    .experience-collage figure:nth-child(even) {
+      margin-top: var(--space-9);
+    }
+  }
+
+  @media (max-width: 700px) {
+    .experience-collage {
+      padding: var(--space-9) 0;
+    }
+
+    .experience-collage__header,
+    .experience-collage__images {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

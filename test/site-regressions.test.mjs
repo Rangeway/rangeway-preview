@@ -47,6 +47,19 @@ test("shared project content preserves the approved order", async () => {
   assert.ok(content.indexOf('name: "Mojave"') < content.indexOf('name: "St. Louis"'));
 });
 
+test("homepage components expose the approved experience sequence", async () => {
+  const [arrival, guide, projects] = await Promise.all([
+    readSource("src/components/ArrivalStrip.astro"),
+    readSource("src/components/FieldGuideGrid.astro"),
+    readSource("src/components/ProjectStrip.astro")
+  ]);
+
+  assert.ok(arrival.indexOf("Arrive") < arrival.indexOf("Recharge"));
+  assert.ok(arrival.indexOf("Recharge") < arrival.indexOf("Continue"));
+  assert.match(guide, /EXPERIENCE_PRINCIPLES/);
+  assert.match(projects, /PROJECTS/);
+});
+
 test("the mobile menu contains focus and restores it when closed", async () => {
   const nav = await readSource("src/components/Nav.astro");
 

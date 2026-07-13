@@ -1,0 +1,134 @@
+---
+import { EXPERIENCE_PRINCIPLES } from "../data/site-content";
+import ResponsiveImage from "./ResponsiveImage.astro";
+
+export interface GuideImage {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
+interface Props {
+  images: GuideImage[];
+}
+
+const { images } = Astro.props;
+---
+
+<section class="field-guide" aria-labelledby="field-guide-title">
+  <div class="container">
+    <header class="field-guide__header">
+      <p class="field-guide__eyebrow">The Field Guide</p>
+      <h2 id="field-guide-title">Hospitality, built into every stop.</h2>
+    </header>
+
+    <ol class="field-guide__grid">
+      {EXPERIENCE_PRINCIPLES.map((principle, index) => {
+        const image = images[index];
+        return (
+          <li>
+            <figure>
+              <div class="field-guide__frame">
+                <ResponsiveImage
+                  src={image.src}
+                  alt={image.alt}
+                  loading="lazy"
+                  sizes="(max-width: 700px) 100vw, 50vw"
+                />
+              </div>
+              <figcaption>{image.caption}</figcaption>
+            </figure>
+            <h3>{principle.title}</h3>
+            <p>{principle.body}</p>
+          </li>
+        );
+      })}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .field-guide {
+    padding: var(--space-10) 0;
+    background: var(--surface-alt);
+  }
+
+  .field-guide__header {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    gap: var(--space-6);
+    align-items: end;
+    margin-bottom: var(--space-8);
+  }
+
+  .field-guide__eyebrow,
+  .field-guide figcaption {
+    font-family: var(--font-heading);
+    font-size: var(--fs-caption);
+    font-weight: 700;
+    letter-spacing: var(--ls-allcaps);
+    text-transform: uppercase;
+  }
+
+  .field-guide__eyebrow {
+    margin: 0;
+    color: var(--color-oxide);
+  }
+
+  .field-guide__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8) clamp(24px, 4vw, 64px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: field-guide;
+  }
+
+  .field-guide__grid > li {
+    counter-increment: field-guide;
+  }
+
+  .field-guide figure {
+    margin: 0 0 var(--space-5);
+  }
+
+  .field-guide__frame {
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+    background: var(--surface-page);
+  }
+
+  .field-guide__frame :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .field-guide figcaption {
+    padding-top: var(--space-3);
+    color: var(--color-text-muted);
+  }
+
+  .field-guide h3::before {
+    content: counter(field-guide, decimal-leading-zero) " / ";
+    color: var(--color-oxide);
+  }
+
+  .field-guide p {
+    max-width: 44ch;
+    margin: var(--space-3) 0 0;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 700px) {
+    .field-guide {
+      padding: var(--space-9) 0;
+    }
+
+    .field-guide__header,
+    .field-guide__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

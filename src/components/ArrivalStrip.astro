@@ -1,0 +1,61 @@
+---
+const steps = [
+  { title: "Arrive", body: "Easy access and a warm welcome." },
+  { title: "Recharge", body: "Comfort for driver and vehicle." },
+  { title: "Continue", body: "Back on the road, restored." }
+];
+---
+
+<ol class="arrival-strip" aria-label="The Rangeway experience">
+  {steps.map((step) => (
+    <li>
+      <strong>{step.title}</strong>
+      <span>{step.body}</span>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .arrival-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--fg-on-dark-1);
+    background: var(--color-highway);
+  }
+
+  .arrival-strip li {
+    position: relative;
+    display: grid;
+    gap: var(--space-2);
+    padding: clamp(28px, 4vw, 56px) var(--gutter);
+  }
+
+  .arrival-strip li + li {
+    border-left: 1px solid var(--border-on-dark);
+  }
+
+  .arrival-strip strong {
+    font-family: var(--font-heading);
+    font-size: clamp(1.35rem, 2.3vw, 2rem);
+    line-height: var(--lh-subhead);
+  }
+
+  .arrival-strip span {
+    color: var(--fg-on-dark-2);
+    line-height: var(--lh-compact);
+  }
+
+  @media (max-width: 700px) {
+    .arrival-strip {
+      grid-template-columns: 1fr;
+    }
+
+    .arrival-strip li + li {
+      border-top: 1px solid var(--border-on-dark);
+      border-left: 0;
+    }
+  }
+</style>

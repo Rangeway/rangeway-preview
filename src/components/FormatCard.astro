@@ -4,7 +4,7 @@ import ResponsiveImage from "./ResponsiveImage.astro";
 interface Props {
   name: string;
   tagline: string;
-  description: string;
+  description?: string;
   image: string;
   imageAlt: string;
   href: string;
@@ -26,7 +26,7 @@ const { name, tagline, description, image, imageAlt, href, caption } = Astro.pro
   <div class="fmt-entry__body">
     <h3>{name}</h3>
     <p class="fmt-entry__tagline">{tagline}</p>
-    <p class="fmt-entry__desc">{description}</p>
+    {description && <p class="fmt-entry__desc">{description}</p>}
     <span class="arrow-link">
       Explore {name}
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
