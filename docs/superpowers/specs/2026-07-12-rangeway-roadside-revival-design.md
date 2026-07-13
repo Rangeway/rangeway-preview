@@ -52,6 +52,15 @@ The redesign preserves the current primary navigation architecture and page set:
 
 Desktop navigation remains directly visible when space permits. Mobile uses a dedicated menu treatment. The visual design may change, but route names and destinations stay intact unless the user separately approves a navigation change.
 
+The header must use the official full Rangeway lockup, not a text-only `RANGEWAY` label and not a reconstructed icon-plus-text treatment. Use the supplied charcoal lockup on light header surfaces and the supplied white lockup on dark, transparent, or image-backed header surfaces. Preserve the amber dot and the lockup's original proportions.
+
+Approved source assets for implementation:
+
+- `rangeway-lockup-charcoal.svg`
+- `rangeway-lockup-white.svg`
+
+The source SVGs use a 240 by 56 view box and reference Raleway 700. Implementation may optimize their delivery or remove the embedded remote font request only if the rendered lockup remains visually identical. The linked home treatment must retain an accessible `Rangeway home` name.
+
 ## 5. Homepage Architecture
 
 The approved homepage is an **image-led Roadside Field Guide**.
@@ -265,6 +274,7 @@ Content shared across pages should remain data-driven where practical. Format na
 Responsive design is part of the composition, not a later collapse of desktop columns.
 
 - Navigation switches to a deliberate mobile menu.
+- The official lockup scales without distortion and remains legible in both desktop and mobile headers.
 - Image collages become intentional vertical sequences.
 - Multi-column Field Guide cards become a paced reading order.
 - Format cards preserve image impact and clear labels.
@@ -327,6 +337,7 @@ Final image choice is deliberately deferred to this page-by-page phase.
 - Narrative order: experience before network
 - Homepage structure: image-led Roadside Field Guide
 - Navigation: preserve the current page set
+- Header branding: official charcoal and white Rangeway lockups, selected by surface contrast
 - Hero: no sticker or seal
 - Project order: Bozeman, Mojave, St. Louis
 - Typography: Raleway plus Source Sans 3
