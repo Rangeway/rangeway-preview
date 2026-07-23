@@ -417,6 +417,15 @@ test("team headshots receive a grayscale overlay", async () => {
   assert.match(teamPage, /\.team-row__frame :global\(img\)\s*\{[\s\S]*?filter:\s*grayscale\(1\)/);
 });
 
+test("Theo appears directly under Stephanie on the Team page", async () => {
+  const teamPage = await readSource("src/pages/team.astro");
+  const stephanie = teamPage.indexOf('name: "Stephanie McGreevy"');
+  const theo = teamPage.indexOf('name: "Theo Reichgelt"');
+
+  assert.ok(stephanie >= 0 && theo > stephanie);
+  assert.doesNotMatch(teamPage.slice(stephanie, theo), /\n\s*name:\s*"(?!Stephanie McGreevy)/);
+});
+
 test("team hiring heading top-aligns with its supporting copy", async () => {
   const teamPage = await readSource("src/pages/team.astro");
   const desktopHiringRule = teamPage.match(/\.hiring\s*\{([^}]*)\}/s)?.[1];
