@@ -84,6 +84,20 @@ test("public project surfaces replace Bozeman with Hawaii and use the current mi
   assert.match(hero, /Waystation concept · Hawaii/);
 });
 
+test("Our Story gives Hawaii distinct, hospitality-led copy without naming a site format", async () => {
+  const story = await readSource("src/pages/our-story.astro");
+  const hawaiiStart = story.indexOf("<h3>Rangeway Hawaii");
+  const hawaiiEnd = story.indexOf("</div>", hawaiiStart);
+
+  assert.ok(hawaiiStart >= 0 && hawaiiEnd > hawaiiStart);
+  const hawaiiEntry = story.slice(hawaiiStart, hawaiiEnd);
+
+  assert.match(hawaiiEntry, /Rangeway Hawaii is rooted in hoʻokipa/);
+  assert.match(hawaiiEntry, /Hawaiian practice of welcoming and caring for guests/);
+  assert.doesNotMatch(hawaiiEntry, /taking shape/i);
+  assert.doesNotMatch(hawaiiEntry, /\b(?:Waystation|Basecamp|Summit)\b/i);
+});
+
 test("homepage components expose the approved experience sequence", async () => {
   const [arrival, guide, projects] = await Promise.all([
     readSource("src/components/ArrivalStrip.astro"),
