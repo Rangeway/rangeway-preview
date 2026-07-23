@@ -24,7 +24,7 @@ export const FORMATS = [
 ] as const;
 
 export const PROJECTS = [
-  { name: "Bozeman", status: "Raising capital", href: LINKS.bozemanMicrosite },
   { name: "Mojave", status: "Breaking ground", href: LINKS.mojaveMicrosite },
-  { name: "St. Louis", status: "In development", href: LINKS.stLouisPress }
+  { name: "St. Louis", status: "In development", href: LINKS.stLouisPress },
+  { name: "Hawaii", status: "In development", href: LINKS.hawaiiMicrosite }
 ] as const;

@@ -18,7 +18,8 @@ export default defineConfig({
   ],
   redirects: {
     '/summit': '/network/summit',
-    '/mojave': 'https://rangewaymojave.com',
+    '/mojave': 'https://mojave.rangeway.co',
+    '/hawaii': 'https://hawaii.rangeway.co',
     '/host': 'https://chargevia.net'
   }
 });

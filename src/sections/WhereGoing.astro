@@ -3,15 +3,6 @@ import { LINKS } from "../config";
 
 const waypoints = [
   {
-    title: "Rangeway Bozeman",
-    corridor: "I-90 · Montana",
-    status: "Raising capital",
-    statusTone: "progress" as const,
-    body: "Premium charging minutes from Bozeman Yellowstone International Airport, at the I-90 Exit 299 interchange. Rangeway is raising capital on Climatize to build it, and anyone can invest.",
-    link: LINKS.bozemanMicrosite,
-    linkLabel: "Visit the Bozeman microsite"
-  },
-  {
     title: "Rangeway Mojave",
     corridor: "CA-14 · Antelope Valley",
     status: "Breaking ground",
@@ -28,6 +19,15 @@ const waypoints = [
     body: "Rangeway and sustainable structure manufacturer LoüTeq are building it together. The venture will develop premium charging locations across the St. Louis region.",
     link: LINKS.stLouisPress,
     linkLabel: "Read the announcement"
+  },
+  {
+    title: "Rangeway Hawaii",
+    corridor: "Island corridor · Hawaii",
+    status: "In development",
+    statusTone: "progress" as const,
+    body: "A hospitality-first coastal Waystation designed for island travel, pairing ultra-fast charging with a comfortable driver's lounge and a strong sense of place.",
+    link: LINKS.hawaiiMicrosite,
+    linkLabel: "Visit the Hawaii microsite"
   }
 ];
 ---
@@ -45,7 +45,7 @@ const waypoints = [
       </p>
     </div>
 
-    <p class="where__updated reveal">Last reviewed July 12, 2026. Each project link leads to its latest public update.</p>
+    <p class="where__updated reveal">Last reviewed July 23, 2026. Each project link leads to its latest public update.</p>
 
     <div class="where__list">
       {waypoints.map((w) => (

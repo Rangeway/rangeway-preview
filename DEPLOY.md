@@ -32,14 +32,12 @@ npm run build      # dist/
 
 ## Preview-only differences (what makes this ≠ production)
 These are the only intentional differences from `rangeway-pages`:
-- **`src/sections/WhereGoing.astro`** — the "Where We're Going" waypoints (Mojave, Bozeman,
-  St. Louis JV) each link out: Mojave/Bozeman to their microsites, St. Louis to the newsroom
-  press release.
-- **`src/pages/our-story.astro`** — Mojave "breaking ground" roadmap item.
-- **`src/components/Footer.astro`** — Explore column links to the Mojave and Bozeman microsites.
-- **`src/config.ts`** — `LINKS.mojaveMicrosite` / `bozemanMicrosite` / `stLouisPress`.
-- **`astro.config.mjs`** — `/mojave` redirects to `rangewaymojave.com` (the old internal page is gone).
-- External links that are intentionally NOT rangeway.co: `rangewaymojave.com`, `rangewaybozeman.com`.
+- **`src/sections/WhereGoing.astro`** — the "Where We're Going" waypoints are ordered Mojave,
+  St. Louis, Hawaii and link to the current public project surfaces.
+- **`src/pages/our-story.astro`** — the same three-project roadmap and ordering.
+- **`src/components/Footer.astro`** — Explore column links to Mojave, St. Louis, and Hawaii.
+- **`src/config.ts`** — `LINKS.mojaveMicrosite` / `stLouisPress` / `hawaiiMicrosite`.
+- **`astro.config.mjs`** — `/mojave` and `/hawaii` redirect to their current microsites.
 
 > The Mojave/Climatize **raise** layer (the `ClimatizeRaise` section, `CAMPAIGN_MODE`/`CLIMATIZE_URL`
 > config, the "Invest in Mojave" nav and hero CTAs, and the footer securities disclosure) was

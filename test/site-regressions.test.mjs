@@ -50,8 +50,38 @@ test("native and styled buttons use the heading typeface", async () => {
 
 test("shared project content preserves the approved order", async () => {
   const content = await readSource("src/data/site-content.ts");
-  assert.ok(content.indexOf('name: "Bozeman"') < content.indexOf('name: "Mojave"'));
   assert.ok(content.indexOf('name: "Mojave"') < content.indexOf('name: "St. Louis"'));
+  assert.ok(content.indexOf('name: "St. Louis"') < content.indexOf('name: "Hawaii"'));
+});
+
+test("public project surfaces replace Bozeman with Hawaii and use the current microsites", async () => {
+  const [config, content, strip, footer, story, network, waypoints, hero, astroConfig] =
+    await Promise.all([
+      readSource("src/config.ts"),
+      readSource("src/data/site-content.ts"),
+      readSource("src/components/ProjectStrip.astro"),
+      readSource("src/components/Footer.astro"),
+      readSource("src/pages/our-story.astro"),
+      readSource("src/pages/network.astro"),
+      readSource("src/sections/WhereGoing.astro"),
+      readSource("src/sections/Hero.astro"),
+      readSource("astro.config.mjs")
+    ]);
+
+  const publicSource = [config, content, strip, footer, story, network, waypoints, hero, astroConfig].join("\n");
+  assert.doesNotMatch(publicSource, /bozeman/i);
+  assert.match(config, /mojaveMicrosite:\s*"https:\/\/mojave\.rangeway\.co"/);
+  assert.match(config, /hawaiiMicrosite:\s*"https:\/\/hawaii\.rangeway\.co"/);
+  assert.match(astroConfig, /['"]\/mojave['"]:\s*['"]https:\/\/mojave\.rangeway\.co['"]/);
+
+  for (const source of [content, strip, footer, story, network, waypoints]) {
+    assert.ok(source.indexOf("Mojave") < source.indexOf("St. Louis"));
+    assert.ok(source.indexOf("St. Louis") < source.indexOf("Hawaii"));
+  }
+
+  assert.match(hero, /const desktopImage = "\/images\/waystation-hawaii\.jpg"/);
+  assert.match(hero, /srcset="\/images\/waystation-hawaii\.webp"/);
+  assert.match(hero, /Waystation concept · Hawaii/);
 });
 
 test("homepage components expose the approved experience sequence", async () => {
@@ -94,16 +124,16 @@ test("homepage follows the approved experience-first architecture", async () => 
   assert.doesNotMatch(renderedHome, /<(?:Positioning|ComfortGuarantee)\b/);
 });
 
-test("homepage restores the approved clipped Basecamp hero", async () => {
+test("homepage keeps the approved clipped hero with the Hawaii Waystation concept", async () => {
   const hero = await readSource("src/sections/Hero.astro");
 
   assert.match(hero, /\.hero__media\s*\{[^}]*clip-path:\s*ellipse\(88% 83% at 100% 48%\)/s);
   assert.match(hero, /@media\s*\(max-width:\s*760px\)[\s\S]*?\.hero__media\s*\{[^}]*clip-path:\s*none/s);
   assert.doesNotMatch(hero, /hero__swoop/);
-  assert.match(hero, /const desktopImage = "\/images\/hero-mountain-waystation\.jpg"/);
-  assert.match(hero, /srcset="\/images\/hero-mountain-waystation\.webp"/);
-  assert.match(hero, /const heroAlt\s*=\s*[\s\S]*?concept rendering[\s\S]*?Rangeway Basecamp[\s\S]*?Bozeman, Montana/);
-  assert.match(hero, /Basecamp concept · Bozeman, Montana/);
+  assert.match(hero, /const desktopImage = "\/images\/waystation-hawaii\.jpg"/);
+  assert.match(hero, /srcset="\/images\/waystation-hawaii\.webp"/);
+  assert.match(hero, /const heroAlt\s*=\s*[\s\S]*?concept rendering[\s\S]*?Rangeway Waystation[\s\S]*?Hawaii/);
+  assert.match(hero, /Waystation concept · Hawaii/);
 });
 
 test("homepage hero gives the desktop image a 60 percent column without changing mobile stacking", async () => {

@@ -1,7 +1,7 @@
 ---
-const desktopImage = "/images/hero-mountain-waystation.jpg";
+const desktopImage = "/images/waystation-hawaii.jpg";
 const heroAlt =
-  "A concept rendering of the Rangeway Basecamp in Bozeman, Montana, with sunset-lit mountains behind a glowing glass lounge and an EV charging beneath the timber canopy";
+  "A concept rendering of a Rangeway Waystation in Hawaii, with a solar canopy, driver's lounge, tropical landscaping, and the ocean beyond";
 ---
 
 <section class="hero">
@@ -28,17 +28,17 @@ const heroAlt =
 
     <figure class="hero__media">
       <picture>
-        <source type="image/webp" srcset="/images/hero-mountain-waystation.webp" />
+        <source type="image/webp" srcset="/images/waystation-hawaii.webp" />
         <img
           src={desktopImage}
           alt={heroAlt}
-          width={1672}
-          height={941}
+          width={2048}
+          height={2048}
           fetchpriority="high"
           decoding="async"
         />
       </picture>
-      <figcaption>Basecamp concept · Bozeman, Montana</figcaption>
+      <figcaption>Waystation concept · Hawaii</figcaption>
     </figure>
   </div>
 </section>

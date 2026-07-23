@@ -23,9 +23,9 @@ export const SITE = {
 };
 
 export const LINKS = {
-  mojaveMicrosite: "https://rangewaymojave.com",
-  bozemanMicrosite: "https://rangewaybozeman.com",
+  mojaveMicrosite: "https://mojave.rangeway.co",
   stLouisPress: "https://newsroom.rangeway.co/press/luke-schuette-louteq/",
+  hawaiiMicrosite: "https://hawaii.rangeway.co",
   fieldNotes: "https://fieldnotes.rangeway.co",
   newsroom: "https://newsroom.rangeway.co",
   investorHub: "https://investors.rangeway.co",
