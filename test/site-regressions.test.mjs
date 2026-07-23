@@ -391,6 +391,14 @@ test("partner logos follow the page surface instead of the OS color scheme", asy
   assert.match(partnerPage, /<img src=\{p\.logo\}/);
 });
 
+test("Partners uses the darker Pebble logo", async () => {
+  const partnerPage = await readSource("src/pages/partners.astro");
+
+  assert.match(partnerPage, /logo:\s*"\/images\/partners\/pebble\.png"/);
+  assert.doesNotMatch(partnerPage, /logo:\s*"\/images\/partners\/pebble-trans\.png"/);
+  assert.equal(existsSync(path.join(root, "public/images/partners/pebble.png")), true);
+});
+
 test("partner logo tiles provide a restrained 72px contained mark", async () => {
   const partnerPage = await readSource("src/pages/partners.astro");
   const markRule = partnerPage.match(/\.partner-row__mark\s*\{([^}]*)\}/s)?.[1];
