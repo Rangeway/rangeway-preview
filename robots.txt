@@ -1,0 +1,3 @@
+# Preview host stays closed to crawlers.
+User-agent: *
+Disallow: /
